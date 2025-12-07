@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Dynamic Page Title -->
+    <title>{{ title or "Jubilant Tech - Your Global IT Partner" }}</title>
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="/static/css/index.css">
+    <!-- <link rel="stylesheet" href="/static/css/layout.css"> -->
+
+
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/static/images/jubiliant-logo.webp">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Intl Telephone Input (if used globally) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.css">
+</head>
+
+<body>
+
+    <!-- Header (GLOBAL) -->
+    {% include "components/header.html" %}
+
+    <!-- Main Content (PAGE SPECIFIC) -->
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <!-- Footer (GLOBAL) -->
+    {% include "components/footer.html" %}
+
+    <!-- Inquiry Modal (GLOBAL) -->
+    {% include "components/inquiry_modal.html" %}
+
+    <!-- JS Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
+
+    <!-- Feather Icons -->
+    <script>
+        feather.replace();
+    </script>
+
+</body>
+</html>

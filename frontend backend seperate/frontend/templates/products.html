@@ -1,0 +1,122 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/css/products.css">
+
+<!-- ------------------------------------------------------- -->
+<!-- TOP BANNER -->
+<!-- ------------------------------------------------------- -->
+<section class="amd_epyc">
+    <div class="container">
+        <h2 class="prtname">PRODUCT NAME</h2>
+        <p class="prt_details">Browse our complete product catalog</p>
+    </div>
+</section>
+
+
+<!-- ------------------------------------------------------- -->
+<!-- MAIN WRAPPER -->
+<!-- ------------------------------------------------------- -->
+<section>
+    <div class="main-container">
+
+        <!-- --------------------------------------------- -->
+        <!-- LEFT FILTER SIDEBAR -->
+        <!-- --------------------------------------------- -->
+        <aside class="filter-sidebar">
+            <h2>Filter Options</h2>
+
+            <!-- Category -->
+            <div class="filter-group active">
+                <h3 class="filter-header">Category</h3>
+                <div class="filter-content">
+
+                    <label>
+                        <input type="checkbox" name="category" value="AMD Server Processor" class="filter-checkbox">
+                        AMD Server Processor
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="category" value="AMD Desktop Processor" class="filter-checkbox">
+                        AMD Desktop Processor
+                    </label>
+
+                    <label>
+                        <input type="checkbox" name="category" value="INTEL Desktop Processor" class="filter-checkbox">
+                        INTEL Desktop Processor
+                    </label>
+
+                </div>
+            </div>
+
+            <!-- Brand -->
+            <div class="filter-group">
+                <h3 class="filter-header">Brand</h3>
+                <div class="filter-content">
+                    <label><input type="checkbox" name="brand" value="AMD" class="filter-checkbox"> AMD</label>
+                    <label><input type="checkbox" name="brand" value="Intel" class="filter-checkbox"> Intel</label>
+                    <label><input type="checkbox" name="brand" value="HP" class="filter-checkbox"> HP</label>
+                    <label><input type="checkbox" name="brand" value="Lenovo" class="filter-checkbox"> Lenovo</label>
+                    <label><input type="checkbox" name="brand" value="ASUS" class="filter-checkbox"> ASUS</label>
+                    <label><input type="checkbox" name="brand" value="Dell" class="filter-checkbox"> Dell</label>
+                    <label><input type="checkbox" name="brand" value="Samsung" class="filter-checkbox"> Samsung</label>
+                    <label><input type="checkbox" name="brand" value="Toshiba" class="filter-checkbox"> Toshiba</label>
+                    <label><input type="checkbox" name="brand" value="ACER" class="filter-checkbox"> ACER</label>
+                    <label><input type="checkbox" name="brand" value="Micron" class="filter-checkbox"> Micron</label>
+                </div>
+            </div>
+
+            <!-- Application -->
+            <div class="filter-group">
+                <h3 class="filter-header">Application</h3>
+                <div class="filter-content">
+                    <label><input type="checkbox" name="application" value="Desktop" class="filter-checkbox"> Desktop</label>
+                    <label><input type="checkbox" name="application" value="Server" class="filter-checkbox"> Server</label>
+                    <label><input type="checkbox" name="application" value="Workstation" class="filter-checkbox"> Workstation</label>
+                </div>
+            </div>
+
+            <!-- Cores -->
+            <div class="filter-group">
+                <h3 class="filter-header">Total Cores</h3>
+                <div class="filter-content">
+                    <label><input type="checkbox" name="cores" value="8" class="filter-checkbox"> Up to 8 Cores</label>
+                    <label><input type="checkbox" name="cores" value="16" class="filter-checkbox"> 9–16 Cores</label>
+                    <label><input type="checkbox" name="cores" value="32" class="filter-checkbox"> 17–32 Cores</label>
+                    <label><input type="checkbox" name="cores" value="64" class="filter-checkbox"> 33–64 Cores</label>
+                    <label><input type="checkbox" name="cores" value="128" class="filter-checkbox"> 65+ Cores</label>
+                </div>
+            </div>
+
+            <!-- Price -->
+            <div class="filter-group">
+                <h3>Max Price</h3>
+                <div class="range-display">
+                    <span id="price-value">$3000</span>
+                </div>
+                <input type="range" id="price-max" min="50" max="3000" value="3000" step="10">
+            </div>
+
+        </aside>
+
+
+        <!-- --------------------------------------------- -->
+        <!-- PRODUCT LIST GRID -->
+        <!-- --------------------------------------------- -->
+        <main class="product-content">
+            <h1>All Products</h1>
+
+            <div class="product-grid" id="shortlist-grid">
+                <p class="loading-message">Loading products...</p>
+            </div>
+        </main>
+
+    </div>
+</section>
+
+<!-- ------------------------------------------------------- -->
+<!-- MAIN SCRIPT -->
+<!-- ------------------------------------------------------- -->
+<script type="module" src="/static/javascript/product_list.js"></script>
+
+{% endblock %}

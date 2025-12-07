@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero-section">
+  <div class="hero-content">
+    <h1>Your Trusted Partner in Global IT Component Solutions</h1>
+    <p>Providing cutting-edge hardware and unparalleled service to power your business.</p>
+    <button class="cta-button">Shop Now</button>
+  </div>
+
+  <div class="hero-image">
+    <img src="/static/images/hero-image.webp" alt="Hero">
+  </div>
+</section>
+
+
+<!-- About Section -->
+<section id="aboutus">
+  <div class="about-content">
+    <h2><b>JUBILANT SYSTEM</b></h2>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore veniam nemo accusantium.
+    </p>
+  </div>
+
+  <div class="about-more">
+    <button id="viewMoreBtn">View More</button>
+  </div>
+</section>
+
+
+<!-- Specializes -->
+<section id="specializes">
+  <h2>SPECIALIZES IN</h2>
+  <p>Processors, Memories, SSDs, HDDs, Computer Products & Peripherals.</p>
+</section>
+
+
+<!-- Hot Products -->
+<section class="product-section">
+  <div class="header">
+    <h2>HOT PRODUCTS</h2>
+    <div class="arrows">
+      <button id="leftBtn">&#10094;</button>
+      <button id="rightBtn">&#10095;</button>
+    </div>
+  </div>
+
+  <div class="product-slider" id="productSlider">
+    {% for i in range(10) %}
+    <div class="product-card">
+      <img src="/static/images/md turin 9745.jpg" alt="product">
+      <h3>AMD TURIN 9745</h3>
+      <p>AMD EPYC™ (128-Core)</p>
+      <span class="price">$452</span>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+
+<!-- Brands -->
+<section class="featured-brands">
+  <h2>Our Trusted Brands</h2>
+  <div class="brands-slider">
+    <img src="/static/images/amd logo.png">
+    <img src="/static/images/intel-logo.webp">
+    <img src="/static/images/Dell-removebg-preview.png">
+    <img src="/static/images/Lenovo-removebg-preview.png">
+  </div>
+</section>
+
+
+<!-- Contact -->
+<section>
+  <h2 style="text-align:center; padding-top:50px;">CONTACT US</h2>
+
+  <div class="inquiry-form-container">
+    <form class="inquiry-form">
+      <input type="text" placeholder="Product Name">
+      <input type="text" placeholder="Quantity">
+      <input type="email" placeholder="Email">
+      <textarea rows="5" placeholder="Inquiry Details"></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</section>
+
+
+<!-- Scripts -->
+<script>
+  document.getElementById("viewMoreBtn").onclick = () => {
+    window.location.href = "/aboutus.html";
+  };
+
+  const slider = document.getElementById("productSlider");
+  document.getElementById("leftBtn").onclick = () => slider.scrollLeft -= 300;
+  document.getElementById("rightBtn").onclick = () => slider.scrollLeft += 300;
+</script>
+
+{% endblock %}

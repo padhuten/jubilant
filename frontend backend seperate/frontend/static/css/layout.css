@@ -1,0 +1,152 @@
+/* layout.css — global layout, containers, utilities, typography */
+
+/* CSS Variables / Theme */
+:root{
+  --accent: #0b6efd;
+  --bg: #f9fafc;
+  --text: #222;
+  --muted: #6b7280;
+  --panel-bg: #ffffff;
+  --radius: 12px;
+  --container-max: 1200px;
+  --gutter: 20px;
+  --shadow-sm: 0 6px 18px rgba(11,110,253,0.08);
+  --glass: rgba(255,255,255,0.75);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  color-scheme: light;
+}
+
+/* Base */
+* { box-sizing: border-box; }
+html,body { height: 100%; }
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--bg);
+  font-family: var(--font-family, Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+/* --------- Layout containers ---------- */
+/* Main page wrapper for content (centered) */
+main {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: calc(var(--gutter) * 1.2);
+  min-height: calc(100vh - 220px); /* leaves space for header+footer; tweak as needed */
+}
+
+/* Generic section inner container (for sections that use full-width background) */
+.section-inner,
+.container {
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--gutter);
+  padding-right: var(--gutter);
+}
+
+/* Utility: centered content block (common) */
+.center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Simple grid helpers */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.col {
+  flex: 1 1 0%;
+}
+
+/* Heading defaults */
+h1, h2, h3, h4 {
+  margin: 0 0 16px 0;
+  line-height: 1.15;
+  color: var(--text);
+}
+h1 { font-size: 2.2rem; }
+h2 { font-size: 1.6rem; }
+
+/* Text utilities */
+.lead { font-size: 1.05rem; color: var(--muted); }
+.text-center { text-align: center; }
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  border-radius: 8px;
+  background: var(--accent);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 600;
+}
+.btn:hover { opacity: 0.95; transform: translateY(-1px); }
+
+/* Header sticky behavior: ensure header doesn't overlap main content */
+header, .header-container {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: transparent; /* header component can define own background */
+}
+
+/* Footer spacing */
+footer, .footer {
+  margin-top: 40px;
+  padding: 40px 0;
+}
+
+/* Card defaults */
+.card {
+  background: var(--panel-bg);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  padding: 18px;
+}
+
+/* Modal: ensure modal centers perfectly (works with your modal HTML) */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0,0,0,0.45);
+  z-index: 2000;
+}
+.modal-content {
+  width: 100%;
+  max-width: 420px;
+  background: var(--panel-bg);
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  main { padding: 18px; }
+  h1 { font-size: 1.9rem; }
+}
+@media (max-width: 768px) {
+  .row { flex-direction: column; }
+  .nav-links { gap: 12px; }
+  main { padding: 14px; min-height: auto; }
+}
+
+/* Tiny helpers */
+.muted { color: var(--muted); font-size: 0.95rem; }
+.small { font-size: 0.9rem; }
+.mb-1 { margin-bottom: 8px; }
+.mb-2 { margin-bottom: 16px; }
+.mt-1 { margin-top: 8px; }

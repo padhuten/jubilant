@@ -1,0 +1,72 @@
+<button class="inquiry-button" onclick="toggleModal('open')">💬 Inquiry</button>
+
+<div id="inquiryModal" class="modal-overlay" style="display:none;">
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <h2>Send an Inquiry</h2>
+      <span class="close-btn" onclick="toggleModal('close')">&times;</span>
+    </div>
+
+    <p class="modal-subtitle">Tell us what you need — we'll respond within 24 hours.</p>
+
+    <form id="inquiryForm" action="/send-inquiry" method="POST">
+
+      <label>Name</label>
+      <input type="text" name="name" required>
+
+      <label>Email</label>
+      <input type="email" name="email" required>
+
+      <label>Phone</label>
+      <input type="tel" name="phone">
+
+      <label>Product / Service</label>
+      <select name="product">
+        <option>Select</option>
+        <option>Jubilant System</option>
+        <option>Other Service</option>
+      </select>
+
+      <label>Quantity (optional)</label>
+      <input type="number" name="quantity">
+
+      <p class="modal-footer-text">We respect your privacy. We'll only use this info to reply.</p>
+
+      <button type="submit" class="submit-button">Inquiry New</button>
+
+      <p id="successMsg" style="display:none; color:green;">Inquiry sent successfully!</p>
+
+    </form>
+
+  </div>
+</div>
+
+<script>
+function toggleModal(action) {
+  document.getElementById("inquiryModal").style.display =
+    action === "open" ? "flex" : "none";
+}
+
+document.getElementById("inquiryForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const formData = new FormData(this);
+  const response = await fetch("/send-inquiry", { method: "POST", body: formData });
+  const result = await response.json();
+
+  const successMsg = document.getElementById("successMsg");
+  const modal = document.getElementById("inquiryModal");
+
+  successMsg.style.display = "block";
+  successMsg.style.color = result.success ? "green" : "red";
+  successMsg.textContent = result.message;
+
+  if (result.success) {
+    this.reset();
+    setTimeout(() => modal.style.display = "none", 2000);
+  }
+
+  setTimeout(() => successMsg.style.display = "none", 5000);
+});
+</script>

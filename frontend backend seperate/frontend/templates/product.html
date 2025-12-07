@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<link rel="stylesheet" href="/static/css/product.css">
+
+<section id="product_head">
+  <div class="product-container">
+
+    <!-- LEFT: IMAGE GALLERY -->
+    <div class="product-gallery">
+
+      <div class="main-image" id="mainImageContainer">
+        <button class="nav-btn nav-left" id="prevBtn">&#10094;</button>
+        <img id="prodImage" src="" alt="Product Image">
+        <div class="zoom-lens" id="zoomLens"></div>
+        <button class="nav-btn nav-right" id="nextBtn">&#10095;</button>
+      </div>
+
+      <div class="thumbnail-row" id="thumbRow">
+        <!-- Thumbnails injected dynamically -->
+      </div>
+
+    </div>
+
+    <!-- RIGHT: PRODUCT DETAILS -->
+    <div class="product-details">
+
+      <h1 id="prodName">Loading...</h1>
+
+      <p class="description" id="prodDescription"></p>
+
+      <div class="price-box">
+        <span class="price" id="prodPrice"></span>
+        <small>10 pcs (MOQ)</small>
+      </div>
+
+      <div class="details-meta"><strong>Category:</strong> <span id="prodCategory"></span></div>
+      <div class="details-meta"><strong>Brand:</strong> <span id="prodBrand"></span></div>
+
+      <div class="info-icons">
+        <div>100% Genuine</div>
+        <div>Fast Delivery</div>
+        <div>Bulk Discount</div>
+        <div>Secure Checkout</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ======================== -->
+<!-- ✅ TABS SECTION -->
+<!-- ======================== -->
+
+<section id="product_description">
+
+  <div class="tabs">
+
+    <input type="radio" name="tab" id="tab-desc" checked>
+    <label for="tab-desc">Description</label>
+
+    <input type="radio" name="tab" id="tab-info">
+    <label for="tab-info">Additional Information</label>
+
+    <input type="radio" name="tab" id="tab-warr">
+    <label for="tab-warr">Warranty</label>
+
+    <div class="tab-content">
+
+      <!-- DESCRIPTION -->
+      <div id="desc" class="pane">
+        <h3>Product Description</h3>
+        <p id="tabDescription"></p>
+      </div>
+
+      <!-- ADDITIONAL INFO -->
+      <div id="info" class="pane">
+        <h3>Additional Information</h3>
+        <table id="additionalInfoTable">
+          <!-- Injected dynamically -->
+        </table>
+      </div>
+
+      <!-- WARRANTY -->
+      <div id="warr" class="pane">
+        <h3>Warranty</h3>
+        <p id="prodWarranty"></p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- Load Dynamic Data -->
+<script src="/static/javascript/product_detail.js" type="module"></script>
+
+{% endblock %}
