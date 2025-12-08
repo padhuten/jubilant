@@ -25,7 +25,6 @@ hdd_products = [
     "application": "Desktop / Personal Computing",
     "description": "High-performance 1TB Barracuda hard drive for fast storage and reliability.",
     "series": "barracuda",
-    
     "capacity": "1TB",
     "rpm": 7200,
     "cache": 64,
