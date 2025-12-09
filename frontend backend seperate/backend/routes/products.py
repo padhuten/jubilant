@@ -28,8 +28,16 @@ def get_all_products():
         item = product.copy()
         item["isShortlisted"] = item["id"] in user_shortlist
         final_products.append(item)
-
-    return jsonify({
+        
+    # add SSD products
+    
+    for product in ssd_products:
+        item = product.copy()
+        item["isShortlisted"] = item["id"] in user_shortlist
+        final_products.append(item)
+        
+        
+        return jsonify({
         "success": True,
         "count": len(final_products),
         "products": final_products
