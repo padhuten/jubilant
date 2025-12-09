@@ -29,9 +29,12 @@ async function loadProduct() {
     // =============================
     // ✅ BASIC PRODUCT DATA
     // =============================
-    document.getElementById("prodName").textContent = product.name;
-    document.getElementById("prodPrice").textContent = `US $${product.price}`;
-    document.getElementById("prodImage").src = API_HOST + product.image;
+    document.getElementById("prodName").textContent = product.name || "Unnamed Product";
+
+    document.getElementById("prodPrice").textContent =
+      product.price !== undefined ? `US $${product.price}` : "Price on request";
+
+    document.getElementById("prodImage").src = API_HOST + (product.image || "/static/images/no-image.png");
 
     document.getElementById("prodDescription").textContent =
       product.description || "No description available.";
@@ -75,7 +78,15 @@ async function loadProduct() {
       Interface: product.interface,
       "Form Factor": product.form_factor,
 
-      // ✅ Laptop / Desktop (future-ready)
+      // ✅ RAM (FULLY SUPPORTED NOW)
+      Speed: product.speed,
+      Voltage: product.voltage,
+      Pins: product.pins,
+      "ECC Support": typeof product.ecc === "boolean" ? (product.ecc ? "Yes" : "No") : null,
+      Registered: typeof product.registered === "boolean" ? (product.registered ? "Yes" : "No") : null,
+      Model: product.model,
+
+      // ✅ Laptop / Desktop (Future-proof)
       RAM: product.ram,
       Storage: product.storage,
       "Screen Size": product.screen_size,
@@ -101,6 +112,8 @@ async function loadProduct() {
       : [product.image];
 
     images.forEach((img, index) => {
+      if (!img) return;
+
       const thumb = document.createElement("img");
       thumb.src = API_HOST + img;
 

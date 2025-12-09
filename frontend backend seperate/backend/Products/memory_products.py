@@ -14,6 +14,7 @@ memory_products = [
   "memory_type": "DDR4 SDRAM",
   "speed": "2400 MHz (PC4-19200)",
   "voltage": "1.2V",
+  "series":"samsung-ram",
   "pins": 288,
   "form_factor": "UDIMM (DIMM)",
   "ecc": "false",
