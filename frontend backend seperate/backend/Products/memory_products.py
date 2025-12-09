@@ -20,7 +20,7 @@ memory_products = [
   "registered": "false",
   "model": "M378A1K43CB2-CRC",
   "image": "/static/images/samsung_memory.jpg",
-  "price_inr": 6840.00
+  "price": 6840.00
 }
 
 
