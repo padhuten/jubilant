@@ -150,6 +150,10 @@ memory_products = [
   "price": 530.00
 },
 
+
+#  CRUCIAL MEMORY
+
+
 {
   "id": "ram-crucial-8gb-ddr4-udimm",
   "name": "Crucial 8GB DDR4 UDIMM",
@@ -253,14 +257,96 @@ memory_products = [
   "model": "MTA36ASF8G72LZ-3G2R",  
   "image": "/static/images/crucial_memory.jpg",
   "price": 67953.00
+},
+
+
+
+#  MICRON MEMORY
+
+
+{
+  "id": "ram-micron-8gb-ddr4-udimm",
+  "name": "Micron 8GB DDR4 UDIMM",
+  "brand": "Micron",
+  "category": "Desktop Memory Module",
+  "application": "Desktop PC",
+  "description": "8 GB DDR4 unbuffered DIMM module for desktop computers — 288-pin, 1.2 V, non-ECC, UDIMM.",
+  "capacity": "8GB",
+  "series": "micron-ram",
+  "memory_type": "DDR4 SDRAM",
+  "speed": "2666 MHz (PC4-21300)",
+  "voltage": "1.2V",
+  "pins": 288,
+  "form_factor": "UDIMM (DIMM)",
+  "ecc": "false",
+  "registered": "false",
+  "model": "MTA8ATF1G64AZ-2G6E1",
+  "image": "/static/images/micron_memory.jpg",
+  "price": 7189.00
+},
+
+{
+  "id": "ram-micron-16gb-ddr4-udimm",
+  "name": "Micron 16GB DDR4 UDIMM",
+  "brand": "Micron",
+  "category": "Desktop Memory Module",
+  "application": "Desktop PC",
+  "description": "16 GB DDR4 unbuffered DIMM module for desktop computers — 288-pin, 1.2 V, non-ECC, UDIMM.",
+  "capacity": "16GB",
+  "series": "micron-ram",
+  "memory_type": "DDR4 SDRAM",
+  "speed": "3200 MHz (PC4-25600)",
+  "voltage": "1.2V",
+  "pins": 288,
+  "form_factor": "UDIMM (DIMM)",
+  "ecc": "false",
+  "registered": "false",
+  "model": "MTA8ATF2G64AZ-3G2F1",
+  "image": "/static/images/micron_memory.jpg",
+  "price": 19727.00
+},
+
+{
+  "id": "ram-micron-32gb-ddr4-rdimm",
+  "name": "Micron 32GB DDR4 RDIMM",
+  "brand": "Micron",
+  "category": "Server Memory Module",
+  "application": "Server",
+  "description": "32 GB DDR4 registered DIMM module for servers — 288-pin, 1.2 V, ECC, RDIMM.",
+  "capacity": "32GB",
+  "series": "micron-ram",
+  "memory_type": "DDR4 SDRAM",
+  "speed": "3200 MHz (PC4-25600R)",
+  "voltage": "1.2V",
+  "pins": 288,
+  "form_factor": "RDIMM (DIMM)",
+  "ecc": "true",
+  "registered": "true",
+  "model": "MTA36ASF4G72PZ-3G2",
+  "image": "/static/images/micron_memory.jpg",
+  "price": 18000.00
+},
+
+{
+  "id": "ram-micron-64gb-ddr4-lrdimm",
+  "name": "Micron 64GB DDR4 LRDIMM",
+  "brand": "Micron",
+  "category": "Server Memory Module",
+  "application": "Server / Workstation",
+  "description": "64 GB DDR4 load-reduced registered DIMM module for servers — 288-pin, 1.2 V, ECC, LRDIMM.",
+  "capacity": "64GB",
+  "series": "micron-ram",
+  "memory_type": "DDR4 SDRAM",
+  "speed": "3200 MHz (PC4-25600R)",  
+  "voltage": "1.2V",
+  "pins": 288,
+  "form_factor": "LRDIMM (DIMM)",
+  "ecc": "true",
+  "registered": "true",
+  "model": "MTA36ASF8G72LZ-3G2F1",
+  "image": "/static/images/micron_memory.jpg",
+  "price": 67953.00
 }
-
-
-
-
-
-
-
 
 
 ]
