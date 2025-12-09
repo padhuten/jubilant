@@ -24,6 +24,133 @@ memory_products = [
   "price": 6840.00
 },
 
+{
+  "id": "ram-samsung-16gb-ddr4-udimm",
+  "name": "Samsung 16GB DDR4 UDIMM",
+  "brand": "Samsung",
+  "category": "Desktop Memory Module",
+  "application": "Desktop PC",
+  "description": "16 GB DDR4 unbuffered DIMM module for desktop computers — 288-pin, 1.2 V, non-ECC, UDIMM.",
+  "capacity": "16GB",
+  "series": "samsung-ram",
+  "memory_type": "DDR4 SDRAM",
+  "speed": "2400 MHz (PC4-19200)",  
+  "voltage": "1.2V",
+  "pins": 288,
+  "form_factor": "UDIMM (DIMM)",
+  "ecc": "false",
+  "registered": "false",
+  "model": "M378A2K43CB1-CRC",
+  "image": "/static/images/samsung_memory.jpg",
+  "price": 11428.00
+},
+
+{
+  "id": "ram-samsung-32gb-ddr4-udimm",
+  "name": "Samsung 32GB DDR4 UDIMM",
+  "brand": "Samsung",
+  "category": "Desktop Memory Module",
+  "application": "Desktop PC",
+  "description": "32 GB DDR4 unbuffered DIMM module for desktop computers — 288-pin, 1.2 V, non-ECC, UDIMM.",
+  "capacity": "32GB",
+  "series": "samsung-ram",
+  "memory_type": "DDR4 SDRAM",
+  "speed": "3200 MHz (PC4-25600)",  
+  "voltage": "1.2V",
+  "pins": 288,
+  "form_factor": "UDIMM (DIMM)",
+  "ecc": "false",
+  "registered": "false",
+  "model": "M378A4G43AB2-CWE",
+  "image": "/static/images/samsung_memory.jpg",
+  "price": 15599.00
+},
+
+{
+  "id": "ram-samsung-16gb-ddr5-udimm",
+  "name": "Samsung 16GB DDR5 UDIMM",
+  "brand": "Samsung",
+  "category": "Desktop Memory Module",
+  "application": "Desktop PC",
+  "description": "16 GB DDR5 unbuffered DIMM module for desktop computers — 288-pin, 1.1 V (JEDEC standard), non-ECC, UDIMM.",
+  "capacity": "16GB",
+  "series": "samsung-ram",
+  "memory_type": "DDR5 SDRAM",
+  "speed": "5600 MHz (PC5-44800)",  
+  "voltage": "1.1V",
+  "pins": 288,
+  "form_factor": "UDIMM (DIMM)",
+  "ecc": "false",
+  "registered": "false",
+  "model": "M323R2GA3DB0-CWM",
+  "image": "/static/images/samsung_memory.jpg",
+  "price": 21003.00
+},
+
+{
+  "id": "ram-samsung-32gb-ddr5-udimm",
+  "name": "Samsung 32GB DDR5 UDIMM",
+  "brand": "Samsung",
+  "category": "Desktop Memory Module",
+  "application": "Desktop PC",
+  "description": "32 GB DDR5 unbuffered DIMM module for desktop computers — 288-pin, 1.1 V, non-ECC, UDIMM.",
+  "capacity": "32GB",
+  "series": "samsung-ram",
+  "memory_type": "DDR5 SDRAM",
+  "speed": "5600 MHz (PC5-44800)",
+  "voltage": "1.1V",
+  "pins": 288,
+  "form_factor": "UDIMM (DIMM)",
+  "ecc": "false",
+  "registered": "false",
+  "model": "M323R4GA3DB0-CWM",
+  "image": "/static/images/samsung_memory.jpg",
+  "price": 43271.00
+},
+
+{
+  "id": "ram-samsung-32gb-ddr4-rdimm",
+  "name": "Samsung 32GB DDR4 RDIMM",
+  "brand": "Samsung",
+  "category": "Server Memory Module",
+  "application": "Server",
+  "description": "32 GB DDR4 registered DIMM module for servers — 288-pin, 1.2 V, ECC, RDIMM.",
+  "capacity": "32GB",
+  "series": "samsung-ram",
+  "memory_type": "DDR4 SDRAM",
+  "speed": "2400 MHz (PC4-19200)",  
+  "voltage": "1.2V",
+  "pins": 288,
+  "form_factor": "RDIMM (DIMM)",
+  "ecc": "true",
+  "registered": "true",
+  "model": "M393A4K40BB1-CRC",
+  "image": "/static/images/samsung_memory.jpg",
+  "price": 15632.59
+},
+
+{
+  "id": "ram-samsung-64gb-ddr4-lrdimm",
+  "name": "Samsung 64GB DDR4 LRDIMM",
+  "brand": "Samsung",
+  "category": "Server Memory Module",
+  "application": "Server",
+  "description": "64 GB DDR4 load-reduced DIMM module for servers — 288-pin, 1.2 V, ECC, LRDIMM.",
+  "capacity": "64GB",
+  "series": "samsung-ram",
+  "memory_type": "DDR4 SDRAM",
+  "speed": "2666 MHz (PC4-21300V-L)",  
+  "voltage": "1.2V",
+  "pins": 288,
+  "form_factor": "LRDIMM (DIMM)",
+  "ecc": "true",
+  "registered": "false",
+  "model": "M386A8K40BM2-CTD",
+  "image": "/static/images/samsung_memory.jpg",
+  "price": 530.00
+}
+
+
 
 
 
