@@ -148,7 +148,115 @@ memory_products = [
   "model": "M386A8K40BM2-CTD",
   "image": "/static/images/samsung_memory.jpg",
   "price": 530.00
+},
+
+{
+  "id": "ram-crucial-8gb-ddr4-udimm",
+  "name": "Crucial 8GB DDR4 UDIMM",
+  "brand": "Crucial",
+  "category": "Desktop Memory Module",
+  "application": "Desktop PC",
+  "description": "8 GB DDR4 unbuffered DIMM module for desktop computers — 288-pin, 1.2 V, non-ECC, UDIMM.",
+  "capacity": "8GB",
+  "series": "crucial-ram",
+  "memory_type": "DDR4 SDRAM",
+  "speed": "3200 MHz (PC4-25600)",
+  "voltage": "1.2V",
+  "pins": 288,
+  "form_factor": "UDIMM (DIMM)",
+  "ecc": "false",
+  "registered": "false",
+  "model": "CB8GU3200",
+  "image": "/static/images/crucial_memory.jpg",
+  "price": 4999.00
+},
+
+{
+  "id": "ram-crucial-16gb-ddr4-udimm",
+  "name": "Crucial 16GB DDR4 UDIMM",
+  "brand": "Crucial",
+  "category": "Desktop Memory Module",
+  "application": "Desktop PC",
+  "description": "16 GB DDR4 unbuffered DIMM module for desktop computers — 288-pin, 1.2 V, non-ECC, UDIMM.",
+  "capacity": "16GB",
+  "series": "crucial-ram",
+  "memory_type": "DDR4 SDRAM",
+  "speed": "3200 MHz (PC4-25600)",
+  "voltage": "1.2V",
+  "pins": 288,
+  "form_factor": "UDIMM (DIMM)",
+  "ecc": "false",
+  "registered": "false",
+  "model": "CT16G4DFRA32A",
+  "image": "/static/images/crucial_memory.jpg",
+  "price": 12400.00
+},
+
+{
+  "id": "ram-crucial-8gb-ddr4-sodimm",
+  "name": "Crucial 8GB DDR4 SODIMM",
+  "brand": "Crucial",
+  "category": "Laptop Memory Module",
+  "application": "Laptop PC",
+  "description": "8 GB DDR4 unbuffered SO-DIMM module for laptops — 260-pin, 1.2 V, non-ECC, SODIMM.",
+  "capacity": "8GB",
+  "series": "crucial-ram",
+  "memory_type": "DDR4 SDRAM",
+  "speed": "2400 MHz (PC4-19200)",
+  "voltage": "1.2V",
+  "pins": 260,
+  "form_factor": "SODIMM (Laptop DIMM)",
+  "ecc": "false",
+  "registered": "false",
+  "model": "CT8G4SFS824A",
+  "image": "/static/images/crucial_memory.jpg",
+  "price": 5082.00
+},
+
+{
+  "id": "ram-crucial-32gb-ddr4-rdimm",
+  "name": "Crucial 32GB DDR4 RDIMM",
+  "brand": "Crucial",
+  "category": "Server Memory Module",
+  "application": "Server",
+  "description": "32 GB DDR4 registered DIMM module for servers — 288-pin, 1.2 V, ECC, RDIMM.",
+  "capacity": "32GB",
+  "series": "crucial-ram",
+  "memory_type": "DDR4 SDRAM",
+  "speed": "2666 MHz (PC4-21300)",
+  "voltage": "1.2V",
+  "pins": 288,
+  "form_factor": "RDIMM (DIMM)",
+  "ecc": "true",
+  "registered": "true",
+  "model": "CT32G4RFD4266",
+  "image": "/static/images/crucial_memory.jpg",
+  "price": 18045.00
+},
+
+{
+  "id": "ram-crucial-64gb-ddr4-lrdimm",
+  "name": "Crucial 64GB DDR4 LRDIMM",
+  "brand": "Crucial",
+  "category": "Server Memory Module",
+  "application": "Server / Workstation",
+  "description": "64 GB DDR4 load-reduced registered DIMM module for servers — 288-pin, 1.2 V, ECC, LRDIMM.",
+  "capacity": "64GB",
+  "series": "crucial-ram",
+  "memory_type": "DDR4 SDRAM",
+  "speed": "3200 MHz (PC4-25600)",
+  "voltage": "1.2V",
+  "pins": 288,
+  "form_factor": "LRDIMM (DIMM)",
+  "ecc": "true",
+  "registered": "true",
+  "model": "MTA36ASF8G72LZ-3G2R",  
+  "image": "/static/images/crucial_memory.jpg",
+  "price": 67953.00
 }
+
+
+
 
 
 
