@@ -6,6 +6,7 @@ monitor_products = [
   "id": "monitor-samsung-odyssey-g9-49",
   "name": "Samsung Odyssey G9 49\"",
   "brand": "Samsung",
+  "series": "samsung-gaming",
   "category": "Gaming Monitor",
   "application": "Desktop / Gaming PC",
   "description": "49-inch super ultrawide curved gaming monitor — 5120×1440 resolution, 1000R curve, up to 240 Hz refresh rate, ideal for immersive gaming and multitasking.",
