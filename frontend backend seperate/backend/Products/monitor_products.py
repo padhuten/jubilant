@@ -317,7 +317,7 @@ monitor_products = [
   },
   "dimensions_mm": "Approx. 613 × 537 × 225 mm (with stand)",
   "weight_kg": 7.38,
-  "image": "/static/images/Philips_monitor_1.jpg",
+  "image": "/static/images/philips_monitor_1.jpg",
   "price": 101236.00
 },
 
@@ -355,8 +355,8 @@ monitor_products = [
   },
   "dimensions_mm": "Approx. 540 × 415 × 205 mm (with stand)",
   "weight_kg": 2.8,
-  "image": "/static/images/Philips_monitor_1.jpg",
-  "price_inr": 8999.00
+  "image": "/static/images/philips_monitor_1.jpg",
+  "price": 8999.00
 },
 
 
@@ -402,7 +402,7 @@ monitor_products = [
   "dimensions_mm": "Approx. 538.6 × 364 × 209 mm (with stand)", 
   "weight_kg": 4.6,
   "image": "/static/images/dell_monitor_1.jpg",
-  "price_inr": 14499.00
+  "price": 14499.00
 },
 
 {
