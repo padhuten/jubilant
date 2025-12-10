@@ -115,7 +115,7 @@ networking_products = [
   "id": "switch-aruba-instanton-1930-24g",
   "name": "Aruba InstantOn 1930 24G Switch",
   "brand": "Aruba",
-  "series": "instant-on-1930",
+  "series": "aruba-instanton",
   "category": "Smart-Managed Gigabit Ethernet Switch",
   "application": "Small Business / SMB / Network Access",
   "description": "24-port Gigabit Ethernet smart-managed switch with 4 SFP/SFP+ uplink ports; available in non-PoE and Class 4 PoE variants — suitable for small businesses, offices, retail setups, AP/camera connectivity and backbone uplinks.",
