@@ -1,1 +1,4 @@
-laptop_products = []
+laptop_products = [
+    
+    
+]

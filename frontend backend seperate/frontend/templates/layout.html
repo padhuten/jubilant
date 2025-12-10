@@ -7,11 +7,14 @@
     <!-- Dynamic Page Title -->
     <title>{{ title or "Jubilant Tech - Your Global IT Partner" }}</title>
 
-    <!-- Global CSS -->
+    <!-- ✅ GLOBAL BASE CSS -->
     <link rel="stylesheet" href="/static/css/index.css">
-    <!-- <link rel="stylesheet" href="/static/css/layout.css"> -->
 
+    <!-- ✅ HEADER CSS -->
+    <link rel="stylesheet" href="/static/css/header.css">
 
+    <!-- ✅ FOOTER CSS -->
+    <link rel="stylesheet" href="/static/css/footer.css">
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -23,25 +26,25 @@
     <script src="https://unpkg.com/feather-icons"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
-    <!-- Intl Telephone Input (if used globally) -->
+    <!-- Intl Telephone Input -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.css">
 </head>
 
 <body>
 
-    <!-- Header (GLOBAL) -->
+    <!-- ✅ Header (GLOBAL) -->
     {% include "components/header.html" %}
 
-    <!-- Main Content (PAGE SPECIFIC) -->
+    <!-- ✅ Main Content (PAGE SPECIFIC) -->
     <main>
         {% block content %}
         {% endblock %}
     </main>
 
-    <!-- Footer (GLOBAL) -->
+    <!-- ✅ Footer (GLOBAL) -->
     {% include "components/footer.html" %}
 
-    <!-- Inquiry Modal (GLOBAL) -->
+    <!-- ✅ Inquiry Modal (GLOBAL) -->
     {% include "components/inquiry_modal.html" %}
 
     <!-- JS Libraries -->
