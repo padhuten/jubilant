@@ -91,7 +91,7 @@ networking_products = [
     "ethernet": "1 × RJ-45 autosensing 10/100/1000 Mbps Gigabit Ethernet (PoE-in)",
     "poe": "802.3af PoE-in supported"
   },
-  "price": 18999
+  "price": 18999,
   "image": "/static/images/aruba_instanton.jpg"
 },
 
