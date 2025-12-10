@@ -77,4 +77,55 @@ networking_products = [
 
 
 
+#  ARUBA INSTANTON
+
+{
+  "id": "ap-aruba-instanton-ap11",
+  "name": "Aruba InstantOn AP11",
+  "brand": "Aruba",
+  "series": "aruba-instanton",
+  "category": "Wireless Access Point",
+  "application": "Small Business / Office / Retail / Guest Wi-Fi",
+  "description": "Dual-band indoor Wi-Fi 5 (802.11ac Wave 2) access point with Gigabit uplink, Smart Mesh support, and easy cloud/mobile-app management — ideal for small offices, retail shops, and guest networks.",
+  "ports": {
+    "ethernet": "1 × RJ-45 autosensing 10/100/1000 Mbps Gigabit Ethernet (PoE-in)",
+    "poe": "802.3af PoE-in supported"
+  },
+  "price": 18999
+  "image": "/static/images/aruba_instanton.jpg"
+},
+
+{
+  "id": "ap-aruba-instanton-ap22",
+  "name": "Aruba InstantOn AP22",
+  "brand": "Aruba",
+  "series": "aruba-instanton",
+  "category": "Wireless Access Point",
+  "application": "Small Business / Office / Retail / Guest Wi-Fi / SMB / Home Office",
+  "description": "Dual-band indoor Wi-Fi 6 (802.11ax) access point with Gigabit uplink, MU-MIMO, OFDMA, Smart Mesh support and cloud/mobile-app management — ideal for small offices, retail shops, guest networks, remote offices and home offices.",
+  "ports": {
+    "ethernet": "1 × RJ-45 autosensing 10/100/1000 Mbps Gigabit Ethernet (PoE-in)",
+    "poe": "802.3af PoE-in supported"
+  },
+  "price": 20999,
+  "image": "/static/images/aruba_instanton.jpg"
+},
+
+{
+  "id": "switch-aruba-instanton-1930-24g",
+  "name": "Aruba InstantOn 1930 24G Switch",
+  "brand": "Aruba",
+  "series": "instant-on-1930",
+  "category": "Smart-Managed Gigabit Ethernet Switch",
+  "application": "Small Business / SMB / Network Access",
+  "description": "24-port Gigabit Ethernet smart-managed switch with 4 SFP/SFP+ uplink ports; available in non-PoE and Class 4 PoE variants — suitable for small businesses, offices, retail setups, AP/camera connectivity and backbone uplinks.",
+  "ports": {
+    "ethernet": "24 × RJ-45 autosensing 10/100/1000 Mbps ports",
+    "sfp_plus": "4 × 1G/10G SFP/SFP+ uplink ports",
+    "duplex_support": "10/100 Mbps: Half or Full duplex; 1000 Mbps: Full duplex only"
+  },
+  "price": 31144,
+  "image": "/static/images/aruba_instanton.jpg"
+}
+
 ]
