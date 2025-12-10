@@ -60,7 +60,7 @@ networking_products = [
   "id": "switch-aruba-6300m",
   "name": "Aruba 6300M Switch",
   "brand": "Aruba",
-  "series": "aruba-6300m",
+  "series": "aruba-switch",
   "category": "Managed Layer-3 Ethernet Switch",
   "application": "Enterprise / Data Centre / SMB / Aggregation / Access / Core",
   "description": "Stackable, Layer-3 capable switch series with modular uplinks (SFP+/SFP56), multi-gigabit support, high-capacity switching fabric, designed for modern enterprise campus, data-center, and aggregation networks.",
