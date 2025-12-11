@@ -21,7 +21,7 @@ desktop_products = [
   "warranty": "Standard 1 Year Warranty",
 
   "form_factor": "Small Form Factor (8.2L)",
-  "image": "/static/images/lenovo_consumer-legion-5_1.jpg",
+  "image": "/static/images/lenovo_consumer_legion-5_1.jpg",
   "price": 45990
 },
 
@@ -44,7 +44,7 @@ desktop_products = [
   "warranty": "1 Year On-site Warranty",
 
   "form_factor": "Tower Gaming Desktop",
-  "image": "/static/images/lenovo_consumer-legion-5_1.jpg",
+  "image": "/static/images/lenovo_consumer_legion-5_1.jpg",
   "price": 89990
 }
 
