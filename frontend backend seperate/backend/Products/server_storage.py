@@ -343,7 +343,7 @@ server_storage_products = [
   },
 
   "form_factor": "2U Rackmount Server",
-  "image": "/static/images/lenovo_thinksystem.jpg",
+  "image": "/static/images/lenovo_enterprise.jpg",
   "price": 350000
 },
 
@@ -397,7 +397,7 @@ server_storage_products = [
   },
 
   "form_factor": "Tower Server (convertible to 4U rackmount)",
-  "image": "/static/images/lenovo_thinksystem.jpg",
+  "image": "/static/images/lenovo_enterprise.jpg",
   "price": 250000
 }
 
