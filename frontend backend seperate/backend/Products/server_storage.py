@@ -123,7 +123,7 @@ server_storage_products = [
 
   "form_factor": "2U Rackmount Server",
   "image": "/static/images/SERVER2.webp",
-  "price": 43,66,999
+  "price": 436000
 },
 
 {
@@ -156,7 +156,6 @@ server_storage_products = [
   "ports": {
     "usb": "Front & rear USB 3.0/3.2 ports (varies by model)",
     "display": "Video output via installed motherboard (VGA or HDMI)",
-    "audio": null
   },
 
   "expansion": {
