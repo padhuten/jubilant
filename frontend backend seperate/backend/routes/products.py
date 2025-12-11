@@ -18,16 +18,10 @@ products_bp = Blueprint("products_bp", __name__)
 
 
 # --------------------------------------------------
-# ✅ ✅ GET ALL PRODUCTS (EVERYTHING)
+# Helper: combine all products
 # --------------------------------------------------
-@products_bp.route('/api/products/all', methods=['GET'])
-def get_all_products():
-    user_id = get_user_id()
-    user_shortlist = shortlist_db.get(user_id, [])
-
-    final_products = []
-
-    all_categories = (
+def all_products():
+    return (
         cpu_products +
         hdd_products +
         ssd_products +
@@ -40,7 +34,17 @@ def get_all_products():
         docking_station_products
     )
 
-    for product in all_categories:
+
+# --------------------------------------------------
+# GET ALL PRODUCTS
+# --------------------------------------------------
+@products_bp.route('/api/products/all', methods=['GET'])
+def get_all_products():
+    user_id = get_user_id()
+    user_shortlist = shortlist_db.get(user_id, [])
+
+    final_products = []
+    for product in all_products():
         item = product.copy()
         item["isShortlisted"] = item["id"] in user_shortlist
         final_products.append(item)
@@ -53,7 +57,7 @@ def get_all_products():
 
 
 # --------------------------------------------------
-# ✅ GET CPU PRODUCTS
+# CATEGORY ENDPOINTS
 # --------------------------------------------------
 @products_bp.route('/api/products/cpu', methods=['GET'])
 def get_cpu_products():
@@ -66,16 +70,9 @@ def get_cpu_products():
         item["isShortlisted"] = item["id"] in user_shortlist
         final_cpu.append(item)
 
-    return jsonify({
-        "success": True,
-        "count": len(final_cpu),
-        "products": final_cpu
-    })
+    return jsonify({"success": True, "count": len(final_cpu), "products": final_cpu})
 
 
-# --------------------------------------------------
-# ✅ GET HDD PRODUCTS
-# --------------------------------------------------
 @products_bp.route('/api/products/hdd', methods=['GET'])
 def get_hdd_products():
     user_id = get_user_id()
@@ -87,16 +84,9 @@ def get_hdd_products():
         item["isShortlisted"] = item["id"] in user_shortlist
         final_hdd.append(item)
 
-    return jsonify({
-        "success": True,
-        "count": len(final_hdd),
-        "products": final_hdd
-    })
+    return jsonify({"success": True, "count": len(final_hdd), "products": final_hdd})
 
 
-# --------------------------------------------------
-# ✅ GET SSD PRODUCTS
-# --------------------------------------------------
 @products_bp.route('/api/products/ssd', methods=['GET'])
 def get_ssd_products():
     user_id = get_user_id()
@@ -108,16 +98,9 @@ def get_ssd_products():
         item["isShortlisted"] = item["id"] in user_shortlist
         final_ssd.append(item)
 
-    return jsonify({
-        "success": True,
-        "count": len(final_ssd),
-        "products": final_ssd
-    })
+    return jsonify({"success": True, "count": len(final_ssd), "products": final_ssd})
 
 
-# --------------------------------------------------
-# ✅ GET MEMORY PRODUCTS
-# --------------------------------------------------
 @products_bp.route('/api/products/memory', methods=['GET'])
 def get_memory_products():
     user_id = get_user_id()
@@ -129,16 +112,9 @@ def get_memory_products():
         item["isShortlisted"] = item["id"] in user_shortlist
         final_memory.append(item)
 
-    return jsonify({
-        "success": True,
-        "count": len(final_memory),
-        "products": final_memory
-    })
+    return jsonify({"success": True, "count": len(final_memory), "products": final_memory})
 
 
-# --------------------------------------------------
-# ✅ GET MONITOR PRODUCTS
-# --------------------------------------------------
 @products_bp.route('/api/products/monitors', methods=['GET'])
 def get_monitor_products():
     user_id = get_user_id()
@@ -150,16 +126,9 @@ def get_monitor_products():
         item["isShortlisted"] = item["id"] in user_shortlist
         final_monitors.append(item)
 
-    return jsonify({
-        "success": True,
-        "count": len(final_monitors),
-        "products": final_monitors
-    })
+    return jsonify({"success": True, "count": len(final_monitors), "products": final_monitors})
 
 
-# --------------------------------------------------
-# ✅ GET LAPTOP PRODUCTS
-# --------------------------------------------------
 @products_bp.route('/api/products/laptops', methods=['GET'])
 def get_laptop_products():
     user_id = get_user_id()
@@ -171,16 +140,9 @@ def get_laptop_products():
         item["isShortlisted"] = item["id"] in user_shortlist
         final_laptops.append(item)
 
-    return jsonify({
-        "success": True,
-        "count": len(final_laptops),
-        "products": final_laptops
-    })
+    return jsonify({"success": True, "count": len(final_laptops), "products": final_laptops})
 
 
-# --------------------------------------------------
-# ✅ GET DESKTOP PRODUCTS
-# --------------------------------------------------
 @products_bp.route('/api/products/desktops', methods=['GET'])
 def get_desktop_products():
     user_id = get_user_id()
@@ -192,16 +154,9 @@ def get_desktop_products():
         item["isShortlisted"] = item["id"] in user_shortlist
         final_desktops.append(item)
 
-    return jsonify({
-        "success": True,
-        "count": len(final_desktops),
-        "products": final_desktops
-    })
+    return jsonify({"success": True, "count": len(final_desktops), "products": final_desktops})
 
 
-# --------------------------------------------------
-# ✅ GET NETWORKING PRODUCTS
-# --------------------------------------------------
 @products_bp.route('/api/products/networking', methods=['GET'])
 def get_networking_products():
     user_id = get_user_id()
@@ -213,16 +168,9 @@ def get_networking_products():
         item["isShortlisted"] = item["id"] in user_shortlist
         final_networking.append(item)
 
-    return jsonify({
-        "success": True,
-        "count": len(final_networking),
-        "products": final_networking
-    })
+    return jsonify({"success": True, "count": len(final_networking), "products": final_networking})
 
 
-# --------------------------------------------------
-# ✅ GET SERVER & STORAGE PRODUCTS
-# --------------------------------------------------
 @products_bp.route('/api/products/server-storage', methods=['GET'])
 def get_server_storage_products():
     user_id = get_user_id()
@@ -234,16 +182,9 @@ def get_server_storage_products():
         item["isShortlisted"] = item["id"] in user_shortlist
         final_server_storage.append(item)
 
-    return jsonify({
-        "success": True,
-        "count": len(final_server_storage),
-        "products": final_server_storage
-    })
+    return jsonify({"success": True, "count": len(final_server_storage), "products": final_server_storage})
 
 
-# --------------------------------------------------
-# ✅ GET DOCKING STATION PRODUCTS
-# --------------------------------------------------
 @products_bp.route('/api/products/docking', methods=['GET'])
 def get_docking_products():
     user_id = get_user_id()
@@ -255,8 +196,36 @@ def get_docking_products():
         item["isShortlisted"] = item["id"] in user_shortlist
         final_docking.append(item)
 
-    return jsonify({
-        "success": True,
-        "count": len(final_docking),
-        "products": final_docking
-    })
+    return jsonify({"success": True, "count": len(final_docking), "products": final_docking})
+
+
+# --------------------------------------------------
+# NEW CLEAN PRODUCT LOOKUP BY ID
+# --------------------------------------------------
+@products_bp.route('/api/products/<product_id>', methods=['GET'])
+def get_single_product(product_id):
+    product_id = product_id.lower()
+    for product in all_products():
+        if product["id"].lower() == product_id:
+            return jsonify({"success": True, "product": product})
+    return jsonify({"success": False, "error": "Product not found"}), 404
+
+
+# --------------------------------------------------
+# NEW CLEAN PRODUCT LOOKUP WITH CATEGORY + SERIES
+# Example: /api/products/cpu/9005/AMD-EPYC-7313
+# --------------------------------------------------
+@products_bp.route('/api/products/cpu/<series>/<product_id>', methods=['GET'])
+def get_cpu_product_details(series, product_id):
+    series = series.lower()
+    product_id = product_id.lower()
+
+    for product in cpu_products:
+        if product["id"].lower() == product_id:
+            return jsonify({
+                "success": True,
+                "series": series,
+                "product": product
+            })
+
+    return jsonify({"success": False, "error": "Product not found"}), 404

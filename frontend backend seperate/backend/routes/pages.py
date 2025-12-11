@@ -1,5 +1,5 @@
 import os
-from flask import Blueprint, render_template, send_from_directory
+from flask import Blueprint, render_template, send_from_directory, request, redirect
 from config import STATIC_DIR, TEMPLATES_DIR
 
 pages_bp = Blueprint("pages_bp", __name__)
@@ -22,6 +22,46 @@ def serve_images(filename):
 
 
 # ------------------------------------------------------
+# CLEAN PRODUCT SERIES URL
+# Example: /products/ironwolf
+# ------------------------------------------------------
+@pages_bp.route('/products/<series>')
+def product_series(series):
+    return render_template("products.html", series=series.lower())
+
+
+# ------------------------------------------------------
+# BACKWARD COMPATIBILITY
+# Redirect /products?series=ironwolf → /products/ironwolf
+# ------------------------------------------------------
+@pages_bp.route('/products')
+def products_redirect():
+    series = request.args.get("series")
+    if series:
+        return redirect(f"/products/{series.lower()}", code=301)
+    return "No series specified", 400
+
+
+# ------------------------------------------------------
+# CLEAN CPU PRODUCT URL (PRODUCT NAME SLUG)
+# Example:
+#   /cpu/5000/AMD-Ryzen-5-5600
+#   /cpu/9005/AMD-EPYC-7313
+# ------------------------------------------------------
+@pages_bp.route('/cpu/<series>/<name_slug>')
+def clean_cpu_product(series, name_slug):
+    """
+    Loads the product.html page using a human-readable product slug
+    instead of old ?id= URLs.
+    """
+    return render_template(
+        "product.html",
+        series=series.lower(),
+        name_slug=name_slug
+    )
+
+
+# ------------------------------------------------------
 # PRODUCT PAGES (Clean URL + .html)
 # Priority BEFORE normal pages
 # ------------------------------------------------------
@@ -41,11 +81,14 @@ def product_page(slug):
 # ------------------------------------------------------
 # NORMAL PAGES (aboutus, suppliers, inquiry...)
 # Supports: /aboutus  AND  /aboutus.html
+#
+# ⚠ IMPORTANT:
+# This catch-all MUST remain LAST.
 # ------------------------------------------------------
 @pages_bp.route('/<page>')
 @pages_bp.route('/<page>.html')
 def load_page(page):
-    # Safety: avoid catching /productslist/
+    # Safety: do not conflict with /productslist/
     if page == "productslist":
         return "Invalid page", 404
 

@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  console.log("✅ MASTER PRODUCT ENGINE LOADED (STRICT SERIES MODE)");
+  console.log("🔥 MASTER PRODUCT ENGINE LOADED — CLEAN URL MODE ENABLED");
 
   const API_HOST = "http://127.0.0.1:5000";
   const API_ALL_PRODUCTS_URL = `${API_HOST}/api/products/all`;
@@ -24,13 +24,35 @@ document.addEventListener("DOMContentLoaded", () => {
     priceValueSpan.textContent = `$${priceRange.value}`;
   }
 
-  // ✅ READ SERIES FROM URL
-  const params = new URLSearchParams(window.location.search);
-  const selectedSeries = params.get("series");
+  // --------------------------------------------------
+  // READ SERIES FROM CLEAN URL
+  // SUPPORTS:
+  //   /products/<series>
+  //   /cpu/<series>
+  //   /cpu/<series>/<product-slug>
+  // --------------------------------------------------
 
-  console.log("✅ URL SERIES:", selectedSeries);
+  const pathParts = window.location.pathname.split("/").filter(Boolean);
+  let selectedSeries = null;
 
-  // ✅ FETCH PRODUCTS
+  console.log("📌 URL PATH PARTS:", pathParts);
+
+  // Case 1: /cpu/<series>/...
+  if (pathParts[0] === "cpu" && pathParts[1]) {
+    selectedSeries = pathParts[1].toLowerCase();
+  }
+
+  // Case 2: /products/<series>
+  if (pathParts[0] === "products" && pathParts[1]) {
+    selectedSeries = pathParts[1].toLowerCase();
+  }
+
+  console.log("🎯 CLEAN URL SERIES DETECTED:", selectedSeries);
+
+
+  // --------------------------------------------------
+  // FETCH ALL PRODUCTS
+  // --------------------------------------------------
   async function fetchAllProducts() {
     productGrid.innerHTML = `<p class="loading">Loading products...</p>`;
     if (filterSidebar) filterSidebar.style.opacity = "0.5";
@@ -49,45 +71,46 @@ document.addEventListener("DOMContentLoaded", () => {
         series: (p.series || "").toString().toLowerCase().trim()
       }));
 
-      console.log("✅ TOTAL PRODUCTS FROM API:", allProducts.length);
-      console.log("✅ SERIES FOUND:", allProducts.map(p => p.series));
+      console.log("📦 TOTAL PRODUCTS:", allProducts.length);
+      console.log("📌 AVAILABLE SERIES:", [...new Set(allProducts.map(p => p.series))]);
 
-      applyMegaMenuFilter();
+      applySeriesFilter();
+
       if (filterSidebar) filterSidebar.style.opacity = "1";
 
     } catch (err) {
-      console.error(err);
+      console.error("❌ API ERROR:", err);
       productGrid.innerHTML = `<p class="error">Failed to load products</p>`;
     }
   }
 
-  // ✅ ✅ STRICT SERIES FILTER
-  function applyMegaMenuFilter() {
+  // --------------------------------------------------
+  // APPLY SERIES FILTER FROM URL
+  // --------------------------------------------------
+  function applySeriesFilter() {
 
-    // ✅ If NO series in URL → THIS IS MAIN PRODUCTS PAGE
     if (!selectedSeries) {
-      console.warn("⚠️ No series in URL → Showing ALL products");
+      console.warn("⚠️ No series detected — Showing ALL products");
       filteredProducts = [...allProducts];
       renderProducts(filteredProducts);
       return;
     }
 
-    const key = selectedSeries.toLowerCase().trim();
+    filteredProducts = allProducts.filter(p => p.series === selectedSeries);
 
-    filteredProducts = allProducts.filter(p => p.series === key);
-
-    console.log("✅ FILTERING BY SERIES:", key);
-    console.log("✅ MATCHED PRODUCTS:", filteredProducts.length);
+    console.log("🎯 FILTERING BY SERIES:", selectedSeries);
+    console.log("📌 MATCHED PRODUCTS:", filteredProducts.length);
 
     currentPage = 1;
     renderProducts(filteredProducts);
   }
 
-  // ✅ PRICE FILTER (STACKS)
+  // --------------------------------------------------
+  // PRICE FILTER
+  // --------------------------------------------------
   if (priceRange) {
     priceRange.addEventListener("input", () => {
       priceValueSpan.textContent = `$${priceRange.value}`;
-
       const maxPrice = parseFloat(priceRange.value);
 
       const priceFiltered = filteredProducts.filter(p => p.price <= maxPrice);
@@ -96,7 +119,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ✅ RENDER
+  // --------------------------------------------------
+  // RENDER PRODUCT CARDS
+  // --------------------------------------------------
   function renderProducts(products) {
     productGrid.innerHTML = "";
 
@@ -111,8 +136,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const display = products.slice(start, end);
 
     display.forEach(p => {
+      const slug = p.name.replace(/\s+/g, "-"); // create product slug
+
       const card = `
-        <div class="product-card" onclick="window.location.href='/product.html?id=${p.id}'">
+        <div class="product-card" onclick="openProduct('${p.series}', '${slug}')">
           <div class="product-image">
             <img src="${API_HOST}${p.image}"
               onerror="this.src='https://placehold.co/200x200'">
@@ -123,13 +150,23 @@ document.addEventListener("DOMContentLoaded", () => {
           <p class="price">US $${p.price}</p>
         </div>
       `;
+
       productGrid.insertAdjacentHTML("beforeend", card);
     });
 
     renderPagination(products.length);
   }
 
-  // ✅ PAGINATION
+  // --------------------------------------------------
+  // CLEAN PRODUCT URL HANDLER
+  // --------------------------------------------------
+  window.openProduct = function (series, slug) {
+    window.location.href = `/cpu/${series}/${slug}`;
+  };
+
+  // --------------------------------------------------
+  // PAGINATION
+  // --------------------------------------------------
   function renderPagination(total) {
     paginationContainer.innerHTML = "";
     const totalPages = Math.ceil(total / PRODUCTS_PER_PAGE);
@@ -150,7 +187,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // ✅ START
+  // --------------------------------------------------
+  // INIT
+  // --------------------------------------------------
   fetchAllProducts();
 
 });
