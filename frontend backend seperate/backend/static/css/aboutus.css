@@ -420,7 +420,69 @@ transition: none;
   to { opacity: 1; transform: translateY(0); }
 }
 
+/* Footer */
+.footer {
+    background: #1d2b3a;
+    color: #a9b3c1;
+    padding-top: 50px;
+}
 
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
+
+.footer-column {
+    margin-bottom: 30px;
+    min-width: 200px;
+}
+
+.footer-column h3 {
+    color: #ffffff;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.footer-column p {
+    margin: 5px 0;
+}
+
+.footer-column ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-column ul li a {
+    color: #a9b3c1;
+    text-decoration: none;
+    line-height: 2;
+    transition: color 0.3s;
+}
+
+.footer-column ul li a:hover {
+    color: #ffffff;
+}
+
+.social-icons a {
+    color: #a9b3c1;
+    margin-right: 15px;
+    transition: color 0.3s;
+}
+
+.social-icons a:hover {
+    color: #ffffff;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #34495e;
+    margin-top: 20px;
+}
 
 /* --- Inquiry Toggle Button (from the main page) --- */
 .inquiry-button {

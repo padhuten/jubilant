@@ -14,7 +14,7 @@ load_dotenv()
 
 # Base dirs
 BASE_DIR = Path(__file__).resolve().parent
-FRONTEND_DIR = (BASE_DIR / ".." / "frontend").resolve()
+FRONTEND_DIR = BASE_DIR
 TEMPLATES_DIR = FRONTEND_DIR / "templates"
 STATIC_DIR = FRONTEND_DIR / "static"
 
