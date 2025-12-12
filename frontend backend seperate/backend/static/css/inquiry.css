@@ -429,3 +429,35 @@
         height: 250px;
     }
 }
+/* Quote Banner Styles */
+.quote-banner {
+    background: #f8f9fa;
+    padding: 50px 20px;
+    position: relative;
+}
+
+.quote-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.quote-heading {
+    font-size: 2rem;
+    font-weight: 400;
+    color: #2c3e50;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.highlight-text {
+    color: rgba(0, 59, 153, 0.7);
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* Contact Section Styles */
+.contact-section {
+    padding: 60px 20px;
+    background-color: #f8f9fa;
+}
