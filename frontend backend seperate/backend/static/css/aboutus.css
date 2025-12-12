@@ -233,10 +233,11 @@ body {
 .global-presence {
   position: relative;
   background: url('/static/images/worldmap-bg.jpeg') center/cover no-repeat fixed;
-  min-height: 80vh;
+  /* reduced min-height so it doesn't leave huge empty area */
+  min-height: 40vh;
   display: flex;
   align-items: center;
-  padding: 60px 5%;
+  padding: 80px 5%;
 }
 
 .global-presence .overlay {
@@ -317,7 +318,7 @@ body {
   }
 
   .global-presence {
-    min-height: 60vh;
+    min-height: 20%;
   }
 }
 
@@ -354,6 +355,196 @@ body {
   }
 
   .global-presence .second-image {
-    max-width: 300px;
+    max-width: 100px;
   }
 }
+
+/* ================================
+   Targeted layout overrides requested
+   - move Who We Are paragraph to the right of the image
+   - keep Mission & Vision side-by-side
+   - display Core Values items in one line (support up to 5)
+   These overrides are intentionally small, scoped, and responsive.
+================================ */
+
+.who-we-are-section .row {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: nowrap;
+}
+
+/* left image column: take approx 48% */
+.who-we-are-section .row > [class*="col-"]:first-child {
+  flex: 0 0 48%;
+  max-width: 48%;
+}
+
+/* right text column: take rest */
+.who-we-are-section .row > [class*="col-"]:nth-child(2) {
+  flex: 1 1 0;
+  max-width: 52%;
+}
+
+/* ensure image scales nicely */
+.who-we-are-section .row img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+/* MISSION & VISION: two cards side-by-side */
+.mission-vision .row {
+  display: flex;
+  gap: 24px;
+  align-items: stretch;
+  flex-wrap: nowrap;
+}
+
+/* each column equal width */
+.mission-vision .row > [class*="col-"] {
+  flex: 1 1 0;
+  max-width: 50%;
+}
+
+/* CORE VALUES: show multiple items in a single row (up to 5) */
+.core-values .row {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: nowrap;
+}
+
+/* make each value-card take approx 18% to allow up to 5 in one line */
+.core-values .row > [class*="col-"] {
+  flex: 0 0 18%;
+  max-width: 18%;
+}
+
+/* in case there are fewer items, center them nicely */
+.core-values .container > .row {
+  justify-content: center;
+}
+
+/* RESPONSIVE: fall back to stacked layout for smaller screens */
+@media (max-width: 992px) {
+  .who-we-are-section .row,
+  .mission-vision .row,
+  .core-values .row {
+    display: block;
+  }
+
+  .who-we-are-section .row > [class*="col-"]:first-child,
+  .who-we-are-section .row > [class*="col-"]:nth-child(2),
+  .mission-vision .row > [class*="col-"],
+  .core-values .row > [class*="col-"] {
+    flex: none;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .core-values .row {
+    gap: 16px;
+  }
+}
+/* === Center WHO WE ARE title between image and paragraph === */
+
+/* Turn the row into a vertical-center flexbox */
+.who-we-are-section .row {
+  display: flex;
+  align-items: center;      /* vertically center contents */
+}
+
+/* Center the title inside its column */
+.who-we-are-section .section-title {
+  text-align: center;
+  width: 100%;
+  margin-bottom: 1.5rem;
+}
+
+/* Optional: center the paragraph block as well */
+.who-we-are-section .col-lg-6:nth-child(2) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  /* vertical align */
+}
+body, html {
+  overflow-x: hidden !important;
+}
+
+/* Remove unwanted white space gap between sections */
+section {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* Ensure no large gap below global-presence */
+.global-presence {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* If the white bar is from Bootstrap's container spacing */
+.container {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+}
+/* === METRICS SECTION === */
+.metrics-section {
+  /* you previously used a gradient; keep it or override. we keep previous theme but ensure spacing is tight */
+  
+  padding: 40px 0;
+  color: white;
+  margin-bottom: 0;
+}
+
+.metrics-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  flex-wrap: wrap;
+}
+
+.metric-box h2 {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(90deg, #6cd6ff, #1fbfff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+}
+
+.metric-box p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .metrics-wrapper {
+    gap: 40px;
+  }
+  .metric-box h2 {
+    font-size: 2.2rem;
+  }
+}
+
+/* REMOVE BLUE BOX BEHIND METRICS SECTION - ensure transparent wrapper if needed */
+.metrics-wrapper {
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 20px 0 !important;
+}
+
+/* Remove leftover container background if any */
+.metrics-section .container {
+  background: transparent !important;
+}
+/* Remove ONLY the white space under the metrics section */
+.metrics-section {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
