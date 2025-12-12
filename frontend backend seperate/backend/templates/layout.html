@@ -4,23 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Dynamic Page Title -->
     <title>{{ title or "Jubilant Tech - Your Global IT Partner" }}</title>
 
-    <!-- 🌍 GLOBAL BASE CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <!-- GLOBAL BASE LAYOUT CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/layout.css') }}">
 
-    <!-- 🌍 GLOBAL HEADER CSS -->
+    <!-- GLOBAL HEADER CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
 
-    <!-- 🌍 GLOBAL FOOTER CSS -->
+    <!-- GLOBAL FOOTER CSS -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
 
-    <!-- 🌍 BOOTSTRAP -->
+    <!-- BOOTSTRAP -->
     <link rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 
-    <!-- ⭐ PAGE-SPECIFIC CSS FROM CHILD TEMPLATES -->
+    <!-- PAGE-SPECIFIC CSS -->
     {% block styles %}{% endblock %}
 
     <!-- Fonts -->
@@ -29,38 +28,25 @@
     <!-- Favicon -->
     <link rel="icon" href="/static/images/jubiliant-logo.webp">
 
-    <!-- Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-
-    <!-- Intl Telephone Input -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.css">
 </head>
 
-<body>
+<!-- ⭐⭐ PAGE-LEVEL CLASS — lets index become full width -->
+<body class="{% block body_class %}home-page{% endblock %}">
 
-    <!-- GLOBAL HEADER -->
     {% include "components/header.html" %}
 
-    <!-- MAIN CONTENT -->
-    <main>
-        {% block content %}
-        {% endblock %}
+    <!-- ⭐⭐ MAIN WRAPPER: now flexible, no fixed width -->
+    <main class="page-wrapper">
+        {% block content %}{% endblock %}
     </main>
 
-    <!-- GLOBAL FOOTER -->
     {% include "components/footer.html" %}
 
-    <!-- GLOBAL INQUIRY MODAL -->
     {% include "components/inquiry_modal.html" %}
 
-    <!-- Intl Tel JS -->
-    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
-
-    <!-- Feather Icons Activate -->
     <script>
         feather.replace();
     </script>
-
 </body>
 </html>

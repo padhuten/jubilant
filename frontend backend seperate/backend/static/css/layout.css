@@ -30,15 +30,25 @@ body {
 }
 
 /* --------- Layout containers ---------- */
-/* Main page wrapper for content (centered) */
-main {
+
+/* DEFAULT: Centered content for all pages EXCEPT homepage */
+main.page-wrapper:not(.home-page-wrapper) {
   max-width: var(--container-max);
   margin: 0 auto;
   padding: calc(var(--gutter) * 1.2);
-  min-height: calc(100vh - 220px); /* leaves space for header+footer; tweak as needed */
+  min-height: calc(100vh - 220px);
 }
 
-/* Generic section inner container (for sections that use full-width background) */
+/* HOMEPAGE — FULL WIDTH, NO MARGIN, NO PADDING */
+body.home-page main.page-wrapper {
+  max-width: 100% !important;
+  width: 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: auto !important;
+}
+
+/* Generic section inner container (for centered pages) */
 .section-inner,
 .container {
   max-width: var(--container-max);
@@ -92,12 +102,11 @@ h2 { font-size: 1.6rem; }
 }
 .btn:hover { opacity: 0.95; transform: translateY(-1px); }
 
-/* Header sticky behavior: ensure header doesn't overlap main content */
+/* Header sticky behavior */
 header, .header-container {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: transparent; /* header component can define own background */
 }
 
 /* Footer spacing */
@@ -114,7 +123,7 @@ footer, .footer {
   padding: 18px;
 }
 
-/* Modal: ensure modal centers perfectly (works with your modal HTML) */
+/* Modal */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -135,13 +144,16 @@ footer, .footer {
 
 /* Responsive */
 @media (max-width: 1024px) {
-  main { padding: 18px; }
+  main.page-wrapper:not(.home-page-wrapper) { padding: 18px; }
   h1 { font-size: 1.9rem; }
 }
 @media (max-width: 768px) {
   .row { flex-direction: column; }
   .nav-links { gap: 12px; }
-  main { padding: 14px; min-height: auto; }
+  main.page-wrapper:not(.home-page-wrapper) {
+    padding: 14px;
+    min-height: auto;
+  }
 }
 
 /* Tiny helpers */

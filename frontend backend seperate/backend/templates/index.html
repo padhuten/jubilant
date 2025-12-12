@@ -1,8 +1,15 @@
 {% extends "layout.html" %}
 
-{% block content %}
+{% block body_class %}home-page{% endblock %}
 
-<!-- Hero Section -->
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+{% endblock %}
+
+{% block content %}
+<main class="index-page">
+
+<!-- ================= HERO SECTION ================= -->
 <section class="hero-section">
   <div class="hero-content">
     <h1>Your Trusted Partner in Global IT Component Solutions</h1>
@@ -15,9 +22,8 @@
   </div>
 </section>
 
-
-<!-- About Section -->
-<section id="aboutus">
+<!-- ================= ABOUT SECTION ================= -->
+<section id="aboutus" class="section-full">
   <div class="about-content">
     <h2><b>JUBILANT SYSTEM</b></h2>
     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore veniam nemo accusantium.</p>
@@ -28,16 +34,14 @@
   </div>
 </section>
 
-
-<!-- Specializes -->
-<section id="specializes">
+<!-- ================= SPECIALIZES ================= -->
+<section id="specializes" class="section-full-light">
   <h2>SPECIALIZES IN</h2>
   <p>Processors, Memories, SSDs, HDDs, Computer Products & Peripherals.</p>
 </section>
 
-
-<!-- Hot Products -->
-<section class="product-section">
+<!-- ================= HOT PRODUCTS ================= -->
+<section class="product-section section-inner">
   <div class="header">
     <h2>HOT PRODUCTS</h2>
     <div class="arrows">
@@ -58,14 +62,12 @@
   </div>
 </section>
 
-
-<!-- Featured Brands Section (Fully Styled Version) -->
-<section class="featured-brands">
+<!-- ================= BRANDS ================= -->
+<section class="featured-brands section-full-dark">
   <h2>Our Trusted Brands</h2>
 
   <div class="brands-container">
     <div class="brands-slider">
-
       <div class="brand-item">
         <img src="/static/images/amd logo.png" alt="AMD Logo">
         <span class="brand-name">AMD</span>
@@ -85,17 +87,13 @@
         <img src="/static/images/Lenovo-removebg-preview.png" alt="Lenovo Logo">
         <span class="brand-name">Lenovo</span>
       </div>
-
     </div>
   </div>
 </section>
 
-
-<!-- Contact Section (Fully Styled) -->
-<section class="contact-section">
-
+<!-- ================= CONTACT ================= -->
+<section class="contact-section section-inner">
   <h2>CONTACT US</h2>
-
   <div class="inquiry-form-container">
     <form class="inquiry-form">
       <input type="text" placeholder="Product Name">
@@ -105,14 +103,13 @@
       <button type="submit" class="submit-button">Submit</button>
     </form>
   </div>
-
 </section>
 
+</main>
 
-<!-- Scripts -->
 <script>
   document.getElementById("viewMoreBtn").onclick = () => {
-    window.location.href = "/aboutus.html";
+    window.location.href = "/aboutus";
   };
 
   const slider = document.getElementById("productSlider");
