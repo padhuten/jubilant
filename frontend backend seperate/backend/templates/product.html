@@ -12,8 +12,9 @@
 
       <div class="main-image" id="mainImageContainer">
         <button class="nav-btn nav-left" id="prevBtn">&#10094;</button>
+        
         <img id="prodImage" src="" alt="Product Image">
-        <div class="zoom-lens" id="zoomLens"></div>
+
         <button class="nav-btn nav-right" id="nextBtn">&#10095;</button>
       </div>
 
@@ -45,6 +46,35 @@
         <div>Secure Checkout</div>
       </div>
 
+      <!-- Payment & Shipping Section -->
+      <!-- Payment & Shipping Section -->
+<!-- Payment & Shipping Section -->
+<div class="payment-shipping-section">
+  <div>
+    <h4>Payment:</h4>
+    <div class="payment-methods">
+      <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" alt="PayPal">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/200px-Visa_Inc._logo.svg.png" alt="Visa">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/200px-Mastercard-logo.svg.png" alt="Mastercard">
+    </div>
+  </div>
+  
+  <div>
+    <h4>Shipping:</h4>
+    <div class="shipping-methods">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/DHL_Logo.svg/200px-DHL_Logo.svg.png" alt="DHL">
+<img src="https://centurytech.sg/wp-content/uploads/2023/12/ems.png" alt="EMS">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/FedEx_Express.svg/200px-FedEx_Express.svg.png" alt="FedEx">
+      <img src="https://1000logos.net/wp-content/uploads/2017/06/UPS-Logo.png" alt="UPS">
+    </div>
+  </div>
+</div>
+</div>
+          </div>
+        </div>
+      </div>
+
+    </div>  <!-- This closes product-details -->
     </div>
   </div>
 </section>
@@ -98,5 +128,29 @@
 
 <!-- Load Dynamic Data -->
 <script src="/static/javascript/product_detail.js" type="module"></script>
+<script>
+  const container = document.getElementById("mainImageContainer");
+  const img = document.getElementById("prodImage");
+
+  container.addEventListener("mouseenter", () => {
+    container.classList.add("zooming");
+    container.style.backgroundImage = `url('${img.src}')`;
+  });
+
+  container.addEventListener("mouseleave", () => {
+    container.classList.remove("zooming");
+    container.style.backgroundImage = "none";
+  });
+
+  container.addEventListener("mousemove", (e) => {
+    const rect = container.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
+
+    container.style.backgroundPosition = `${x}% ${y}%`;
+  });
+</script>
+
+
 
 {% endblock %}
