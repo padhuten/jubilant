@@ -23,25 +23,54 @@
             <div class="contact-form-area">
                 <h2 class="form-title">Contact Us</h2>
 
-                <form id="inquiryForm" class="contact-form">
+                <form id="contactPageForm" class="contact-form" action="/send-inquiry" method="POST">
+
+                    <!-- Hidden fields required by backend -->
+                    <input type="hidden" name="product" value="General Inquiry">
+                    <input type="hidden" name="quantity" value="N/A">
+                    <input type="hidden" name="phone" value="N/A">
+
                     <div class="form-row-group">
                         <div class="form-field full-width">
-                            <input type="text" id="full-name" name="full-name" placeholder="Full Name" required>
+                            <input 
+                                type="text" 
+                                id="full-name" 
+                                name="name" 
+                                placeholder="Full Name" 
+                                required
+                            >
                         </div>
                     </div>
 
                     <div class="form-row-group">
                         <div class="form-field half-width">
-                            <input type="email" id="email-address" name="email-address" placeholder="Email Address" required>
+                            <input 
+                                type="email" 
+                                id="email-address" 
+                                name="email" 
+                                placeholder="Email Address" 
+                                required
+                            >
                         </div>
+
                         <div class="form-field half-width">
-                            <input type="text" id="subject" name="subject" placeholder="Subject">
+                            <input 
+                                type="text" 
+                                id="subject" 
+                                name="subject" 
+                                placeholder="Subject"
+                            >
                         </div>
                     </div>
 
                     <div class="form-row-group">
                         <div class="form-field full-width">
-                            <textarea id="message" name="message" placeholder="Message" rows="5"></textarea>
+                            <textarea 
+                                id="message" 
+                                name="message" 
+                                placeholder="Message" 
+                                rows="5"
+                            ></textarea>
                         </div>
                     </div>
 
@@ -69,8 +98,48 @@
     </div>
 </div>
 
+<!-- NEW CONTACT FORM JS (Only for this page) -->
 <script>
-// JS — unchanged
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.getElementById("contactPageForm");
+    const button = form.querySelector(".send-message-btn");
+    const msgBox = document.getElementById("form-message");
+
+    form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        // Loader UI
+        button.disabled = true;
+        button.classList.add("loading");
+        msgBox.style.display = "none";
+
+        const formData = new FormData(form);
+
+        try {
+            const res = await fetch("/send-inquiry", {
+                method: "POST",
+                body: formData
+            });
+
+            if (res.ok) {
+                msgBox.textContent = "Message sent successfully 🎉";
+                msgBox.className = "success show";
+                msgBox.style.display = "block";
+                form.reset();
+            } else {
+                throw new Error("Server error");
+            }
+
+        } catch (error) {
+            msgBox.textContent = "Unable to send message 😓 Try again later.";
+            msgBox.className = "error show";
+            msgBox.style.display = "block";
+        }
+
+        button.disabled = false;
+        button.classList.remove("loading");
+    });
+});
 </script>
 
 {% endblock %}

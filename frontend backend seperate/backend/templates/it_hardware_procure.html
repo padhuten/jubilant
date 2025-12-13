@@ -348,7 +348,8 @@
         const formData = new FormData(this);
         const response = await fetch("/send-inquiry", { method: "POST", body: formData });
         const result = await response.json();
-        const successMsg = document.getElementById("successMsg");
+        const successMsg = document.
+        getElementById("successMsg");
         const modal = document.getElementById("inquiryModal");
 
         if (result.success) {
