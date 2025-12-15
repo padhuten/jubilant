@@ -91,15 +91,15 @@
                 <div class="card-image-wrapper">
                     <img src="/static/images/about header.jpg" alt="Box with guarantee label">
                 </div>
-                <h3>Risk Mitigation</h3>
-                <p>100% Authenticity Guarantee & lifetime technical support</p>
+                <h3>Dedicated Account Support</h3>
+                <p>Expert guidance from procurement specialists who know your business.</p>
             </div>
             <div class="card-item">
                 <div class="card-image-wrapper">
                     <img src="/static/images/about header.jpg" alt="Box with guarantee label">
                 </div>
-                <h3>Risk Mitigation</h3>
-                <p>100% Authenticity Guarantee & lifetime technical support</p>
+                <h3>Fast Fulfillment</h3>
+                <p>Same-day processing and expedited global delivery options</p>
             </div>
         </div>
     </div>
@@ -114,34 +114,38 @@
     <div class="consultation-form-wrapper">
         <form class="consultation-form">
             <div class="form-group full-width">
-                <input type="text" id="product-name" placeholder="Product Name Model" required>
+                <input type="text" id="product-name" placeholder="Product Name Model (e.g., Intel Core i7-12700K)" required>
+                <span class="required-error" id="product-error" style="display: none;"></span>
             </div>
 
             <div class="form-row">
                 <div class="form-group half-width quantity-group">
                     <select id="quantity" required>
-                        <option value="" disabled selected>1 - 10</option>
+                        <option value="" disabled selected>Quantity (1 - 10)</option>
                         <option value="1-10">1 - 10</option>
                         <option value="11-50">11 - 50</option>
+                        <option value="51-100">51 - 100</option>
+                        <option value="100+">100+</option>
                     </select>
-                    <span class="required-error">This field is required.</span>
+                    <span class="required-error" id="quantity-error" style="display: none;"></span>
                 </div>
 
                 <div class="form-group half-width">
-                    <input type="text" id="company-name" placeholder="Company Name" required>
+                    <input type="text" id="company-name" placeholder="Company Name (e.g., ABC Technologies)" required>
+                    <span class="required-error" id="company-error" style="display: none;"></span>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group half-width">
-                    <input type="email" id="email" placeholder="Email Address" required>
-                    <span class="required-error">This field is required.</span>
+                    <input type="email" id="email" placeholder="Email Address (e.g., user@example.com)" required>
+                    <span class="required-error" id="email-error" style="display: none;"></span>
                 </div>
 
                 <div class="form-group half-width">
                     <label for="phone" class="visually-hidden">Phone/Whatsapp</label>
-                    <input type="tel" id="phone" placeholder="* Phone/Whatsapp" style="width: 387px;">
-                    <span class="required-error">This field is required.</span>
+                    <input type="tel" id="phone" placeholder="* Phone/Whatsapp (e.g., +91 XXXXXXXXXX)" style="width: 387px;">
+                    <span class="required-error" id="phone-error" style="display: none;"></span>
                 </div>
             </div>
 
@@ -214,24 +218,24 @@
         <p class="modal-subtitle">Tell us what you need—we'll respond within 24 hours.</p>
 
         <form id="inquiryForm" action="/send-inquiry" method="POST">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your name" required />
+            <label for="modal-name">Name</label>
+            <input type="text" id="modal-name" name="name" placeholder="Your name" required />
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+            <label for="modal-email">Email</label>
+            <input type="email" id="modal-email" name="email" placeholder="you@example.com" required />
 
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" value="+91 98765 43210" />
+            <label for="modal-phone">Phone</label>
+            <input type="tel" id="modal-phone" name="phone" value="+91 98765 43210" />
 
-            <label for="product">Product / Service</label>
-            <select id="product" name="product">
+            <label for="modal-product">Product / Service</label>
+            <select id="modal-product" name="product">
                 <option>Select</option>
                 <option>Jubilant System</option>
                 <option>Other Service</option>
             </select>
 
-            <label for="quantity">Quantity (optional)</label>
-            <input type="number" id="quantity" name="quantity" placeholder="1" />
+            <label for="modal-quantity">Quantity (optional)</label>
+            <input type="number" id="modal-quantity" name="quantity" placeholder="1" />
 
             <p class="modal-footer-text">
                 We respect your privacy. We'll only use this info to reply.
@@ -250,61 +254,246 @@
         const nextButton = document.querySelector('.next-button');
         const prevButton = document.querySelector('.prev-button');
 
-        if (!track || !nextButton || !prevButton) return;
+        if (track && nextButton && prevButton) {
+            const cardWidth = 300;
+            const gap = 30;
+            const scrollDistance = cardWidth + gap;
 
-        const cardWidth = 300;
-        const gap = 30;
-        const scrollDistance = cardWidth + gap;
-
-        nextButton.addEventListener('click', () => {
-            track.scrollBy({
-                left: scrollDistance,
-                behavior: 'smooth'
+            nextButton.addEventListener('click', () => {
+                track.scrollBy({
+                    left: scrollDistance,
+                    behavior: 'smooth'
+                });
+                updateButtonVisibility();
             });
-            updateButtonVisibility();
-        });
 
-        prevButton.addEventListener('click', () => {
-            track.scrollBy({
-                left: -scrollDistance,
-                behavior: 'smooth'
+            prevButton.addEventListener('click', () => {
+                track.scrollBy({
+                    left: -scrollDistance,
+                    behavior: 'smooth'
+                });
+                updateButtonVisibility();
             });
+
+            const updateButtonVisibility = () => {
+                setTimeout(() => {
+                    const maxScroll = track.scrollWidth - track.clientWidth;
+                    const currentScroll = track.scrollLeft;
+
+                    prevButton.disabled = currentScroll <= 5; 
+                    nextButton.disabled = currentScroll >= maxScroll - 5; 
+                }, 500);
+            };
+
             updateButtonVisibility();
-        });
-
-        const updateButtonVisibility = () => {
-            setTimeout(() => {
-                const maxScroll = track.scrollWidth - track.clientWidth;
-                const currentScroll = track.scrollLeft;
-
-                prevButton.disabled = currentScroll <= 5; 
-                nextButton.disabled = currentScroll >= maxScroll - 5; 
-            }, 500);
-        };
-
-        updateButtonVisibility();
-        track.addEventListener('scroll', updateButtonVisibility);
+            track.addEventListener('scroll', updateButtonVisibility);
+        }
     });
 
-    // Consultation form submission
+    // Consultation form AJAX validation
     document.addEventListener("DOMContentLoaded", () => {
         const form = document.querySelector(".consultation-form");
         const statusText = document.getElementById("consultation-status");
+        
+        // Get all input elements
+        const productInput = document.getElementById("product-name");
+        const quantitySelect = document.getElementById("quantity");
+        const companyInput = document.getElementById("company-name");
+        const emailInput = document.getElementById("email");
+        const phoneInput = document.getElementById("phone");
+        
+        // Get all error elements
+        const productError = document.getElementById("product-error");
+        const quantityError = document.getElementById("quantity-error");
+        const companyError = document.getElementById("company-error");
+        const emailError = document.getElementById("email-error");
+        const phoneError = document.getElementById("phone-error");
 
         if (!form) return;
 
+        // Product Name validation
+        productInput.addEventListener("blur", () => {
+            if (!productInput.value.trim()) {
+                productError.textContent = "Product name is required";
+                productError.style.display = "block";
+                productInput.style.borderColor = "red";
+            } else if (productInput.value.trim().length < 3) {
+                productError.textContent = "Product name must be at least 3 characters";
+                productError.style.display = "block";
+                productInput.style.borderColor = "red";
+            } else {
+                productError.textContent = "";
+                productError.style.display = "none";
+                productInput.style.borderColor = "#ccc";
+            }
+        });
+
+        // Clear error on input
+        productInput.addEventListener("input", () => {
+            if (productInput.value.trim().length >= 3) {
+                productError.style.display = "none";
+                productInput.style.borderColor = "#ccc";
+            }
+        });
+
+        // Quantity validation
+        quantitySelect.addEventListener("change", () => {
+            if (!quantitySelect.value) {
+                quantityError.textContent = "Please select a quantity";
+                quantityError.style.display = "block";
+                quantitySelect.style.borderColor = "red";
+            } else {
+                quantityError.textContent = "";
+                quantityError.style.display = "none";
+                quantitySelect.style.borderColor = "#ccc";
+            }
+        });
+
+        // Company Name validation
+        companyInput.addEventListener("blur", () => {
+            if (!companyInput.value.trim()) {
+                companyError.textContent = "Company name is required";
+                companyError.style.display = "block";
+                companyInput.style.borderColor = "red";
+            } else if (companyInput.value.trim().length < 2) {
+                companyError.textContent = "Company name must be at least 2 characters";
+                companyError.style.display = "block";
+                companyInput.style.borderColor = "red";
+            } else {
+                companyError.textContent = "";
+                companyError.style.display = "none";
+                companyInput.style.borderColor = "#ccc";
+            }
+        });
+
+        // Clear error on input
+        companyInput.addEventListener("input", () => {
+            if (companyInput.value.trim().length >= 2) {
+                companyError.style.display = "none";
+                companyInput.style.borderColor = "#ccc";
+            }
+        });
+
+        // Email validation (AJAX-like real-time)
+        emailInput.addEventListener("blur", () => {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailInput.value.trim()) {
+                emailError.textContent = "Email address is required";
+                emailError.style.display = "block";
+                emailInput.style.borderColor = "red";
+            } else if (!emailPattern.test(emailInput.value)) {
+                emailError.textContent = "Please enter a valid email address (e.g., user@example.com)";
+                emailError.style.display = "block";
+                emailInput.style.borderColor = "red";
+            } else {
+                emailError.textContent = "";
+                emailError.style.display = "none";
+                emailInput.style.borderColor = "#ccc";
+            }
+        });
+
+        // Clear email error on input
+        emailInput.addEventListener("input", () => {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (emailPattern.test(emailInput.value)) {
+                emailError.style.display = "none";
+                emailInput.style.borderColor = "#ccc";
+            }
+        });
+
+        // Phone validation (AJAX-like real-time)
+        phoneInput.addEventListener("blur", () => {
+            const phonePattern = /^\+?[\d\s\-()]+$/;
+            const phoneValue = phoneInput.value.trim();
+            
+            if (!phoneValue) {
+                phoneError.textContent = "Phone number is required";
+                phoneError.style.display = "block";
+                phoneInput.style.borderColor = "red";
+            } else if (!phonePattern.test(phoneValue) || phoneValue.replace(/\D/g, '').length < 10) {
+                phoneError.textContent = "Please enter a valid phone number (e.g., +91 9876543210)";
+                phoneError.style.display = "block";
+                phoneInput.style.borderColor = "red";
+            } else {
+                phoneError.textContent = "";
+                phoneError.style.display = "none";
+                phoneInput.style.borderColor = "#ccc";
+            }
+        });
+
+        // Clear phone error on input
+        phoneInput.addEventListener("input", () => {
+            const phonePattern = /^\+?[\d\s\-()]+$/;
+            const phoneValue = phoneInput.value.trim();
+            if (phonePattern.test(phoneValue) && phoneValue.replace(/\D/g, '').length >= 10) {
+                phoneError.style.display = "none";
+                phoneInput.style.borderColor = "#ccc";
+            }
+        });
+
         form.addEventListener("submit", async (e) => {
             e.preventDefault();
+
+            // Validate all fields before submission
+            let isValid = true;
+
+            if (!productInput.value.trim() || productInput.value.trim().length < 3) {
+                productError.textContent = "Product name is required (min 3 characters)";
+                productError.style.display = "block";
+                productInput.style.borderColor = "red";
+                isValid = false;
+            }
+
+            if (!quantitySelect.value) {
+                quantityError.textContent = "Please select a quantity";
+                quantityError.style.display = "block";
+                quantitySelect.style.borderColor = "red";
+                isValid = false;
+            }
+
+            if (!companyInput.value.trim() || companyInput.value.trim().length < 2) {
+                companyError.textContent = "Company name is required (min 2 characters)";
+                companyError.style.display = "block";
+                companyInput.style.borderColor = "red";
+                isValid = false;
+            }
+
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailInput.value.trim() || !emailPattern.test(emailInput.value)) {
+                emailError.textContent = "Valid email address is required";
+                emailError.style.display = "block";
+                emailInput.style.borderColor = "red";
+                isValid = false;
+            }
+
+            const phonePattern = /^\+?[\d\s\-()]+$/;
+            const phoneValue = phoneInput.value.trim();
+            if (!phoneValue || !phonePattern.test(phoneValue) || phoneValue.replace(/\D/g, '').length < 10) {
+                phoneError.textContent = "Valid phone number is required (min 10 digits)";
+                phoneError.style.display = "block";
+                phoneInput.style.borderColor = "red";
+                isValid = false;
+            }
+
+            if (!isValid) {
+                statusText.textContent = "❌ Please fix all errors before submitting";
+                statusText.style.color = "red";
+                statusText.style.display = "block";
+                setTimeout(() => {
+                    statusText.style.display = "none";
+                }, 3000);
+                return;
+            }
 
             statusText.style.display = "none";
             statusText.textContent = "";
 
             const formData = new FormData();
-            formData.append("product_name", document.getElementById("product-name").value);
-            formData.append("quantity", document.getElementById("quantity").value);
-            formData.append("company_name", document.getElementById("company-name").value);
-            formData.append("email", document.getElementById("email").value);
-            formData.append("phone", document.getElementById("phone").value);
+            formData.append("product_name", productInput.value);
+            formData.append("quantity", quantitySelect.value);
+            formData.append("company_name", companyInput.value);
+            formData.append("email", emailInput.value);
+            formData.append("phone", phoneInput.value);
             formData.append("inquiry_details", document.getElementById("inquiry-details").value);
             formData.append("notify_price", document.getElementById("notify-price").checked ? "on" : "off");
 
@@ -348,8 +537,7 @@
         const formData = new FormData(this);
         const response = await fetch("/send-inquiry", { method: "POST", body: formData });
         const result = await response.json();
-        const successMsg = document.
-        getElementById("successMsg");
+        const successMsg = document.getElementById("successMsg");
         const modal = document.getElementById("inquiryModal");
 
         if (result.success) {
