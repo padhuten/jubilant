@@ -1,0 +1,447 @@
+{% extends "layout.html" %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/all_products.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<!-- Hero Banner -->
+<div class="hero-banner">
+    <div class="hero-content">
+        <h1 class="hero-title">Explore Our Collection</h1>
+        <p class="hero-subtitle">Premium Computer Hardware & Components for Every Need</p>
+    </div>
+</div>
+
+<!-- Main Container -->
+<div class="main-container">
+    <!-- Section Header -->
+    <!-- <div class="section-header">
+        <h2 class="section-title">Premium Product Categories</h2>
+        <p class="section-subtitle">Discover our curated collection of high-performance hardware with professional-grade solutions</p>
+    </div> -->
+
+    <!-- Categories Grid -->
+    <div class="categories-wrapper">
+
+        <!-- 1. PROCESSORS (2 subcategories) -->
+        <div class="category-section">
+            <div class="category-main-card" onclick="openModal(this)">
+                <div class="card-header">
+                    <div class="card-icon">🖥️</div>
+                    <div class="card-content">
+                        <h3 class="category-name">Processors</h3>
+                        <p class="category-tagline">Latest Intel & AMD processors</p>
+                    </div>
+                    <div class="expand-icon">▶</div>
+                </div>
+                <div class="badge-group">
+                    <span class="badge popular">Popular</span>
+                    <span class="badge-count">50+ Models</span>
+                </div>
+            </div>
+            <div class="modal-data" style="display: none;">
+                <div class="subcategory-card" data-category="cpu-intel">
+                    <div class="sub-icon">⚙️</div>
+                    <h4 class="sub-title">Intel Processors</h4>
+                    <p class="sub-description">Core i9, i7, i5 series</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+                <div class="subcategory-card" data-category="cpu-amd">
+                    <div class="sub-icon">⚙️</div>
+                    <h4 class="sub-title">AMD Processors</h4>
+                    <p class="sub-description">Ryzen 9, 7, 5 series</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. STORAGE - SSDs (2 subcategories) -->
+        <div class="category-section">
+            <div class="category-main-card" onclick="openModal(this)">
+                <div class="card-header">
+                    <div class="card-icon">⚡</div>
+                    <div class="card-content">
+                        <h3 class="category-name">Solid State Drives</h3>
+                        <p class="category-tagline">Ultra-fast NVMe & SATA SSDs</p>
+                    </div>
+                    <div class="expand-icon">▶</div>
+                </div>
+                <div class="badge-group">
+                    <span class="badge bestseller">Best Sellers</span>
+                    <span class="badge-count">100+ Options</span>
+                </div>
+            </div>
+            <div class="modal-data" style="display: none;">
+                <div class="subcategory-card" data-category="ssd-nvme">
+                    <div class="sub-icon">💿</div>
+                    <h4 class="sub-title">NVMe SSDs</h4>
+                    <p class="sub-description">PCIe 4.0 & 5.0 speeds</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+                <div class="subcategory-card" data-category="ssd-sata">
+                    <div class="sub-icon">💿</div>
+                    <h4 class="sub-title">SATA SSDs</h4>
+                    <p class="sub-description">2.5" & M.2 formats</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. STORAGE - Hard Drives (2 subcategories) -->
+        <div class="category-section">
+            <div class="category-main-card" onclick="openModal(this)">
+                <div class="card-header">
+                    <div class="card-icon">💾</div>
+                    <div class="card-content">
+                        <h3 class="category-name">Hard Drives</h3>
+                        <p class="category-tagline">Reliable HDD storage solutions</p>
+                    </div>
+                    <div class="expand-icon">▶</div>
+                </div>
+                <div class="badge-group">
+                    <span class="badge-count">40+ Drives</span>
+                </div>
+            </div>
+            <div class="modal-data" style="display: none;">
+                <div class="subcategory-card" data-category="hdd-35">
+                    <div class="sub-icon">📀</div>
+                    <h4 class="sub-title">3.5" Hard Drives</h4>
+                    <p class="sub-description">Desktop & Server HDDs</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+                <div class="subcategory-card" data-category="hdd-25">
+                    <div class="sub-icon">📀</div>
+                    <h4 class="sub-title">2.5" Hard Drives</h4>
+                    <p class="sub-description">Laptop & Mobile HDDs</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. MEMORY (2 subcategories) -->
+        <div class="category-section">
+            <div class="category-main-card" onclick="openModal(this)">
+                <div class="card-header">
+                    <div class="card-icon">📊</div>
+                    <div class="card-content">
+                        <h3 class="category-name">RAM Memory</h3>
+                        <p class="category-tagline">DDR4 & DDR5 memory modules</p>
+                    </div>
+                    <div class="expand-icon">▶</div>
+                </div>
+                <div class="badge-group">
+                    <span class="badge popular">Popular</span>
+                    <span class="badge-count">80+ Variants</span>
+                </div>
+            </div>
+            <div class="modal-data" style="display: none;">
+                <div class="subcategory-card" data-category="memory-ddr5">
+                    <div class="sub-icon">🔲</div>
+                    <h4 class="sub-title">DDR5 Memory</h4>
+                    <p class="sub-description">Latest high-speed modules</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+                <div class="subcategory-card" data-category="memory-ddr4">
+                    <div class="sub-icon">🔲</div>
+                    <h4 class="sub-title">DDR4 Memory</h4>
+                    <p class="sub-description">Reliable & affordable</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. DISPLAYS (3 subcategories) -->
+        <div class="category-section">
+            <div class="category-main-card" onclick="openModal(this)">
+                <div class="card-header">
+                    <div class="card-icon">🖼️</div>
+                    <div class="card-content">
+                        <h3 class="category-name">Monitors</h3>
+                        <p class="category-tagline">4K, Gaming & Professional displays</p>
+                    </div>
+                    <div class="expand-icon">▶</div>
+                </div>
+                <div class="badge-group">
+                    <span class="badge-count">60+ Models</span>
+                </div>
+            </div>
+            <div class="modal-data" style="display: none;">
+                <div class="subcategory-card" data-category="monitor-4k">
+                    <div class="sub-icon">🎬</div>
+                    <h4 class="sub-title">4K Monitors</h4>
+                    <p class="sub-description">Professional & creative work</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+                <div class="subcategory-card" data-category="monitor-gaming">
+                    <div class="sub-icon">🎮</div>
+                    <h4 class="sub-title">Gaming Monitors</h4>
+                    <p class="sub-description">144Hz+ high refresh rates</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+                <div class="subcategory-card" data-category="monitor-professional">
+                    <div class="sub-icon">💼</div>
+                    <h4 class="sub-title">Professional Displays</h4>
+                    <p class="sub-description">Color-accurate & certified</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. LAPTOPS (3 subcategories) -->
+        <div class="category-section">
+            <div class="category-main-card" onclick="openModal(this)">
+                <div class="card-header">
+                    <div class="card-icon">💻</div>
+                    <div class="card-content">
+                        <h3 class="category-name">Laptops</h3>
+                        <p class="category-tagline">Portable powerhouses & workstations</p>
+                    </div>
+                    <div class="expand-icon">▶</div>
+                </div>
+                <div class="badge-group">
+                    <span class="badge bestseller">Best Sellers</span>
+                    <span class="badge-count">75+ Units</span>
+                </div>
+            </div>
+            <div class="modal-data" style="display: none;">
+                <div class="subcategory-card" data-category="laptop-gaming">
+                    <div class="sub-icon">🎮</div>
+                    <h4 class="sub-title">Gaming Laptops</h4>
+                    <p class="sub-description">High-performance graphics</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+                <div class="subcategory-card" data-category="laptop-workstation">
+                    <div class="sub-icon">💼</div>
+                    <h4 class="sub-title">Workstations</h4>
+                    <p class="sub-description">Professional-grade machines</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+                <div class="subcategory-card" data-category="laptop-ultrabook">
+                    <div class="sub-icon">✨</div>
+                    <h4 class="sub-title">Ultrabooks</h4>
+                    <p class="sub-description">Thin & portable designs</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. DESKTOP SYSTEMS (3 subcategories) -->
+        <div class="category-section">
+            <div class="category-main-card" onclick="openModal(this)">
+                <div class="card-header">
+                    <div class="card-icon">🖥️</div>
+                    <div class="card-content">
+                        <h3 class="category-name">Desktop Systems</h3>
+                        <p class="category-tagline">Pre-built & custom desktops</p>
+                    </div>
+                    <div class="expand-icon">▶</div>
+                </div>
+                <div class="badge-group">
+                    <span class="badge-count">45+ Systems</span>
+                </div>
+            </div>
+            <div class="modal-data" style="display: none;">
+                <div class="subcategory-card" data-category="desktop-gaming">
+                    <div class="sub-icon">🎮</div>
+                    <h4 class="sub-title">Gaming PCs</h4>
+                    <p class="sub-description">High-end gaming setups</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+                <div class="subcategory-card" data-category="desktop-office">
+                    <div class="sub-icon">📱</div>
+                    <h4 class="sub-title">Office PCs</h4>
+                    <p class="sub-description">Professional workstations</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+                <div class="subcategory-card" data-category="desktop-server">
+                    <div class="sub-icon">🔐</div>
+                    <h4 class="sub-title">Server PCs</h4>
+                    <p class="sub-description">Reliable infrastructure</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8. NETWORKING (3 subcategories) -->
+        <div class="category-section">
+            <div class="category-main-card" onclick="openModal(this)">
+                <div class="card-header">
+                    <div class="card-icon">🌐</div>
+                    <div class="card-content">
+                        <h3 class="category-name">Networking</h3>
+                        <p class="category-tagline">Routers, switches & connectivity</p>
+                    </div>
+                    <div class="expand-icon">▶</div>
+                </div>
+                <div class="badge-group">
+                    <span class="badge-count">55+ Products</span>
+                </div>
+            </div>
+            <div class="modal-data" style="display: none;">
+                <div class="subcategory-card" data-category="network-routers">
+                    <div class="sub-icon">📡</div>
+                    <h4 class="sub-title">Routers & Mesh</h4>
+                    <p class="sub-description">WiFi 6 & WiFi 7 devices</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+                <div class="subcategory-card" data-category="network-switches">
+                    <div class="sub-icon">🔀</div>
+                    <h4 class="sub-title">Switches & NIC</h4>
+                    <p class="sub-description">Enterprise networking gear</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+                <div class="subcategory-card" data-category="network-cables">
+                    <div class="sub-icon">🔌</div>
+                    <h4 class="sub-title">Cables & Adapters</h4>
+                    <p class="sub-description">Network connectivity</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 9. SERVER EQUIPMENT (4 subcategories) -->
+        <div class="category-section">
+            <div class="category-main-card" onclick="openModal(this)">
+                <div class="card-header">
+                    <div class="card-icon">🔒</div>
+                    <div class="card-content">
+                        <h3 class="category-name">Server Equipment</h3>
+                        <p class="category-tagline">Enterprise-grade solutions</p>
+                    </div>
+                    <div class="expand-icon">▶</div>
+                </div>
+                <div class="badge-group">
+                    <span class="badge premium">Premium</span>
+                    <span class="badge-count">35+ Solutions</span>
+                </div>
+            </div>
+            <div class="modal-data" style="display: none;">
+                <div class="subcategory-card" data-category="server-rack">
+                    <div class="sub-icon">🏢</div>
+                    <h4 class="sub-title">Rack Servers</h4>
+                    <p class="sub-description">Scalable infrastructure</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+                <div class="subcategory-card" data-category="server-tower">
+                    <div class="sub-icon">🔐</div>
+                    <h4 class="sub-title">Tower Servers</h4>
+                    <p class="sub-description">Mid-range solutions</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+                <div class="subcategory-card" data-category="server-storage">
+                    <div class="sub-icon">📦</div>
+                    <h4 class="sub-title">Storage Servers</h4>
+                    <p class="sub-description">Data center solutions</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+                <div class="subcategory-card" data-category="server-accessories">
+                    <div class="sub-icon">🔧</div>
+                    <h4 class="sub-title">Accessories</h4>
+                    <p class="sub-description">Server add-ons & upgrades</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Call to Action Section -->
+    <div class="cta-section">
+        <div class="cta-content">
+            <h2 class="cta-title">Ready to Build or Upgrade?</h2>
+            <p class="cta-subtitle">Browse our complete collection or contact our experts for personalized recommendations</p>
+            <button class="cta-button" onclick="scrollToTop()">Explore Categories</button>
+        </div>
+    </div>
+
+</div>
+
+<!-- Modal Overlay -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal()"></div>
+
+<!-- Modal Container -->
+<div class="modal-container" id="modalContainer">
+    <div class="modal-header">
+        <h2 class="modal-title" id="modalTitle">Category</h2>
+        <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-content-wrapper">
+        <div class="modal-subcategories" id="modalSubcategories"></div>
+    </div>
+</div>
+
+<script>
+    function openModal(element) {
+        const categoryCard = element;
+        const modalData = element.nextElementSibling;
+        const categoryTitle = element.querySelector('.category-name').textContent;
+        
+        // Get all subcategories
+        const subcategories = modalData.querySelectorAll('.subcategory-card');
+        
+        // Set modal title
+        document.getElementById('modalTitle').textContent = categoryTitle;
+        
+        // Clear and populate modal content
+        const modalSubcategories = document.getElementById('modalSubcategories');
+        modalSubcategories.innerHTML = '';
+        
+        subcategories.forEach((card, index) => {
+            const clone = card.cloneNode(true);
+            clone.style.animationDelay = `${index * 0.1}s`;
+            
+            // Add click event to explore button
+            const btn = clone.querySelector('.sub-btn');
+            btn.onclick = function(e) {
+                e.preventDefault();
+                const category = card.getAttribute('data-category');
+                window.location.href = `/products/${category}`;
+            };
+            
+            modalSubcategories.appendChild(clone);
+        });
+        
+        // Show modal
+        document.getElementById('modalOverlay').classList.add('active');
+        document.getElementById('modalContainer').classList.add('active');
+    }
+
+    function closeModal() {
+        document.getElementById('modalOverlay').classList.remove('active');
+        document.getElementById('modalContainer').classList.remove('active');
+    }
+
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Close modal on escape key
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            closeModal();
+        }
+    });
+
+    // Add scroll animation observer
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate-in');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.category-section').forEach(el => {
+        observer.observe(el);
+    });
+</script>
+
+{% endblock %}

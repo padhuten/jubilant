@@ -1,60 +1,76 @@
-/* FOOTER WRAPPER */
+/* Footer */
 .footer {
     background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
     color: #cbd5e1;
     padding-top: 60px;
-    width: 100%;
     position: relative;
     overflow: hidden;
+    width: 100%;
+    margin: 0;
+    padding-left: 0;
+    padding-right: 0;
 }
 
-/* BG PATTERN (non-intrusive) */
+/* Subtle background pattern */
 .footer::before {
     content: '';
     position: absolute;
-    inset: 0;
-    background:
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
         radial-gradient(circle at 20% 50%, rgba(11, 110, 253, 0.03) 0%, transparent 50%),
         radial-gradient(circle at 80% 80%, rgba(11, 110, 253, 0.03) 0%, transparent 50%);
     pointer-events: none;
 }
 
-/* FOOTER CONTAINER → aligned with main layout container */
 .footer-container {
-    max-width: var(--container-max);
-    margin: 0 auto;
-    padding: 0 var(--gutter);
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-block: 0;
+    padding-inline: 5%;
     gap: 40px;
     position: relative;
     z-index: 1;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-/* COLUMNS */
 .footer-column {
+    margin-bottom: 30px;
     min-width: 200px;
     flex: 1;
-    margin-bottom: 30px;
     animation: fadeInUp 0.6s ease-out;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 @keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* HEADINGS */
 .footer-column h3 {
     color: #ffffff;
-    font-size: 1.3rem;
     margin-bottom: 20px;
+    font-size: 1.3rem;
     font-weight: 600;
-    padding-bottom: 10px;
     position: relative;
+    padding-bottom: 10px;
+    margin-top: 0;
 }
 
+/* Animated underline for headings */
 .footer-column h3::after {
     content: '';
     position: absolute;
@@ -71,35 +87,40 @@
     width: 60px;
 }
 
-/* PARAGRAPHS */
 .footer-column p {
     margin: 8px 0;
     line-height: 1.6;
     transition: color 0.3s ease;
+    padding: 0;
 }
 
 .footer-column p:hover {
     color: #f8fafc;
 }
 
-/* LINKS */
 .footer-column ul {
-    padding: 0;
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
+
 .footer-column ul li {
     margin-bottom: 8px;
+    padding: 0;
 }
 
 .footer-column ul li a {
     color: #cbd5e1;
     text-decoration: none;
+    line-height: 2;
+    position: relative;
     display: inline-block;
     transition: all 0.3s ease;
-    position: relative;
+    padding-left: 0;
+    margin: 0;
 }
 
-/* Arrow animation */
+/* Animated arrow on hover */
 .footer-column ul li a::before {
     content: '→';
     position: absolute;
@@ -116,14 +137,16 @@
 }
 
 .footer-column ul li a:hover::before {
-    opacity: 1;
     left: 0;
+    opacity: 1;
 }
 
-/* SOCIAL ICONS */
+/* Social Icons */
 .social-icons {
     display: flex;
     gap: 15px;
+    margin: 0;
+    padding: 0;
 }
 
 .social-icons a {
@@ -131,9 +154,17 @@
     width: 42px;
     height: 42px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    transition: 0.3s;
+    justify-content: center;
+    border-radius: 0;
+    background: transparent;
+    border: none;
+    transition: all 0.3s ease;
+    position: relative;
+    text-decoration: none;
+    padding: 0;
+    margin: 0;
+    flex-shrink: 0;
 }
 
 .social-icons a:hover {
@@ -141,55 +172,112 @@
     transform: translateY(-3px);
 }
 
-.social-icons svg {
+.social-icons a svg {
     width: 30px;
     height: 30px;
     stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    margin: 0;
+    padding: 0;
 }
 
-/* FOOTER BOTTOM */
+/* Footer Bottom */
 .footer-bottom {
     text-align: center;
-    padding: 25px 0;
-    margin-top: 40px;
+    padding: 25px 5%;
     border-top: 1px solid rgba(203, 213, 225, 0.1);
+    margin-top: 40px;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    box-sizing: border-box;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .footer-bottom p {
     margin: 0;
-    font-size: 0.95rem;
+    font-size: 0.95em;
     color: #94a3b8;
+    transition: color 0.3s ease;
+    padding: 0;
 }
 
 .footer-bottom:hover p {
     color: #cbd5e1;
 }
 
-/* RESPONSIVE FIXES */
+/* Responsive Design */
 @media (max-width: 768px) {
     .footer-container {
         flex-direction: column;
+        gap: 30px;
+        padding-inline: 4%;
+    }
+    
+    .footer-column {
+        min-width: 100%;
         text-align: center;
     }
+    
     .footer-column h3::after {
         left: 50%;
         transform: translateX(-50%);
     }
-    .footer-column ul li a::before {
-        display: none;
+    
+    .footer-column:hover h3::after {
+        left: 50%;
+        transform: translateX(-50%);
     }
+    
     .social-icons {
         justify-content: center;
     }
+    
+    .footer-column ul li a::before {
+        display: none;
+    }
+    
+    .footer-column ul li a:hover {
+        padding-left: 0;
+    }
+
+    .footer-bottom {
+        padding: 25px 4%;
+    }
 }
 
-/* column load delays */
-.footer-column:nth-child(1) { animation-delay: 0.1s; }
-.footer-column:nth-child(2) { animation-delay: 0.2s; }
-.footer-column:nth-child(3) { animation-delay: 0.3s; }
-.footer-column:nth-child(4) { animation-delay: 0.4s; }
-/* REMOVE unwanted white space above footer */
-.footer {
-  margin-top: 0 !important;
+@media (max-width: 480px) {
+    .footer-container {
+        padding-inline: 3%;
+    }
+
+    .footer-bottom {
+        padding: 20px 3%;
+    }
 }
 
+/* Smooth scroll behavior */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Loading animation for footer columns */
+.footer-column:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.footer-column:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.footer-column:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+.footer-column:nth-child(4) {
+    animation-delay: 0.4s;
+}

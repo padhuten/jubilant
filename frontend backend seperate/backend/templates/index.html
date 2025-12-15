@@ -9,53 +9,125 @@
 {% block content %}
 <main class="index-page">
 
-<!-- ================= HERO SECTION ================= -->
+<!-- ================= PREMIUM HERO SECTION ================= -->
 <section class="hero-section">
   <div class="hero-content">
-    <h1>Your Trusted Partner in Global IT Component Solutions</h1>
-    <p>Providing cutting-edge hardware and unparalleled service to power your business.</p>
-    <button class="cta-button">Shop Now</button>
+    <div class="hero-badge">Welcome to Premium Tech</div>
+    <h1 class="hero-title">Your Trusted Partner in <span class="highlight">Global IT Solutions</span></h1>
+    <p class="hero-subtitle">Cutting-edge hardware and exceptional service for your business needs worldwide.</p>
+    <div class="hero-buttons">
+      <button class="cta-button primary">Shop Now</button>
+      <button class="cta-button secondary">Explore Products</button>
+    </div>
   </div>
 
   <div class="hero-image">
-    <img src="/static/images/hero-image.webp" alt="Hero">
+    <div class="hero-image-wrapper">
+      <img src="/static/images/hero-image.webp" alt="Premium IT Components">
+      <div class="hero-image-glow"></div>
+    </div>
   </div>
 </section>
 
-<!-- ================= ABOUT SECTION ================= -->
-<section id="aboutus" class="section-full">
-  <div class="about-content">
-    <h2><b>JUBILANT SYSTEM</b></h2>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore veniam nemo accusantium.</p>
-  </div>
-
-  <div class="about-more">
-    <button id="viewMoreBtn">View More</button>
+<!-- ================= ABOUT SECTION (MINIMALIST) ================= -->
+<section id="aboutus" class="section-about">
+  <div class="about-container">
+    <h2 class="section-title">About <span class="highlight">Jubilant System</span></h2>
+    <p class="about-description">Leading provider of premium IT components with global reach and exceptional service standards. Trusted by businesses worldwide for quality hardware and reliability.</p>
+    <button id="viewMoreBtn" class="view-more-btn">Learn More</button>
   </div>
 </section>
 
-<!-- ================= SPECIALIZES ================= -->
-<section id="specializes" class="section-full-light">
-  <h2>SPECIALIZES IN</h2>
-  <p>Processors, Memories, SSDs, HDDs, Computer Products & Peripherals.</p>
+<!-- ================= SPECIALIZES SECTION (SIMPLE) ================= -->
+<section id="specializes" class="section-specializes">
+  <h2 class="section-title">What We <span class="highlight">Specialize In</span></h2>
+  
+  <div class="specializes-grid">
+    <div class="specialize-card">
+      <div class="card-icon">🖥️</div>
+      <h3>Processors</h3>
+    </div>
+    <div class="specialize-card">
+      <div class="card-icon">📊</div>
+      <h3>Memory</h3>
+    </div>
+    <div class="specialize-card">
+      <div class="card-icon">⚡</div>
+      <h3>Storage</h3>
+    </div>
+    <div class="specialize-card">
+      <div class="card-icon">🖼️</div>
+      <h3>Displays</h3>
+    </div>
+    <div class="specialize-card">
+      <div class="card-icon">💻</div>
+      <h3>Systems</h3>
+    </div>
+    <div class="specialize-card">
+      <div class="card-icon">🌐</div>
+      <h3>More Solutions</h3>
+    </div>
+  </div>
+
+  <div class="specializes-cta">
+    <p>Browse complete category collection</p>
+    <a href="/all_products" class="view-categories">View All Categories →</a>
+  </div>
+</section>
+
+<!-- ================= WHY CHOOSE US SECTION ================= -->
+<section class="section-why-choose">
+  <h2 class="section-title">Why Choose <span class="highlight">Us</span></h2>
+
+  <div class="why-choose-grid">
+    <div class="why-card">
+      <div class="why-icon">✓</div>
+      <h3>100% Authentic</h3>
+      <p>Genuine products with manufacturer warranty</p>
+    </div>
+
+    <div class="why-card">
+      <div class="why-icon">🚚</div>
+      <h3>Fast Shipping</h3>
+      <p>Quick delivery with real-time tracking</p>
+    </div>
+
+    <div class="why-card">
+      <div class="why-icon">💳</div>
+      <h3>Secure Payment</h3>
+      <p>Industry-leading transaction security</p>
+    </div>
+
+    <div class="why-card">
+      <div class="why-icon">📞</div>
+      <h3>Expert Support</h3>
+      <p>24/7 customer assistance available</p>
+    </div>
+  </div>
 </section>
 
 <!-- ================= HOT PRODUCTS ================= -->
 <section class="product-section section-inner">
   <div class="header">
-    <h2>HOT PRODUCTS</h2>
+    <div>
+      <h2>Hot Products</h2>
+      <p class="section-subtitle">Best Sellers This Month</p>
+    </div>
     <div class="arrows">
-      <button id="leftBtn">&#10094;</button>
-      <button id="rightBtn">&#10095;</button>
+      <button id="leftBtn" class="arrow-btn">&#10094;</button>
+      <button id="rightBtn" class="arrow-btn">&#10095;</button>
     </div>
   </div>
 
   <div class="product-slider" id="productSlider">
     {% for i in range(10) %}
     <div class="product-card">
-      <img src="/static/images/md turin 9745.jpg" alt="product">
+      <div class="product-image-wrapper">
+        <img src="/static/images/md turin 9745.jpg" alt="AMD TURIN 9745">
+        <div class="product-badge">HOT</div>
+      </div>
       <h3>AMD TURIN 9745</h3>
-      <p>AMD EPYC™ (128-Core)</p>
+      <p>128-Core Processor</p>
       <span class="price">$452</span>
     </div>
     {% endfor %}
@@ -64,7 +136,7 @@
 
 <!-- ================= BRANDS SECTION - INFINITE SCROLL ================= -->
 <section class="featured-brands section-full-dark">
-  <h2>Our Trusted Brands</h2>
+  <h2 class="section-title">Our <span class="highlight">Trusted Brands</span></h2>
 
   <div class="brands-container">
     <div class="brands-slider">
@@ -111,7 +183,7 @@
         <span class="brand-name">Lenovo</span>
       </div>
 
-      <!-- Third Set for Extra Smooth Scrolling (Optional) -->
+      <!-- Third Set -->
       <div class="brand-item">
         <img src="/static/images/amd logo.png" alt="AMD Logo">
         <span class="brand-name">AMD</span>
@@ -138,27 +210,24 @@
 
 <!-- ================= CONTACT (INQUIRY FORM) ================= -->
 <section class="contact-section section-inner">
-  <h2>CONTACT US</h2>
+  <h2 class="section-title">Get in <span class="highlight">Touch</span></h2>
+  <p class="section-subtitle">Questions? We're here to help</p>
 
   <div class="inquiry-form-container">
-
-    <!-- 🔥 WORKING MAIL FORM FOR INDEX PAGE -->
     <form id="indexInquiryForm" class="inquiry-form" action="/send-inquiry" method="POST">
 
-      <!-- Required backend fields -->
       <input type="hidden" name="product" value="Website Index Inquiry">
       <input type="hidden" name="phone" value="N/A">
 
-      <input type="text" name="name" placeholder="Product Name" required>
-      <input type="text" name="quantity" placeholder="Quantity">
-      <input type="email" name="email" placeholder="Email" required>
-      <textarea rows="5" name="message" placeholder="Inquiry Details"></textarea>
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="text" name="quantity" placeholder="Product Interest">
+      <input type="email" name="email" placeholder="Email Address" required>
+      <textarea rows="5" name="message" placeholder="Tell us what you're looking for..."></textarea>
 
-      <button type="submit" class="submit-button">Submit</button>
+      <button type="submit" class="submit-button">Send Inquiry</button>
 
       <p id="indexFormMsg" style="display:none;"></p>
     </form>
-
   </div>
 </section>
 
@@ -175,6 +244,25 @@
   const slider = document.getElementById("productSlider");
   document.getElementById("leftBtn").onclick = () => slider.scrollLeft -= 300;
   document.getElementById("rightBtn").onclick = () => slider.scrollLeft += 300;
+
+  // Scroll animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -100px 0px'
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.why-card, .specialize-card, .product-card').forEach(el => {
+    observer.observe(el);
+  });
 </script>
 
 <!-- ================= INDEX FORM MAIL JS ================= -->
@@ -189,7 +277,6 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", async (e) => {
         e.preventDefault();
 
-        // Button loading state
         btn.disabled = true;
         btn.classList.add("loading");
         msg.style.display = "none";
@@ -215,7 +302,6 @@ document.addEventListener("DOMContentLoaded", () => {
             msg.style.display = "block";
         }
 
-        // Reset button
         btn.disabled = false;
         btn.classList.remove("loading");
     });
