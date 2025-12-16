@@ -8,6 +8,8 @@ laptop_products = [
   "name": "Lenovo IdeaPad 3 (15.6\" FHD)",
   "brand": "Lenovo",
   "series": "ideapad",
+  "category_key": "laptop",
+  "sub_category": "consumer",
   "category": "Laptop",
   "application": "Home / Office Work / Student Use",
   "description": "A 15.6-inch everyday laptop with 12th Gen Intel Core i5, 16GB LPDDR5 RAM, fast SSD storage, and Windows 11—ideal for productivity and daily tasks.",
@@ -33,6 +35,8 @@ laptop_products = [
   "brand": "Lenovo",
   "series": "ideapad",
   "category": "Laptop",
+    "category_key": "laptop",
+  "sub_category": "consumer",
   "application": "Office Work / Students / Everyday Productivity",
   "description": "A slim and stylish 15.6-inch laptop with 12th Gen Intel Core i5, fast SSD storage, strong battery life, and a bright FHD IPS display—ideal for productivity and multitasking.",
 

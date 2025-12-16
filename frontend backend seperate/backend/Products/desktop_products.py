@@ -8,6 +8,8 @@ desktop_products = [
   "brand": "Lenovo",
   "series": "thinkcentre",
   "category": "Business Desktop PC",
+  "category_key": "desktop",
+  "sub_category": "tower",
   "application": "Office Work / Enterprise / Productivity",
   "description": "A compact small-form-factor business desktop featuring up to 10th Gen Intel Core i9 processors, fast SSD + HDD storage options, robust security, and enterprise-grade manageability.",
 
@@ -30,6 +32,8 @@ desktop_products = [
   "name": "Lenovo Legion Tower 5",
   "brand": "Lenovo",
   "series": "legion",
+    "category_key": "desktop",
+  "sub_category": "tower",
   "category": "Gaming Desktop PC",
   "application": "Gaming / Content Creation / High-Performance Tasks",
   "description": "A high-performance gaming desktop powered by AMD Ryzen or Intel Core processors, RTX series graphics, fast DDR4/DDR5 memory, and advanced cooling — designed for gamers and creators.",
