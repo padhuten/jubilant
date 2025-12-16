@@ -12,6 +12,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const priceValueSpan = document.getElementById("price-value");
   const productContent = document.querySelector(".product-content");
 
+  const seriesGrid = document.createElement("div");
+  seriesGrid.id = "series-grid";
+  productContent.prepend(seriesGrid);
+
   const paginationContainer = document.createElement("div");
   paginationContainer.id = "pagination-container";
   productContent.appendChild(paginationContainer);
@@ -25,36 +29,30 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // --------------------------------------------------
-  // READ SERIES FROM CLEAN URL
-  // SUPPORTS:
-  //   /products/<series>
-  //   /cpu/<series>
-  //   /cpu/<series>/<product-slug>
+  // READ CLEAN URL (3 LEVEL SUPPORT)
   // --------------------------------------------------
-
   const pathParts = window.location.pathname.split("/").filter(Boolean);
+
+  let selectedCategory = null;
+  let selectedSubCategory = null;
   let selectedSeries = null;
 
-  console.log("📌 URL PATH PARTS:", pathParts);
-
-  // Case 1: /cpu/<series>/...
-  if (pathParts[0] === "cpu" && pathParts[1]) {
-    selectedSeries = pathParts[1].toLowerCase();
+  if (pathParts[0] === "products") {
+    selectedCategory = pathParts[1]?.toLowerCase() || null;
+    selectedSubCategory = pathParts[2]?.toLowerCase() || null;
+    selectedSeries = pathParts[3]?.toLowerCase() || null;
   }
 
-  // Case 2: /products/<series>
-  if (pathParts[0] === "products" && pathParts[1]) {
-    selectedSeries = pathParts[1].toLowerCase();
-  }
-
-  console.log("🎯 CLEAN URL SERIES DETECTED:", selectedSeries);
-
+  console.log("🎯 CATEGORY:", selectedCategory);
+  console.log("🎯 SUB CATEGORY:", selectedSubCategory);
+  console.log("🎯 SERIES:", selectedSeries);
 
   // --------------------------------------------------
   // FETCH ALL PRODUCTS
   // --------------------------------------------------
   async function fetchAllProducts() {
     productGrid.innerHTML = `<p class="loading">Loading products...</p>`;
+    seriesGrid.innerHTML = "";
     if (filterSidebar) filterSidebar.style.opacity = "0.5";
 
     try {
@@ -68,11 +66,12 @@ document.addEventListener("DOMContentLoaded", () => {
         threads: parseInt(p.threads) || 0,
         base_freq: parseFloat(p.base_freq) || 0,
         description: p.description || "No description available.",
-        series: (p.series || "").toString().toLowerCase().trim()
+        category: (p.category_key || "").toLowerCase().trim(),
+        sub_category: (p.sub_category || "").toLowerCase().trim(),
+        series: (p.series || "").toLowerCase().trim()
       }));
 
       console.log("📦 TOTAL PRODUCTS:", allProducts.length);
-      console.log("📌 AVAILABLE SERIES:", [...new Set(allProducts.map(p => p.series))]);
 
       applySeriesFilter();
 
@@ -85,23 +84,46 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // --------------------------------------------------
-  // APPLY SERIES FILTER FROM URL
+  // APPLY FILTER (3 LEVEL LOGIC)
   // --------------------------------------------------
   function applySeriesFilter() {
 
-    if (!selectedSeries) {
-      console.warn("⚠️ No series detected — Showing ALL products");
-      filteredProducts = [...allProducts];
+    // LEVEL 1 → /products/cpu
+    if (selectedCategory && !selectedSubCategory && !selectedSeries) {
+      currentPage = 1;
+      filteredProducts = allProducts.filter(
+        p => p.category === selectedCategory
+      );
       renderProducts(filteredProducts);
       return;
     }
 
-    filteredProducts = allProducts.filter(p => p.series === selectedSeries);
+    // LEVEL 2 → /products/cpu/amd-desktop
+    if (selectedCategory && selectedSubCategory && !selectedSeries) {
+      currentPage = 1;
+      filteredProducts = allProducts.filter(
+        p =>
+          p.category === selectedCategory &&
+          p.sub_category === selectedSubCategory
+      );
+      renderProducts(filteredProducts);
+      return;
+    }
 
-    console.log("🎯 FILTERING BY SERIES:", selectedSeries);
-    console.log("📌 MATCHED PRODUCTS:", filteredProducts.length);
+    // LEVEL 3 → /products/cpu/amd-desktop/ryzen
+    if (selectedCategory && selectedSubCategory && selectedSeries) {
+      currentPage = 1;
+      filteredProducts = allProducts.filter(
+        p =>
+          p.category === selectedCategory &&
+          p.sub_category === selectedSubCategory &&
+          p.series === selectedSeries
+      );
+      renderProducts(filteredProducts);
+      return;
+    }
 
-    currentPage = 1;
+    filteredProducts = [...allProducts];
     renderProducts(filteredProducts);
   }
 
@@ -112,10 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
     priceRange.addEventListener("input", () => {
       priceValueSpan.textContent = `$${priceRange.value}`;
       const maxPrice = parseFloat(priceRange.value);
-
-      const priceFiltered = filteredProducts.filter(p => p.price <= maxPrice);
-      currentPage = 1;
-      renderProducts(priceFiltered);
+      renderProducts(filteredProducts.filter(p => p.price <= maxPrice));
     });
   }
 
@@ -124,44 +143,50 @@ document.addEventListener("DOMContentLoaded", () => {
   // --------------------------------------------------
   function renderProducts(products) {
     productGrid.innerHTML = "";
+    seriesGrid.innerHTML = "";
 
     if (!products.length) {
-      productGrid.innerHTML = `<p>No products found for this series.</p>`;
+      productGrid.innerHTML = `<p>No products found.</p>`;
       paginationContainer.innerHTML = "";
       return;
     }
 
     const start = (currentPage - 1) * PRODUCTS_PER_PAGE;
     const end = start + PRODUCTS_PER_PAGE;
-    const display = products.slice(start, end);
 
-    display.forEach(p => {
-      const slug = p.name.replace(/\s+/g, "-"); // create product slug
+    products.slice(start, end).forEach(p => {
+      const slug = p.name
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/(^-|-$)/g, "");
 
-      const card = `
+      productGrid.insertAdjacentHTML("beforeend", `
         <div class="product-card" onclick="openProduct('${p.series}', '${slug}')">
           <div class="product-image">
-            <img src="${API_HOST}${p.image}"
-              onerror="this.src='https://placehold.co/200x200'">
+            <img src="${API_HOST}${p.image}" onerror="this.src='https://placehold.co/200x200'">
           </div>
           <h4>${p.name}</h4>
           <p class="small">${p.brand} • ${p.cores}C/${p.threads}T • ${p.base_freq}GHz</p>
           <p class="desc">${p.description}</p>
           <p class="price">US $${p.price}</p>
         </div>
-      `;
-
-      productGrid.insertAdjacentHTML("beforeend", card);
+      `);
     });
 
     renderPagination(products.length);
   }
 
   // --------------------------------------------------
-  // CLEAN PRODUCT URL HANDLER
+  // PRODUCT PAGE NAV (CLEAN URL)
   // --------------------------------------------------
   window.openProduct = function (series, slug) {
-    window.location.href = `/cpu/${series}/${slug}`;
+    if (selectedCategory && selectedSubCategory) {
+      window.location.href = `/products/${selectedCategory}/${selectedSubCategory}/${series}/${slug}`;
+    } else if (selectedCategory) {
+      window.location.href = `/products/${selectedCategory}/${series}/${slug}`;
+    } else {
+      window.location.href = `/product/${slug}`;
+    }
   };
 
   // --------------------------------------------------
@@ -187,9 +212,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // --------------------------------------------------
-  // INIT
-  // --------------------------------------------------
   fetchAllProducts();
 
 });

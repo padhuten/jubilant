@@ -22,38 +22,153 @@ def serve_images(filename):
 
 
 # ------------------------------------------------------
-# CLEAN PRODUCT SERIES URL
-# Example: /products/ironwolf
+# PRODUCT TAXONOMY (MASTER)
 # ------------------------------------------------------
-@pages_bp.route('/products/<series>')
-def product_series(series):
-    return render_template("products.html", series=series.lower())
+CATEGORIES = {
+    "cpu": {
+        "amd-server": ["9005", "9004", "7003", "8004", "4004", "4005"],
+        "amd-desktop": ["ryzen", "ryzen-pro"],
+        "intel-desktop": ["i9", "i7", "i5", "i3"]
+    },
+
+    "hard-drive": {
+        "seagate": ["barracuda", "ironwolf", "skyhawk", "exos", "firecuda"],
+        "western-digital": ["wd-blue", "wd-black", "wd-red", "wd-purple", "wd-gold"],
+        "toshiba": ["p300", "n300", "s300", "mg"]
+    },
+
+    "ssd": {
+        "samsung": ["870-evo", "870-qvo", "980", "980-pro", "990-pro", "pm9a3", "983", "893"],
+        "crucial": ["mx500", "p3", "p3-plus", "p5", "p5-plus", "t500", "t700"],
+        "micron": ["2400", "2450", "3400", "3500", "5400", "6500-ion", "7500-pro", "7500-max"]
+    },
+
+    "memory": {
+        "samsung": ["ddr3", "ddr4", "ddr5"],
+        "crucial": ["ddr3", "ddr4", "ddr5"],
+        "micron": ["ddr3", "ddr4", "ddr5"]
+    },
+
+    "monitors": {
+        "samsung": ["business", "curved", "gaming"],
+        "aoc-philips": ["professional", "value"],
+        "dell": ["ultrasharp", "p-series"],
+        "hp": ["business", "consumer", "ergonomic"]
+    },
+
+    "laptop": {
+        "consumer": {
+            "acer": ["aspire", "swift", "nitro"],
+            "lenovo": ["ideapad", "yoga", "legion"],
+            "dell": ["inspiron", "xps", "g-series"],
+            "hp": ["pavilion", "envy", "victus"]
+        },
+        "business": {
+            "asus": ["expertbook", "proart"],
+            "acer": ["travelmate", "veriton"],
+            "lenovo": ["thinkpad", "thinkbook"],
+            "dell": ["latitude", "precision"],
+            "hp": ["probook", "elitebook"]
+        }
+    },
+
+    "desktop": {
+        "asus": ["expertcenter", "mini-pc"],
+        "lenovo": ["thinkcentre", "tiny-pc"],
+        "dell": ["optiplex", "vostro", "precision"]
+    },
+
+    "networking": {
+        "aruba": ["switches", "poe-switches"],
+        "aruba-instanton": ["cloud-managed"]
+    },
+
+    "server-storage": {
+        "supermicro": ["motherboards", "barebones", "gpu-servers"],
+        "asus": ["server-barebone", "workstations", "gpu-systems"],
+        "lenovo": ["thinksystem", "enterprise-storage"]
+    },
+
+    "docking-station": {
+        "dell": ["usb-c", "thunderbolt"],
+        "lenovo": ["thinkpad-dock"],
+        "hp": ["universal", "thunderbolt"]
+    }
+}
 
 
 # ------------------------------------------------------
-# BACKWARD COMPATIBILITY
-# Redirect /products?series=ironwolf → /products/ironwolf
+# LEVEL 1: CATEGORY
+# /products/cpu
 # ------------------------------------------------------
-@pages_bp.route('/products')
-def products_redirect():
-    series = request.args.get("series")
-    if series:
-        return redirect(f"/products/{series.lower()}", code=301)
-    return "No series specified", 400
+@pages_bp.route('/products/<category>')
+def product_category(category):
+    category = category.lower()
+
+    if category not in CATEGORIES:
+        return "Category not found", 404
+
+    return render_template(
+        "products.html",
+        category=category
+    )
 
 
 # ------------------------------------------------------
-# CLEAN CPU PRODUCT URL (PRODUCT NAME SLUG)
-# Example:
-#   /cpu/5000/AMD-Ryzen-5-5600
-#   /cpu/9005/AMD-EPYC-7313
+# LEVEL 2: SUB CATEGORY
+# /products/cpu/amd-desktop
+# ------------------------------------------------------
+@pages_bp.route('/products/<category>/<sub_category>')
+def product_sub_category(category, sub_category):
+    category = category.lower()
+    sub_category = sub_category.lower()
+
+    if category not in CATEGORIES:
+        return "Category not found", 404
+
+    if sub_category not in CATEGORIES[category]:
+        return "Sub-category not found", 404
+
+    return render_template(
+        "products.html",
+        category=category,
+        sub_category=sub_category
+    )
+
+
+# ------------------------------------------------------
+# LEVEL 3: SERIES
+# /products/cpu/amd-desktop/ryzen
+# ------------------------------------------------------
+@pages_bp.route('/products/<category>/<sub_category>/<series>')
+def product_series(category, sub_category, series):
+    category = category.lower()
+    sub_category = sub_category.lower()
+    series = series.lower()
+
+    if category not in CATEGORIES:
+        return "Category not found", 404
+
+    if sub_category not in CATEGORIES[category]:
+        return "Sub-category not found", 404
+
+    if series not in CATEGORIES[category][sub_category]:
+        return "Series not found", 404
+
+    return render_template(
+        "products.html",
+        category=category,
+        sub_category=sub_category,
+        series=series
+    )
+
+
+# ------------------------------------------------------
+# CLEAN PRODUCT PAGE
+# /cpu/ryzen/AMD-Ryzen-7-5800X
 # ------------------------------------------------------
 @pages_bp.route('/cpu/<series>/<name_slug>')
 def clean_cpu_product(series, name_slug):
-    """
-    Loads the product.html page using a human-readable product slug
-    instead of old ?id= URLs.
-    """
     return render_template(
         "product.html",
         series=series.lower(),
@@ -62,8 +177,7 @@ def clean_cpu_product(series, name_slug):
 
 
 # ------------------------------------------------------
-# PRODUCT PAGES (Clean URL + .html)
-# Priority BEFORE normal pages
+# STATIC PRODUCT PAGES
 # ------------------------------------------------------
 @pages_bp.route('/productslist/<slug>')
 @pages_bp.route('/productslist/<slug>.html')
@@ -79,16 +193,11 @@ def product_page(slug):
 
 
 # ------------------------------------------------------
-# NORMAL PAGES (aboutus, suppliers, inquiry...)
-# Supports: /aboutus  AND  /aboutus.html
-#
-# ⚠ IMPORTANT:
-# This catch-all MUST remain LAST.
+# NORMAL PAGES (MUST REMAIN LAST)
 # ------------------------------------------------------
 @pages_bp.route('/<page>')
 @pages_bp.route('/<page>.html')
 def load_page(page):
-    # Safety: do not conflict with /productslist/
     if page == "productslist":
         return "Invalid page", 404
 

@@ -1,6 +1,7 @@
 cpu_products = [
         {
         "id": "cpu-101",
+        "category_key": "cpu",
         "name": "Intel Core i9 (Sample)",
         "price": 189.00,
         "brand": "Intel",
@@ -211,36 +212,41 @@ cpu_products = [
     # // # <!-- EPYC 9005 Series (FULL LIST) -->
     # // # <!-- ============================ -->
 
-    {
-        "id": "cpu-epyc-9965",
-        "name": "AMD EPYC 9965",
-        "brand": "AMD",
-        "category": "AMD Server Processor",
-        "application": "Server",
-        "description": "Powered by next-generation AMD architecture, the 9005 Series Server Processor offers massive multi-threaded performance, high memory bandwidth, and enterprise-grade efficiency for advanced compute workloads.",
-        "series": "9005",
-        "socket": "SP5",
-        "cores": 192,
-        "threads": 384,
-        "base_freq": 2.25,
-        "cache": 384,
-        "tdp": 500,
-        "tech": "5nm",
-        "memory_type": "DDR5",
-        "max_memory_size": 6144,
-        "packaging": "Tray",
-        "image": "/static/images/amdepyc.jpg",
-        "price": 11999
-    },
+   {
+  "id": "cpu-epyc-9965",
+  "name": "AMD EPYC 9965",
+  "brand": "AMD",
+  "category_key": "cpu",
+  "sub_category": "amd-server",
+  "category": "AMD Server Processor",
+  "application": "Server",
+  "series": "9005",
+  "socket": "SP5",
+  "cores": 192,
+  "threads": 384,
+  "base_freq": 2.25,
+  "cache": 384,
+  "tdp": 500,
+  "tech": "5nm",
+  "memory_type": "DDR5",
+  "max_memory_size": 6144,
+  "packaging": "Tray",
+  "image": "/static/images/amdepyc.jpg",
+  "price": 11999
+},
+
     {
         "id": "cpu-epyc-9845",
         "name": "AMD EPYC 9845",
         "brand": "AMD",
+        "category_key": "cpu",
+  "sub_category": "amd-server",
         "category": "AMD Server Processor",
         "application": "Server",
         "description": "Powered by next-generation AMD architecture, the 9005 Series Server Processor offers massive multi-threaded performance, high memory bandwidth, and enterprise-grade efficiency for advanced compute workloads.",
         "series": "9005",
         "socket": "SP5",
+        "category_key": "cpu",
         "cores": 160,
         "threads": 320,
         "base_freq": 2.1,
@@ -262,7 +268,8 @@ cpu_products = [
         "description": "Powered by next-generation AMD architecture, the 9005 Series Server Processor offers massive multi-threaded performance, high memory bandwidth, and enterprise-grade efficiency for advanced compute workloads.",
         "series": "9005",
         "socket": "SP5",
-        "cores": 144,
+        "cores": 144,"category_key": "cpu",
+  "sub_category": "amd-server",
         "threads": 288,
         "base_freq": 2.2,
         "cache": 384,
@@ -282,7 +289,8 @@ cpu_products = [
         "application": "Server",
         "description": "Powered by next-generation AMD architecture, the 9005 Series Server Processor offers massive multi-threaded performance, high memory bandwidth, and enterprise-grade efficiency for advanced compute workloads.",
         "series": "9005",
-        "socket": "SP5",
+        "socket": "SP5","category_key": "cpu",
+  "sub_category": "amd-server",
         "cores": 128,
         "threads": 256,
         "base_freq": 2.7,
@@ -304,7 +312,8 @@ cpu_products = [
         "description": "Powered by next-generation AMD architecture, the 9005 Series Server Processor offers massive multi-threaded performance, high memory bandwidth, and enterprise-grade efficiency for advanced compute workloads.",
         "series": "9005",
         "socket": "SP5",
-        "cores": 128,
+        "cores": 128,"category_key": "cpu",
+  "sub_category": "amd-server",
         "threads": 256,
         "base_freq": 2.4,
         "cache": 256,
@@ -325,7 +334,8 @@ cpu_products = [
         "description": "Powered by next-generation AMD architecture, the 9005 Series Server Processor offers massive multi-threaded performance, high memory bandwidth, and enterprise-grade efficiency for advanced compute workloads.",
         "series": "9005",
         "socket": "SP5",
-        "cores": 96,
+        "cores": 96,"category_key": "cpu",
+  "sub_category": "amd-server",
         "threads": 192,
         "base_freq": 2.6,
         "cache": 384,
@@ -2609,9 +2619,15 @@ cpu_products = [
   "id": "cpu-9700x",
   "name": "AMD Ryzen 7 9700X",
   "brand": "AMD",
+
+  "category_key": "cpu",
+  "sub_category": "amd-desktop",
+
   "category": "Ryzen Desktop Processor",
   "application": "Desktop",
-  "description": "AMD Ryzen 7 9700X is an 8-core / 16-thread desktop processor from AMD’s Ryzen 9000 series, built on Zen 5 architecture and manufactured on a 4 nm process. With a base clock of 3.8 GHz and a max boost up to 5.5 GHz, it delivers strong single-threaded and multi-threaded performance — suitable for gaming, content creation, and general productivity. The CPU supports DDR5 memory (up to 192 GB, dual-channel) and PCIe 5.0, and includes integrated AMD Radeon Graphics — useful for systems without a discrete GPU or as backup graphics. With a default TDP of 65 W, it offers a balance of performance and power efficiency, making it a capable all-purpose CPU for high-performance desktops or compact builds.",
+
+  "description": "AMD Ryzen 7 9700X is an 8-core / 16-thread desktop processor from AMD’s Ryzen 9000 series, built on Zen 5 architecture and manufactured on a 4 nm process. With a base clock of 3.8 GHz and a max boost up to 5.5 GHz, it delivers strong single-threaded and multi-threaded performance — suitable for gaming, content creation, and general productivity. The CPU supports DDR5 memory (up to 192 GB, dual-channel) and PCIe 5.0, and includes integrated AMD Radeon Graphics — useful for systems without a discrete GPU or as backup graphics. With a default TDP of 65 W, it offers a balance of performance and power efficiency.",
+
   "series": "ryzen",
   "socket": "AM5",
   "cores": 8,
@@ -2625,7 +2641,8 @@ cpu_products = [
   "packaging": "Boxed",
   "image": "/static/images/AMD-Ryzen.jpg",
   "price": 309
-  },
+},
+
 
  
   {

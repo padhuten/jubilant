@@ -16,80 +16,49 @@
 
 <!-- Main Container -->
 <div class="main-container">
-    <!-- Section Header -->
-    <!-- <div class="section-header">
-        <h2 class="section-title">Premium Product Categories</h2>
-        <p class="section-subtitle">Discover our curated collection of high-performance hardware with professional-grade solutions</p>
-    </div> -->
 
     <!-- Categories Grid -->
     <div class="categories-wrapper">
 
-        <!-- 1. PROCESSORS (2 subcategories) -->
+        <!-- 1. CPU PROCESSORS -->
         <div class="category-section">
             <div class="category-main-card" onclick="openModal(this)">
                 <div class="card-header">
                     <div class="card-icon">🖥️</div>
                     <div class="card-content">
-                        <h3 class="category-name">Processors</h3>
-                        <p class="category-tagline">Latest Intel & AMD processors</p>
+                        <h3 class="category-name">CPU Processors</h3>
+                        <p class="category-tagline">AMD & Intel processors for all needs</p>
                     </div>
                     <div class="expand-icon">▶</div>
                 </div>
                 <div class="badge-group">
                     <span class="badge popular">Popular</span>
-                    <span class="badge-count">50+ Models</span>
+                    <span class="badge-count">150+ Models</span>
                 </div>
             </div>
             <div class="modal-data" style="display: none;">
-                <div class="subcategory-card" data-category="cpu-intel">
+                <div class="subcategory-card" data-category="cpu/amd-server" data-series="9005,9004,7003,8004,4004,4005">
                     <div class="sub-icon">⚙️</div>
-                    <h4 class="sub-title">Intel Processors</h4>
-                    <p class="sub-description">Core i9, i7, i5 series</p>
+                    <h4 class="sub-title">AMD Server Processors</h4>
+                    <p class="sub-description">9005, 9004, 7003, 8004, 4004, 4005 Series</p>
                     <button class="sub-btn">Explore</button>
                 </div>
-                <div class="subcategory-card" data-category="cpu-amd">
+                <div class="subcategory-card" data-category="cpu/amd-desktop" data-series="ryzen,ryzen-pro">
                     <div class="sub-icon">⚙️</div>
-                    <h4 class="sub-title">AMD Processors</h4>
-                    <p class="sub-description">Ryzen 9, 7, 5 series</p>
+                    <h4 class="sub-title">AMD Desktop Processors</h4>
+                    <p class="sub-description">Ryzen & Ryzen PRO Series</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+                <div class="subcategory-card" data-category="cpu/intel-desktop" data-series="i9,i7,i5,i3">
+                    <div class="sub-icon">⚙️</div>
+                    <h4 class="sub-title">Intel Desktop Processors</h4>
+                    <p class="sub-description">Core i9, i7, i5, i3 Series</p>
                     <button class="sub-btn">Explore</button>
                 </div>
             </div>
         </div>
 
-        <!-- 2. STORAGE - SSDs (2 subcategories) -->
-        <div class="category-section">
-            <div class="category-main-card" onclick="openModal(this)">
-                <div class="card-header">
-                    <div class="card-icon">⚡</div>
-                    <div class="card-content">
-                        <h3 class="category-name">Solid State Drives</h3>
-                        <p class="category-tagline">Ultra-fast NVMe & SATA SSDs</p>
-                    </div>
-                    <div class="expand-icon">▶</div>
-                </div>
-                <div class="badge-group">
-                    <span class="badge bestseller">Best Sellers</span>
-                    <span class="badge-count">100+ Options</span>
-                </div>
-            </div>
-            <div class="modal-data" style="display: none;">
-                <div class="subcategory-card" data-category="ssd-nvme">
-                    <div class="sub-icon">💿</div>
-                    <h4 class="sub-title">NVMe SSDs</h4>
-                    <p class="sub-description">PCIe 4.0 & 5.0 speeds</p>
-                    <button class="sub-btn">Explore</button>
-                </div>
-                <div class="subcategory-card" data-category="ssd-sata">
-                    <div class="sub-icon">💿</div>
-                    <h4 class="sub-title">SATA SSDs</h4>
-                    <p class="sub-description">2.5" & M.2 formats</p>
-                    <button class="sub-btn">Explore</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- 3. STORAGE - Hard Drives (2 subcategories) -->
+        <!-- 2. HARD DRIVES -->
         <div class="category-section">
             <div class="category-main-card" onclick="openModal(this)">
                 <div class="card-header">
@@ -101,26 +70,71 @@
                     <div class="expand-icon">▶</div>
                 </div>
                 <div class="badge-group">
-                    <span class="badge-count">40+ Drives</span>
+                    <span class="badge bestseller">Best Sellers</span>
+                    <span class="badge-count">120+ Models</span>
                 </div>
             </div>
             <div class="modal-data" style="display: none;">
-                <div class="subcategory-card" data-category="hdd-35">
+                <div class="subcategory-card" data-category="hdd/seagate" data-series="barracuda,ironwolf,skyhawk,exos,firecuda">
                     <div class="sub-icon">📀</div>
-                    <h4 class="sub-title">3.5" Hard Drives</h4>
-                    <p class="sub-description">Desktop & Server HDDs</p>
+                    <h4 class="sub-title">Seagate Hard Drives</h4>
+                    <p class="sub-description">Barracuda, IronWolf, SkyHawk, Exos, FireCuda</p>
                     <button class="sub-btn">Explore</button>
                 </div>
-                <div class="subcategory-card" data-category="hdd-25">
+                <div class="subcategory-card" data-category="hdd/western-digital" data-series="wd-blue,wd-red,wd-purple,wd-gold">
                     <div class="sub-icon">📀</div>
-                    <h4 class="sub-title">2.5" Hard Drives</h4>
-                    <p class="sub-description">Laptop & Mobile HDDs</p>
+                    <h4 class="sub-title">Western Digital Hard Drives</h4>
+                    <p class="sub-description">WD Blue, Red, Purple, Gold</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+                <div class="subcategory-card" data-category="hdd/toshiba" data-series="p300,n300,s300,mg">
+                    <div class="sub-icon">📀</div>
+                    <h4 class="sub-title">Toshiba Hard Drives</h4>
+                    <p class="sub-description">P300, N300, S300, MG Series</p>
                     <button class="sub-btn">Explore</button>
                 </div>
             </div>
         </div>
 
-        <!-- 4. MEMORY (2 subcategories) -->
+        <!-- 3. SOLID STATE DRIVES -->
+        <div class="category-section">
+            <div class="category-main-card" onclick="openModal(this)">
+                <div class="card-header">
+                    <div class="card-icon">⚡</div>
+                    <div class="card-content">
+                        <h3 class="category-name">Solid State Drives</h3>
+                        <p class="category-tagline">Ultra-fast SATA & NVMe SSDs</p>
+                    </div>
+                    <div class="expand-icon">▶</div>
+                </div>
+                <div class="badge-group">
+                    <span class="badge popular">Popular</span>
+                    <span class="badge-count">100+ Options</span>
+                </div>
+            </div>
+            <div class="modal-data" style="display: none;">
+                <div class="subcategory-card" data-category="ssd/samsung" data-series="870-evo,980-pro,990-pro,pm9a3">
+                    <div class="sub-icon">💿</div>
+                    <h4 class="sub-title">Samsung SSDs</h4>
+                    <p class="sub-description">870 EVO, 980 PRO, 990 PRO, Enterprise Series</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+                <div class="subcategory-card" data-category="ssd/crucial" data-series="mx500,p3,p5,t700">
+                    <div class="sub-icon">💿</div>
+                    <h4 class="sub-title">Crucial SSDs</h4>
+                    <p class="sub-description">MX500, P3, P5, T500, T700</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+                <div class="subcategory-card" data-category="ssd/micron" data-series="2400,3400,5400,7500">
+                    <div class="sub-icon">💿</div>
+                    <h4 class="sub-title">Micron SSDs</h4>
+                    <p class="sub-description">2400, 3400, 5400, 6500 ION, 7500 PRO</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. MEMORY -->
         <div class="category-section">
             <div class="category-main-card" onclick="openModal(this)">
                 <div class="card-header">
@@ -132,146 +146,157 @@
                     <div class="expand-icon">▶</div>
                 </div>
                 <div class="badge-group">
-                    <span class="badge popular">Popular</span>
                     <span class="badge-count">80+ Variants</span>
                 </div>
             </div>
             <div class="modal-data" style="display: none;">
-                <div class="subcategory-card" data-category="memory-ddr5">
+                <div class="subcategory-card" data-category="memory/samsung" data-series="samsung-ram">
                     <div class="sub-icon">🔲</div>
-                    <h4 class="sub-title">DDR5 Memory</h4>
-                    <p class="sub-description">Latest high-speed modules</p>
+                    <h4 class="sub-title">Samsung Memory</h4>
+                    <p class="sub-description">DDR4 & DDR5 modules</p>
                     <button class="sub-btn">Explore</button>
                 </div>
-                <div class="subcategory-card" data-category="memory-ddr4">
+                <div class="subcategory-card" data-category="memory/crucial" data-series="crucial-ram">
                     <div class="sub-icon">🔲</div>
-                    <h4 class="sub-title">DDR4 Memory</h4>
-                    <p class="sub-description">Reliable & affordable</p>
+                    <h4 class="sub-title">Crucial Memory</h4>
+                    <p class="sub-description">DDR4 & DDR5 modules</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+                <div class="subcategory-card" data-category="memory/micron" data-series="micron-ram">
+                    <div class="sub-icon">🔲</div>
+                    <h4 class="sub-title">Micron Memory</h4>
+                    <p class="sub-description">DDR4 & DDR5 modules</p>
                     <button class="sub-btn">Explore</button>
                 </div>
             </div>
         </div>
 
-        <!-- 5. DISPLAYS (3 subcategories) -->
+        <!-- 5. MONITORS -->
         <div class="category-section">
             <div class="category-main-card" onclick="openModal(this)">
                 <div class="card-header">
                     <div class="card-icon">🖼️</div>
                     <div class="card-content">
                         <h3 class="category-name">Monitors</h3>
-                        <p class="category-tagline">4K, Gaming & Professional displays</p>
+                        <p class="category-tagline">Business, professional & gaming displays</p>
                     </div>
                     <div class="expand-icon">▶</div>
                 </div>
                 <div class="badge-group">
-                    <span class="badge-count">60+ Models</span>
+                    <span class="badge-count">80+ Models</span>
                 </div>
             </div>
             <div class="modal-data" style="display: none;">
-                <div class="subcategory-card" data-category="monitor-4k">
+                <div class="subcategory-card" data-category="monitor/samsung" data-series="samsung-business,samsung-curved,samsung-gaming">
                     <div class="sub-icon">🎬</div>
-                    <h4 class="sub-title">4K Monitors</h4>
-                    <p class="sub-description">Professional & creative work</p>
+                    <h4 class="sub-title">Samsung Monitors</h4>
+                    <p class="sub-description">Business, curved, gaming displays</p>
                     <button class="sub-btn">Explore</button>
                 </div>
-                <div class="subcategory-card" data-category="monitor-gaming">
-                    <div class="sub-icon">🎮</div>
-                    <h4 class="sub-title">Gaming Monitors</h4>
-                    <p class="sub-description">144Hz+ high refresh rates</p>
+                <div class="subcategory-card" data-category="monitor/aoc-philips" data-series="aoc-philips">
+                    <div class="sub-icon">🎨</div>
+                    <h4 class="sub-title">AOC/Philips Monitors</h4>
+                    <p class="sub-description">Value & professional solutions</p>
                     <button class="sub-btn">Explore</button>
                 </div>
-                <div class="subcategory-card" data-category="monitor-professional">
+                <div class="subcategory-card" data-category="monitor/dell" data-series="ultrasharp,p-series">
                     <div class="sub-icon">💼</div>
-                    <h4 class="sub-title">Professional Displays</h4>
-                    <p class="sub-description">Color-accurate & certified</p>
+                    <h4 class="sub-title">Dell Monitors</h4>
+                    <p class="sub-description">UltraSharp & P-series for office & design</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+                <div class="subcategory-card" data-category="monitor/hp" data-series="hp p-series,s-series,ergonomic">
+                    <div class="sub-icon">🎯</div>
+                    <h4 class="sub-title">HP Monitors</h4>
+                    <p class="sub-description">Business & consumer with ergonomic designs</p>
                     <button class="sub-btn">Explore</button>
                 </div>
             </div>
         </div>
 
-        <!-- 6. LAPTOPS (3 subcategories) -->
+        <!-- 6. LAPTOPS -->
         <div class="category-section">
             <div class="category-main-card" onclick="openModal(this)">
                 <div class="card-header">
                     <div class="card-icon">💻</div>
                     <div class="card-content">
                         <h3 class="category-name">Laptops</h3>
-                        <p class="category-tagline">Portable powerhouses & workstations</p>
+                        <p class="category-tagline">Consumer, business & precision series</p>
                     </div>
                     <div class="expand-icon">▶</div>
                 </div>
                 <div class="badge-group">
                     <span class="badge bestseller">Best Sellers</span>
-                    <span class="badge-count">75+ Units</span>
+                    <span class="badge-count">150+ Units</span>
                 </div>
             </div>
             <div class="modal-data" style="display: none;">
-                <div class="subcategory-card" data-category="laptop-gaming">
+                <div class="subcategory-card" data-category="laptop/consumer" data-series="aspire,swift,nitro,ideapad,yoga,legion,inspiron,xps,g-series,pavilion,envy,victus">
                     <div class="sub-icon">🎮</div>
-                    <h4 class="sub-title">Gaming Laptops</h4>
-                    <p class="sub-description">High-performance graphics</p>
+                    <h4 class="sub-title">Consumer Laptops</h4>
+                    <p class="sub-description">Acer Aspire/Swift/Nitro, Lenovo IdeaPad/Yoga/Legion, Dell Inspiron/XPS/G-series, HP Pavilion/Envy/Victus</p>
                     <button class="sub-btn">Explore</button>
                 </div>
-                <div class="subcategory-card" data-category="laptop-workstation">
+                <div class="subcategory-card" data-category="laptop/business" data-series="expertbook,proart,travelmate,veriton,thinkpad,thinkbook,latitude,precision,probook,elitebook">
                     <div class="sub-icon">💼</div>
-                    <h4 class="sub-title">Workstations</h4>
-                    <p class="sub-description">Professional-grade machines</p>
+                    <h4 class="sub-title">Business Laptops</h4>
+                    <p class="sub-description">Asus ExpertBook, Acer TravelMate, Lenovo ThinkPad, Dell Latitude</p>
                     <button class="sub-btn">Explore</button>
                 </div>
-                <div class="subcategory-card" data-category="laptop-ultrabook">
+                <div class="subcategory-card" data-category="laptop/precision" data-series="probook,elitebook,precision,proart">
                     <div class="sub-icon">✨</div>
-                    <h4 class="sub-title">Ultrabooks</h4>
-                    <p class="sub-description">Thin & portable designs</p>
+                    <h4 class="sub-title">Precision Series</h4>
+                    <p class="sub-description">HP ProBook, EliteBook, Dell Precision, Asus ProArt</p>
                     <button class="sub-btn">Explore</button>
                 </div>
             </div>
         </div>
 
-        <!-- 7. DESKTOP SYSTEMS (3 subcategories) -->
+        <!-- 7. DESKTOP SYSTEMS -->
         <div class="category-section">
             <div class="category-main-card" onclick="openModal(this)">
                 <div class="card-header">
                     <div class="card-icon">🖥️</div>
                     <div class="card-content">
                         <h3 class="category-name">Desktop Systems</h3>
-                        <p class="category-tagline">Pre-built & custom desktops</p>
+                        <p class="category-tagline">Tower, mini & workstation PCs</p>
                     </div>
                     <div class="expand-icon">▶</div>
                 </div>
                 <div class="badge-group">
-                    <span class="badge-count">45+ Systems</span>
+                    <span class="badge-count">90+ Systems</span>
                 </div>
             </div>
             <div class="modal-data" style="display: none;">
-                <div class="subcategory-card" data-category="desktop-gaming">
+                <div class="subcategory-card" data-category="desktop/tower" data-series="expertcenter,thinkcentre,legion,tiny-pc,optiplex,vostro">
+                    <div class="sub-icon">🖥️</div>
+                    <h4 class="sub-title">Tower & Mini PCs</h4>
+                    <p class="sub-description">Asus ExpertCenter, Lenovo ThinkCentre/Tiny, Dell OptiPlex/Vostro</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+                <div class="subcategory-card" data-category="desktop/workstation" data-series="precision,workstation">
+                    <div class="sub-icon">💼</div>
+                    <h4 class="sub-title">Workstations</h4>
+                    <p class="sub-description">Dell Precision, HP Z-series workstations</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+                <div class="subcategory-card" data-category="desktop/gaming" data-series="legion,gpu-system">
                     <div class="sub-icon">🎮</div>
-                    <h4 class="sub-title">Gaming PCs</h4>
-                    <p class="sub-description">High-end gaming setups</p>
-                    <button class="sub-btn">Explore</button>
-                </div>
-                <div class="subcategory-card" data-category="desktop-office">
-                    <div class="sub-icon">📱</div>
-                    <h4 class="sub-title">Office PCs</h4>
-                    <p class="sub-description">Professional workstations</p>
-                    <button class="sub-btn">Explore</button>
-                </div>
-                <div class="subcategory-card" data-category="desktop-server">
-                    <div class="sub-icon">🔐</div>
-                    <h4 class="sub-title">Server PCs</h4>
-                    <p class="sub-description">Reliable infrastructure</p>
+                    <h4 class="sub-title">Gaming & High-Performance</h4>
+                    <p class="sub-description">Specialized gaming & rendering systems</p>
                     <button class="sub-btn">Explore</button>
                 </div>
             </div>
         </div>
 
-        <!-- 8. NETWORKING (3 subcategories) -->
+        <!-- 8. NETWORKING -->
         <div class="category-section">
             <div class="category-main-card" onclick="openModal(this)">
                 <div class="card-header">
                     <div class="card-icon">🌐</div>
                     <div class="card-content">
                         <h3 class="category-name">Networking</h3>
-                        <p class="category-tagline">Routers, switches & connectivity</p>
+                        <p class="category-tagline">Enterprise switches & solutions</p>
                     </div>
                     <div class="expand-icon">▶</div>
                 </div>
@@ -280,66 +305,91 @@
                 </div>
             </div>
             <div class="modal-data" style="display: none;">
-                <div class="subcategory-card" data-category="network-routers">
+                <div class="subcategory-card" data-category="network/aruba-switches" data-series="aruba-switch,poe">
                     <div class="sub-icon">📡</div>
-                    <h4 class="sub-title">Routers & Mesh</h4>
-                    <p class="sub-description">WiFi 6 & WiFi 7 devices</p>
+                    <h4 class="sub-title">Aruba Switches</h4>
+                    <p class="sub-description">Enterprise managed & PoE switches</p>
                     <button class="sub-btn">Explore</button>
                 </div>
-                <div class="subcategory-card" data-category="network-switches">
-                    <div class="sub-icon">🔀</div>
-                    <h4 class="sub-title">Switches & NIC</h4>
-                    <p class="sub-description">Enterprise networking gear</p>
-                    <button class="sub-btn">Explore</button>
-                </div>
-                <div class="subcategory-card" data-category="network-cables">
-                    <div class="sub-icon">🔌</div>
-                    <h4 class="sub-title">Cables & Adapters</h4>
-                    <p class="sub-description">Network connectivity</p>
+                <div class="subcategory-card" data-category="network/aruba-instant" data-series="aruba-instanton">
+                    <div class="sub-icon">☁️</div>
+                    <h4 class="sub-title">Aruba Instant On</h4>
+                    <p class="sub-description">SMB networking with cloud management</p>
                     <button class="sub-btn">Explore</button>
                 </div>
             </div>
         </div>
 
-        <!-- 9. SERVER EQUIPMENT (4 subcategories) -->
+        <!-- 9. SERVER & STORAGE -->
         <div class="category-section">
             <div class="category-main-card" onclick="openModal(this)">
                 <div class="card-header">
                     <div class="card-icon">🔒</div>
                     <div class="card-content">
-                        <h3 class="category-name">Server Equipment</h3>
+                        <h3 class="category-name">Server & Storage</h3>
                         <p class="category-tagline">Enterprise-grade solutions</p>
                     </div>
                     <div class="expand-icon">▶</div>
                 </div>
                 <div class="badge-group">
                     <span class="badge premium">Premium</span>
-                    <span class="badge-count">35+ Solutions</span>
+                    <span class="badge-count">80+ Solutions</span>
                 </div>
             </div>
             <div class="modal-data" style="display: none;">
-                <div class="subcategory-card" data-category="server-rack">
+                <div class="subcategory-card" data-category="server/super-micro" data-series="barebone,gpu-server,workstation-class">
                     <div class="sub-icon">🏢</div>
-                    <h4 class="sub-title">Rack Servers</h4>
-                    <p class="sub-description">Scalable infrastructure</p>
+                    <h4 class="sub-title">Super Micro Systems</h4>
+                    <p class="sub-description">Motherboards, Barebones, GPU Servers</p>
                     <button class="sub-btn">Explore</button>
                 </div>
-                <div class="subcategory-card" data-category="server-tower">
-                    <div class="sub-icon">🔐</div>
-                    <h4 class="sub-title">Tower Servers</h4>
-                    <p class="sub-description">Mid-range solutions</p>
+                <div class="subcategory-card" data-category="server/asus" data-series="workstation,gpu-system,rack server">
+                    <div class="sub-icon">⚙️</div>
+                    <h4 class="sub-title">Asus Server Solutions</h4>
+                    <p class="sub-description">Barebones, Workstations, GPU Systems</p>
                     <button class="sub-btn">Explore</button>
                 </div>
-                <div class="subcategory-card" data-category="server-storage">
+                <div class="subcategory-card" data-category="server/lenovo" data-series="enterprise-storage">
                     <div class="sub-icon">📦</div>
-                    <h4 class="sub-title">Storage Servers</h4>
-                    <p class="sub-description">Data center solutions</p>
+                    <h4 class="sub-title">Lenovo ThinkSystem</h4>
+                    <p class="sub-description">Servers & enterprise storage solutions</p>
                     <button class="sub-btn">Explore</button>
                 </div>
-                <div class="subcategory-card" data-category="server-accessories">
-                    <div class="sub-icon">🔧</div>
-                    <h4 class="sub-title">Accessories</h4>
-                    <p class="sub-description">Server add-ons & upgrades</p>
+            </div>
+        </div>
+
+        <!-- 10. DOCKING STATIONS -->
+        <div class="category-section">
+            <div class="category-main-card" onclick="openModal(this)">
+                <div class="card-header">
+                    <div class="card-icon">🔌</div>
+                    <div class="card-content">
+                        <h3 class="category-name">Docking Stations</h3>
+                        <p class="category-tagline">USB-C, Thunderbolt & universal docks</p>
+                    </div>
+                    <div class="expand-icon">▶</div>
+                </div>
+                <div class="badge-group">
+                    <span class="badge-count">30+ Models</span>
+                </div>
+            </div>
+            <div class="modal-data" style="display: none;">
+                <div class="subcategory-card" data-category="dock/dell" data-series="dell-dock">
+                    <div class="sub-icon">🔗</div>
+                    <h4 class="sub-title">Dell Docking Stations</h4>
+                    <p class="sub-description">USB-C & Thunderbolt docks</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+                <div class="subcategory-card" data-category="dock/lenovo" data-series="lenovo-dock">
+                    <div class="sub-icon">🔗</div>
+                    <h4 class="sub-title">Lenovo Docking Stations</h4>
+                    <p class="sub-description">ThinkPad docking solutions</p>
+                    <button class="sub-btn">Explore</button>
+                </div>
+                <div class="subcategory-card" data-category="dock/hp" data-series="hp-dock">
+                    <div class="sub-icon">🔗</div>
+                    <h4 class="sub-title">HP Docking Stations</h4>
+                    <p class="sub-description">Universal & Thunderbolt docks</p>
                     <button class="sub-btn">Explore</button>
                 </div>
             </div>
@@ -394,10 +444,30 @@
             
             // Add click event to explore button
             const btn = clone.querySelector('.sub-btn');
-            btn.onclick = function(e) {
-                e.preventDefault();
-                const category = card.getAttribute('data-category');
-                window.location.href = `/products/${category}`;
+           btn.onclick = function (e) {
+    e.preventDefault();
+
+    const category = card.getAttribute('data-category').toLowerCase();
+    const seriesString = card.getAttribute('data-series');
+
+    // 👉 If ONLY category/subcategory clicked
+    if (!seriesString) {
+        window.location.href = `/products/${category}`;
+        return;
+    }
+
+    const seriesList = seriesString.split(',').map(s => s.trim());
+
+    // 👉 If multiple series → go to subcategory page
+    if (seriesList.length > 1) {
+        window.location.href = `/products/${category}`;
+    }
+    // 👉 If exactly one series → go to series page
+    else {
+        window.location.href = `/products/${category}/${seriesList[0]}`;
+    }
+
+
             };
             
             modalSubcategories.appendChild(clone);
