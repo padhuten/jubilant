@@ -1,9 +1,8 @@
 import os
-from flask import Blueprint, render_template, send_from_directory, request, redirect
+from flask import Blueprint, render_template, send_from_directory
 from config import STATIC_DIR, TEMPLATES_DIR
 
 pages_bp = Blueprint("pages_bp", __name__)
-
 
 # ------------------------------------------------------
 # HOME PAGE
@@ -96,6 +95,14 @@ CATEGORIES = {
     }
 }
 
+# ------------------------------------------------------
+# ✅ PRODUCT DETAIL PAGE (MUST COME BEFORE SUB-CATEGORY)
+# /products/cpu/ryzen/cpu-9700x
+# ------------------------------------------------------
+@pages_bp.route('/products/cpu/<series>/<product_id>')
+def cpu_product_page(series, product_id):
+    return render_template("product.html")
+
 
 # ------------------------------------------------------
 # LEVEL 1: CATEGORY
@@ -108,10 +115,7 @@ def product_category(category):
     if category not in CATEGORIES:
         return "Category not found", 404
 
-    return render_template(
-        "products.html",
-        category=category
-    )
+    return render_template("products.html", category=category)
 
 
 # ------------------------------------------------------
@@ -160,19 +164,6 @@ def product_series(category, sub_category, series):
         category=category,
         sub_category=sub_category,
         series=series
-    )
-
-
-# ------------------------------------------------------
-# CLEAN PRODUCT PAGE
-# /cpu/ryzen/AMD-Ryzen-7-5800X
-# ------------------------------------------------------
-@pages_bp.route('/cpu/<series>/<name_slug>')
-def clean_cpu_product(series, name_slug):
-    return render_template(
-        "product.html",
-        series=series.lower(),
-        name_slug=name_slug
     )
 
 
