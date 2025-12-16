@@ -1,7 +1,15 @@
 <header class="header-container">
   <nav class="main-nav">
 
-    <!-- LOGO -->
+    <!-- HAMBURGER TOGGLE (First - Left Side) -->
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+    <label for="nav-toggle" class="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </label>
+
+    <!-- LOGO (Second - Center) -->
     <div class="logo">
       <a href="/">
         <img
@@ -9,6 +17,16 @@
           alt="Jubilant Tech Logo"
         />
       </a>
+    </div>
+
+    <!-- SEARCH (Third - Right Side) -->
+    <div class="search-bar">
+      <form action="/search" method="GET">
+        <input type="text" name="q" placeholder="Search Products...">
+        <button type="submit">
+          <i data-feather="search" class="search-icon"></i>
+        </button>
+      </form>
     </div>
 
     <!-- NAV LINKS -->
@@ -30,12 +48,27 @@
 
       <!-- ALL PRODUCTS -->
       <li class="dropdown">
-        <a href="/all_products" class="dropbtn">
+        <a href="#" class="dropbtn">
           All Products <i data-feather="chevron-down" class="feather-icon"></i>
         </a>
 
         <div class="dropdown-content">
+          <div class="dropdown-column">
+            <a href="/products?category=cpu">CPU</a>
+            <a href="/products?category=hard-drive">Hard Drive</a>
+            <a href="/products?category=ssd">SSD</a>
+            <a href="/products?category=memory">Memory</a>
+            <a href="/products?category=monitors">Monitors</a>
+            <a href="/products?category=laptop">Laptop</a>
+            <a href="/products?category=desktop">Desktop</a>
+            <a href="/products?category=networking">Networking</a>
+            <a href="/products?category=server">Server & Storage</a>
+            <a href="/products?category=docking">Docking Stations</a>
+          </div>
 
+          <!-- DESKTOP MEGA MENU (Hidden on mobile) -->
+          <div class="desktop-mega-menu">
+          
           <!-- CPU -->
           <div class="product-item-row has-mega">
             <span class="main-item">CPU</span>
@@ -167,7 +200,7 @@
           </div>
 
           <!-- LAPTOP -->
-          <div class="product-item-row has-mega laptop-fix ">
+          <div class="product-item-row has-mega laptop-fix">
             <span class="main-item">Laptop</span>
             <div class="mega-menu">
               <div class="mega-column">
@@ -266,6 +299,9 @@
               </div>
             </div>
           </div>
+          
+          </div>
+          <!-- END DESKTOP MEGA MENU -->
 
         </div>
       </li>
@@ -276,15 +312,89 @@
 
     </ul>
 
-    <!-- SEARCH -->
-    <div class="search-bar">
-      <form action="/search" method="GET">
-        <input type="text" name="q" placeholder="Search Products...">
-        <button type="submit">
-          <i data-feather="search" class="search-icon"></i>
-        </button>
-      </form>
-    </div>
-
   </nav>
 </header>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  
+  // Initialize Feather icons if available
+  if (typeof feather !== 'undefined') {
+    feather.replace();
+  }
+
+  // Mobile dropdown functionality
+  function initMobileDropdowns() {
+    const dropdownBtns = document.querySelectorAll(".dropdown > .dropbtn");
+    
+    dropdownBtns.forEach(btn => {
+      // Clone to remove existing listeners
+      const newBtn = btn.cloneNode(true);
+      btn.parentNode.replaceChild(newBtn, btn);
+    });
+
+    // Re-select after cloning
+    const newDropdownBtns = document.querySelectorAll(".dropdown > .dropbtn");
+    
+    newDropdownBtns.forEach(btn => {
+      btn.addEventListener("click", function(e) {
+        // Only work on mobile/tablet
+        if (window.innerWidth <= 1024) {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          const parentDropdown = this.closest(".dropdown");
+          
+          // Close other dropdowns
+          document.querySelectorAll(".dropdown.open").forEach(dropdown => {
+            if (dropdown !== parentDropdown) {
+              dropdown.classList.remove("open");
+            }
+          });
+          
+          // Toggle current dropdown
+          parentDropdown.classList.toggle("open");
+        }
+      });
+    });
+  }
+
+  // Initialize on load
+  initMobileDropdowns();
+
+  // Re-initialize on window resize
+  let resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+      if (window.innerWidth <= 1024) {
+        initMobileDropdowns();
+      }
+    }, 250);
+  });
+
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', function(e) {
+    if (window.innerWidth <= 1024) {
+      if (!e.target.closest('.dropdown')) {
+        document.querySelectorAll('.dropdown.open').forEach(dropdown => {
+          dropdown.classList.remove("open");
+        });
+      }
+    }
+  });
+
+  // Close menu when clicking on a dropdown link
+  document.querySelectorAll('.dropdown-content a').forEach(link => {
+    link.addEventListener('click', function() {
+      if (window.innerWidth <= 1024) {
+        // Close the dropdown
+        this.closest('.dropdown').classList.remove('open');
+        // Uncheck the hamburger menu
+        document.getElementById('nav-toggle').checked = false;
+      }
+    });
+  });
+
+});
+</script>
