@@ -393,3 +393,1135 @@ table tr:last-child td {
   height: 26px;   /* reduce from 32px */
   max-width: 70px;
 }
+/* ================================
+   INQUIRY BUTTON SECTION
+================================ */
+
+.inquiry-button-section {
+  margin-top: 24px;
+  margin-bottom: 16px;
+}
+
+.inquiry-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #0b6efd 0%, #0052cc 100%);
+  color: white;
+  border: none;
+  padding: 16px 24px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(11, 110, 253, 0.35);
+}
+
+.inquiry-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(11, 110, 253, 0.45);
+  background: linear-gradient(135deg, #0052cc 0%, #003d99 100%);
+}
+
+.inquiry-btn:active {
+  transform: translateY(0);
+}
+
+.inquiry-icon {
+  font-size: 22px;
+  animation: pulse-icon 2s ease-in-out infinite;
+}
+
+@keyframes pulse-icon {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+.inquiry-text {
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* ================================
+   INQUIRY MODAL
+================================ */
+
+.inquiry-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+  backdrop-filter: blur(0px);
+  transition: all 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 9998;
+}
+
+.inquiry-modal-overlay.active {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  opacity: 1;
+  visibility: visible;
+}
+
+.inquiry-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9);
+  width: 90%;
+  max-width: 600px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 9999;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.inquiry-modal.active {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  visibility: visible;
+}
+
+.inquiry-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  border-bottom: 2px solid #e5e7eb;
+  background: linear-gradient(135deg, #f0f5ff 0%, #e8f1ff 100%);
+  border-radius: 16px 16px 0 0;
+}
+
+.inquiry-modal-header h3 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #0052cc;
+  margin: 0;
+}
+
+.inquiry-modal-close {
+  background: white;
+  border: 2px solid #d0e0ff;
+  color: #0052cc;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.inquiry-modal-close:hover {
+  background: #0052cc;
+  color: white;
+  transform: rotate(90deg);
+}
+
+.inquiry-modal-body {
+  padding: 24px;
+}
+.inquiry-heading {
+  display: flex;
+  flex-direction: column;
+}
+
+.page-title {
+  font-size: 13px;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #6b7280;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+
+/* ================================
+   INQUIRY FORM
+================================ */
+
+#inquiryForm .form-group {
+  margin-bottom: 20px;
+}
+
+#inquiryForm label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 8px;
+}
+
+#inquiryForm input,
+#inquiryForm textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  background: white;
+}
+
+#inquiryForm input:focus,
+#inquiryForm textarea:focus {
+  outline: none;
+  border-color: #0b6efd;
+  box-shadow: 0 0 0 3px rgba(11, 110, 253, 0.1);
+}
+
+#inquiryForm .readonly-input {
+  background: #f9fafb;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+#inquiryForm textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.btn-cancel,
+.btn-submit {
+  flex: 1;
+  padding: 14px 24px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.btn-cancel {
+  background: #f3f4f6;
+  color: #374151;
+  border: 2px solid #e5e7eb;
+}
+
+.btn-cancel:hover {
+  background: #e5e7eb;
+}
+
+.btn-submit {
+  background: linear-gradient(135deg, #0b6efd 0%, #0052cc 100%);
+  color: white;
+  box-shadow: 0 4px 14px rgba(11, 110, 253, 0.35);
+}
+
+.btn-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(11, 110, 253, 0.45);
+}
+
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Form message styles */
+.form-message {
+  margin-top: 16px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  text-align: center;
+  display: none;
+}
+
+.form-message.success {
+  background: #d1fae5;
+  color: #065f46;
+  border: 1px solid #6ee7b7;
+}
+
+.form-message.error {
+  background: #fee2e2;
+  color: #991b1b;
+  border: 1px solid #fca5a5;
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+  .inquiry-modal {
+    width: 95%;
+    max-height: 85vh;
+  }
+  
+  .inquiry-modal-header {
+    padding: 20px;
+  }
+  
+  .inquiry-modal-header h3 {
+    font-size: 18px;
+  }
+  
+  .inquiry-modal-body {
+    padding: 20px;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .btn-cancel,
+  .btn-submit {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .inquiry-btn {
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+  
+  .inquiry-icon {
+    font-size: 20px;
+  }
+  
+  .inquiry-modal {
+    width: 98%;
+  }
+  
+  .inquiry-modal-header {
+    padding: 16px;
+  }
+  
+  .inquiry-modal-body {
+    padding: 16px;
+  }
+}
+/* ================================
+   RESPONSIVE MEDIA QUERIES
+   Mobile First Approach: 320px to 1440px
+================================ */
+
+/* ================================
+   EXTRA SMALL DEVICES (320px - 479px)
+   Mobile Phones (Portrait)
+================================ */
+@media (max-width: 479px) {
+  body {
+    font-size: 14px;
+  }
+
+  #product_head {
+    margin: 20px 0;
+  }
+
+  .product-container {
+    padding: 16px;
+    gap: 24px;
+  }
+
+  /* Image Gallery */
+  .product-gallery {
+    max-width: 100%;
+  }
+
+  .main-image {
+    height: 280px;
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  .nav-btn {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .nav-left { left: 8px; }
+  .nav-right { right: 8px; }
+
+  .thumbnail-row {
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  .thumbnail-row img {
+    width: 60px;
+    height: 60px;
+    border-radius: 8px;
+  }
+
+  /* Product Details */
+  .product-details {
+    min-width: 100%;
+  }
+
+  .product-details h1 {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .product-details p.description {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  .price-box {
+    padding: 16px;
+    border-radius: 10px;
+    margin-bottom: 16px;
+  }
+
+  .price-box .price {
+    font-size: 24px;
+  }
+
+  .price-box small {
+    font-size: 12px;
+  }
+
+  .details-meta {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  .info-icons {
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+    padding-top: 12px;
+    font-size: 12px;
+  }
+
+  .info-icons div {
+    width: 100%;
+    text-align: left;
+  }
+
+  /* Inquiry Button */
+  .inquiry-button-section {
+    margin-top: 16px;
+  }
+
+  .inquiry-btn {
+    padding: 12px 16px;
+    font-size: 14px;
+    gap: 8px;
+  }
+
+  .inquiry-icon {
+    font-size: 18px;
+  }
+
+  /* Payment & Shipping */
+  .payment-shipping-section {
+    padding: 16px;
+    margin-top: 16px;
+  }
+
+  .payment-shipping-section h4 {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+
+  .payment-methods,
+  .shipping-methods {
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .payment-methods img {
+    height: 24px;
+  }
+
+  .shipping-methods img {
+    height: 20px;
+    max-width: 55px;
+  }
+
+  /* Tabs Section */
+  #product_description {
+    margin: 40px 12px;
+    padding: 16px 12px;
+  }
+
+  .tabs label {
+    padding: 10px 8px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  .tab-content {
+    padding: 16px 8px;
+    margin-top: 12px;
+  }
+
+  .tab-content h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+  }
+
+  .tab-content p {
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  table td {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  /* Inquiry Modal */
+  .inquiry-modal {
+    width: 95%;
+    max-height: 90vh;
+  }
+
+  .inquiry-modal-header {
+    padding: 14px;
+  }
+
+  .inquiry-modal-header h3 {
+    font-size: 16px;
+  }
+
+  .inquiry-modal-close {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+  }
+
+  .inquiry-modal-body {
+    padding: 14px;
+  }
+
+  #inquiryForm label {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  #inquiryForm input,
+  #inquiryForm textarea {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .btn-cancel,
+  .btn-submit {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 14px;
+  }
+}
+
+/* ================================
+   SMALL DEVICES (480px - 767px)
+   Mobile Phones (Landscape) & Small Tablets
+================================ */
+@media (min-width: 480px) and (max-width: 767px) {
+  #product_head {
+    margin: 30px 0;
+  }
+
+  .product-container {
+    padding: 24px;
+    gap: 32px;
+  }
+
+  .main-image {
+    height: 340px;
+    padding: 16px;
+  }
+
+  .thumbnail-row img {
+    width: 70px;
+    height: 70px;
+  }
+
+  .product-details h1 {
+    font-size: 22px;
+  }
+
+  .price-box .price {
+    font-size: 26px;
+  }
+
+  .info-icons {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .info-icons div {
+    flex: 0 0 calc(50% - 6px);
+  }
+
+  .inquiry-btn {
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+
+  .payment-methods img {
+    height: 28px;
+  }
+
+  .shipping-methods img {
+    height: 22px;
+    max-width: 60px;
+  }
+
+  #product_description {
+    margin: 50px 16px;
+    padding: 20px;
+  }
+
+  .tabs label {
+    padding: 12px 10px;
+    font-size: 13px;
+  }
+
+  .inquiry-modal {
+    width: 90%;
+  }
+
+  .inquiry-modal-header {
+    padding: 18px;
+  }
+
+  .inquiry-modal-header h3 {
+    font-size: 18px;
+  }
+
+  .inquiry-modal-body {
+    padding: 18px;
+  }
+}
+
+/* ================================
+   MEDIUM DEVICES (768px - 991px)
+   Tablets (Portrait)
+================================ */
+@media (min-width: 768px) and (max-width: 991px) {
+  .product-container {
+    padding: 32px;
+    gap: 36px;
+  }
+
+  .product-gallery {
+    max-width: 100%;
+  }
+
+  .main-image {
+    height: 400px;
+    padding: 18px;
+  }
+
+  .thumbnail-row {
+    gap: 10px;
+  }
+
+  .thumbnail-row img {
+    width: 75px;
+    height: 75px;
+  }
+
+  .product-details {
+    min-width: 100%;
+  }
+
+  .product-details h1 {
+    font-size: 24px;
+  }
+
+  .price-box .price {
+    font-size: 28px;
+  }
+
+  .info-icons {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 16px;
+  }
+
+  .info-icons div {
+    flex: 0 0 calc(50% - 8px);
+  }
+
+  .payment-methods img {
+    height: 30px;
+  }
+
+  .shipping-methods img {
+    height: 24px;
+    max-width: 65px;
+  }
+
+  #product_description {
+    margin: 60px auto;
+    padding: 26px 20px;
+  }
+
+  .tabs label {
+    padding: 13px 12px;
+    font-size: 14px;
+  }
+
+  .tab-content {
+    padding: 20px 12px;
+  }
+
+  table td {
+    padding: 13px 16px;
+  }
+
+  .inquiry-modal {
+    width: 85%;
+    max-width: 550px;
+  }
+
+  .inquiry-modal-header {
+    padding: 20px;
+  }
+
+  .inquiry-modal-header h3 {
+    font-size: 20px;
+  }
+
+  .inquiry-modal-body {
+    padding: 20px;
+  }
+
+  .form-actions {
+    flex-direction: row;
+  }
+}
+
+/* ================================
+   LARGE DEVICES (992px - 1199px)
+   Tablets (Landscape) & Small Desktops
+================================ */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .product-container {
+    padding: 36px;
+    gap: 40px;
+    flex-direction: row;
+  }
+
+  .product-gallery {
+    flex: 1;
+    max-width: 450px;
+  }
+
+  .main-image {
+    height: 420px;
+    padding: 18px;
+  }
+
+  .thumbnail-row img {
+    width: 76px;
+    height: 76px;
+  }
+
+  .product-details {
+    flex: 1;
+    min-width: 360px;
+  }
+
+  .product-details h1 {
+    font-size: 25px;
+  }
+
+  .price-box .price {
+    font-size: 29px;
+  }
+
+  .info-icons {
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    font-size: 12.5px;
+  }
+
+  .payment-methods img,
+  .shipping-methods img {
+    height: 30px;
+  }
+
+  .shipping-methods img {
+    height: 25px;
+    max-width: 68px;
+  }
+
+  #product_description {
+    margin: 70px auto;
+    padding: 28px 20px;
+  }
+
+  .tabs label {
+    padding: 13px;
+  }
+
+  table td {
+    padding: 13px 17px;
+  }
+}
+
+/* ================================
+   EXTRA LARGE DEVICES (1200px - 1439px)
+   Large Desktops
+================================ */
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .product-container {
+    padding: 38px;
+    gap: 44px;
+  }
+
+  .product-gallery {
+    max-width: 470px;
+  }
+
+  .main-image {
+    height: 450px;
+    padding: 20px;
+  }
+
+  .thumbnail-row img {
+    width: 77px;
+    height: 77px;
+  }
+
+  .product-details {
+    min-width: 370px;
+  }
+
+  .product-details h1 {
+    font-size: 25.5px;
+  }
+
+  .price-box .price {
+    font-size: 29.5px;
+  }
+
+  #product_description {
+    margin: 75px auto;
+    padding: 29px 20px;
+  }
+}
+
+/* ================================
+   FULL HD & ABOVE (1440px+)
+   Extra Large Desktops
+================================ */
+@media (min-width: 1440px) {
+  .product-container {
+    max-width: 1280px;
+    padding: 40px;
+    gap: 48px;
+  }
+
+  .product-gallery {
+    max-width: 500px;
+  }
+
+  .main-image {
+    height: 480px;
+  }
+
+  .product-details {
+    min-width: 400px;
+  }
+
+  #product_description {
+    max-width: 1280px;
+  }
+}
+
+/* ================================
+   SPECIFIC BREAKPOINT ADJUSTMENTS
+================================ */
+
+/* Fine-tune for 900px breakpoint (existing in original CSS) */
+@media (max-width: 900px) {
+  .product-container {
+    flex-direction: column;
+  }
+  
+  .product-gallery,
+  .product-details {
+    max-width: 100%;
+  }
+}
+
+/* iPad Pro Portrait (1024px) */
+@media (min-width: 1024px) and (max-width: 1024px) {
+  .product-container {
+    gap: 42px;
+  }
+
+  .main-image {
+    height: 440px;
+  }
+}
+
+/* ================================
+   LANDSCAPE ORIENTATION SPECIFIC
+================================ */
+@media (max-height: 600px) and (orientation: landscape) {
+  #product_head {
+    margin: 20px 0;
+  }
+
+  .main-image {
+    height: 300px;
+  }
+
+  .inquiry-modal {
+    max-height: 85vh;
+  }
+
+  .product-container {
+    padding: 20px;
+  }
+}
+
+/* ================================
+   ZOOM FUNCTIONALITY RESPONSIVE
+================================ */
+@media (max-width: 767px) {
+  .main-image {
+    background-size: 200% !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1199px) {
+  .main-image {
+    background-size: 180% !important;
+  }
+}
+
+@media (min-width: 1200px) {
+  .main-image {
+    background-size: 160% !important;
+  }
+}
+
+/* ================================
+   PRINT MEDIA
+================================ */
+@media print {
+  .nav-btn,
+  .inquiry-button-section,
+  .inquiry-modal,
+  .inquiry-modal-overlay {
+    display: none !important;
+  }
+
+  .product-container {
+    box-shadow: none;
+    border: 1px solid #ddd;
+  }
+
+  .main-image {
+    height: auto;
+    page-break-inside: avoid;
+  }
+}
+@media (max-width: 425px) {
+  .product-container {
+    flex-direction: column;
+    padding: 16px;
+    gap: 24px;
+  }
+
+  .product-gallery {
+    max-width: 100%;
+  }
+
+  .main-image {
+    height: 260px;
+    padding: 12px;
+  }
+
+  .nav-left {
+    left: 6px;
+  }
+
+  .nav-right {
+    right: 6px;
+  }
+
+  .thumbnail-row img {
+    width: 58px;
+    height: 58px;
+  }
+
+  .product-details {
+    min-width: 100%;
+  }
+
+  .inquiry-button-section {
+    display: flex;
+    justify-content: center;
+  }
+}
+@media (max-width: 768px) {
+  .product-container {
+    flex-direction: column;
+    padding: 28px;
+    gap: 32px;
+  }
+
+  .product-gallery {
+    max-width: 100%;
+  }
+
+  .main-image {
+    height: 380px;
+    padding: 16px;
+  }
+
+  .thumbnail-row img {
+    width: 72px;
+    height: 72px;
+  }
+
+  .product-details {
+    min-width: 100%;
+  }
+
+  .info-icons {
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  .info-icons div {
+    flex: 0 0 calc(50% - 7px);
+  }
+
+  .inquiry-button-section {
+    justify-content: flex-start;
+  }
+}
+/* ================================
+   TABLET FIX – EXACT 768px
+================================ */
+@media (width: 768px) {
+  .product-container {
+    flex-direction: column !important;
+    padding: 28px !important;
+    gap: 32px !important;
+  }
+
+  .product-gallery {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .main-image {
+    height: 380px !important;
+    padding: 16px !important;
+  }
+
+  .nav-left {
+    left: 12px !important;
+  }
+
+  .nav-right {
+    right: 12px !important;
+  }
+
+  .thumbnail-row {
+    justify-content: center !important;
+  }
+
+  .thumbnail-row img {
+    width: 72px !important;
+    height: 72px !important;
+  }
+
+  .product-details {
+    width: 100% !important;
+    min-width: 100% !important;
+  }
+
+  .info-icons {
+    flex-wrap: wrap !important;
+    gap: 14px !important;
+  }
+
+  .info-icons div {
+    flex: 0 0 calc(50% - 7px) !important;
+  }
+
+  .inquiry-button-section {
+    justify-content: flex-start !important;
+  }
+}
+/* ================================
+   FIX HEADER OVERLAY ON INQUIRY MODAL
+================================ */
+.inquiry-modal {
+  margin-top: 90px;
+}
+
+@media (max-width: 768px) {
+  .inquiry-modal {
+    margin-top: 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .inquiry-modal {
+    margin-top: 70px;
+  }
+}
+/* ================================
+   FIX INQUIRY MODAL FOOTER OVERLAP
+================================ */
+.inquiry-modal {
+  max-height: calc(100vh - 140px);
+  overflow-y: auto;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .inquiry-modal {
+    max-height: calc(100vh - 120px);
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .inquiry-modal {
+    max-height: calc(100vh - 110px);
+  }
+}
