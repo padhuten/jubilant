@@ -4,6 +4,65 @@ from email_service import send_email
 
 forms_bp = Blueprint("forms_bp", __name__)
 
+# ----------------------------------------------------
+# Helper: Build premium HTML table email
+# ----------------------------------------------------
+def build_html_email(title: str, data):
+    rows = ""
+    for key, value in data.items():
+        if not value:
+            continue
+        label = key.replace("_", " ").title()
+        rows += f"""
+        <tr>
+            <td style="padding:10px; background:#f8fafc; font-weight:600; width:40%;">
+                {label}
+            </td>
+            <td style="padding:10px;">
+                {value}
+            </td>
+        </tr>
+        """
+
+    return f"""
+<!DOCTYPE html>
+<html>
+<body style="margin:0; padding:0; background:#f4f6fb; font-family:Arial, Helvetica, sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="padding:20px;">
+  <tr>
+    <td align="center">
+      <table width="600" cellpadding="0" cellspacing="0"
+        style="background:#ffffff; border-radius:12px; box-shadow:0 10px 30px rgba(0,0,0,0.08);">
+
+        <tr>
+          <td style="background:#0b6efd; color:#ffffff; padding:18px 22px;">
+            <h2 style="margin:0; font-size:18px;">{title}</h2>
+          </td>
+        </tr>
+
+        <tr>
+          <td style="padding:22px;">
+            <table width="100%" cellpadding="0" cellspacing="0"
+              style="border-collapse:collapse; font-size:14px;">
+              {rows}
+            </table>
+          </td>
+        </tr>
+
+        <tr>
+          <td style="background:#f1f5f9; padding:12px 22px; font-size:12px; color:#64748b;">
+            📧 Submitted via Jubilant Tech Website
+          </td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
+"""
+
 
 # ----------------------------------------------------
 # Helper: Convert form dict → readable email message
@@ -42,7 +101,12 @@ def send_contact():
         ))
         conn.commit()
 
-        send_email("New Contact Form Submission", format_email(data))
+        send_email(
+    "📩 New Contact Form Submission",
+    build_html_email("New Contact Form Submission", data),
+    is_html=True
+)
+
         return jsonify({"success": True, "message": "Contact form submitted successfully!"})
 
     except Exception as e:
@@ -74,7 +138,12 @@ def send_consultation():
         ))
         conn.commit()
 
-        send_email("New Consultation Request", format_email(data))
+        send_email(
+    "📩 New Consultation Request",
+    build_html_email("New Consultation Request", data),
+    is_html=True
+)
+
         return jsonify({"success": True, "message": "Consultation request sent!"})
 
     except Exception as e:
@@ -103,7 +172,12 @@ def send_inquiry():
         ))
         conn.commit()
 
-        send_email("New Inquiry Received", format_email(data))
+        send_email(
+    "📩 New Inquiry Received",
+    build_html_email("New Inquiry Received", data),
+    is_html=True
+)
+
         return jsonify({"success": True, "message": "Inquiry received successfully!"})
 
     except Exception as e:
@@ -135,7 +209,12 @@ def send_submit():
         ))
         conn.commit()
 
-        send_email("New Inquiry Submission", format_email(data))
+        send_email(
+    "📩 New Inquiry Submission",
+    build_html_email("New Inquiry Submission", data),
+    is_html=True
+)
+
         return jsonify({"success": True, "message": "Submission received!"})
 
     except Exception as e:
