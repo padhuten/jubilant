@@ -77,7 +77,8 @@ body {
     padding-top: 10px;
     padding-bottom: 10px;
     width: 85%;
-    margin: auto;
+    margin: 5%;
+    margin: 30px auto 0 auto;
     justify-content: center;
 }
 
@@ -244,4 +245,302 @@ select {
 
 .submit-button:hover {
     background-color: #0056b3;
+}
+/* ============================================ */
+/* RESPONSIVE MEDIA QUERIES */
+/* ============================================ */
+
+/* Extra Small Devices (320px - 480px) - Mobile Phones */
+@media (max-width: 480px) {
+    .header {
+        padding-top: 15px;
+    }
+    
+    .header h1 {
+        font-size: 1.5em;
+        margin-bottom: 10px;
+    }
+    
+    .header p {
+        font-size: 0.85em;
+        padding: 0 10px;
+    }
+    
+    .alphabet-filter-container {
+        width: 95%;
+        padding: 8px 5px;
+        margin-top: 20px;
+    }
+    
+    .alphabet-filter-container button {
+        padding: 4px 6px;
+        margin: 2px;
+        font-size: 0.75em;
+    }
+    
+    #brands-grid {
+        width: 95%;
+        margin-left: 0;
+        padding-left: 0;
+        justify-content: center;
+        margin: 15px auto;
+    }
+    
+    .brand-item {
+        margin: 5px;
+        width: 100%;
+        max-width: 140px;
+    }
+    
+    .brand-item img {
+        width: 100%;
+        max-width: 140px;
+        height: auto;
+    }
+    
+    .inquiry-button {
+        bottom: 15px;
+        right: 15px;
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+    
+    .modal-content {
+        width: 95%;
+        padding: 15px;
+    }
+    
+    .modal-header h2 {
+        font-size: 1.2em;
+    }
+}
+
+/* Small Devices (481px - 767px) - Larger Mobile Phones & Small Tablets */
+@media (min-width: 481px) and (max-width: 767px) {
+    .header {
+        padding-top: 20px;
+    }
+    
+    .header h1 {
+        font-size: 1.8em;
+    }
+    
+    .header p {
+        font-size: 0.9em;
+    }
+    
+    .alphabet-filter-container {
+        width: 92%;
+        padding: 10px 8px;
+        margin-top: 25px;
+    }
+    
+    .alphabet-filter-container button {
+        padding: 5px 8px;
+        margin: 3px;
+        font-size: 0.85em;
+    }
+    
+    #brands-grid {
+        width: 92%;
+        margin-left: 0;
+        padding-left: 0;
+        justify-content: center;
+        margin: 20px auto;
+    }
+    
+    .brand-item {
+        margin: 8px;
+        width: calc(50% - 16px);
+        max-width: 150px;
+    }
+    
+    .brand-item img {
+        width: 100%;
+        height: auto;
+    }
+    
+    .inquiry-button {
+        bottom: 18px;
+        right: 18px;
+        padding: 9px 18px;
+        font-size: 15px;
+    }
+    
+    .modal-content {
+        width: 90%;
+        max-width: 400px;
+    }
+}
+
+/* Medium Devices (768px - 991px) - Tablets */
+@media (min-width: 768px) and (max-width: 991px) {
+    .header {
+        padding-top: 25px;
+    }
+    
+    .header h1 {
+        font-size: 2em;
+    }
+    
+    .alphabet-filter-container {
+        width: 88%;
+        margin-top: 30px;
+    }
+    
+    .alphabet-filter-container button {
+        padding: 6px 10px;
+        margin: 3px;
+        font-size: 0.9em;
+    }
+    
+    #brands-grid {
+        width: 88%;
+        margin-left: 0;
+        padding-left: 0;
+        justify-content: center;
+        margin: 20px auto;
+    }
+    
+    .brand-item {
+        margin: 10px;
+        width: calc(33.33% - 20px);
+        max-width: 150px;
+    }
+    
+    .brand-item img {
+        width: 100%;
+        height: auto;
+    }
+    
+    .search-bar input {
+        width: 220px;
+    }
+    
+    .search-bar input:focus {
+        width: 270px;
+    }
+}
+
+/* Large Devices (992px - 1199px) - Desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+    .header {
+        padding-top: 28px;
+    }
+    
+    .alphabet-filter-container {
+        width: 87%;
+    }
+    
+    .alphabet-filter-container button {
+        padding: 5px 10px;
+        font-size: 0.95em;
+    }
+    
+    #brands-grid {
+        width: 87%;
+        margin-left: 50px;
+        padding-left: 80px;
+    }
+    
+    .brand-item {
+        margin: 10px 30px 12px 8px;
+    }
+    
+    .brand-item img {
+        max-width: 150px;
+    }
+}
+
+/* Extra Large Devices (1200px - 1440px) - Large Desktops */
+@media (min-width: 1200px) and (max-width: 1440px) {
+    .header {
+        padding-top: 30px;
+    }
+    
+    .alphabet-filter-container {
+        width: 85%;
+    }
+    
+    #brands-grid {
+        width: 85%;
+        margin-left: 97px;
+        padding-left: 105px;
+    }
+    
+    .brand-item {
+        margin-right: 40px;
+        margin-bottom: 15px;
+    }
+}
+
+/* Ultra Wide Screens (1441px+) */
+@media (min-width: 1441px) {
+    .header {
+        padding-top: 35px;
+    }
+    
+    .alphabet-filter-container {
+        width: 80%;
+    }
+    
+    #brands-grid {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 0;
+        justify-content: center;
+    }
+    
+    .brand-item {
+        margin: 10px 25px;
+    }
+}
+
+/* Landscape Orientation Adjustments for Mobile/Tablet */
+@media (max-width: 991px) and (orientation: landscape) {
+    .header {
+        padding-top: 15px;
+    }
+    
+    .header h1 {
+        font-size: 1.6em;
+        margin-bottom: 8px;
+    }
+    
+    .header p {
+        margin-bottom: 10px;
+    }
+    
+    .alphabet-filter-container {
+        padding: 8px;
+    }
+    
+    .alphabet-filter-container button {
+        padding: 4px 8px;
+        margin: 2px;
+    }
+    
+    #brands-grid {
+        margin-top: 15px;
+    }
+    
+    .brand-item {
+        margin: 6px;
+    }
+}
+
+/* Print Media Query */
+@media print {
+    .inquiry-button {
+        display: none;
+    }
+    
+    .alphabet-filter-container button {
+        border: 1px solid #ccc;
+    }
+    
+    body {
+        background-color: white;
+    }
 }

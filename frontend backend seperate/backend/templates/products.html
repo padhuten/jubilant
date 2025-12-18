@@ -1,122 +1,206 @@
 {% extends "layout.html" %}
 
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/products.css') }}">
+{% endblock %}
+
 {% block content %}
-<link rel="stylesheet" href="/static/css/products.css">
 
-<!-- ------------------------------------------------------- -->
-<!-- TOP BANNER -->
-<!-- ------------------------------------------------------- -->
-<section class="amd_epyc">
-    <div class="container">
-        <h2 class="prtname">Built For Excellence</h2>
-<p class="prt_details">Processors • Memory • Storage • Networking</p>
+<div class="products-container">
+    <!-- Header Section -->
+    <div class="header-section">
+        <div class="header-content">
+            <div class="header-left">
+                <h1>Built For Excellence</h1>
+                <p class="tagline">Processors • Memory • Storage • Networking</p>
+            </div>
+            <div class="header-right">
+                <div class="sort-controls">
+                    <label for="sort-select">Sort By:</label>
+                    <select id="sort-select" class="sort-select">
+                        <option value="relevance">Relevance</option>
+                        <option value="price-low-high">Price: Low to High</option>
+                        <option value="price-high-low">Price: High to Low</option>
+                        <option value="cores-high-low">Cores: High to Low</option>
+                        <option value="newest">Newest</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="filter-toggle-mobile">
+            <button id="filter-toggle-btn" class="filter-toggle">
+                <span class="toggle-icon">☰</span>
+                <span class="toggle-text">Filters</span>
+            </button>
+            <span class="result-count" id="result-count">Loading...</span>
+        </div>
     </div>
-</section>
 
-
-<!-- ------------------------------------------------------- -->
-<!-- MAIN WRAPPER -->
-<!-- ------------------------------------------------------- -->
-<section>
-    <div class="main-container">
-
-        <!-- --------------------------------------------- -->
-        <!-- LEFT FILTER SIDEBAR -->
-        <!-- --------------------------------------------- -->
-        <aside class="filter-sidebar">
-            <h2>Filter Options</h2>
-
-            <!-- Category -->
-            <div class="filter-group active">
-                <h3 class="filter-header">Category</h3>
-                <div class="filter-content">
-
-                    <label>
-                        <input type="checkbox" name="category" value="AMD Server Processor" class="filter-checkbox">
-                        AMD Server Processor
-                    </label>
-
-                    <label>
-                        <input type="checkbox" name="category" value="AMD Desktop Processor" class="filter-checkbox">
-                        AMD Desktop Processor
-                    </label>
-
-                    <label>
-                        <input type="checkbox" name="category" value="INTEL Desktop Processor" class="filter-checkbox">
-                        INTEL Desktop Processor
-                    </label>
-
-                </div>
+    <div class="main-content">
+        <!-- Sidebar Filters -->
+        <aside class="filters-sidebar" id="filters-sidebar">
+            <div class="filters-header">
+                <h2>Filter Options</h2>
+                <button id="close-filters-btn" class="close-filters">×</button>
             </div>
 
-            <!-- Brand -->
-            <div class="filter-group">
-                <h3 class="filter-header">Brand</h3>
-                <div class="filter-content">
-                    <label><input type="checkbox" name="brand" value="AMD" class="filter-checkbox"> AMD</label>
-                    <label><input type="checkbox" name="brand" value="Intel" class="filter-checkbox"> Intel</label>
-                    <label><input type="checkbox" name="brand" value="HP" class="filter-checkbox"> HP</label>
-                    <label><input type="checkbox" name="brand" value="Lenovo" class="filter-checkbox"> Lenovo</label>
-                    <label><input type="checkbox" name="brand" value="ASUS" class="filter-checkbox"> ASUS</label>
-                    <label><input type="checkbox" name="brand" value="Dell" class="filter-checkbox"> Dell</label>
-                    <label><input type="checkbox" name="brand" value="Samsung" class="filter-checkbox"> Samsung</label>
-                    <label><input type="checkbox" name="brand" value="Toshiba" class="filter-checkbox"> Toshiba</label>
-                    <label><input type="checkbox" name="brand" value="ACER" class="filter-checkbox"> ACER</label>
-                    <label><input type="checkbox" name="brand" value="Micron" class="filter-checkbox"> Micron</label>
-                </div>
-            </div>
+            <div class="filters-content">
 
-            <!-- Application -->
-            <div class="filter-group">
-                <h3 class="filter-header">Application</h3>
-                <div class="filter-content">
-                    <label><input type="checkbox" name="application" value="Desktop" class="filter-checkbox"> Desktop</label>
-                    <label><input type="checkbox" name="application" value="Server" class="filter-checkbox"> Server</label>
-                    <label><input type="checkbox" name="application" value="Workstation" class="filter-checkbox"> Workstation</label>
+                <!-- Category Filter -->
+                <div class="filter-group">
+                    <div class="filter-title">
+                        <h3>Category</h3>
+                        <span class="toggle-arrow">▼</span>
+                    </div>
+                    <div class="filter-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="filter-checkbox" data-filter="category" value="AMD Server Processor">
+                            <span class="checkmark"></span>
+                            <span>AMD Server Processor</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="filter-checkbox" data-filter="category" value="AMD Desktop Processor">
+                            <span class="checkmark"></span>
+                            <span>AMD Desktop Processor</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="filter-checkbox" data-filter="category" value="Intel Desktop Processor">
+                            <span class="checkmark"></span>
+                            <span>Intel Desktop Processor</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="filter-checkbox" data-filter="category" value="Intel Server Processor">
+                            <span class="checkmark"></span>
+                            <span>Intel Server Processor</span>
+                        </label>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Cores -->
-            <div class="filter-group">
-                <h3 class="filter-header">Total Cores</h3>
-                <div class="filter-content">
-                    <label><input type="checkbox" name="cores" value="8" class="filter-checkbox"> Up to 8 Cores</label>
-                    <label><input type="checkbox" name="cores" value="16" class="filter-checkbox"> 9–16 Cores</label>
-                    <label><input type="checkbox" name="cores" value="32" class="filter-checkbox"> 17–32 Cores</label>
-                    <label><input type="checkbox" name="cores" value="64" class="filter-checkbox"> 33–64 Cores</label>
-                    <label><input type="checkbox" name="cores" value="128" class="filter-checkbox"> 65+ Cores</label>
+                <!-- Brand Filter -->
+                <div class="filter-group">
+                    <div class="filter-title">
+                        <h3>Brand</h3>
+                        <span class="toggle-arrow">▼</span>
+                    </div>
+                    <div class="filter-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="filter-checkbox" data-filter="brand" value="AMD">
+                            <span class="checkmark"></span>
+                            <span>AMD</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="filter-checkbox" data-filter="brand" value="Intel">
+                            <span class="checkmark"></span>
+                            <span>Intel</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="filter-checkbox" data-filter="brand" value="HP">
+                            <span class="checkmark"></span>
+                            <span>HP</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="filter-checkbox" data-filter="brand" value="Dell">
+                            <span class="checkmark"></span>
+                            <span>Dell</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="filter-checkbox" data-filter="brand" value="Lenovo">
+                            <span class="checkmark"></span>
+                            <span>Lenovo</span>
+                        </label>
+                    </div>
                 </div>
-            </div>
 
-            <!-- Price -->
-            <div class="filter-group">
-                <h3>Max Price</h3>
-                <div class="range-display">
-                    <span id="price-value">$3000</span>
+                <!-- Application Filter -->
+                <div class="filter-group">
+                    <div class="filter-title">
+                        <h3>Application</h3>
+                        <span class="toggle-arrow">▼</span>
+                    </div>
+                    <div class="filter-options">
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="filter-checkbox" data-filter="application" value="Desktop">
+                            <span class="checkmark"></span>
+                            <span>Desktop</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="filter-checkbox" data-filter="application" value="Server">
+                            <span class="checkmark"></span>
+                            <span>Server</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" class="filter-checkbox" data-filter="application" value="Workstation">
+                            <span class="checkmark"></span>
+                            <span>Workstation</span>
+                        </label>
+                    </div>
                 </div>
-                <input type="range" id="price-max" min="50" max="3000" value="3000" step="10">
-            </div>
 
+                <!-- Total Cores -->
+                <div class="filter-group">
+                    <div class="filter-title">
+                        <h3>Total Cores</h3>
+                        <span class="toggle-arrow">▼</span>
+                    </div>
+                    <div class="filter-options">
+                        <label class="checkbox-label"><input type="checkbox" class="filter-checkbox" data-filter="cores" value="0-8"><span class="checkmark"></span><span>Up to 8 Cores</span></label>
+                        <label class="checkbox-label"><input type="checkbox" class="filter-checkbox" data-filter="cores" value="9-16"><span class="checkmark"></span><span>9–16 Cores</span></label>
+                        <label class="checkbox-label"><input type="checkbox" class="filter-checkbox" data-filter="cores" value="17-32"><span class="checkmark"></span><span>17–32 Cores</span></label>
+                        <label class="checkbox-label"><input type="checkbox" class="filter-checkbox" data-filter="cores" value="33-64"><span class="checkmark"></span><span>33–64 Cores</span></label>
+                        <label class="checkbox-label"><input type="checkbox" class="filter-checkbox" data-filter="cores" value="65+"><span class="checkmark"></span><span>65+ Cores</span></label>
+                    </div>
+                </div>
+
+                <!-- Price Range -->
+                <div class="filter-group">
+                    <div class="filter-title">
+                        <h3>Price Range</h3>
+                        <span class="toggle-arrow">▼</span>
+                    </div>
+                    <div class="price-range-container">
+                        <input type="range" id="price-range" class="price-slider" min="0" max="50000" value="50000">
+                        <div class="price-display">
+                            <span>$0</span>
+                            <span id="price-value">$50,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technology -->
+                <div class="filter-group">
+                    <div class="filter-title">
+                        <h3>Technology</h3>
+                        <span class="toggle-arrow">▼</span>
+                    </div>
+                    <div class="filter-options">
+                        <label class="checkbox-label"><input type="checkbox" class="filter-checkbox" data-filter="tech" value="3nm"><span class="checkmark"></span><span>3nm</span></label>
+                        <label class="checkbox-label"><input type="checkbox" class="filter-checkbox" data-filter="tech" value="5nm"><span class="checkmark"></span><span>5nm</span></label>
+                        <label class="checkbox-label"><input type="checkbox" class="filter-checkbox" data-filter="tech" value="7nm"><span class="checkmark"></span><span>7nm</span></label>
+                        <label class="checkbox-label"><input type="checkbox" class="filter-checkbox" data-filter="tech" value="14nm"><span class="checkmark"></span><span>14nm</span></label>
+                    </div>
+                </div>
+
+                <button id="reset-filters-btn" class="reset-btn">Reset All Filters</button>
+            </div>
         </aside>
 
-
-        <!-- --------------------------------------------- -->
-        <!-- PRODUCT LIST GRID -->
-        <!-- --------------------------------------------- -->
-        <main class="product-content">
-            <h1>All Products</h1>
-
-            <div class="product-grid" id="shortlist-grid">
-                <p class="loading-message">Loading products...</p>
+        <!-- Products Grid -->
+        <div class="products-section">
+            <div id="products-grid" class="products-grid">
+                <div class="loading-state">
+                    <div class="loader"></div>
+                    <p>Loading products...</p>
+                </div>
             </div>
-        </main>
 
+            <div id="no-results" class="no-results" style="display:none;">
+                <p>No products found matching your filters.</p>
+            </div>
+        </div>
     </div>
-</section>
+</div>
 
-<!-- ------------------------------------------------------- -->
-<!-- MAIN SCRIPT -->
-<!-- ------------------------------------------------------- -->
-<script type="module" src="/static/javascript/product_list.js"></script>
+<script src="{{ url_for('static', filename='javascript/product_list.js') }}"></script>
 
 {% endblock %}

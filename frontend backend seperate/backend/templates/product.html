@@ -45,7 +45,154 @@
         <div>Bulk Discount</div>
         <div>Secure Checkout</div>
       </div>
+      
+      <!-- Add this code in product.html, right BEFORE the payment-shipping-section div -->
+<!-- Add this code in product.html, right BEFORE the payment-shipping-section div -->
 
+<!-- Inquiry Button Section -->
+<div class="inquiry-button-section">
+  <button class="inquiry-btn" onclick="openInquiryModal()">
+    <span class="inquiry-icon">💬</span>
+    <span class="inquiry-text">Send Inquiry</span>
+  </button>
+</div>
+
+<!-- Inquiry Modal -->
+<div class="inquiry-modal-overlay" id="inquiryModalOverlay" onclick="closeInquiryModal()"></div>
+
+<div class="inquiry-modal" id="inquiryModal">
+  <div class="inquiry-modal-header">
+    <h3>Product Inquiry</h3>
+    <button class="inquiry-modal-close" onclick="closeInquiryModal()">✕</button>
+  </div>
+  
+  <div class="inquiry-modal-body">
+    <form id="inquiryForm" action="/send-inquiry" method="POST">
+      <!-- Hidden fields with product data -->
+      <input type="hidden" name="product" id="inquiryProduct">
+      <input type="hidden" name="category" id="inquiryCategory">
+      <input type="hidden" name="brand" id="inquiryBrand">
+      
+      <div class="form-group">
+        <label>Product Name</label>
+        <input type="text" id="displayProduct" readonly class="readonly-input">
+      </div>
+      
+      <div class="form-group">
+        <label>Your Name *</label>
+        <input type="text" name="name" placeholder="Enter your name" required>
+      </div>
+      
+      <div class="form-group">
+        <label>Email Address *</label>
+        <input type="email" name="email" placeholder="Enter your email" required>
+      </div>
+      
+      <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" name="phone" placeholder="Enter your phone number">
+      </div>
+      
+      <div class="form-group">
+        <label>Quantity *</label>
+        <input type="number" name="quantity" placeholder="Enter quantity" min="1" value="10" required>
+      </div>
+      
+      <div class="form-group">
+        <label>Inquiry Details</label>
+        <textarea name="message" rows="4" placeholder="Additional information or questions..."></textarea>
+      </div>
+      
+      <div class="form-actions">
+        <button type="button" class="btn-cancel" onclick="closeInquiryModal()">Cancel</button>
+        <button type="submit" class="btn-submit">Send Inquiry</button>
+      </div>
+      
+      <div id="inquiryFormMessage" class="form-message"></div>
+    </form>
+  </div>
+</div>
+
+<script>
+// Open inquiry modal with product data
+function openInquiryModal() {
+  const productName = document.getElementById('prodName').textContent;
+  const productCategory = document.getElementById('prodCategory').textContent;
+  const productBrand = document.getElementById('prodBrand').textContent;
+  
+  // Set hidden fields
+  document.getElementById('inquiryProduct').value = productName;
+  document.getElementById('inquiryCategory').value = productCategory;
+  document.getElementById('inquiryBrand').value = productBrand;
+  
+  // Set readonly display field
+  document.getElementById('displayProduct').value = productName;
+  
+  // Show modal
+  document.getElementById('inquiryModalOverlay').classList.add('active');
+  document.getElementById('inquiryModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+// Close inquiry modal
+function closeInquiryModal() {
+  document.getElementById('inquiryModalOverlay').classList.remove('active');
+  document.getElementById('inquiryModal').classList.remove('active');
+  document.body.style.overflow = 'auto';
+}
+
+// Handle form submission
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('inquiryForm');
+  const messageBox = document.getElementById('inquiryFormMessage');
+  
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const submitBtn = form.querySelector('.btn-submit');
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
+    messageBox.style.display = 'none';
+    
+    const formData = new FormData(form);
+    
+    try {
+      const res = await fetch('/send-inquiry', {
+        method: 'POST',
+        body: formData
+      });
+      
+      if (res.ok) {
+        messageBox.textContent = 'Inquiry sent successfully! 🎉';
+        messageBox.className = 'form-message success';
+        messageBox.style.display = 'block';
+        form.reset();
+        
+        // Close modal after 2 seconds
+        setTimeout(() => {
+          closeInquiryModal();
+        }, 2000);
+      } else {
+        throw new Error('Server error');
+      }
+    } catch (error) {
+      messageBox.textContent = 'Unable to send inquiry 😞 Please try again.';
+      messageBox.className = 'form-message error';
+      messageBox.style.display = 'block';
+    }
+    
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Send Inquiry';
+  });
+});
+
+// Close modal on Escape key
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    closeInquiryModal();
+  }
+});
+</script>
       <!-- Payment & Shipping Section -->
       <!-- Payment & Shipping Section -->
 <!-- Payment & Shipping Section -->
@@ -78,7 +225,6 @@
     </div>
   </div>
 </section>
-
 
 <!-- ======================== -->
 <!-- ✅ TABS SECTION -->

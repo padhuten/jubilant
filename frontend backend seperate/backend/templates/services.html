@@ -1,154 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jubilant Tech - Your Global IT Partner</title>
+{% extends "layout.html" %}
 
-  <!-- Styles and Fonts -->
-  <link rel="stylesheet" href="/static/css/services.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-  <link rel="icon" href="images/jubiliant logo.webp" />
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/services.css') }}">
+{% endblock %}
 
-  <!-- Icons -->
-  <script src="https://unpkg.com/feather-icons"></script>
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMD/cdE5WvB23nFRK3V46b9C0LpQ3eF2lJpC5/49TzE5/y0T8d5G5o5F5u5u5w=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/css/intlTelInput.css"
-  />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-</head>
-<body>
-
-    <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.1.1/build/js/intlTelInput.min.js"></script>
-    <!-- Header -->
-    <header class="header-container">
-        <nav class="main-nav">
-        <div class="logo">
-            <a href="index.html" aria-label="#">
-            <img
-                src="https://img1.wsimg.com/isteam/ip/46c16ae4-f23f-4e6f-88a2-e319391f42fa/Company%20Logo%202025%20v1.png/:/rs=w:138,h:118.9,cg:true,m/cr=w:138,h:118.9/qt=q:100/ll"
-                alt="Jubilant Tech Logo"
-            />
-            </a>
-        </div>
-
-        <ul class="nav-links">
-            <li class="dropdown">
-            <a href="#" class="dropbtn">Service</a>
-            <div class="dropdown-content">
-                <div class="dropdown-column">
-                <a href="it_hardware_procure.html" style="color: #0056b3;">IT Hardware Procurement Solution</a>
-                <a href="services.html" style="color: #0056b3;">Warrenty/Returns/deliever</a>
-                <a href="services.html" style="color: #0056b3;">Terms of Use/Policy</a>
-                </div>
-            </div>
-            </li>
-
-            <li class="dropdown">
-            <a href="#" class="dropbtn">
-                All Products <i data-feather="chevron-down" class="feather-icon"></i>
-            </a>
-            <div class="dropdown-content">
-                <div class="dropdown-column">
-                <a href="products.html">CPU</a>
-                <div class="nested-dropdown">
-                    <a href="products.html?brand=Intel">AMD EPYC WOF/TRAY CPU</a>
-                    <a href="">AMD DESKTOP BOX/TRAY CPU</a>
-                    <a href="">INTEL BOX/TRAY CPU</a>
-                    <a href="">INTEL XEON TRAY CPU</a>
-                </div>
-
-                <a href="">Hard Drive</a>
-                <div class="nested-dropdown">
-                    <a href="">SEAGATE HDD SATA 2.5" & 3.5"</a>
-                    <a href="">WESTERN DIGITAL HDD SATA 2.5" & 3.5"</a>
-                    <a href="">TOSHIBA HDD SATA 2.5" & 3.5"</a>
-                </div>
-
-                <a href="#">SSD</a>
-                <div class="nested-dropdown">
-                    <a href="">SAMSUNG SSD</a>
-                    <a href="">Sandisk SSD</a>
-                    <a href="">LEXAR SSD</a>
-                </div>
-
-                <a href="#">Memory</a>
-                <div class="nested-dropdown">
-                    <a href="">HYNIX MEMORY SDIM & LDIM DDR</a>
-                    <a href="">SAMSUNG MEMROY SDIM & LDIM DDR</a>
-                    <a href="">KINGSTON MEMORY SDIM & LDIM DDR</a>
-                </div>
-
-                <a href="">Monitors</a>
-                <div class="nested-dropdown">
-                    <a href="">SAMSUNG</a>
-                    <a href="">ACER</a>
-                    <a href="">HP</a>
-                    <a href="">DELL</a>
-                    <a href="">LENOVO</a>
-                </div>
-
-                <a href="">Laptop</a>
-                <div class="nested-dropdown">
-                    <a href="">ACER</a>
-                    <a href="">HP</a>
-                    <a href="">DELL</a>
-                    <a href="">LENOVO</a>
-                </div>
-
-                <a href="">Mini Pc</a>
-                <div class="nested-dropdown">
-                    <a href="">INTEL NUC</a>
-                    <a href="">HP</a>
-                </div>
-
-                <a href="">Business Notebooks</a>
-                <div class="nested-dropdown">
-                    <a href="">HP</a>
-                    <a href="">DELL</a>
-                    <a href="">LENOVO</a>
-                </div>
-
-                <a href="">Networking</a>
-                <div class="nested-dropdown">
-                    <a href="">LINKSYS</a>
-                    <a href="">ARUBA</a>
-                    <a href="">CISCO</a>
-                </div>
-
-                <a href="">Docking sections</a>
-                <div class="nested-dropdown">
-                    <a href="">LENOVO</a>
-                    <a href="">DELL</a>
-                </div>
-                </div>
-            </div>
-            </li>
-
-            <li><a href="suppliers.html">Brand Suppliers</a></li>
-            <li><a href="inquiry.html">Inquiry</a></li>
-            <li><a href="aboutus.html">About Us</a></li>
-        </ul>
-
-        <div class="search-bar">
-            <form action="/search" method="GET">
-            <input type="text" name="q" placeholder="Search Products..." />
-            <button type="submit">
-                <i data-feather="search" class="search-icon"></i>
-            </button>
-            </form>
-        </div>
-        </nav>
-    </header>
-
+{% block content %}
 <section id="all">
     <div class="hub-layout">
         <nav class="hub-nav">
@@ -283,7 +139,7 @@
                     <span style="padding: 8px 16px; background: var(--bg-main); border-radius: 20px; font-weight: 600; font-size: 0.9rem;">Lenovo</span>
                     <span style="padding: 8px 16px; background: var(--bg-main); border-radius: 20px; font-weight: 600; font-size: 0.9rem;">Samsung</span>
                     <span style="padding: 8px 16px; background: var(--bg-main); border-radius: 20px; font-weight: 600; font-size: 0.9rem;">Western Digital</span>
-                    <a href="../suppliers.html"><span style="padding: 8px 16px; background: var(--bg-main); border-radius: 20px; font-weight: 600; font-size: 0.9rem; color: var(--accent);">+ Many More</span></a>
+                    <a href="/suppliers"><span style="padding: 8px 16px; background: var(--bg-main); border-radius: 20px; font-weight: 600; font-size: 0.9rem; color: var(--accent);">+ Many More</span></a>
                 </div>
             </section>
 
@@ -291,176 +147,30 @@
     </div>
 </section>
 
-    <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-column">
-        <h3>Jubilant Tech</h3>
-        <p>Your premier global supplier of IT hardware and components.</p>
-      </div>
+<script>
+    // Intersection Observer to highlight active nav link based on scroll position
+    document.addEventListener("DOMContentLoaded", () => {
+        const links = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('.content-section');
 
-      <div class="footer-column">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/aboutus.html">About Us</a></li>
-          <li><a href="/inquiry.html">Contact</a></li>
-        </ul>
-      </div>
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -70% 0px',
+            threshold: 0
+        };
 
-      <div class="footer-column">
-        <h3>Contact Us</h3>
-        <p>Email: sales@jubilant-tech.com</p>
-        <p>Phone: +65 65206545</p>
-      </div>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    links.forEach(link => link.classList.remove('active'));
+                    const activeLink = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+                    if (activeLink) activeLink.classList.add('active');
+                }
+            });
+        }, observerOptions);
 
-      <div class="footer-column">
-        <h3>Follow Us</h3>
-        <div class="social-icons">
-          <a href="#"><i data-feather="facebook"></i></a>
-          <a href="#"><i data-feather="twitter"></i></a>
-          <a href="#"><i data-feather="linkedin"></i></a>
-        </div>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p>&copy; 2025 Jubilant Tech. All Rights Reserved.</p>
-    </div>
-  </footer>
-
-  <!-- Inquiry Modal -->
-    <button class="inquiry-button" onclick="toggleModal('open')">💬 Inquiry</button>
-
-    <div id="inquiryModal" class="modal-overlay" style="display: none;">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h2>Send an Inquiry</h2>
-            <span class="close-btn" onclick="toggleModal('close')">&times;</span>
-        </div>
-
-        <p class="modal-subtitle">Tell us what you need—we'll respond within 24 hours.</p>
-
-        <form id="inquiryForm" action="/send-inquiry" method="POST">
-            <label for="name">Name</label>
-            <input type="text" id="name" name="name" placeholder="Your name" required />
-
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="you@example.com" required />
-
-            <label for="phone">Phone</label>
-            <input type="tel" id="phone" name="phone" value="+91 98765 43210" />
-
-            <label for="product">Product / Service</label>
-            <select id="product" name="product">
-            <option>Select</option>
-            <option>Jubilant System</option>
-            <option>Other Service</option>
-            </select>
-
-            <label for="quantity">Quantity (optional)</label>
-            <input type="number" id="quantity" name="quantity" placeholder="1" />
-
-            <p class="modal-footer-text">
-            We respect your privacy. We'll only use this info to reply.
-            </p>
-
-            <button type="submit" class="submit-button">Inquiry New</button>
-            <p id="successMsg" style="color: green; display: none;">Inquiry sent successfully!</p>
-        </form>
-        </div>
-    </div>
-
-    <!-- JS Scripts -->
-    <script>
-        function toggleModal(action) {
-        const modal = document.getElementById("inquiryModal");
-        modal.style.display = action === "open" ? "flex" : "none";
-        }
-
-        document.getElementById("inquiryForm").addEventListener("submit", async function (e) {
-        e.preventDefault();
-        const formData = new FormData(this);
-        const response = await fetch("/send-inquiry", { method: "POST", body: formData });
-        const result = await response.json();
-        const successMsg = document.getElementById("successMsg");
-        const modal = document.getElementById("inquiryModal");
-
-        if (result.success) {
-            successMsg.textContent = result.message || "Inquiry sent successfully!";
-            successMsg.style.color = "green";
-            successMsg.style.display = "block";
-            this.reset();
-            setTimeout(() => (modal.style.display = "none"), 2000);
-        } else {
-            successMsg.textContent = result.message || "Failed to send inquiry. Please try again.";
-            successMsg.style.color = "red";
-            successMsg.style.display = "block";
-        }
-
-        setTimeout(() => (successMsg.style.display = "none"), 5000);
-        });
-
-        feather.replace();
-    </script>
-
-    <script>
-        const slider = document.getElementById("productSlider");
-        const leftBtn = document.getElementById("leftBtn");
-        const rightBtn = document.getElementById("rightBtn");
-
-        leftBtn.addEventListener("click", () => (slider.scrollLeft -= 300));
-        rightBtn.addEventListener("click", () => (slider.scrollLeft += 300));
-
-        let autoSlide = setInterval(() => {
-        if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth) {
-            slider.scrollLeft = 0;
-        } else {
-            slider.scrollLeft += 300;
-        }
-        }, 3000);
-
-        slider.addEventListener("mouseover", () => clearInterval(autoSlide));
-        slider.addEventListener("mouseout", () => {
-        autoSlide = setInterval(() => {
-            if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth) {
-            slider.scrollLeft = 0;
-            } else {
-            slider.scrollLeft += 300;
-            }
-        }, 3000);
-        });
-    </script>
-
-    <script>
-        // Simple Intersection Observer to highlight active nav link based on scroll position
-        document.addEventListener("DOMContentLoaded", () => {
-            const links = document.querySelectorAll('.nav-link');
-            const sections = document.querySelectorAll('section');
-
-            const observerOptions = {
-                root: null,
-                rootMargin: '-20% 0px -70% 0px', // Trigger when section is near top of viewport
-                threshold: 0
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        // Remove active from all
-                        links.forEach(link => link.classList.remove('active'));
-                        // Add active to corresponding link
-                        const activeLink = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
-                        if (activeLink) activeLink.classList.add('active');
-                    }
-                });
-            }, observerOptions);
-
-            sections.forEach(section => observer.observe(section));
-        });
-    </script>
-    <script>
-  feather.replace();
+        sections.forEach(section => observer.observe(section));
+    });
 </script>
 
-</body>
-</html>
+{% endblock %}

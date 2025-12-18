@@ -23,15 +23,26 @@ body {
     background-image: url(/static/images/procureheader1.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    height: 400px;
-    padding-top: 50px;
+    background-position: center;
+    min-height: 500px;
+    padding-top: 120px;
+    padding-bottom: 60px;
     margin-bottom: 30px;
+    margin-top: 0;
+    display: flex;
+    align-items: flex-start;
+}
+
+#header .container {
+    margin-top: 40px;
 }
 
 #header h2{
     font-size: 40px;
     padding-bottom: 25px;
+    padding-top: 20px;
     color: white;
+    margin-top: 0;
 }
 
 #header img{
@@ -49,6 +60,10 @@ body {
     border-radius: 10px;
     text-decoration: none;
     scroll-behavior: smooth;
+     display: inline-block;
+    max-width: 100%;
+    white-space: normal;
+    text-align: center;
 }
 
 #header p{
@@ -57,7 +72,7 @@ body {
 
 #header a:hover{
     color: white;
-    width: 300px;
+   
     background-color: rgb(87, 159, 222);
     font-weight: bold;
 }
@@ -107,7 +122,7 @@ body {
 /* Slider Viewport (The window that hides overflow) */
 .slider-container {
     position: relative; /* For positioning buttons */
-    max-width: 1250px; /* Max width of your grid */
+    max-width: 100%; /* Max width of your grid */
     margin: 0 auto;
     overflow: hidden; /* CRITICAL: Hides cards not currently in view */
     padding: 0 50px; /* Space for buttons not to overlap content */
@@ -115,14 +130,16 @@ body {
 
 /* The Card Track (The element that moves) */
 .card-track {
-    display: flex;
-    transition: transform 0.5s ease-in-out; /* Smooth scrolling animation */
-    gap: 30px; /* Space between cards */
-    
-    /* Disables browser's default scrollbar */
-    overflow-x: scroll; 
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none;  /* IE and Edge */
+   display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 85%;
+    gap: 20px;
+
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+   
 }
 
 .card-track::-webkit-scrollbar {
@@ -131,30 +148,38 @@ body {
 
 /* Individual Card Styles */
 .card-item {
-    min-width: 300px; /* Fixed width for each card */
+     /* Fixed width for each card */
     /* flex-shrink: 0;  */
-    background-color: #192038; /* Match section background */
-    border: 1px solid #f9fafc; /* Thin blue border from image */
-    padding: 20px;
+    width: 100%;
+    background-color: #192038;
+    border: 1px solid #f9fafc;
+    border-radius: 14px;
+    padding: 24px;
     text-align: center;
-    margin: 10px;
-    border-radius: 10px;
+   
+     overflow: hidden; 
+
+    scroll-snap-align: center;
+    box-sizing: border-box;
 }
 
 .card-image-wrapper {
-    height: 200px; 
+    width: 100%;
+    aspect-ratio: 16 / 9;
     overflow: hidden;
-    margin-bottom: 15px;
+    border-radius: 12px;
+    margin-bottom: 16px;
+
 }
 
 .card-item img {
-    width: 250px;
-    height: 250px;
-    border-radius: 10px;
+     width: 100%;
+    height: 100%;
     object-fit: cover;
-    border: 1px solid #4a6fa5; /* Inner border for the image */
+  display: block;
+  
+   
 }
-
 /* Navigation Button Styles */
 .nav-button {
     position: absolute;
@@ -164,22 +189,15 @@ body {
     color: white;
     padding: 10px;
     cursor: pointer;
-    z-index: 10;
+    z-index: 5;
     font-size: 24px;
     border-radius: 50%;
     border: none;
     width: 50px;
 }
 
-.prev-button { 
-    left: 0;
-    margin-right: 20px;
- }
-
-.next-button { 
-    right: 0;
-    margin-left: 20px; 
-}
+.prev-button { left: 8px; }
+.next-button { right: 8px; }
 
 /* --- Global & Base Form Layout --- */
 .consultation-section {
@@ -197,17 +215,22 @@ body {
 }
 
 .consultation-info h1 {
-    font-size: 48px;
+    font-size:  clamp(26px, 6vw, 48px);
     font-weight: 800;
     color: #333; 
     line-height: 1.1;
     margin-bottom: 20px;
+        word-break: break-word;
 }
 
+
 .consultation-info p {
-    font-size: 16px;
+  
     color: #555;
+    font-size: clamp(14px, 4vw, 16px);
     line-height: 1.5;
+    max-width: 520px;
+   
 }
 
 /* Right side (The Form Container) */
@@ -544,7 +567,401 @@ body {
     line-height: 1; /* Aligns the 'x' vertically */
 }
 
-.close-btn:hover {
+.close-btn:hover {/* ============================================
+   RESPONSIVE MEDIA QUERIES
+   Covers: 320px - 1440px
+   ============================================ */
+
+/* ============================================
+   EXTRA SMALL DEVICES (Mobile Portrait)
+   320px - 480px
+   ============================================ */
+/* =================================
+   CONSULTATION FORM – MOBILE FIX
+================================= */
+@media (max-width: 480px) {
+
+    /* Form wrapper */
+    .consultation-form {
+        gap: 16px;
+    }
+
+    /* Force rows to stack */
+    .form-row {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    /* All inputs full width */
+    .half-width,
+    .full-width {
+        width: 100%;
+        flex: none;
+    }
+
+    /* Inputs & selects */
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        font-size: 14px;
+        padding: 12px;
+        box-sizing: border-box;
+    }
+
+    /* Phone input alignment fix */
+    .phone-input-container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+    }
+
+    #country-code {
+        max-width: 70px;
+        font-size: 14px;
+    }
+
+    #phone {
+        flex: 1;
+        font-size: 14px;
+    }
+
+    /* Textarea */
+    .textarea-group textarea {
+        min-height: 100px;
+    }
+
+    /* Actions */
+    .form-actions {
+        flex-direction: column;
+        gap: 16px;
+        align-items: stretch;
+    }
+
+    /* Submit button */
+    .submit-button {
+        width: 100%;
+        padding: 14px;
+        font-size: 16px;
+        border-radius: 8px;
+    }
+}
+
+/* ============================================
+   SMALL DEVICES (Mobile Landscape & Small Tablets)
+   481px - 767px
+   ============================================ */
+@media (min-width: 481px) and (max-width: 767px) {
+    /* Header Section */
+    #header {
+        min-height: 450px;
+        padding-top: 100px;
+    }
+    
+    #header h2 {
+        font-size: 32px;
+    }
+    
+    #header a {
+        font-size: 16px;
+        padding: 10px 14px;
+    }
+    
+    /* Products Section */
+    #products_li h3 {
+        font-size: 28px;
+    }
+    
+    #products_li .col-lg-3 {
+        width: 50%;
+        float: left;
+        padding: 10px;
+    }
+    
+    #products_li img {
+        height: 60px;
+        width: 60px;
+    }
+    
+    #products_li p {
+        font-size: 14px;
+    }
+    
+    /* Why Us Section */
+    .section-title {
+        font-size: 24px;
+        padding: 0 20px;
+    }
+    
+    .card-item {
+        min-width: 280px;
+    }
+    
+    /* Consultation Section */
+    .consultation-section {
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    .consultation-info {
+        padding-right: 0;
+        padding-bottom: 30px;
+    }
+    
+    .consultation-info h1 {
+        font-size: 36px;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .half-width {
+        width: 100%;
+    }
+    
+    .form-group input[type="tel"] {
+        width: 100% !important;
+    }
+    
+    .form-actions {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .submit-button {
+        width: 100%;
+    }
+    
+    /* Who We Are */
+    #who_we .col-lg-4 {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    #who_we .col-lg-7 {
+        width: 100%;
+    }
+    
+    #who_logo {
+        width: 100%;
+        margin: 0 auto;
+    }
+}
+
+/* ============================================
+   MEDIUM DEVICES (Tablets)
+   768px - 991px
+   ============================================ */
+@media (min-width: 768px) and (max-width: 991px) {
+    /* Header Section */
+    #header {
+        min-height: 450px;
+    }
+    
+    #header h2 {
+        font-size: 36px;
+    }
+    
+    /* Products Section */
+    #products_li .col-lg-3 {
+        width: 25%;
+        float: left;
+    }
+    
+    #products_li img {
+        height: 70px;
+        width: 70px;
+    }
+    
+    /* Why Us Section */
+    .section-title {
+        font-size: 28px;
+    }
+    
+    /* Consultation Section */
+    .consultation-section {
+        flex-direction: column;
+    }
+    
+    .consultation-info {
+        padding-right: 0;
+        padding-bottom: 40px;
+        text-align: center;
+    }
+    
+    .consultation-info h1 {
+        font-size: 42px;
+    }
+    
+    .form-row {
+        gap: 25px;
+    }
+    
+    .form-group input[type="tel"] {
+        width: 100% !important;
+    }
+    
+    /* Who We Are */
+    #who_we {
+        height: auto;
+        padding: 60px 0;
+    }
+    
+    #who_we .col-lg-4 {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    
+    #who_we .col-lg-7 {
+        width: 100%;
+    }
+    
+    #who_logo {
+        width: 80%;
+        margin: 0 auto;
+    }
+}
+
+/* ============================================
+   LARGE DEVICES (Small Desktops)
+   992px - 1199px
+   ============================================ */
+@media (min-width: 992px) and (max-width: 1199px) {
+    /* Header Section */
+    #header h2 {
+        font-size: 38px;
+    }
+    
+    /* Products Section */
+    #products_li .col-lg-3 {
+        width: 25%;
+        float: left;
+    }
+    
+    /* Consultation Section */
+    .consultation-info h1 {
+        font-size: 44px;
+    }
+    
+    .form-group input[type="tel"] {
+        width: 350px !important;
+    }
+    
+    /* Who We Are */
+    #who_logo {
+        width: 450px;
+    }
+}
+
+/* ============================================
+   EXTRA LARGE DEVICES (Large Desktops)
+   1200px - 1440px
+   ============================================ */
+@media (min-width: 1200px) and (max-width: 1440px) {
+    /* Container max-width */
+    .container {
+        max-width: 1170px;
+    }
+    
+    /* Header Section */
+    #header h2 {
+        font-size: 40px;
+    }
+    
+    /* Consultation Section */
+    .consultation-section {
+        max-width: 1200px;
+    }
+    
+    .form-group input[type="tel"] {
+        width: 387px !important;
+    }
+    
+    /* Who We Are */
+    #who_logo {
+        width: 500px;
+    }
+}
+
+/* ============================================
+   ULTRA WIDE SCREENS
+   Above 1440px
+   ============================================ */
+@media (min-width: 1441px) {
+    .container,
+    .consultation-section,
+    .slider-container {
+        max-width: 1400px;
+    }
+}
+
+/* ============================================
+   LANDSCAPE ORIENTATION FIXES
+   ============================================ */
+@media (max-height: 500px) and (orientation: landscape) {
+    #header {
+        min-height: 350px;
+        padding-top: 60px;
+    }
+    
+    #header h2 {
+        font-size: 28px;
+        padding-bottom: 10px;
+    }
+}
+
+/* ============================================
+   PRINT STYLES
+   ============================================ */
+@media print {
+    #header,
+    .inquiry-button,
+    .nav-button {
+        display: none;
+    }
+    
+    .consultation-section {
+        page-break-inside: avoid;
+    }
+}
+
+/* ============================================
+   TOUCH DEVICE OPTIMIZATIONS
+   ============================================ */
+@media (hover: none) and (pointer: coarse) {
+    /* Larger touch targets */
+    .nav-button {
+        width: 55px;
+        height: 55px;
+        font-size: 26px;
+    }
+    
+    #products_li a {
+        padding: 20px;
+        min-height: 150px;
+    }
+    
+    .submit-button,
+    .inquiry-button {
+        min-height: 48px;
+    }
+}
+
+/* ============================================
+   HIGH DPI SCREENS (Retina)
+   ============================================ */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    #products_li img,
+    .card-item img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
     color: #666;
 }
 
@@ -753,3 +1170,324 @@ select {
         padding: 15px;
     }
 }
+@media (max-width: 480px) {
+
+    .slider-container {
+        padding: 0 10px;   /* reduce side padding */
+    }
+
+    .card-track {
+        gap: 15px;
+    }
+
+    .card-item {
+        min-width: 90vw;   /* fit screen width */
+        margin: 0 auto;
+        padding: 15px;
+    }
+
+}
+@media (max-width: 480px) {
+
+    .card-image-wrapper {
+        height: 140px;
+    }
+
+    .card-item img {
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    .nav-button {
+        width: 32px;
+        height: 32px;
+        font-size: 16px;
+    }
+
+    .prev-button {
+        left: 5px;
+    }
+
+    .next-button {
+        right: 5px;
+    }
+
+}
+@media (min-width: 768px) {
+    .card-track {
+        grid-auto-columns: 60%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .card-track {
+        grid-auto-columns: 40%;
+    }
+}
+@media (min-width: 768px) {
+    .card-track {
+        grid-auto-columns: 60%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .card-track {
+        grid-auto-columns: 40%;
+    }
+}
+/* ===============================
+   CONSULTATION – MOBILE FIX
+================================ */
+@media (max-width: 768px) {
+
+    .consultation-section {
+        flex-direction: column;   /* 🔥 stack vertically */
+        padding: 20px 16px;
+    }
+
+    .consultation-info {
+        flex: none;
+        width: 100%;              /* 🔥 full width */
+        padding-right: 0;
+        margin-bottom: 24px;
+        text-align: left;
+    }
+
+    .consultation-info h1 {
+        font-size: clamp(26px, 7vw, 36px);
+        line-height: 1.15;
+        word-break: normal;       /* 🔥 FIX text breaking */
+        overflow-wrap: normal;
+        white-space: normal;
+    }
+
+    .consultation-info p {
+        font-size: 14px;
+        line-height: 1.5;
+        max-width: 100%;
+    }
+
+    .consultation-form-wrapper {
+        width: 100%;
+    }
+}
+/* =========================================
+   MOBILE FIX – ONLY FOR 480px & BELOW
+========================================= */
+@media (max-width: 480px) {
+
+  /* ===== GLOBAL SAFETY ===== */
+  html, body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  /* ===== PRODUCTS SECTION (CENTERED) ===== */
+  #products_li .row {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  #products_li .col-lg-3 {
+    width: 100%;
+    max-width: 280px;
+    float: none;
+  }
+
+  #products_li a {
+    padding: 16px;
+  }
+
+  #products_li img {
+    width: 60px;
+    height: 60px;
+  }
+
+  /* ===== WHY US – CARD SLIDER ===== */
+  .slider-container {
+    padding: 0 12px;
+  }
+
+  .card-track {
+    grid-auto-columns: 95%;
+    gap: 14px;
+  }
+
+  .card-item {
+    padding: 16px;
+  }
+
+  .card-image-wrapper {
+    aspect-ratio: 16 / 9;
+  }
+
+  .nav-button {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  .prev-button { left: 4px; }
+  .next-button { right: 4px; }
+
+  /* ===== CONSULTATION SECTION ===== */
+  .consultation-section {
+    flex-direction: column;
+    width: 100%;
+    padding: 20px 16px;
+  }
+
+  .consultation-info {
+    width: 100%;
+    padding-right: 0;
+    margin-bottom: 24px;
+    text-align: left;
+  }
+
+  .consultation-info h1 {
+    font-size: clamp(26px, 7vw, 32px);
+    line-height: 1.2;
+    word-break: normal;
+    white-space: normal;
+  }
+
+  .consultation-info p {
+    font-size: 14px;
+    max-width: 100%;
+  }
+
+  /* ===== FORM LAYOUT ===== */
+  .consultation-form {
+    gap: 16px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .half-width,
+  .full-width {
+    width: 100%;
+    flex: none;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+  }
+
+  /* ===== PHONE FIELD ===== */
+  .phone-input-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+  }
+
+  #country-code {
+    max-width: 70px;
+    font-size: 14px;
+  }
+
+  #phone {
+    flex: 1;
+  }
+
+  /* ===== BUTTON ===== */
+  .submit-button {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+}
+/* =========================================
+   FIX PHONE INPUT OVERFLOW (480px ONLY)
+========================================= */
+@media (max-width: 480px) {
+
+  .phone-input-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0;
+    border-bottom: 1px solid #ccc;
+  }
+
+  #country-code {
+    width: 65px;
+    min-width: 65px;
+    max-width: 65px;
+    font-size: 14px;
+    padding: 0 4px;
+  }
+
+  #phone {
+    flex: 1;
+    width: 100%;
+    max-width: 100%;
+    padding: 12px 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+}
+/* =========================================
+   WHO WE ARE – TABLET FIX (768px)
+========================================= */
+@media (min-width: 768px) and (max-width: 991px) {
+
+  #who_we {
+    height: auto;                 /* 🔥 remove fixed height */
+    padding: 60px 20px;
+    text-align: center;
+  }
+
+  #who_we .row {
+    flex-direction: column;       /* 🔥 stack content */
+    align-items: center;
+  }
+
+  #who_we .col-lg-4,
+  #who_we .col-lg-7 {
+    width: 100%;
+    max-width: 100%;
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  #who_we h2,
+  #who_we h3,
+  #who_we p {
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #who_logo {
+    width: 100%;
+    max-width: 600px;             /* 🔥 image controlled */
+    height: auto;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  #who_img {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+  }
+}
+
+
+

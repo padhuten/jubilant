@@ -547,4 +547,191 @@ section {
     margin-bottom: 0 !important;
     padding-bottom: 0 !important;
 }
+/* Extra Large Devices (1440px and up) */
+@media (min-width: 1440px) {
+  .container { max-width: 1320px; }
+  .hero h1 { font-size: 4rem; }
+  .section-title { font-size: 2.5rem; }
+  .global-presence .second-image { max-width: 500px; }
+}
+
+/* Large Devices (1200px - 1439px) */
+@media (min-width: 1200px) and (max-width: 1439px) {
+  .hero h1 { font-size: 3.5rem; }
+  .global-presence .second-image { max-width: 450px; }
+}
+
+/* Medium-Large Devices (992px - 1199px) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .hero { height: 80vh; }
+  .hero h1 { font-size: 3rem; }
+  .hero p { font-size: 1.2rem; }
+  .section-title { font-size: 2rem; }
+  .who-we-are-section .row > [class*="col-"]:first-child {
+    flex: 0 0 45%;
+    max-width: 45%;
+  }
+  .who-we-are-section .row > [class*="col-"]:nth-child(2) {
+    max-width: 55%;
+  }
+  .global-presence .second-image { max-width: 380px; }
+  .core-values .row > [class*="col-"] {
+    flex: 0 0 22%;
+    max-width: 22%;
+  }
+  .metrics-wrapper { gap: 60px; }
+}
+
+/* Tablet Landscape (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .hero { height: 70vh; background-attachment: scroll; }
+  .hero h1 { font-size: 2.5rem; }
+  .hero p { font-size: 1.1rem; }
+  .section-title { font-size: 1.8rem; }
+
+  .who-we-are-section,
+  .mission-vision,
+  .core-values,
+  .global-presence { padding: 50px 5%; }
+
+  .who-we-are-section .row,
+  .mission-vision .row { display: block; }
+
+  .core-values .row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .metrics-wrapper { gap: 50px; }
+  .metric-box h2 { font-size: 2.5rem; }
+}
+
+/* Tablet Portrait (576px - 767px) */
+@media (min-width: 576px) and (max-width: 767px) {
+  .hero { height: 60vh; background-attachment: scroll; }
+  .hero h1 { font-size: 2rem; }
+  .hero p { font-size: 1rem; }
+  .section-title { font-size: 1.6rem; }
+
+  .core-values .row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .metrics-wrapper { gap: 40px; }
+  .metric-box h2 { font-size: 2.2rem; }
+}
+
+/* Mobile Large (480px - 575px) */
+@media (min-width: 480px) and (max-width: 575px) {
+  .hero { height: 55vh; }
+  .hero h1 { font-size: 1.8rem; }
+  .hero p { font-size: 0.95rem; }
+
+  .core-values .row { display: block; }
+
+  .metrics-wrapper {
+    gap: 35px;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Mobile Medium (375px - 479px) */
+@media (min-width: 375px) and (max-width: 479px) {
+  .hero { height: 50vh; }
+  .hero h1 { font-size: 1.6rem; }
+  .hero p { font-size: 0.9rem; }
+
+  .core-values .row,
+  .mission-vision .row { display: block; }
+
+  .metrics-wrapper {
+    gap: 30px;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Mobile Small (320px - 374px) */
+@media (max-width: 374px) {
+  .hero { height: 45vh; }
+  .hero h1 { font-size: 1.4rem; }
+  .hero p { font-size: 0.85rem; }
+
+  .core-values .row,
+  .mission-vision .row { display: block; }
+
+  .metrics-wrapper {
+    gap: 25px;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* Landscape orientation for mobile devices */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero { height: 100vh; }
+  .hero h1 { font-size: 1.8rem; }
+  .hero p { font-size: 0.9rem; }
+  .global-presence { min-height: 100vh; }
+}
+@media (max-width: 1024px) and (min-width: 768px) {
+  .core-values .row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    align-items: stretch;
+  }
+
+  .core-values .row > [class*="col-"] {
+    max-width: 100%;
+  }
+
+  .value-card {
+    height: 260px;          /* SAME size as first row */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}
+@media (max-width: 1024px) and (min-width: 768px) {
+
+  .core-values .row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .core-values .row > [class*="col-"] {
+    flex: unset !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  .value-card {
+    height: 260px;                 /* all cards same size */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 24px;
+  }
+}
+@media (min-width: 1440px) {
+  .mission-vision .row {
+    align-items: stretch;
+  }
+
+  .mv-card {
+    height: 280px;              /* SAME height for both boxes */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 32px;
+  }
+}
+
+
 
