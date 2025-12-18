@@ -1,6 +1,7 @@
 // ===========================
-// PRODUCTS PAGE FUNCTIONALITY
+// PRODUCTS PAGE FUNCTIONALITY WITH PAGINATION
 // ===========================
+
 
 console.log("🚀 ProductsManager loaded");
 
@@ -19,7 +20,8 @@ class ProductsManager {
         };
         this.sortBy = 'relevance';
         this.currentPage = 1;
-        this.productsPerPage = 12;
+        this.productsPerPage = 12; // 12 products per page
+        this.pagination = null;
         
         // Parse clean URLs
         this.selectedCategory = null;
@@ -33,6 +35,7 @@ class ProductsManager {
         this.parseCleanURL();
         this.cacheElements();
         this.attachEventListeners();
+        this.initializeHamburgerMenu(); // ← ADDED: Initialize hamburger menu
         this.loadProducts();
     }
 
@@ -45,9 +48,9 @@ class ProductsManager {
             this.selectedSeries = pathParts[3]?.toLowerCase() || null;
         }
         
-        console.log("📍 Category:", this.selectedCategory);
-        console.log("📍 SubCategory:", this.selectedSubCategory);
-        console.log("📍 Series:", this.selectedSeries);
+        console.log("📂 Category:", this.selectedCategory);
+        console.log("📂 SubCategory:", this.selectedSubCategory);
+        console.log("📂 Series:", this.selectedSeries);
     }
 
     cacheElements() {
@@ -63,7 +66,64 @@ class ProductsManager {
         this.closeFiltersBtn = document.getElementById('close-filters-btn');
         this.filtersSidebar = document.getElementById('filters-sidebar');
         this.filterTitles = document.querySelectorAll('.filter-title');
+        this.paginationContainer = document.getElementById('pagination');
+        this.sidebarBackdrop = document.getElementById('sidebar-backdrop'); // ← ADDED
     }
+
+    // ===========================
+    // ← ADDED: HAMBURGER MENU INITIALIZATION
+    // ===========================
+    initializeHamburgerMenu() {
+    const openBtn = document.getElementById("filter-toggle-btn");
+    const closeBtn = document.getElementById("close-filters-btn");
+    const sidebar = document.getElementById("filters-sidebar");
+    const backdrop = document.getElementById("sidebar-backdrop");
+
+    if (!openBtn || !sidebar) return;
+
+    // OPEN sidebar
+    openBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        sidebar.classList.add("open");
+        backdrop.classList.add("active");
+        document.body.classList.add("sidebar-open");
+
+        // Ensure header is visible at top
+        sidebar.scrollTop = 0;
+    });
+
+    // CLOSE sidebar (X button)
+    if (closeBtn) {
+        closeBtn.addEventListener("click", () => {
+            sidebar.classList.remove("open");
+            backdrop.classList.remove("active");
+            document.body.classList.remove("sidebar-open");
+        });
+    }
+
+    // CLOSE sidebar (backdrop)
+    if (backdrop) {
+        backdrop.addEventListener("click", () => {
+            sidebar.classList.remove("open");
+            backdrop.classList.remove("active");
+            document.body.classList.remove("sidebar-open");
+        });
+    }
+
+    // CLOSE on ESC key
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && sidebar.classList.contains("open")) {
+            sidebar.classList.remove("open");
+            backdrop.classList.remove("active");
+            document.body.classList.remove("sidebar-open");
+        }
+    });
+}
+
+    
+    // ===========================
+    // END OF HAMBURGER MENU CODE
+    // ===========================
 
     attachEventListeners() {
         this.filterCheckboxes.forEach(cb => {
@@ -82,13 +142,7 @@ class ProductsManager {
             this.resetBtn.addEventListener('click', () => this.resetAllFilters());
         }
 
-        if (this.filterToggleBtn) {
-            this.filterToggleBtn.addEventListener('click', () => this.toggleFiltersSidebar());
-        }
-
-        if (this.closeFiltersBtn) {
-            this.closeFiltersBtn.addEventListener('click', () => this.toggleFiltersSidebar());
-        }
+        // REMOVED: Old toggle sidebar code (now handled by initializeHamburgerMenu)
 
         this.filterTitles.forEach(title => {
             title.addEventListener('click', e => {
@@ -97,16 +151,7 @@ class ProductsManager {
             });
         });
 
-        document.addEventListener('click', e => {
-            if (
-                this.filtersSidebar &&
-                this.filtersSidebar.classList.contains('open') &&
-                !e.target.closest('.filters-sidebar') &&
-                !e.target.closest('.filter-toggle')
-            ) {
-                this.toggleFiltersSidebar();
-            }
-        });
+        // REMOVED: Old click outside handler (now handled by backdrop)
     }
 
     loadProducts() {
@@ -141,6 +186,7 @@ class ProductsManager {
 
                     console.log("✅ Loaded", this.allProducts.length, "products");
                     this.applyURLFilters();
+                    this.updateResultsInfo();
                 } else {
                     throw new Error('Invalid API response');
                 }
@@ -160,11 +206,12 @@ class ProductsManager {
         });
 
         console.log("🔍 After URL filters:", this.filteredProducts.length, "products");
+        this.currentPage = 1;
         this.applyFilters();
     }
 
     handleFilterChange() {
-        this.currentPage = 1;
+        this.currentPage = 1; // Reset to page 1 when filters change
         this.updateActiveFilters();
         this.applyFilters();
     }
@@ -193,12 +240,13 @@ class ProductsManager {
             this.priceValue.textContent = '$' + price.toLocaleString();
         }
         this.activeFilters.maxPrice = price;
-        this.currentPage = 1;
+        this.currentPage = 1; // Reset to page 1
         this.applyFilters();
     }
 
     handleSortChange(e) {
         this.sortBy = e.target.value;
+        this.currentPage = 1; // Reset to page 1 when sorting changes
         this.applySorting();
         this.displayProducts();
     }
@@ -233,6 +281,7 @@ class ProductsManager {
         });
 
         this.applySorting();
+        this.initializePagination();
         this.displayProducts();
     }
 
@@ -248,25 +297,65 @@ class ProductsManager {
         }
     }
 
-    displayProducts() {
-        if (!this.productsGrid) return;
-
-        this.productsGrid.innerHTML = '';
-
-        if (!this.filteredProducts.length) {
-            this.showNoResults();
-            this.updateResultCount();
-            return;
+    initializePagination() {
+        const totalPages = Math.ceil(this.filteredProducts.length / this.productsPerPage);
+        
+        if (this.pagination) {
+            this.pagination.updateTotalPages(totalPages);
+            this.pagination.currentPage = this.currentPage;
+        } else {
+            this.pagination = new ProductPagination(
+                totalPages, 
+                this.currentPage, 
+                (page) => this.goToPage(page)
+            );
         }
-
-        if (this.noResults) this.noResults.style.display = 'none';
-
-        this.filteredProducts.forEach(p => {
-            this.productsGrid.appendChild(this.createProductCard(p));
-        });
-
-        this.updateResultCount();
     }
+
+    goToPage(page) {
+        this.currentPage = page;
+        this.displayProducts();
+        
+        // Smooth scroll to top of page
+        window.scrollTo({ 
+            top: 0, 
+            behavior: 'smooth' 
+        });
+    }
+
+   displayProducts() {
+    if (!this.productsGrid) return;
+
+    this.productsGrid.innerHTML = '';
+
+    if (!this.filteredProducts.length) {
+        this.showNoResults();
+        this.updateResultCount();
+        this.updateResultsInfo();
+        if (this.pagination) {
+            this.pagination.hide();
+        }
+        return;
+    }
+
+    if (this.noResults) this.noResults.style.display = 'none';
+
+    const startIndex = (this.currentPage - 1) * this.productsPerPage;
+    const endIndex = startIndex + this.productsPerPage;
+    const pageProducts = this.filteredProducts.slice(startIndex, endIndex);
+
+    pageProducts.forEach(p => {
+        this.productsGrid.appendChild(this.createProductCard(p));
+    });
+
+    this.updateResultCount();
+    this.updateResultsInfo();
+    
+    if (this.pagination) {
+        this.pagination.show();
+        this.pagination.render();
+    }
+}
 
     createProductCard(product) {
         const card = document.createElement('div');
@@ -294,11 +383,7 @@ class ProductsManager {
                 <div>
                     <div class="product-price">$${priceFormatted}</div>
                 </div>
-                <button class="btn-view"
-  onclick="window.location.href='/products/${product.category}/${product.series}/${product.id}'">
-  View
-</button>
-
+                <button class="btn-view" onclick="window.location.href='/products/${product.category}/${product.series}/${product.id}'">View</button>
             </div>
         `;
 
@@ -317,6 +402,30 @@ class ProductsManager {
             this.resultCount.textContent = `${count} ${text}`;
         }
     }
+   
+updateResultsInfo() {
+    const showingStart = document.getElementById('showing-start');
+    const showingEnd = document.getElementById('showing-end');
+    const totalResults = document.getElementById('total-results');
+    const resultsInfo = document.querySelector('.results-info');
+    
+    if (showingStart && showingEnd && totalResults && resultsInfo) {
+        const total = this.filteredProducts.length;
+        
+        if (total === 0) {
+            resultsInfo.style.display = 'none';
+        } else {
+            resultsInfo.style.display = 'block';
+            
+            const start = (this.currentPage - 1) * this.productsPerPage + 1;
+            const end = Math.min(this.currentPage * this.productsPerPage, total);
+            
+            showingStart.textContent = start;
+            showingEnd.textContent = end;
+            totalResults.textContent = total;
+        }
+    }
+}
 
     resetAllFilters() {
         this.filterCheckboxes.forEach(cb => cb.checked = false);
@@ -339,15 +448,163 @@ class ProductsManager {
 
         this.applyURLFilters();
     }
+}
 
-    toggleFiltersSidebar() {
-        if (!this.filtersSidebar) return;
-        this.filtersSidebar.classList.toggle('open');
-        document.body.style.overflow = this.filtersSidebar.classList.contains('open') ? 'hidden' : '';
+// ===========================
+// PAGINATION CLASS
+// ===========================
+
+class ProductPagination {
+    constructor(totalPages, currentPage = 1, onPageChange) {
+        this.totalPages = totalPages;
+        this.currentPage = currentPage;
+        this.onPageChange = onPageChange;
+        this.container = document.getElementById('pagination');
+        this.paginationSection = document.getElementById('pagination-section');
+        this.render();
+    }
+
+    updateTotalPages(totalPages) {
+        this.totalPages = totalPages;
+        if (this.currentPage > totalPages && totalPages > 0) {
+            this.currentPage = 1;
+        }
+        this.render();
+    }
+
+    show() {
+        if (this.paginationSection) {
+            this.paginationSection.style.display = 'block';
+        }
+    }
+
+    hide() {
+        if (this.paginationSection) {
+            this.paginationSection.style.display = 'none';
+        }
+    }
+
+    render() {
+        if (!this.container) return;
+        
+        // Hide pagination if only 1 page or no pages
+        if (this.totalPages <= 1) {
+            this.hide();
+            return;
+        }
+
+        this.show();
+        this.container.innerHTML = '';
+        
+        // Previous button
+        this.container.appendChild(
+            this.createButton('←', 'nav-btn', this.currentPage === 1, 
+            () => this.goToPage(this.currentPage - 1))
+        );
+
+        // Page numbers
+        const pages = this.calculatePageNumbers();
+        pages.forEach(page => {
+            if (page === '...') {
+                this.container.appendChild(this.createDots());
+            } else {
+                this.container.appendChild(
+                    this.createButton(
+                        page,
+                        page === this.currentPage ? 'active' : '',
+                        false,
+                        () => this.goToPage(page)
+                    )
+                );
+            }
+        });
+
+        // Next button
+        this.container.appendChild(
+            this.createButton('→', 'nav-btn', this.currentPage === this.totalPages, 
+            () => this.goToPage(this.currentPage + 1))
+        );
+
+        // Update page info
+        const currentPageDisplay = document.getElementById('current-page-display');
+        const totalPagesDisplay = document.getElementById('total-pages-display');
+        
+        if (currentPageDisplay) currentPageDisplay.textContent = this.currentPage;
+        if (totalPagesDisplay) totalPagesDisplay.textContent = this.totalPages;
+    }
+
+    createButton(text, className = '', disabled = false, onClick = null) {
+        const btn = document.createElement('button');
+        btn.className = `page-btn ${className}`;
+        btn.innerHTML = `<span>${text}</span>`;
+        btn.disabled = disabled;
+        if (onClick) btn.onclick = onClick;
+        return btn;
+    }
+
+    createDots() {
+        const dots = document.createElement('div');
+        dots.className = 'dots';
+        dots.textContent = '⋯';
+        return dots;
+    }
+
+    calculatePageNumbers() {
+        const pages = [];
+        const showPages = 7;
+        
+        if (this.totalPages <= showPages) {
+            for (let i = 1; i <= this.totalPages; i++) {
+                pages.push(i);
+            }
+        } else {
+            pages.push(1);
+
+            let start = Math.max(2, this.currentPage - 1);
+            let end = Math.min(this.totalPages - 1, this.currentPage + 1);
+
+            if (this.currentPage <= 3) {
+                end = 4;
+            }
+
+            if (this.currentPage >= this.totalPages - 2) {
+                start = this.totalPages - 3;
+            }
+
+            if (start > 2) {
+                pages.push('...');
+            }
+
+            for (let i = start; i <= end; i++) {
+                pages.push(i);
+            }
+
+            if (end < this.totalPages - 1) {
+                pages.push('...');
+            }
+
+            pages.push(this.totalPages);
+        }
+
+        return pages;
+    }
+
+    goToPage(page) {
+        if (page < 1 || page > this.totalPages || page === this.currentPage) return;
+        this.currentPage = page;
+        this.render();
+        
+        // Call the callback function
+        if (this.onPageChange) {
+            this.onPageChange(page);
+        }
     }
 }
 
-// INIT
+// ===========================
+// INITIALIZE
+// ===========================
+
 document.addEventListener('DOMContentLoaded', () => {
     console.log("🚀 ProductsManager initialized");
     new ProductsManager();

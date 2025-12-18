@@ -30,7 +30,11 @@
 
         <div class="filter-toggle-mobile">
             <button id="filter-toggle-btn" class="filter-toggle">
-                <span class="toggle-icon">☰</span>
+                <span class="toggle-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+</span>
                 <span class="toggle-text">Filters</span>
             </button>
             <span class="result-count" id="result-count">Loading...</span>
@@ -39,13 +43,16 @@
 
     <div class="main-content">
         <!-- Sidebar Filters -->
-        <aside class="filters-sidebar" id="filters-sidebar">
-            <div class="filters-header">
-                <h2>Filter Options</h2>
-                <button id="close-filters-btn" class="close-filters">×</button>
-            </div>
+        <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
 
+        <aside class="filters-sidebar" id="filters-sidebar">
             <div class="filters-content">
+
+                <!-- ✅ MOVED HEADER INSIDE CONTENT -->
+                <div class="filters-header">
+                    <h2>Filter Options</h2>
+                    <button id="close-filters-btn" class="close-filters">×</button>
+                </div>
 
                 <!-- Category Filter -->
                 <div class="filter-group">
@@ -187,6 +194,13 @@
 
         <!-- Products Grid -->
         <div class="products-section">
+            <div class="results-info">
+                <p id="results-text">
+                    Showing <span id="showing-start">1</span>–<span id="showing-end">12</span> of
+                    <span id="total-results">...</span> results
+                </p>
+            </div>
+
             <div id="products-grid" class="products-grid">
                 <div class="loading-state">
                     <div class="loader"></div>
@@ -199,6 +213,15 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="pagination-section" id="pagination-section" style="display: none;">
+    <div class="pagination-wrapper" id="pagination"></div>
+</div>
+
+<div class="page-info-bottom">
+    <p>Showing page <span class="current-page" id="current-page-display">1</span> of
+        <span id="total-pages-display">1</span></p>
 </div>
 
 <script src="{{ url_for('static', filename='javascript/product_list.js') }}"></script>
