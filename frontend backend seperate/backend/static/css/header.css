@@ -358,17 +358,7 @@ body {
   display: block;
 }
 
-/* Hide simple category links on desktop (1025px and above) - Show mega menu */
-@media (min-width: 1025px) {
-  /* For "All Products" dropdown - hide simple links, show mega menu */
-  .dropdown:nth-child(2) .dropdown-content > .dropdown-column {
-    display: none;
-  }
-  
-  .desktop-mega-menu {
-    display: block;
-  }
-}
+
 
 /* Ensure dropdowns work on all desktop sizes (1024px+) */
 @media (min-width: 1024px) {
@@ -511,6 +501,102 @@ body {
   }
 }
 
+
+/* =========================================
+   REMOVE DUPLICATE SIMPLE LIST
+   ONLY AT DESKTOP 1024–1279px
+   ========================================= */
+@media (min-width: 1024px) and (max-width: 1279px) {
+
+  /* Hide ONLY the simple category list */
+  .dropdown:nth-child(2)
+  > .dropdown-content
+  > .dropdown-column {
+    display: none !important;
+  }
+
+  /* Ensure mega menu stays visible */
+  .dropdown:nth-child(2)
+  > .dropdown-content
+  > .desktop-mega-menu {
+    display: block !important;
+  }
+
+  /* Dropdown container */
+  .dropdown-content {
+    min-width: 200px;
+  }
+
+  /* Simple dropdown (Service etc.) */
+  .dropdown-column a {
+    font-size: 0.8rem;
+    padding: 8px 12px;
+  }
+
+  /* Main category rows (CPU, SSD, Laptop…) */
+  .product-item-row .main-item {
+    font-size: 0.8rem;
+    padding: 8px 12px;
+  }
+
+  /* Mega menu wrapper */
+  .mega-menu {
+    max-width: calc(100vw - 140px);
+    max-height: 65vh;
+  }
+
+  /* Mega columns */
+  .mega-column {
+    min-width: 160px;
+  }
+
+  /* Mega menu headings */
+  .mega-column h4 {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+
+  /* Mega menu links */
+  .mega-column a {
+    font-size: 0.78rem;
+    padding: 6px 10px;
+  }
+}
+
+
+
+/* =========================================
+   MEGA MENU SIZE REDUCTION FOR 1024px
+   (NO STRUCTURE CHANGE)
+   ========================================= */
+@media (min-width: 1024px) and (max-width: 1279px) {
+
+  /* Reduce overall mega menu footprint */
+  .dropdown:nth-child(2) .mega-menu {
+    max-width: calc(100vw - 80px); /* stay inside screen */
+    width: auto;
+  }
+
+  /* Reduce column width */
+  .dropdown:nth-child(2) .mega-column {
+    min-width: 200px;
+  }
+
+  /* Reduce heading size & padding */
+  .dropdown:nth-child(2) .mega-column h4 {
+    font-size: 0.9rem;
+    padding: 10px 14px;
+  }
+
+  /* Reduce link size & padding */
+  .dropdown:nth-child(2) .mega-column a {
+    font-size: 0.85rem;
+    padding: 9px 14px;
+  }
+}
+
+
+
 /* =========================================
    MOBILE & TABLET ONLY (<1024px)
 ========================================= */
@@ -626,7 +712,7 @@ body {
   .dropdown.open .dropdown-content {
     opacity: 1;
     visibility: visible;
-    max-height: 2000px;
+    max-height: 3000px;
   }
 
   /* Dropdown links styling for mobile */
@@ -649,16 +735,174 @@ body {
     transform: rotate(180deg);
   }
 
-  /* DISABLE MEGA MENU ON MOBILE */
-  .desktop-mega-menu,
-  .mega-menu,
-  .product-item-row {
+  /* ================= MOBILE NESTED DROPDOWNS ================= */
+  
+  /* Show desktop mega menu structure on mobile */
+  .desktop-mega-menu {
+    display: block !important;
+  }
+
+
+  /* ================= FIX DUPLICATE ALL PRODUCTS (DESKTOP DEFAULT) ================= */
+
+/* Hide simple category list on ALL desktop sizes */
+@media (min-width: 1024px) {
+  .dropdown:nth-child(2)
+  > .dropdown-content
+  > .dropdown-column {
     display: none !important;
   }
 
-  /* Show simple dropdown column on mobile */
-  .dropdown-content > .dropdown-column {
+  /* Ensure mega menu is always visible on desktop */
+  .dropdown:nth-child(2)
+  > .dropdown-content
+  > .desktop-mega-menu {
     display: block !important;
+  }
+}
+
+
+  /* Hide simple category links on mobile for All Products */
+  .dropdown:nth-child(2) .dropdown-content > .dropdown-column {
+    display: none !important;
+  }
+
+  /* Product item row styling for mobile */
+  .product-item-row {
+    display: block !important;
+    position: relative;
+    margin: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .product-item-row .main-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 600;
+    cursor: pointer;
+    border-bottom: none;
+    background: transparent;
+    font-size: 0.95rem;
+    transition: color 0.25s ease;
+  }
+
+  .product-item-row .main-item:hover {
+    background: transparent;
+    color: #fff;
+  }
+
+  /* Add chevron icon to product items */
+  .product-item-row .main-item::after {
+    content: '›';
+    font-size: 1.4rem;
+    font-weight: 700;
+    transition: transform 0.3s ease;
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  .product-item-row.open .main-item::after {
+    transform: rotate(90deg);
+  }
+
+  /* Mobile mega menu styling */
+  .mega-menu {
+    position: static;
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+    overflow: hidden;
+    transform: none;
+    box-shadow: none;
+    background: transparent;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    display: block;
+    width: 100%;
+    padding-left: 15px;
+    margin-top: 0;
+    grid-auto-flow: row;
+    grid-auto-columns: auto;
+  }
+
+  /* Show mega menu when parent is open */
+  .product-item-row.open .mega-menu {
+    opacity: 1;
+    visibility: visible;
+    max-height: 2000px;
+  }
+
+  /* Disable hover effects */
+  .product-item-row:hover .mega-menu,
+  .mega-menu:hover {
+    opacity: 0;
+    visibility: hidden;
+    max-height: 0;
+  }
+
+  .product-item-row.open:hover .mega-menu {
+    opacity: 1;
+    visibility: visible;
+    max-height: 2000px;
+  }
+
+  /* Mega column styling for mobile */
+  .mega-column {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    margin: 0;
+    padding: 0;
+  }
+
+  .mega-column:last-child {
+    border-bottom: none;
+  }
+
+  .mega-column h4 {
+    padding: 10px 0;
+    background: transparent;
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 600;
+    font-size: 0.9rem;
+    border-bottom: none;
+    margin-top: 8px;
+  }
+
+  .mega-column a {
+    display: block;
+    padding: 10px 0 10px 15px;
+    color: rgba(255, 255, 255, 0.75) !important;
+    font-size: 0.85rem;
+    font-weight: 500 !important;
+    text-decoration: none;
+    transition: color 0.25s ease;
+    border-left: none;
+  }
+
+  .mega-column a:hover {
+    background: transparent;
+    color: #fff !important;
+    border-left-color: transparent;
+    padding-left: 15px;
+    text-decoration: underline;
+  }
+
+  /* Remove laptop and bottom fix transforms on mobile */
+  .laptop-fix .mega-menu,
+  .bottom-fix .mega-menu {
+    top: auto;
+    bottom: auto;
+    transform: none;
+    max-height: 0;
+  }
+
+  .laptop-fix.open .mega-menu,
+  .bottom-fix.open .mega-menu {
+    opacity: 1;
+    visibility: visible;
+    max-height: 2000px;
+    transform: none;
   }
 }
 
@@ -675,6 +919,20 @@ body {
   .dropdown-content .dropdown-column a {
     font-size: 0.9rem;
   }
+
+  .product-item-row .main-item {
+    font-size: 0.9rem;
+    padding: 11px 0;
+  }
+
+  .mega-column h4 {
+    font-size: 0.85rem;
+  }
+
+  .mega-column a {
+    font-size: 0.8rem;
+    padding: 9px 0 9px 12px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -687,8 +945,181 @@ body {
     padding: 16px;
   }
 
+  .nav-links > li > a,
+  .nav-links > li > .dropbtn {
+    font-size: 1rem;
+    padding: 14px 0;
+  }
+
   .dropdown-content .dropdown-column a {
     font-size: 0.85rem;
     padding: 10px 0;
+  }
+
+  .product-item-row .main-item {
+    font-size: 0.85rem;
+    padding: 10px 0;
+  }
+
+  .mega-column h4 {
+    font-size: 0.8rem;
+    padding: 8px 0;
+  }
+
+  .mega-column a {
+    font-size: 0.75rem;
+    padding: 8px 0 8px 10px;
+  }
+}
+
+
+/* =====================================================
+   HARD DESKTOP OVERRIDE – REMOVE DUPLICATE ALL PRODUCTS
+   ===================================================== */
+
+/* Desktop only (1024px and above) */
+@media (min-width: 1024px) {
+
+  /* KILL the simple list completely */
+  .nav-links
+  > .dropdown:nth-child(2)
+  > .dropdown-content
+  > .dropdown-column {
+    display: none !important;
+  }
+
+  /* FORCE mega menu container only */
+  .nav-links
+  > .dropdown:nth-child(2)
+  > .dropdown-content
+  > .desktop-mega-menu {
+    display: block !important;
+  }
+}
+
+
+/* =====================================================
+   1024px ONLY — RESET MOBILE MEGA MENU STYLES
+   ===================================================== */
+@media (min-width: 1024px) and (max-width: 1279px) {
+
+  /* Restore desktop mega menu behavior */
+  .mega-menu {
+    position: absolute !important;
+    left: 100% !important;
+    top: 0 !important;
+
+    opacity: 0;
+    visibility: hidden;
+    max-height: none !important;
+
+    background: #fff !important;
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.22) !important;
+
+    transform: translateX(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  /* Show on hover */
+  .product-item-row:hover > .mega-menu {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateX(0) !important;
+  }
+
+  /* Compact size (your requirement) */
+  .mega-menu {
+    max-width: 680px !important;
+    max-height: 60vh !important;
+    overflow-y: auto;
+  }
+
+  /* Smaller columns */
+  .mega-column {
+    min-width: 160px !important;
+  }
+
+  .mega-column h4 {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+
+  .mega-column a {
+    font-size: 0.75rem;
+    padding: 6px 10px;
+  }
+}
+
+
+/* =====================================================
+   1024px ONLY — MAKE ALL MEGA MENUS BEHAVE THE SAME
+   (REMOVE SCROLLING FOR bottom-fix ITEMS)
+   ===================================================== */
+@media (min-width: 1024px) and (max-width: 1279px) {
+
+  /* Disable bottom-fix positioning at 1024px */
+  .product-item-row.bottom-fix .mega-menu {
+    top: 0 !important;
+    bottom: auto !important;
+    transform: translateX(-10px) !important;
+  }
+
+  /* Remove height restriction for these mega menus */
+  .product-item-row.bottom-fix .mega-menu {
+    max-height: none !important;
+    overflow-y: visible !important;
+  }
+
+  /* Keep SAME grid behavior as other mega menus */
+  .product-item-row.bottom-fix .mega-menu {
+    display: grid !important;
+    grid-auto-flow: column !important;
+    width: max-content !important;
+  }
+
+  /* Ensure hover still works */
+  .product-item-row.bottom-fix:hover .mega-menu {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateX(0) !important;
+  }
+}
+
+
+/* =====================================================
+   1024px ONLY — EXTRA SIZE REDUCTION FOR SERVER & STORAGE
+   (NO POSITION / NO BEHAVIOR CHANGE)
+   ===================================================== */
+@media (min-width: 1024px) and (max-width: 1279px) {
+
+  /* Target ONLY Server & Storage mega menu */
+  .product-item-row.has-mega.bottom-fix
+  > .mega-menu {
+
+    /* Reduce overall footprint */
+    max-width: 560px !important;
+  }
+
+  /* Reduce column width */
+  .product-item-row.has-mega.bottom-fix
+  > .mega-menu
+  > .mega-column {
+    min-width: 170px !important;
+  }
+
+  /* Reduce heading size */
+  .product-item-row.has-mega.bottom-fix
+  > .mega-menu
+  > .mega-column h4 {
+    font-size: 0.75rem !important;
+    padding: 5px 8px !important;
+  }
+
+  /* Reduce link size */
+  .product-item-row.has-mega.bottom-fix
+  > .mega-menu
+  > .mega-column a {
+    font-size: 0.73rem !important;
+    padding: 5px 8px !important;
   }
 }
