@@ -2,6 +2,20 @@
 // PRODUCTS PAGE FUNCTIONALITY
 // ===========================
 
+// 🚫 Do NOT run product list logic on product detail page
+(function () {
+
+const pathParts = window.location.pathname.split("/").filter(Boolean);
+
+// product detail pages always have 4+ segments
+// /products/<cat>/<sub>/<product-id>
+if (pathParts[0] === "products" && pathParts.length >=8) {
+    console.log("⛔ product_list.js skipped on product detail page");
+    // silently stop execution
+    return;
+}
+
+
 console.log("🚀 ProductsManager loaded");
 
 class ProductsManager {
@@ -15,7 +29,7 @@ class ProductsManager {
             cores: [],
             tech: [],
             socket: [],
-            maxPrice: 50000
+            maxPrice: 5000000000
         };
         this.sortBy = 'relevance';
         this.currentPage = 1;
@@ -152,15 +166,38 @@ class ProductsManager {
     }
 
     applyURLFilters() {
+        const TWO_LEVEL_CATEGORIES = [
+            "memory",
+            "networking",
+            "docking-station",
+            "desktop"
+        ];
+
         this.filteredProducts = this.allProducts.filter(p => {
-            if (this.selectedCategory && p.category !== this.selectedCategory) return false;
-            if (this.selectedSubCategory && p.sub_category !== this.selectedSubCategory) return false;
-            if (this.selectedSeries && p.series !== this.selectedSeries) return false;
+            if (this.selectedCategory && p.category !== this.selectedCategory)
+                return false;
+
+            if (this.selectedSubCategory && p.sub_category !== this.selectedSubCategory)
+                return false;
+
+            if (
+                this.selectedSeries &&
+                !TWO_LEVEL_CATEGORIES.includes(this.selectedCategory) &&
+                p.series !== this.selectedSeries
+            ) {
+                return false;
+            }
+
             return true;
         });
 
-        console.log("🔍 After URL filters:", this.filteredProducts.length, "products");
-        this.applyFilters();
+        console.log(
+            "🔍 After URL filters:",
+            this.filteredProducts.length,
+            "products"
+        );
+
+        this.displayProducts(); // ✅ FIX 1 (do NOT reset filters)
     }
 
     handleFilterChange() {
@@ -177,7 +214,7 @@ class ProductsManager {
             cores: [],
             tech: [],
             socket: [],
-            maxPrice: this.priceRange ? parseInt(this.priceRange.value) : 50000
+            maxPrice: this.priceRange ? parseInt(this.priceRange.value) : 5000000000
         };
 
         this.filterCheckboxes.forEach(cb => {
@@ -204,11 +241,7 @@ class ProductsManager {
     }
 
     applyFilters() {
-        this.filteredProducts = this.allProducts.filter(product => {
-            if (this.selectedCategory && product.category !== this.selectedCategory) return false;
-            if (this.selectedSubCategory && product.sub_category !== this.selectedSubCategory) return false;
-            if (this.selectedSeries && product.series !== this.selectedSeries) return false;
-
+        this.filteredProducts = this.filteredProducts.filter(product => { // ✅ FIX 2
             if (this.activeFilters.category.length && !this.activeFilters.category.includes(product.category)) return false;
             if (this.activeFilters.brand.length && !this.activeFilters.brand.includes(product.brand)) return false;
             if (this.activeFilters.application.length && !this.activeFilters.application.includes(product.application)) return false;
@@ -269,41 +302,44 @@ class ProductsManager {
     }
 
     createProductCard(product) {
-        const card = document.createElement('div');
-        card.className = 'product-card';
+    const card = document.createElement('div');
+    card.className = 'product-card';
 
-        const priceFormatted = product.price.toLocaleString('en-US');
-        const imageUrl = product.image || '/static/images/placeholder.jpg';
+    const priceFormatted = product.price.toLocaleString('en-US');
+    const imageUrl = product.image || '/static/images/placeholder.jpg';
 
-        card.innerHTML = `
-            <div class="product-image">
-                <img src="${imageUrl}" alt="${product.name}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22%3E%3Crect fill=%22%23e0e0e0%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%23999%22 font-size=%2214%22%3E${product.brand}%3C/text%3E%3C/svg%3E'">
-                <span class="product-badge">${(product.category || '').substring(0, 3).toUpperCase()}</span>
-            </div>
-            <div class="product-content">
-                <div class="product-category">${product.category || 'Product'}</div>
-                <div class="product-name">${product.name}</div>
-                <div class="product-specs">
-                    ${product.cores ? `<div class="spec-item"><span class="spec-label">Cores:</span><span class="spec-value">${product.cores}</span></div>` : ''}
-                    ${product.tdp ? `<div class="spec-item"><span class="spec-label">TDP:</span><span class="spec-value">${product.tdp}W</span></div>` : ''}
-                    ${product.tech ? `<div class="spec-item"><span class="spec-label">Tech:</span><span class="spec-value">${product.tech}</span></div>` : ''}
-                    ${product.socket ? `<div class="spec-item"><span class="spec-label">Socket:</span><span class="spec-value">${product.socket}</span></div>` : ''}
-                </div>
-            </div>
-            <div class="product-footer">
-                <div>
-                    <div class="product-price">$${priceFormatted}</div>
-                </div>
-                <button class="btn-view"
-  onclick="window.location.href='/products/${product.category}/${product.series}/${product.id}'">
-  View
-</button>
+    let productUrl;
 
-            </div>
-        `;
-
-        return card;
+    // ✅ 3-level: sub_category EXISTS
+    if (product.sub_category) {
+        productUrl = `/products/${product.category}/${product.sub_category}/${product.series}/${product.id}`;
     }
+    // ✅ 2-level: sub_category REMOVED
+    else {
+        productUrl = `/products/${product.category}/${product.series}/${product.id}`;
+    }
+
+    card.innerHTML = `
+        <div class="product-image">
+            <img src="${imageUrl}" alt="${product.name}">
+            <span class="product-badge">${(product.category || '').substring(0, 3).toUpperCase()}</span>
+        </div>
+        <div class="product-content">
+            <div class="product-category">${product.category}</div>
+            <div class="product-name">${product.name}</div>
+        </div>
+        <div class="product-footer">
+            <div class="product-price">$${priceFormatted}</div>
+            <button class="btn-view" onclick="window.location.href='${productUrl}'">
+                View
+            </button>
+        </div>
+    `;
+
+    return card;
+}
+
+
 
     showNoResults() {
         if (this.noResults) this.noResults.style.display = 'block';
@@ -352,3 +388,4 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("🚀 ProductsManager initialized");
     new ProductsManager();
 });
+})();

@@ -57,7 +57,7 @@ def get_all_products():
 
 
 # --------------------------------------------------
-# CATEGORY ENDPOINTS
+# CATEGORY ENDPOINTS (LIST ONLY)
 # --------------------------------------------------
 @products_bp.route('/api/products/cpu', methods=['GET'])
 def get_cpu_products():
@@ -115,7 +115,7 @@ def get_memory_products():
     return jsonify({"success": True, "count": len(final_memory), "products": final_memory})
 
 
-@products_bp.route('/api/products/monitors', methods=['GET'])
+@products_bp.route('/api/products/monitor', methods=['GET'])
 def get_monitor_products():
     user_id = get_user_id()
     user_shortlist = shortlist_db.get(user_id, [])
@@ -129,7 +129,7 @@ def get_monitor_products():
     return jsonify({"success": True, "count": len(final_monitors), "products": final_monitors})
 
 
-@products_bp.route('/api/products/laptops', methods=['GET'])
+@products_bp.route('/api/products/laptop', methods=['GET'])
 def get_laptop_products():
     user_id = get_user_id()
     user_shortlist = shortlist_db.get(user_id, [])
@@ -143,7 +143,7 @@ def get_laptop_products():
     return jsonify({"success": True, "count": len(final_laptops), "products": final_laptops})
 
 
-@products_bp.route('/api/products/desktops', methods=['GET'])
+@products_bp.route('/api/products/desktop', methods=['GET'])
 def get_desktop_products():
     user_id = get_user_id()
     user_shortlist = shortlist_db.get(user_id, [])
@@ -200,32 +200,14 @@ def get_docking_products():
 
 
 # --------------------------------------------------
-# NEW CLEAN PRODUCT LOOKUP BY ID
+# ✅ FINAL SINGLE PRODUCT LOOKUP (UNIVERSAL)
 # --------------------------------------------------
 @products_bp.route('/api/products/<product_id>', methods=['GET'])
 def get_single_product(product_id):
     product_id = product_id.lower()
+
     for product in all_products():
         if product["id"].lower() == product_id:
             return jsonify({"success": True, "product": product})
-    return jsonify({"success": False, "error": "Product not found"}), 404
-
-
-# --------------------------------------------------
-# NEW CLEAN PRODUCT LOOKUP WITH CATEGORY + SERIES
-# Example: /api/products/cpu/9005/AMD-EPYC-7313
-# --------------------------------------------------
-@products_bp.route('/api/products/cpu/<series>/<product_id>', methods=['GET'])
-def get_cpu_product_details(series, product_id):
-    series = series.lower()
-    product_id = product_id.lower()
-
-    for product in cpu_products:
-        if product["id"].lower() == product_id:
-            return jsonify({
-                "success": True,
-                "series": series,
-                "product": product
-            })
 
     return jsonify({"success": False, "error": "Product not found"}), 404

@@ -8,10 +8,10 @@ server_storage_products = [
   "id": "mbd-supermicro-x13sae",
   "name": "Supermicro X13SAE Motherboard",
   "brand": "Supermicro",
-  "category_key": "server",
-  "sub_category": "super-micro",
-  "series": "workstation-class",
-  "category": "Workstation / Server Motherboard",
+  "category_key": "server-storage",
+  "category": "Server & Workstation Motherboard",
+  "sub_category": "supermicro",
+  "series": "motherboards",
   "application": "Workstation / Server / Enterprise PC",
   "description": "ATX motherboard based on Intel W680 chipset supporting 12th, 13th, and 14th Gen Intel Core processors, DDR5 memory, dual LAN, and multiple PCIe & M.2 expansion options.",
   
@@ -189,7 +189,6 @@ server_storage_products = [
   "category_key": "server",
   "sub_category": "asus",
   "series": "rack-server",
-  "category": "Enterprise Rack Server",
   "application": "Data Center / Virtualization / AI / HPC / Storage",
   "description": "1U enterprise rack server with dual Intel Xeon Scalable processors, up to 32 DIMMs DDR5 ECC memory, multiple NVMe hot-swap bays, flexible PCIe expansion, and optional GPU support — designed for high performance computing, storage and virtualization workloads.",
 
@@ -311,6 +310,8 @@ server_storage_products = [
   "category_key": "server",
   "sub_category": "lenovo",
   "category": "Enterprise Rack Server",
+  "sub_category": "lenovo",
+  "series": "thinksystem",
   "application": "Virtualization / Storage / Database / Cloud / Enterprise Workloads",
   "description": "A high-performance 2U enterprise server supporting dual Intel Xeon Scalable processors, large DDR4 memory capacity, flexible storage configurations, and multiple PCIe expansion options. Designed for virtualization, software-defined storage, cloud workloads, and enterprise data center environments.",
 
@@ -367,6 +368,10 @@ server_storage_products = [
   "brand": "Lenovo",
   "series": "enterprise-storage",
   "category": "Enterprise Tower Server",
+
+  "sub_category": "lenovo",
+  "series": "thinksystem",
+  "brand": "Lenovo",
   "application": "Virtualization / Storage / Database / Branch Office / Enterprise Workloads",
   "description": "A powerful, scalable 4U tower server supporting dual Intel Xeon Scalable processors, high memory capacity, multiple PCIe expansion slots, and flexible storage options. Ideal for branch offices, enterprise workloads, virtualization, and scalable storage deployments.",
 

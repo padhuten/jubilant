@@ -65,15 +65,13 @@
             if (action === "open") {
                 console.log("Opening modal");
                 modal.style.display = "flex";
-                document.body.style.overflow = "hidden"; // Prevent scrolling
-                // Hide header and footer
+                document.body.style.overflow = "hidden";
                 document.querySelector("header")?.style.display === "none" ? null : document.querySelector("header").style.display = "none";
                 document.querySelector("footer")?.style.display === "none" ? null : document.querySelector("footer").style.display = "none";
             } else if (action === "close") {
                 console.log("Closing modal");
                 modal.style.display = "none";
-                document.body.style.overflow = "auto"; // Re-enable scrolling
-                // Show header and footer
+                document.body.style.overflow = "auto";
                 const header = document.querySelector("header");
                 const footer = document.querySelector("footer");
                 if (header) header.style.display = "block";
@@ -90,55 +88,44 @@
             console.log("Modal element:", modal);
             console.log("Form element:", inquiryForm);
             
-            // Close modal when clicking outside
             window.addEventListener("click", function(event) {
                 if (event.target === modal) {
-                    console.log("Clicked outside modal");
                     toggleInquiryModal("close");
                 }
             });
 
-            // Close modal with Escape key
             document.addEventListener("keydown", function(event) {
                 if (event.key === "Escape" && modal.style.display === "flex") {
-                    console.log("Escape key pressed");
                     toggleInquiryModal("close");
                 }
             });
 
-            // Handle form submission
             if (inquiryForm) {
-                console.log("Setting up form submission handler");
                 inquiryForm.addEventListener("submit", async function(e) {
                     e.preventDefault();
-                    console.log("Form submitted");
 
                     const successMsg = document.getElementById("inquirySuccessMsg");
                     const errorMsg = document.getElementById("inquiryErrorMsg");
                     const submitBtn = inquiryForm.querySelector(".submit-button");
 
-                    // Clear messages
                     successMsg.style.display = "none";
                     errorMsg.style.display = "none";
 
-                    // Disable button
                     submitBtn.disabled = true;
                     submitBtn.textContent = "Sending...";
 
                     const formData = new FormData(this);
 
                     try {
-                        console.log("Sending form data to /send-inquiry");
                         const response = await fetch("/send-inquiry", {
                             method: "POST",
                             body: formData
                         });
 
                         const result = await response.json();
-                        console.log("Response from server:", result);
 
                         if (result.success) {
-                            successMsg.textContent = result.message || "✅ Inquiry sent successfully! We'll contact you soon.";
+                            successMsg.textContent = result.message || "✅ Inquiry sent successfully!";
                             successMsg.style.display = "block";
                             inquiryForm.reset();
 
@@ -154,18 +141,18 @@
                             submitBtn.textContent = "Send Inquiry";
                         }
                     } catch (error) {
-                        console.error("Error caught:", error);
                         errorMsg.textContent = "❌ Error sending inquiry. Please try again.";
                         errorMsg.style.display = "block";
                         submitBtn.disabled = false;
                         submitBtn.textContent = "Send Inquiry";
                     }
                 });
-            } else {
-                console.log("⚠️ Form element NOT found!");
             }
         });
     </script>
+
+    <!-- ✅ PAGE-SPECIFIC SCRIPTS (THIS WAS MISSING) -->
+    {% block scripts %}{% endblock %}
 
 </body>
 </html>

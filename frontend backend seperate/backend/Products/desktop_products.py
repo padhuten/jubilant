@@ -1,56 +1,61 @@
 desktop_products = [
 
-#  LENOVO DESKTOP
+    # =========================
+    # ASUS DESKTOP – BUSINESS
+    # =========================
+    {
+        "id": "desktop-asus-expertcenter-d7",
+        "name": "ASUS ExpertCenter D7",
+        "brand": "asus",
 
-{
-  "id": "desktop-lenovo-thinkcentre-m70s",
-  "name": "Lenovo ThinkCentre M70s",
-  "brand": "Lenovo",
-  "series": "thinkcentre",
-  "category": "Business Desktop PC",
-  "category_key": "desktop",
-  "sub_category": "tower",
-  "application": "Office Work / Enterprise / Productivity",
-  "description": "A compact small-form-factor business desktop featuring up to 10th Gen Intel Core i9 processors, fast SSD + HDD storage options, robust security, and enterprise-grade manageability.",
+        "category_key": "desktop",
+        "category": "Business Desktop PC",
 
-  "processor": "Up to 10th Gen Intel Core i9",
-  "memory": "Up to 32 GB DDR4",
-  "storage": "Up to 1TB PCIe SSD + 2TB 7200rpm HDD (Dual Storage)",
-  "graphics": "AMD Radeon 520 Graphics",
-  "network": "Wi-Fi 6 + Bluetooth 5.0",
-  "operating_system": "Windows 10 Home / Windows 10 Pro",
-  "color": "Raven Black",
-  "warranty": "Standard 1 Year Warranty",
+        "sub_category": "asus",
+        "series": "expertcenter",
 
-  "form_factor": "Small Form Factor (8.2L)",
-  "image": "/static/images/lenovo_consumer_legion-5_1.jpg",
-  "price": 45990
-},
+        "application": ["desktop", "office", "enterprise"],
 
-{
-  "id": "desktop-lenovo-legion-tower5",
-  "name": "Lenovo Legion Tower 5",
-  "brand": "Lenovo",
-  "series": "legion",
-    "category_key": "desktop",
-  "sub_category": "tower",
-  "category": "Gaming Desktop PC",
-  "application": "Gaming / Content Creation / High-Performance Tasks",
-  "description": "A high-performance gaming desktop powered by AMD Ryzen or Intel Core processors, RTX series graphics, fast DDR4/DDR5 memory, and advanced cooling — designed for gamers and creators.",
+        "price": 54990,
+        "image": "/static/images/asus_expertcenter_d7.jpg",
 
-  "processor": "Up to AMD Ryzen 7 / Intel Core i7 (varies by configuration)",
-  "memory": "Up to 32 GB DDR4/DDR5",
-  "storage": "Up to 1TB PCIe NVMe SSD + 2TB HDD",
-  "graphics": "Up to NVIDIA GeForce RTX 3060 / 4060 (varies by model)",
-  "network": "Wi-Fi 6 / Wi-Fi 6E + Bluetooth 5.1",
-  "operating_system": "Windows 11 Home",
-  "color": "Phantom Black",
-  "warranty": "1 Year On-site Warranty",
+        "cores": 8,
+        "threads": 16,
+        "socket": "LGA1200",
+        "tech": "14nm",
 
-  "form_factor": "Tower Gaming Desktop",
-  "image": "/static/images/lenovo_consumer_legion-5_1.jpg",
-  "price": 89990
-}
+        "form_factor": "tower",
 
+        "description": "A reliable business desktop designed for productivity and enterprise workloads, featuring Intel Core processors, fast SSD storage, enterprise security, and compact tower design."
+    },
+
+    # =========================
+    # ASUS DESKTOP – MINI PC
+    # =========================
+    {
+        "id": "desktop-asus-expertcenter-mini-pn64",
+        "name": "ASUS ExpertCenter Mini PN64",
+        "brand": "asus",
+
+        "category_key": "desktop",
+        "category": "Mini Business Desktop",
+
+        "sub_category": "asus",
+        "series": "mini-pc",
+
+        "application": ["desktop", "office", "enterprise"],
+
+        "price": 42990,
+        "image": "/static/images/asus_expertcenter_mini.jpg",
+
+        "cores": 6,
+        "threads": 12,
+        "socket": "BGA",
+        "tech": "10nm",
+
+        "form_factor": "mini",
+
+        "description": "An ultra-compact business mini PC offering powerful performance in a space-saving design, ideal for offices, kiosks, and enterprise deployments."
+    }
 
 ]

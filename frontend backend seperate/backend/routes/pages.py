@@ -17,7 +17,10 @@ def home():
 # ------------------------------------------------------
 @pages_bp.route('/images/<path:filename>')
 def serve_images(filename):
-    return send_from_directory(os.path.join(STATIC_DIR, "images"), filename)
+    return send_from_directory(
+        os.path.join(STATIC_DIR, "images"),
+        filename
+    )
 
 
 # ------------------------------------------------------
@@ -30,7 +33,7 @@ CATEGORIES = {
         "intel-desktop": ["i9", "i7", "i5", "i3"]
     },
 
-    "hard-drive": {
+    "hdd": {
         "seagate": ["barracuda", "ironwolf", "skyhawk", "exos", "firecuda"],
         "western-digital": ["wd-blue", "wd-black", "wd-red", "wd-purple", "wd-gold"],
         "toshiba": ["p300", "n300", "s300", "mg"]
@@ -48,7 +51,7 @@ CATEGORIES = {
         "micron": ["ddr3", "ddr4", "ddr5"]
     },
 
-    "monitors": {
+    "monitor": {
         "samsung": ["business", "curved", "gaming"],
         "aoc-philips": ["professional", "value"],
         "dell": ["ultrasharp", "p-series"],
@@ -95,18 +98,10 @@ CATEGORIES = {
     }
 }
 
-# ------------------------------------------------------
-# ✅ PRODUCT DETAIL PAGE (MUST COME BEFORE SUB-CATEGORY)
-# /products/cpu/ryzen/cpu-9700x
-# ------------------------------------------------------
-@pages_bp.route('/products/cpu/<series>/<product_id>')
-def cpu_product_page(series, product_id):
-    return render_template("product.html")
-
 
 # ------------------------------------------------------
 # LEVEL 1: CATEGORY
-# /products/cpu
+# /products/server-storage
 # ------------------------------------------------------
 @pages_bp.route('/products/<category>')
 def product_category(category):
@@ -119,8 +114,8 @@ def product_category(category):
 
 
 # ------------------------------------------------------
-# LEVEL 2: SUB CATEGORY
-# /products/cpu/amd-desktop
+# LEVEL 2: SUB CATEGORY / BRAND
+# /products/server-storage/lenovo
 # ------------------------------------------------------
 @pages_bp.route('/products/<category>/<sub_category>')
 def product_sub_category(category, sub_category):
@@ -142,28 +137,30 @@ def product_sub_category(category, sub_category):
 
 # ------------------------------------------------------
 # LEVEL 3: SERIES
-# /products/cpu/amd-desktop/ryzen
+# /products/server-storage/lenovo/thinksystem
 # ------------------------------------------------------
 @pages_bp.route('/products/<category>/<sub_category>/<series>')
 def product_series(category, sub_category, series):
-    category = category.lower()
-    sub_category = sub_category.lower()
-    series = series.lower()
-
-    if category not in CATEGORIES:
-        return "Category not found", 404
-
-    if sub_category not in CATEGORIES[category]:
-        return "Sub-category not found", 404
-
-    if series not in CATEGORIES[category][sub_category]:
-        return "Series not found", 404
-
     return render_template(
         "products.html",
+        category=category.lower(),
+        sub_category=sub_category.lower(),
+        series=series.lower()
+    )
+
+
+# ------------------------------------------------------
+# LEVEL 4: PRODUCT DETAIL
+# /products/server-storage/lenovo/thinksystem/<product_id>
+# ------------------------------------------------------
+@pages_bp.route('/products/<category>/<sub_category>/<series>/<product_id>')
+def product_detail(category, sub_category, series, product_id):
+    return render_template(
+        "product.html",
         category=category,
         sub_category=sub_category,
-        series=series
+        series=series,
+        product_id=product_id
     )
 
 

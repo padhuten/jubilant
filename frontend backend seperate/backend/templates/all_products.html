@@ -150,25 +150,28 @@
                 </div>
             </div>
             <div class="modal-data" style="display: none;">
-                <div class="subcategory-card" data-category="memory/samsung" data-series="samsung-ram">
-                    <div class="sub-icon">🔲</div>
-                    <h4 class="sub-title">Samsung Memory</h4>
-                    <p class="sub-description">DDR4 & DDR5 modules</p>
-                    <button class="sub-btn">Explore</button>
-                </div>
-                <div class="subcategory-card" data-category="memory/crucial" data-series="crucial-ram">
-                    <div class="sub-icon">🔲</div>
-                    <h4 class="sub-title">Crucial Memory</h4>
-                    <p class="sub-description">DDR4 & DDR5 modules</p>
-                    <button class="sub-btn">Explore</button>
-                </div>
-                <div class="subcategory-card" data-category="memory/micron" data-series="micron-ram">
-                    <div class="sub-icon">🔲</div>
-                    <h4 class="sub-title">Micron Memory</h4>
-                    <p class="sub-description">DDR4 & DDR5 modules</p>
-                    <button class="sub-btn">Explore</button>
-                </div>
-            </div>
+    <div class="subcategory-card" data-category="memory/samsung">
+        <div class="sub-icon">🔲</div>
+        <h4 class="sub-title">Samsung Memory</h4>
+        <p class="sub-description">DDR4 & DDR5 modules</p>
+        <button class="sub-btn">Explore</button>
+    </div>
+
+    <div class="subcategory-card" data-category="memory/crucial">
+        <div class="sub-icon">🔲</div>
+        <h4 class="sub-title">Crucial Memory</h4>
+        <p class="sub-description">DDR4 & DDR5 modules</p>
+        <button class="sub-btn">Explore</button>
+    </div>
+
+    <div class="subcategory-card" data-category="memory/micron">
+        <div class="sub-icon">🔲</div>
+        <h4 class="sub-title">Micron Memory</h4>
+        <p class="sub-description">DDR4 & DDR5 modules</p>
+        <button class="sub-btn">Explore</button>
+    </div>
+</div>
+
         </div>
 
         <!-- 5. MONITORS -->
@@ -268,13 +271,13 @@
                 </div>
             </div>
             <div class="modal-data" style="display: none;">
-                <div class="subcategory-card" data-category="desktop/tower" data-series="expertcenter,thinkcentre,legion,tiny-pc,optiplex,vostro">
+                <div class="subcategory-card" data-category="desktop/asus" data-series="expertcenter,thinkcentre,legion,tiny-pc,optiplex,vostro">
                     <div class="sub-icon">🖥️</div>
                     <h4 class="sub-title">Tower & Mini PCs</h4>
                     <p class="sub-description">Asus ExpertCenter, Lenovo ThinkCentre/Tiny, Dell OptiPlex/Vostro</p>
                     <button class="sub-btn">Explore</button>
                 </div>
-                <div class="subcategory-card" data-category="desktop/workstation" data-series="precision,workstation">
+                <div class="subcategory-card" data-category="desktop/lenovo" data-series="precision,workstation">
                     <div class="sub-icon">💼</div>
                     <h4 class="sub-title">Workstations</h4>
                     <p class="sub-description">Dell Precision, HP Z-series workstations</p>
@@ -305,13 +308,13 @@
                 </div>
             </div>
             <div class="modal-data" style="display: none;">
-                <div class="subcategory-card" data-category="network/aruba-switches" data-series="aruba-switch,poe">
+                <div class="subcategory-card" data-category="networking/aruba" data-series="switches,poe">
                     <div class="sub-icon">📡</div>
                     <h4 class="sub-title">Aruba Switches</h4>
                     <p class="sub-description">Enterprise managed & PoE switches</p>
                     <button class="sub-btn">Explore</button>
                 </div>
-                <div class="subcategory-card" data-category="network/aruba-instant" data-series="aruba-instanton">
+                <div class="subcategory-card" data-category="networking/aruba-instanton">
                     <div class="sub-icon">☁️</div>
                     <h4 class="sub-title">Aruba Instant On</h4>
                     <p class="sub-description">SMB networking with cloud management</p>
@@ -337,19 +340,19 @@
                 </div>
             </div>
             <div class="modal-data" style="display: none;">
-                <div class="subcategory-card" data-category="server/super-micro" data-series="barebone,gpu-server,workstation-class">
+                <div class="subcategory-card" data-category="server-storage/supermicro" data-series="barebone,gpu-server,workstation-class">
                     <div class="sub-icon">🏢</div>
                     <h4 class="sub-title">Super Micro Systems</h4>
                     <p class="sub-description">Motherboards, Barebones, GPU Servers</p>
                     <button class="sub-btn">Explore</button>
                 </div>
-                <div class="subcategory-card" data-category="server/asus" data-series="workstation,gpu-system,rack server">
+                <div class="subcategory-card" data-category="server-storage/asus" data-series="workstation,gpu-system,rack server">
                     <div class="sub-icon">⚙️</div>
                     <h4 class="sub-title">Asus Server Solutions</h4>
                     <p class="sub-description">Barebones, Workstations, GPU Systems</p>
                     <button class="sub-btn">Explore</button>
                 </div>
-                <div class="subcategory-card" data-category="server/lenovo" data-series="enterprise-storage">
+                <div class="subcategory-card" data-category="server-storage/lenovo" data-series="thinksystem">
                     <div class="sub-icon">📦</div>
                     <h4 class="sub-title">Lenovo ThinkSystem</h4>
                     <p class="sub-description">Servers & enterprise storage solutions</p>
@@ -444,30 +447,34 @@
             
             // Add click event to explore button
             const btn = clone.querySelector('.sub-btn');
-           btn.onclick = function (e) {
-    e.preventDefault();
+            btn.onclick = function (e) {
+                e.preventDefault();
 
-    const category = card.getAttribute('data-category').toLowerCase();
-    const seriesString = card.getAttribute('data-series');
+                const categoryPath = card.getAttribute('data-category').toLowerCase();
+                const seriesString = card.getAttribute('data-series');
 
-    // 👉 If ONLY category/subcategory clicked
-    if (!seriesString) {
-        window.location.href = `/products/${category}`;
-        return;
-    }
+                // 🔥 MEMORY: go ONLY to brand page
+                if (categoryPath.startsWith("memory/")) {
+                    window.location.href = `/products/${categoryPath}`;
+                    return;
+                }
 
-    const seriesList = seriesString.split(',').map(s => s.trim());
+                // 👉 If no series info
+                if (!seriesString) {
+                    window.location.href = `/products/${categoryPath}`;
+                    return;
+                }
 
-    // 👉 If multiple series → go to subcategory page
-    if (seriesList.length > 1) {
-        window.location.href = `/products/${category}`;
-    }
-    // 👉 If exactly one series → go to series page
-    else {
-        window.location.href = `/products/${category}/${seriesList[0]}`;
-    }
+                const seriesList = seriesString.split(',').map(s => s.trim());
 
-
+                // 👉 If multiple series → go to subcategory page
+                if (seriesList.length > 1) {
+                    window.location.href = `/products/${categoryPath}`;
+                }
+                // 👉 If exactly one series → go to series page
+                else {
+                    window.location.href = `/products/${categoryPath}/${seriesList[0]}`;
+                }
             };
             
             modalSubcategories.appendChild(clone);

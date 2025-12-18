@@ -1,21 +1,21 @@
 // =============================
 // READ PRODUCT FROM CLEAN URL
-// Supports URL format:
-// /products/<category>/<series>/<product_id>
-// Example: /products/cpu/ryzen/cpu-9700x
+// Supports ALL formats:
+// /products/cpu/amd-desktop/cpu-9700x
+// /products/memory/samsung/ram-samsung-8gb-ddr4-udimm
+// /products/hdd/seagate/exos-x18
 // =============================
 
 const pathParts = window.location.pathname.split("/").filter(Boolean);
 
-const category = pathParts[1] || null;
-const series = pathParts[2] || null;
-const productId = pathParts[3] || null;
+// ✅ ALWAYS TAKE LAST PART AS PRODUCT ID
+const productId = pathParts[pathParts.length - 1];
 
 const API_HOST = "http://127.0.0.1:5000";
 
-if (!category || !series || !productId) {
+if (!productId) {
   document.getElementById("prodName").textContent = "Invalid product URL.";
-  throw new Error("Missing category / series / product id in URL");
+  throw new Error("Missing product id in URL");
 }
 
 // =============================
@@ -23,9 +23,7 @@ if (!category || !series || !productId) {
 // =============================
 async function loadProduct() {
   try {
-    const res = await fetch(
-      `${API_HOST}/api/products/${category}/${series}/${productId}`
-    );
+    const res = await fetch(`${API_HOST}/api/products/${productId}`);
 
     if (!res.ok) throw new Error("API error");
 
@@ -85,10 +83,14 @@ async function loadProduct() {
       Cache: product.cache ? `${product.cache} MB` : null,
       TDP: product.tdp ? `${product.tdp} W` : null,
       Technology: product.tech,
+
       "Memory Type": product.memory_type,
-      "Max Memory": product.max_memory_size
-        ? `${product.max_memory_size} GB`
-        : null,
+      Capacity: product.capacity,
+      Speed: product.speed,
+      Voltage: product.voltage,
+      "Form Factor": product.form_factor,
+      ECC: product.ecc,
+
       Packaging: product.packaging
     };
 

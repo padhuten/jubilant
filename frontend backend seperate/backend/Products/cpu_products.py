@@ -2824,7 +2824,7 @@ cpu_products = [
   },
 
   {
-  "id": "cpu-9700x",
+  "id": "9700x",
   "name": "AMD Ryzen 7 9700X",
   "brand": "AMD",
 
