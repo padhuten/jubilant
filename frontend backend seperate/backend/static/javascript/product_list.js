@@ -367,51 +367,46 @@ class ProductsManager {
 
         // ✅ 3-level: sub_category EXISTS
         if (product.sub_category) {
-            productUrl = `/products/${product.category}/${product.sub_category}/${product.series}/${product.id}`;
-            card.innerHTML = `
-                <div class="product-image">
-                    <img src="${imageUrl}" alt="${product.name}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22%3E%3Crect fill=%22%23e0e0e0%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%23999%22 font-size=%2214%22%3E${product.brand}%3C/text%3E%3C/svg%3E'">
-                    <span class="product-badge">${(product.category || '').substring(0, 3).toUpperCase()}</span>
-                </div>
-                <div class="product-content">
-                    <div class="product-category">${product.category || 'Product'}</div>
-                    <div class="product-name">${product.name}</div>
-                    <div class="product-specs">
-                        ${product.cores ? `<div class="spec-item"><span class="spec-label">Cores:</span><span class="spec-value">${product.cores}</span></div>` : ''}
-                        ${product.tdp ? `<div class="spec-item"><span class="spec-label">TDP:</span><span class="spec-value">${product.tdp}W</span></div>` : ''}
-                        ${product.tech ? `<div class="spec-item"><span class="spec-label">Tech:</span><span class="spec-value">${product.tech}</span></div>` : ''}
-                        ${product.socket ? `<div class="spec-item"><span class="spec-label">Socket:</span><span class="spec-value">${product.socket}</span></div>` : ''}
-                    </div>
-                </div>
-                <div class="product-footer">
-                    <div>
-                        <div class="product-price">$${priceFormatted}</div>
-                    </div>
-                    <button class="btn-view" onclick="window.location.href='${productUrl}'">View</button>
-                </div>
-            `;
-        }
-        // ✅ 2-level: sub_category REMOVED
-        else {
-            productUrl = `/products/${product.category}/${product.series}/${product.id}`;
-            card.innerHTML = `
-                <div class="product-image">
-                    <img src="${imageUrl}" alt="${product.name}">
-                    <span class="product-badge">${(product.category || '').substring(0, 3).toUpperCase()}</span>
-                </div>
-                <div class="product-content">
-                    <div class="product-category">${product.category}</div>
-                    <div class="product-name">${product.name}</div>
-                </div>
-                <div class="product-footer">
+    productUrl = `/products/${product.category}/${product.sub_category}/${product.series}/${product.id}`;
+    card.innerHTML = `
+        <a href="${productUrl}" class="product-card-link">
+            <div class="product-image">
+                <img src="${imageUrl}" alt="${product.name}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22%3E%3Crect fill=%22%23e0e0e0%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%23999%22 font-size=%2214%22%3E${product.brand}%3C/text%3E%3C/svg%3E'">
+                <span class="product-badge">${(product.category || '').substring(0, 3).toUpperCase()}</span>
+            </div>
+            <div class="product-content">
+                <div class="product-category">${product.category || 'Product'}</div>
+                <div class="product-name">${product.name}</div>
+            </div>
+            <div class="product-footer">
+                <div>
                     <div class="product-price">$${priceFormatted}</div>
-                    <button class="btn-view" onclick="window.location.href='${productUrl}'">
-                        View
-                    </button>
                 </div>
-            `;
-        }
-
+                <span class="btn-view">View</span>
+            </div>
+        </a>
+    `;
+}
+        // ✅ 2-level: sub_category REMOVED
+       else {
+    productUrl = `/products/${product.category}/${product.series}/${product.id}`;
+    card.innerHTML = `
+        <a href="${productUrl}" class="product-card-link">
+            <div class="product-image">
+                <img src="${imageUrl}" alt="${product.name}">
+                <span class="product-badge">${(product.category || '').substring(0, 3).toUpperCase()}</span>
+            </div>
+            <div class="product-content">
+                <div class="product-category">${product.category}</div>
+                <div class="product-name">${product.name}</div>
+            </div>
+            <div class="product-footer">
+                <div class="product-price">$${priceFormatted}</div>
+                <span class="btn-view">View</span>
+            </div>
+        </a>
+    `;
+}
         return card;
     }
 
