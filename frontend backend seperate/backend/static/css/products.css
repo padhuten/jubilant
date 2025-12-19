@@ -660,7 +660,7 @@ body {
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 24px;
     margin-bottom: 40px;
     animation: fadeIn 0.5s ease-out;
@@ -1464,7 +1464,7 @@ body {
     }
 
     .products-grid {
-        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)) !important;
+        grid-template-columns: repeat(3, 1fr) !important;
         gap: 24px;
     }
 

@@ -91,7 +91,35 @@ async function loadProduct() {
       "Form Factor": product.form_factor,
       ECC: product.ecc,
 
-      Packaging: product.packaging
+      Packaging: product.packaging,
+      // ===== MONITOR SPECS =====
+"Screen Size": product.screen_size,
+Resolution: product.resolution,
+"Aspect Ratio": product.aspect_ratio,
+"Panel Type": product.panel_type,
+Curvature: product.curvature,
+"HDR Support": product.hdr,
+"Max Refresh Rate": product.refresh_rate_max,
+"Response Time": product.response_time,
+"Color Depth": product.color_depth,
+"Viewing Angles": product.viewing_angles,
+Dimensions: product.dimensions_mm,
+Weight: product.weight_kg ? `${product.weight_kg} kg` : null,
+// ===== LAPTOP SPECS =====
+Processor: product.processor,
+Memory: product.memory,
+Storage: product.storage,
+Graphics: product.graphics,
+Display: product.display,
+Network: product.network,
+"Operating System": product.operating_system,
+Color: product.color,
+Warranty: product.warranty,
+// ===== MOTHERBOARD – BASIC SPECS =====
+Chipset: product.chipset,
+"Form Factor": product.form_factor,
+
+
     };
 
     Object.entries(specMap).forEach(([key, value]) => {
