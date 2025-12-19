@@ -1,5 +1,5 @@
 // ===========================
-// PRODUCTS PAGE FUNCTIONALITY
+// PRODUCTS PAGE FUNCTIONALITY WITH PAGINATION
 // ===========================
 
 // 🚫 Do NOT run product list logic on product detail page
@@ -33,7 +33,8 @@ class ProductsManager {
         };
         this.sortBy = 'relevance';
         this.currentPage = 1;
-        this.productsPerPage = 12;
+        this.productsPerPage = 9;
+        this.pagination = null;
         
         // Parse clean URLs
         this.selectedCategory = null;
@@ -77,6 +78,8 @@ class ProductsManager {
         this.closeFiltersBtn = document.getElementById('close-filters-btn');
         this.filtersSidebar = document.getElementById('filters-sidebar');
         this.filterTitles = document.querySelectorAll('.filter-title');
+        this.paginationContainer = document.getElementById('pagination');
+        this.sidebarBackdrop = document.getElementById('sidebar-backdrop');
     }
 
     attachEventListeners() {
@@ -104,6 +107,10 @@ class ProductsManager {
             this.closeFiltersBtn.addEventListener('click', () => this.toggleFiltersSidebar());
         }
 
+        if (this.sidebarBackdrop) {
+            this.sidebarBackdrop.addEventListener('click', () => this.toggleFiltersSidebar());
+        }
+
         this.filterTitles.forEach(title => {
             title.addEventListener('click', e => {
                 const group = e.currentTarget.closest('.filter-group');
@@ -111,13 +118,8 @@ class ProductsManager {
             });
         });
 
-        document.addEventListener('click', e => {
-            if (
-                this.filtersSidebar &&
-                this.filtersSidebar.classList.contains('open') &&
-                !e.target.closest('.filters-sidebar') &&
-                !e.target.closest('.filter-toggle')
-            ) {
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && this.filtersSidebar && this.filtersSidebar.classList.contains('open')) {
                 this.toggleFiltersSidebar();
             }
         });
@@ -197,7 +199,9 @@ class ProductsManager {
             "products"
         );
 
-        this.displayProducts(); // ✅ FIX 1 (do NOT reset filters)
+        this.currentPage = 1;
+        this.initializePagination();
+        this.displayProducts();
     }
 
     handleFilterChange() {
@@ -236,12 +240,23 @@ class ProductsManager {
 
     handleSortChange(e) {
         this.sortBy = e.target.value;
+        this.currentPage = 1;
         this.applySorting();
+        this.initializePagination();
         this.displayProducts();
     }
 
     applyFilters() {
-        this.filteredProducts = this.filteredProducts.filter(product => { // ✅ FIX 2
+        // FIXED: Start from allProducts, not filteredProducts to avoid double-filtering
+        this.filteredProducts = this.allProducts.filter(product => {
+            // Apply URL category filters first
+            if (this.selectedCategory && product.category !== this.selectedCategory)
+                return false;
+
+            if (this.selectedSubCategory && product.sub_category !== this.selectedSubCategory)
+                return false;
+
+            // Apply user-selected filters
             if (this.activeFilters.category.length && !this.activeFilters.category.includes(product.category)) return false;
             if (this.activeFilters.brand.length && !this.activeFilters.brand.includes(product.brand)) return false;
             if (this.activeFilters.application.length && !this.activeFilters.application.includes(product.application)) return false;
@@ -266,6 +281,7 @@ class ProductsManager {
         });
 
         this.applySorting();
+        this.initializePagination();
         this.displayProducts();
     }
 
@@ -281,6 +297,31 @@ class ProductsManager {
         }
     }
 
+    initializePagination() {
+        const totalPages = Math.ceil(this.filteredProducts.length / this.productsPerPage);
+        
+        if (this.pagination) {
+            this.pagination.updateTotalPages(totalPages);
+            this.pagination.currentPage = this.currentPage;
+        } else {
+            this.pagination = new ProductPagination(
+                totalPages, 
+                this.currentPage, 
+                (page) => this.goToPage(page)
+            );
+        }
+    }
+
+    goToPage(page) {
+        this.currentPage = page;
+        this.displayProducts();
+        
+        window.scrollTo({ 
+            top: 0, 
+            behavior: 'smooth' 
+        });
+    }
+
     displayProducts() {
         if (!this.productsGrid) return;
 
@@ -289,57 +330,90 @@ class ProductsManager {
         if (!this.filteredProducts.length) {
             this.showNoResults();
             this.updateResultCount();
+            this.updateResultsInfo();
+            if (this.pagination) {
+                this.pagination.hide();
+            }
             return;
         }
 
         if (this.noResults) this.noResults.style.display = 'none';
 
-        this.filteredProducts.forEach(p => {
+        const startIndex = (this.currentPage - 1) * this.productsPerPage;
+        const endIndex = startIndex + this.productsPerPage;
+        const pageProducts = this.filteredProducts.slice(startIndex, endIndex);
+
+        pageProducts.forEach(p => {
             this.productsGrid.appendChild(this.createProductCard(p));
         });
 
         this.updateResultCount();
+        this.updateResultsInfo();
+        
+        if (this.pagination) {
+            this.pagination.show();
+            this.pagination.render();
+        }
     }
 
     createProductCard(product) {
-    const card = document.createElement('div');
-    card.className = 'product-card';
+        const card = document.createElement('div');
+        card.className = 'product-card';
 
-    const priceFormatted = product.price.toLocaleString('en-US');
-    const imageUrl = product.image || '/static/images/placeholder.jpg';
+        const priceFormatted = product.price.toLocaleString('en-US');
+        const imageUrl = product.image || '/static/images/placeholder.jpg';
 
-    let productUrl;
+        let productUrl;
 
-    // ✅ 3-level: sub_category EXISTS
-    if (product.sub_category) {
-        productUrl = `/products/${product.category}/${product.sub_category}/${product.series}/${product.id}`;
+        // ✅ 3-level: sub_category EXISTS
+        if (product.sub_category) {
+            productUrl = `/products/${product.category}/${product.sub_category}/${product.series}/${product.id}`;
+            card.innerHTML = `
+                <div class="product-image">
+                    <img src="${imageUrl}" alt="${product.name}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22%3E%3Crect fill=%22%23e0e0e0%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%23999%22 font-size=%2214%22%3E${product.brand}%3C/text%3E%3C/svg%3E'">
+                    <span class="product-badge">${(product.category || '').substring(0, 3).toUpperCase()}</span>
+                </div>
+                <div class="product-content">
+                    <div class="product-category">${product.category || 'Product'}</div>
+                    <div class="product-name">${product.name}</div>
+                    <div class="product-specs">
+                        ${product.cores ? `<div class="spec-item"><span class="spec-label">Cores:</span><span class="spec-value">${product.cores}</span></div>` : ''}
+                        ${product.tdp ? `<div class="spec-item"><span class="spec-label">TDP:</span><span class="spec-value">${product.tdp}W</span></div>` : ''}
+                        ${product.tech ? `<div class="spec-item"><span class="spec-label">Tech:</span><span class="spec-value">${product.tech}</span></div>` : ''}
+                        ${product.socket ? `<div class="spec-item"><span class="spec-label">Socket:</span><span class="spec-value">${product.socket}</span></div>` : ''}
+                    </div>
+                </div>
+                <div class="product-footer">
+                    <div>
+                        <div class="product-price">$${priceFormatted}</div>
+                    </div>
+                    <button class="btn-view" onclick="window.location.href='${productUrl}'">View</button>
+                </div>
+            `;
+        }
+        // ✅ 2-level: sub_category REMOVED
+        else {
+            productUrl = `/products/${product.category}/${product.series}/${product.id}`;
+            card.innerHTML = `
+                <div class="product-image">
+                    <img src="${imageUrl}" alt="${product.name}">
+                    <span class="product-badge">${(product.category || '').substring(0, 3).toUpperCase()}</span>
+                </div>
+                <div class="product-content">
+                    <div class="product-category">${product.category}</div>
+                    <div class="product-name">${product.name}</div>
+                </div>
+                <div class="product-footer">
+                    <div class="product-price">$${priceFormatted}</div>
+                    <button class="btn-view" onclick="window.location.href='${productUrl}'">
+                        View
+                    </button>
+                </div>
+            `;
+        }
+
+        return card;
     }
-    // ✅ 2-level: sub_category REMOVED
-    else {
-        productUrl = `/products/${product.category}/${product.series}/${product.id}`;
-    }
-
-    card.innerHTML = `
-        <div class="product-image">
-            <img src="${imageUrl}" alt="${product.name}">
-            <span class="product-badge">${(product.category || '').substring(0, 3).toUpperCase()}</span>
-        </div>
-        <div class="product-content">
-            <div class="product-category">${product.category}</div>
-            <div class="product-name">${product.name}</div>
-        </div>
-        <div class="product-footer">
-            <div class="product-price">$${priceFormatted}</div>
-            <button class="btn-view" onclick="window.location.href='${productUrl}'">
-                View
-            </button>
-        </div>
-    `;
-
-    return card;
-}
-
-
 
     showNoResults() {
         if (this.noResults) this.noResults.style.display = 'block';
@@ -351,6 +425,30 @@ class ProductsManager {
             const count = this.filteredProducts.length;
             const text = count === 1 ? 'product' : 'products';
             this.resultCount.textContent = `${count} ${text}`;
+        }
+    }
+
+    updateResultsInfo() {
+        const showingStart = document.getElementById('showing-start');
+        const showingEnd = document.getElementById('showing-end');
+        const totalResults = document.getElementById('total-results');
+        const resultsInfo = document.querySelector('.results-info');
+        
+        if (showingStart && showingEnd && totalResults && resultsInfo) {
+            const total = this.filteredProducts.length;
+            
+            if (total === 0) {
+                resultsInfo.style.display = 'none';
+            } else {
+                resultsInfo.style.display = 'block';
+                
+                const start = (this.currentPage - 1) * this.productsPerPage + 1;
+                const end = Math.min(this.currentPage * this.productsPerPage, total);
+                
+                showingStart.textContent = start;
+                showingEnd.textContent = end;
+                totalResults.textContent = total;
+            }
         }
     }
 
@@ -379,11 +477,162 @@ class ProductsManager {
     toggleFiltersSidebar() {
         if (!this.filtersSidebar) return;
         this.filtersSidebar.classList.toggle('open');
+        if (this.sidebarBackdrop) {
+            this.sidebarBackdrop.classList.toggle('active');
+        }
         document.body.style.overflow = this.filtersSidebar.classList.contains('open') ? 'hidden' : '';
     }
 }
 
-// INIT
+// ===========================
+// PAGINATION CLASS
+// ===========================
+
+class ProductPagination {
+    constructor(totalPages, currentPage = 1, onPageChange) {
+        this.totalPages = totalPages;
+        this.currentPage = currentPage;
+        this.onPageChange = onPageChange;
+        this.container = document.getElementById('pagination');
+        this.paginationSection = document.getElementById('pagination-section');
+        this.render();
+    }
+
+    updateTotalPages(totalPages) {
+        this.totalPages = totalPages;
+        if (this.currentPage > totalPages && totalPages > 0) {
+            this.currentPage = 1;
+        }
+        this.render();
+    }
+
+    show() {
+        if (this.paginationSection) {
+            this.paginationSection.style.display = 'block';
+        }
+    }
+
+    hide() {
+        if (this.paginationSection) {
+            this.paginationSection.style.display = 'none';
+        }
+    }
+
+    render() {
+        if (!this.container) return;
+        
+        if (this.totalPages <= 1) {
+            this.hide();
+            return;
+        }
+
+        this.show();
+        this.container.innerHTML = '';
+        
+        this.container.appendChild(
+            this.createButton('←', 'nav-btn', this.currentPage === 1, 
+            () => this.goToPage(this.currentPage - 1))
+        );
+
+        const pages = this.calculatePageNumbers();
+        pages.forEach(page => {
+            if (page === '...') {
+                this.container.appendChild(this.createDots());
+            } else {
+                this.container.appendChild(
+                    this.createButton(
+                        page,
+                        page === this.currentPage ? 'active' : '',
+                        false,
+                        () => this.goToPage(page)
+                    )
+                );
+            }
+        });
+
+        this.container.appendChild(
+            this.createButton('→', 'nav-btn', this.currentPage === this.totalPages, 
+            () => this.goToPage(this.currentPage + 1))
+        );
+
+        const currentPageDisplay = document.getElementById('current-page-display');
+        const totalPagesDisplay = document.getElementById('total-pages-display');
+        
+        if (currentPageDisplay) currentPageDisplay.textContent = this.currentPage;
+        if (totalPagesDisplay) totalPagesDisplay.textContent = this.totalPages;
+    }
+
+    createButton(text, className = '', disabled = false, onClick = null) {
+        const btn = document.createElement('button');
+        btn.className = `page-btn ${className}`;
+        btn.innerHTML = `<span>${text}</span>`;
+        btn.disabled = disabled;
+        if (onClick) btn.onclick = onClick;
+        return btn;
+    }
+
+    createDots() {
+        const dots = document.createElement('div');
+        dots.className = 'dots';
+        dots.textContent = '⋯';
+        return dots;
+    }
+
+    calculatePageNumbers() {
+        const pages = [];
+        const showPages = 7;
+        
+        if (this.totalPages <= showPages) {
+            for (let i = 1; i <= this.totalPages; i++) {
+                pages.push(i);
+            }
+        } else {
+            pages.push(1);
+
+            let start = Math.max(2, this.currentPage - 1);
+            let end = Math.min(this.totalPages - 1, this.currentPage + 1);
+
+            if (this.currentPage <= 3) {
+                end = 4;
+            }
+
+            if (this.currentPage >= this.totalPages - 2) {
+                start = this.totalPages - 3;
+            }
+
+            if (start > 2) {
+                pages.push('...');
+            }
+
+            for (let i = start; i <= end; i++) {
+                pages.push(i);
+            }
+
+            if (end < this.totalPages - 1) {
+                pages.push('...');
+            }
+
+            pages.push(this.totalPages);
+        }
+
+        return pages;
+    }
+
+    goToPage(page) {
+        if (page < 1 || page > this.totalPages || page === this.currentPage) return;
+        this.currentPage = page;
+        this.render();
+        
+        if (this.onPageChange) {
+            this.onPageChange(page);
+        }
+    }
+}
+
+// ===========================
+// INITIALIZE
+// ===========================
+
 document.addEventListener('DOMContentLoaded', () => {
     console.log("🚀 ProductsManager initialized");
     new ProductsManager();
