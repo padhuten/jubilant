@@ -1086,40 +1086,221 @@ body {
 }
 
 
+/* ================= FIX GAP AFTER LAPTOP (MOBILE ONLY) ================= */
+@media (max-width: 1023px) {
+
+  /* Remove extra space created by laptop-fix on mobile */
+  .product-item-row.laptop-fix {
+    margin-bottom: 0 !important;
+  }
+
+  .product-item-row.laptop-fix .mega-menu {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+}
+
+
+
+/* ===== REMOVE EMPTY SPACE AFTER LAPTOP (MOBILE ONLY) ===== */
+@media (max-width: 1023px) {
+
+  /* When a product row is NOT open, it must take ZERO space */
+  .product-item-row:not(.open) .mega-menu {
+    max-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+  }
+}
+
+
+
+/* ================= FIX LAPTOP NESTING (MOBILE ONLY) ================= */
+@media (max-width: 1023px) {
+
+  /* 🔒 Disable ALL hover behavior on mobile */
+  .product-item-row:hover .mega-menu,
+  .laptop-fix:hover .mega-menu {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    max-height: 0 !important;
+  }
+
+  /* ✅ Laptop submenu opens ONLY when clicked (.open) */
+  .product-item-row.open .mega-menu {
+    opacity: 1 !important;
+    visibility: visible !important;
+    max-height: 2000px !important;
+  }
+
+  /* 🧹 Remove desktop centering logic for laptop */
+  .laptop-fix .mega-menu {
+    position: static !important;
+    transform: none !important;
+    top: auto !important;
+    bottom: auto !important;
+    padding-left: 15px !important;
+    margin-top: 0 !important;
+  }
+
+  /* 📐 Make Laptop submenu look like others */
+  .laptop-fix .mega-column {
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .laptop-fix .mega-column h4 {
+    margin-top: 10px;
+  }
+}
+
+
+
+
+/* ================= FORCE MOBILE CLICK-ONLY ACCORDION ================= */
+@media (max-width: 1023px) {
+
+  /* 1️⃣ Kill ALL hover-based mega menu opening on mobile */
+  .product-item-row:hover > .mega-menu,
+  .laptop-fix:hover > .mega-menu {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    max-height: 0 !important;
+  }
+
+  /* 2️⃣ Mega menu must open ONLY when .open is added (click) */
+  .product-item-row.open > .mega-menu {
+    opacity: 1 !important;
+    visibility: visible !important;
+    max-height: 3000px !important;
+  }
+
+  /* 3️⃣ Force mobile layout (NO grid, NO columns) */
+  .mega-menu {
+    display: block !important;
+    grid-auto-flow: unset !important;
+    grid-auto-columns: unset !important;
+    width: 100% !important;
+  }
+
+  /* 4️⃣ Laptop-specific desktop logic MUST DIE on mobile */
+  .laptop-fix .mega-menu {
+    position: static !important;
+    transform: none !important;
+    top: auto !important;
+    bottom: auto !important;
+  }
+
+  /* 5️⃣ Prevent overlapping text */
+  .mega-column {
+    width: 100% !important;
+    min-width: 100% !important;
+    border: none !important;
+  }
+
+  .mega-column h4,
+  .mega-column a {
+    white-space: normal !important;
+    line-height: 1.4 !important;
+  }
+}
+
+
+
+
+
+/* ===== LAPTOP: CLICK-ONLY NESTED DROPDOWN (MOBILE/TABLET) ===== */
+@media (max-width: 1023px) {
+
+  /* 1️⃣ Completely disable hover ONLY for Laptop */
+  .product-item-row.laptop-fix:hover > .mega-menu {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    max-height: 0 !important;
+  }
+
+  /* 2️⃣ Show Laptop submenu ONLY when clicked (.open added by JS) */
+  .product-item-row.laptop-fix.open > .mega-menu {
+    opacity: 1 !important;
+    visibility: visible !important;
+    max-height: 2000px !important;
+  }
+
+  /* 3️⃣ Force Laptop submenu to appear BELOW the Laptop item */
+  .product-item-row.laptop-fix > .mega-menu {
+    position: static !important;
+    transform: none !important;
+    top: auto !important;
+    bottom: auto !important;
+    margin-top: 6px !important;
+  }
+}
+
+
+
+
+
+
+
 /* =====================================================
-   1024px ONLY — EXTRA SIZE REDUCTION FOR SERVER & STORAGE
-   (NO POSITION / NO BEHAVIOR CHANGE)
+   1024px – FORCE SMALL MEGA MENU (STAY INSIDE SCREEN)
    ===================================================== */
 @media (min-width: 1024px) and (max-width: 1279px) {
 
-  /* Target ONLY Server & Storage mega menu */
-  .product-item-row.has-mega.bottom-fix
-  > .mega-menu {
-
-    /* Reduce overall footprint */
-    max-width: 560px !important;
+  /* Absolute hard limit so it NEVER crosses viewport */
+  .dropdown:nth-child(2) .mega-menu {
+    max-width: 520px !important;        /* VERY compact */
+    width: 520px !important;
+    max-height: 55vh !important;
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
   }
 
-  /* Reduce column width */
-  .product-item-row.has-mega.bottom-fix
-  > .mega-menu
-  > .mega-column {
-    min-width: 170px !important;
+  /* Narrow columns */
+  .dropdown:nth-child(2) .mega-column {
+    min-width: 140px !important;
   }
 
-  /* Reduce heading size */
-  .product-item-row.has-mega.bottom-fix
-  > .mega-menu
-  > .mega-column h4 {
+  /* Smaller headings */
+  .dropdown:nth-child(2) .mega-column h4 {
     font-size: 0.75rem !important;
     padding: 5px 8px !important;
   }
 
-  /* Reduce link size */
-  .product-item-row.has-mega.bottom-fix
-  > .mega-menu
-  > .mega-column a {
-    font-size: 0.73rem !important;
+  /* Smaller links */
+  .dropdown:nth-child(2) .mega-column a {
+    font-size: 0.72rem !important;
     padding: 5px 8px !important;
+    line-height: 1.25 !important;
+  }
+
+  /* Left category list (CPU, SSD, Laptop…) */
+  .dropdown:nth-child(2) .dropdown-content {
+    min-width: 180px !important;
+  }
+
+  .dropdown:nth-child(2) .product-item-row .main-item {
+    font-size: 0.78rem !important;
+    padding: 7px 10px !important;
+  }
+}
+
+
+
+/* =========================================
+   1024px – ULTRA SMALL MEGA MENU WIDTH
+   ========================================= */
+@media (min-width: 1024px) and (max-width: 1279px) {
+
+  /* ABSOLUTE width lock */
+  .dropdown:nth-child(2) .mega-menu {
+    width: 320px !important;        /* 🔽 very small */
+    max-width: 320px !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Compress columns to fit */
+  .dropdown:nth-child(2) .mega-column {
+    min-width: 105px !important;
   }
 }
