@@ -1,7 +1,5 @@
 from flask import Blueprint, request, jsonify
-from database import cur, conn
 from email_service import send_email
-from config import ENABLE_DB
 
 forms_bp = Blueprint("forms_bp", __name__)
 
@@ -95,25 +93,6 @@ def send_contact():
     if not email_sent:
         return jsonify({"success": False, "message": "Failed to send contact form"}), 500
 
-    if ENABLE_DB:
-        try:
-            cur.execute("""
-                INSERT INTO contact_form 
-                (product_name, quantity, company_name, email, phone, inquiry_details, get_notified)
-                VALUES (%s, %s, %s, %s, %s, %s, %s)
-            """, (
-                data.get("product_name"),
-                data.get("quantity"),
-                data.get("company_name"),
-                data.get("email"),
-                data.get("phone"),
-                data.get("inquiry_details"),
-                checkbox(data.get("get_notified"))
-            ))
-            conn.commit()
-        except Exception as e:
-            print("⚠️ DB error (send-contact):", e)
-
     return jsonify({"success": True, "message": "Contact form submitted successfully!"})
 
 
@@ -132,25 +111,6 @@ def send_consultation():
 
     if not email_sent:
         return jsonify({"success": False, "message": "Failed to send consultation request"}), 500
-
-    if ENABLE_DB:
-        try:
-            cur.execute("""
-                INSERT INTO consultations 
-                (product_name, quantity, company_name, email, phone, inquiry_details, notify_price)
-                VALUES (%s, %s, %s, %s, %s, %s, %s)
-            """, (
-                data.get("product_name"),
-                data.get("quantity"),
-                data.get("company_name"),
-                data.get("email"),
-                data.get("phone"),
-                data.get("inquiry_details"),
-                checkbox(data.get("notify_price"))
-            ))
-            conn.commit()
-        except Exception as e:
-            print("⚠️ DB error (send-consultation):", e)
 
     return jsonify({"success": True, "message": "Consultation request sent!"})
 
@@ -171,22 +131,6 @@ def send_inquiry():
     if not email_sent:
         return jsonify({"success": False, "message": "Failed to send inquiry"}), 500
 
-    if ENABLE_DB:
-        try:
-            cur.execute("""
-                INSERT INTO inquiries (name, email, phone, product, quantity)
-                VALUES (%s, %s, %s, %s, %s)
-            """, (
-                data.get("name"),
-                data.get("email"),
-                data.get("phone"),
-                data.get("product"),
-                data.get("quantity")
-            ))
-            conn.commit()
-        except Exception as e:
-            print("⚠️ DB error (send-inquiry):", e)
-
     return jsonify({"success": True, "message": "Inquiry received successfully!"})
 
 
@@ -205,24 +149,5 @@ def send_submit():
 
     if not email_sent:
         return jsonify({"success": False, "message": "Failed to send submission"}), 500
-
-    if ENABLE_DB:
-        try:
-            cur.execute("""
-                INSERT INTO inquiry_submissions 
-                (product_name, quantity, company_name, email, phone, inquiry_details, notify_prices)
-                VALUES (%s, %s, %s, %s, %s, %s, %s)
-            """, (
-                data.get("product-name"),
-                data.get("quantity"),
-                data.get("company-name"),
-                data.get("email-address"),
-                data.get("phone"),
-                data.get("inquiry-details"),
-                checkbox(data.get("notify-prices"))
-            ))
-            conn.commit()
-        except Exception as e:
-            print("⚠️ DB error (send-submit):", e)
 
     return jsonify({"success": True, "message": "Submission received!"})
