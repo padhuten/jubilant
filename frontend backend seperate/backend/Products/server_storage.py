@@ -7,55 +7,28 @@ server_storage_products = [
 {
   "id": "mbd-supermicro-x13sae",
   "name": "Supermicro X13SAE Motherboard",
-  "brand": "Supermicro",
+  "brand": "supermicro",
   "category_key": "server-storage",
   "category": "Server & Workstation Motherboard",
   "sub_category": "supermicro",
   "series": "motherboards",
   "application": "Workstation / Server / Enterprise PC",
+  "status": "New",
   "description": "ATX motherboard based on Intel W680 chipset supporting 12th, 13th, and 14th Gen Intel Core processors, DDR5 memory, dual LAN, and multiple PCIe & M.2 expansion options.",
-  
-  "processor": {
-    "socket": "Socket V0",
-    "supported_cpus": "12th/13th/14th Gen Intel Core i3/i5/i7/i9",
-    "max_cores": "Up to 24 cores",
-    "tdp_support": "Up to 150W TDP"
-  },
 
-  "memory": {
-    "slots": 4,
-    "type": "DDR5 UDIMM",
-    "max_capacity": "192 GB",
-    "max_speed": "4400 MT/s",
-    "supported_sizes": ["8 GB", "16 GB", "24 GB", "32 GB", "48 GB"]
-  },
+  "processor": "Socket V (LGA 1700) | Supports 12th / 13th / 14th Gen Intel Core i3/i5/i7/i9 | Up to 24 cores | Up to 150W TDP",
+
+  "memory": "4 × DDR5 UDIMM slots | Up to 192 GB | Up to 4400 MT/s | Supported sizes: 8 GB / 16 GB / 24 GB / 32 GB / 48 GB",
 
   "chipset": "Intel W680",
 
-  "storage": {
-    "sata": "8 × SATA 6Gb/s with RAID 0/1/5/10",
-    "m2": "3 × M.2 PCIe 4.0 x4 (M-Key 2280)"
-  },
+  "storage": "8 × SATA 6Gb/s (RAID 0/1/5/10) | 3 × M.2 PCIe 4.0 x4 (M-Key 2280)",
 
-  "network": {
-    "lan": [
-      "1 × 2.5 GbE (Intel i225V)",
-      "1 × 1 GbE (Intel I219LM)"
-    ]
-  },
+  "network": "1 × 2.5 GbE (Intel i225V) + 1 × 1 GbE (Intel I219LM)",
 
-  "ports": {
-    "usb": "USB 3.2 Gen2, Gen1, USB-C, USB 2.0 (rear + headers)",
-    "display": "DisplayPort, HDMI 2.0b, DVI-D",
-    "audio": "ALC888S HD Audio"
-  },
+  "ports": "USB 3.2 Gen2 / Gen1 / USB-C / USB 2.0 | DisplayPort | HDMI 2.0b | DVI-D | HD Audio (ALC888S)",
 
-  "expansion": {
-    "pcie": [
-      "2 × PCIe 5.0 x16",
-      "2 × PCIe 3.0 x4"
-    ]
-  },
+  "expansion": "2 × PCIe 5.0 x16 | 2 × PCIe 3.0 x4",
 
   "form_factor": "ATX (12 × 9.6 inches)",
   "image": "/static/images/SERVER2.webp",
@@ -63,119 +36,68 @@ server_storage_products = [
 },
 
 
+
 {
-  "id": "server-supermicro-2024-2u-gpu",
+  "id": "srv-supermicro-2024-2u-gpu",
   "name": "Supermicro 2024 2U GPU Server",
-  "brand": "Supermicro",
+  "brand": "supermicro",
+  "category_key": "server-storage",
+  "category": "2U GPU Server",
+  "sub_category": "supermicro",
   "series": "gpu-server",
-  "category_key": "server",
-  "sub_category": "super-micro",
-  "category": "High-Performance GPU Server",
-  "application": "AI / Machine Learning / Deep Learning / HPC / Data Center",
-  "description": "Powerful 2U rackmount GPU server supporting next-generation NVIDIA GPUs, dual 5th/4th Gen Intel Xeon Scalable processors, PCIe Gen5, and high-bandwidth networking — designed for AI training, inference, HPC, cloud, and enterprise GPU workloads.",
+  "application": "AI / Machine Learning / HPC / Enterprise",
+  "description": "High-performance Supermicro 2024 2U GPU server with dual processors, scalable memory, multi-GPU support, and enterprise-class storage networking.",
 
-  "processor": {
-    "socket": "Dual Socket E (LGA 4677)",
-    "supported_cpus": "4th & 5th Gen Intel Xeon Scalable (Sapphire Rapids / Emerald Rapids)",
-    "max_cores": "Up to 64 cores per CPU (128 cores total)",
-    "tdp_support": "Up to 350W TDP depending on model"
-  },
-
-  "memory": {
-    "slots": 32,
-    "type": "DDR5 RDIMM",
-    "max_capacity": "Up to 4 TB (with 128GB RDIMMs)",
-    "max_speed": "Up to 5600 MT/s"
-  },
-
-  "chipset": "Intel C741 or proprietary Supermicro GPU-server platform (model-dependent)",
-
-  "storage": {
-    "nvme": "Up to 8 × NVMe Gen4/Gen5 bays (U.2 / E1.S depending on SKU)",
-    "sata": "Optional 2.5\"/3.5\" SATA drive bays"
-  },
-
-  "network": {
-    "lan": [
-      "2 × 10GbE or 25GbE onboard NIC (varies by model)",
-      "Optional OCP 3.0 card for 100/200/400GbE networking"
-    ]
-  },
-
-  "gpu_support": {
-    "max_gpus": "Up to 4 × Double-width GPUs",
-    "supported_gpus": [
-      "NVIDIA H100 PCIe",
-      "NVIDIA L40S",
-      "NVIDIA A100 PCIe",
-      "NVIDIA RTX 6000 Ada"
-    ],
-    "interconnect": "PCIe Gen5 (x16 lanes per GPU)"
-  },
-
-  "expansion": {
-    "pcie": [
-      "Up to 6 × PCIe 5.0 x16 full-height slots",
-      "OCP 3.0 networking slot"
-    ]
-  },
-
-  "power_supply": {
-    "redundant_psu": "2 × 2000W Titanium Level (1+1 Redundant)",
-    "input": "100–240V AC"
-  },
-
-  "form_factor": "2U Rackmount Server",
+  "status": "New",
+  "processor": "Dual AMD EPYC 9004 / 7003 Series or Dual Intel Xeon Scalable (dependent on configuration)",
+  
+  "memory": "Up to 32 DDR5 ECC DIMM slots | Up to multiple terabytes (configurable)",
+  
+  "gpu_support": "Up to 4 x double-width or 8 x single-width GPUs (PCIe 4.0/5.0) depending on chassis and riser configuration",
+  
+  "storage": "Up to 24 × 2.5\" hot-swap NVMe/SATA/SAS drive bays | M.2 boot options",
+  
+  "network": "Multiple 10G/25G/100G Ethernet options via AIOM/OCP modules | Optional RDMA",
+  
+  "cooling": "Redundant high-static pressure server fans with optimized thermal design for GPUs",
+  
+  "power": "Dual hot-swap redundant power supplies (1600W+ Titanium level available)",
+  
+  "form_factor": "2U Rackmount",
   "image": "/static/images/SERVER2.webp",
-  "price": 436000
+  "price": 459990
 },
+
 
 {
   "id": "chassis-supermicro-ultra-4u",
   "name": "Supermicro Ultra 4U Chassis",
-  "brand": "Supermicro",
-  "series": "barebone",
-  "category_key": "server",
-  "sub_category": "super-micro",
-  "category": "4U High-Performance Server Chassis",
-  "application": "Enterprise Server / Data Center / Storage / Multi-GPU / Virtualization",
-  "description": "4U server chassis from Supermicro’s Ultra series supporting high-performance servers, multiple PCIe expansion cards, redundant power supplies, advanced cooling, and large drive capacity. Ideal for enterprise workloads, storage servers, and multi-GPU configurations.",
+  "brand": "supermicro",
+  "category_key": "server-storage",
+  "category": "4U Rackmount Chassis",
+  "sub_category": "supermicro",
+  "series": "ultra-chassis",
+  "application": "Enterprise Server / Storage / GPU Compute",
+  "description": "Supermicro Ultra 4U rack chassis supporting dual processors, flexible storage configurations, and high-density expansion for enterprise or GPU workloads.",
 
-  "processor": {
-    "socket": "Depends on installed Ultra motherboard (supports Xeon Scalable platforms)",
-    "supported_cpus": "Intel Xeon Scalable (varies by chassis + motherboard combo)",
-    "max_cores": "Up to 64 cores per CPU (model-specific)",
-    "tdp_support": "Up to 350W depending on cooling and CPU"
-  },
-
-  "chipset": "Depends on installed Ultra motherboard",
-
-  "storage": {
-    "drive_bays": "Up to 24 × 3.5\" or 36 × 2.5\" hot-swap drive bays (SAS/SATA/NVMe depending on model)",
-    "backplane": "SAS3 / SATA / NVMe hybrid backplanes available"
-  },
-
-  "network": {
-    "lan": "Networking depends on installed Ultra motherboard (1GbE / 10GbE / 25GbE options)"
-  },
-
-  "ports": {
-    "usb": "Front & rear USB 3.0/3.2 ports (varies by model)",
-    "display": "Video output via installed motherboard (VGA or HDMI)",
-  },
-
-  "expansion": {
-    "pcie": "Supports multiple PCIe Gen4/Gen5 slots — ideal for storage controllers, GPUs, NICs"
-  },
-
-  "power_supply": {
-    "redundant_psu": "Dual 1600W or 2000W Platinum/Titanium level PSUs",
-    "cooling": "High-performance fans optimized for heavy server loads"
-  },
-
-  "form_factor": "4U Rackmount Chassis",
-  "image": "/static/images/barebones.jpg",
-  "price": 175000
+  "status": "New",
+  "processor_support": "Dual Intel Xeon Scalable or Dual AMD EPYC (dependent on motherboard choice)",
+  
+  "memory_support": "Up to 32 DDR5 ECC DIMM slots | Supports high density memory configurations",
+  
+  "drive_bays": "Up to 24 × 2.5\" hot-swap NVMe/SATA/SAS or 12 × 3.5\" LFF with RAID support",
+  
+  "network": "Flexible networking options via OCP 3.0 / AIOM modules supporting 10G/25G/100G+",
+  
+  "expansion_slots": "Multiple PCIe 4.0/5.0 x16 slots for GPUs, NICs and RAID cards",
+  
+  "cooling": "Front hot-swap fans with optimized airflow for heavy GPU and CPU components",
+  
+  "power": "Dual redundant power supplies (1600W+ Titanium level optional)",
+  
+  "form_factor": "4U Rackmount",
+  "image": "/static/images/supermicro_ultra_4u_chassis.jpg",
+  "price": 239990
 },
 
 
@@ -183,242 +105,136 @@ server_storage_products = [
 # ASUS WORKSTATION
 
 {
-  "id": "server-asus-rs700-e11-rs12u",
+  "id": "srv-asus-rs700-rack",
   "name": "ASUS RS700 Rack Server",
-  "brand": "ASUS",
-  "category_key": "server",
+  "brand": "asus",
+  "category_key": "server-storage",
+  "category": "Rack Server",
   "sub_category": "asus",
-  "series": "rack-server",
-  "application": "Data Center / Virtualization / AI / HPC / Storage",
-  "description": "1U enterprise rack server with dual Intel Xeon Scalable processors, up to 32 DIMMs DDR5 ECC memory, multiple NVMe hot-swap bays, flexible PCIe expansion, and optional GPU support — designed for high performance computing, storage and virtualization workloads.",
+  "series": "server-barebone",
+  "application": "Enterprise / Data Center / Virtualization",
+  "description": "ASUS RS700 full-height 2U enterprise rack server platform designed for high uptime, large memory capacity, and flexible storage options for mission-critical workloads.",
 
-  "processor": {
-    "socket": "Dual LGA 4677 sockets",
-    "supported_cpus": "4th/5th Gen Intel Xeon Scalable processors",
-    "max_cores": "Up to 64 cores per CPU (128 cores total)",
-    "tdp_support": "Up to ~350W per processor"
-  },
+  "status": "New",
+  "processor": "Dual Intel Xeon Scalable Processors (3rd/4th Gen) supporting up to 40+ cores per socket",
 
-  "memory": {
-    "slots": 32,
-    "type": "DDR5 ECC RDIMM",
-    "max_capacity": "Up to ~4 TB",
-    "max_speed": "DDR5-4800 or DDR5-5600 (model dependent)"
-  },
+  "memory": "16 DDR5 ECC RDIMM slots | Up to 4 TB DDR5 ECC memory",
 
-  "storage": {
-    "nvme": "Up to 12 × 2.5\" hot-swap NVMe/SAS/SATA bays",
-    "m2": "2 × M.2 PCIe 4.0 x4"
-  },
+  "storage": "8 × 2.5\" hot-swap SATA/SAS + optional NVMe backplane support",
 
-  "network": {
-    "lan": [
-      "2 × 10 GbE (optional dual-port LAN module)",
-      "1 × IPMI management port"
-    ]
-  },
+  "network": "Dual 10GbE integrated + optional 25GbE / 100GbE NIC options",
 
-  "ports": {
-    "usb": "Rear USB 3.2 ports (typical)",
-    "display": "VGA (via ASPEED AST2600 BMC)",
-    "console": "1 × Management LAN (IPMI)"
-  },
+  "raid": "Supports 12Gb/s hardware RAID (0/1/5/10/50/60)",
 
-  "expansion": {
-    "pcie": [
-      "PCIe 5.0 slots (varies by board/risers, e.g., 4 × PCIe 5.0)",
-      "OCP 3.0 slot for networking"
-    ],
-    "gpu_support": "Supports 1 × dual-slot GPU (e.g., NVIDIA A100 / Intel Data Center GPU Flex) in select configurations"
-  },
+  "expansion": "Up to 7 × PCIe 4.0 x16 slots",
 
-  "power_supply": {
-    "redundant_psu": "Dual 1600W+ redundant PSUs (80 PLUS Platinum/Titanium)",
-    "cooling": "High-performance server fans"
-  },
+  "power": "Redundant 1600W Titanium Level PSUs",
 
-  "form_factor": "1U Rackmount Server",
-  "image": "/static/images/asus_workstation.jpg",
-  "price": 200000
+  "form_factor": "2U Rackmount",
+  "image": "/static/images/asus_rs700_rack.jpg",
+  "price": 359990
 },
-
 {
-  "id": "server-asus-esc4000-g4",
+  "id": "srv-asus-esc4000-g4",
   "name": "ASUS ESC4000 G4",
-  "brand": "ASUS",
-  "series": "gpu-system",
-  "category_key": "server",
+  "brand": "asus",
+  "category_key": "server-storage",
+  "category": "GPU Server",
   "sub_category": "asus",
-  "category": "GPU Server / AI Compute Server",
-  "application": "AI / Deep Learning / HPC / Data Center / GPU Rendering",
-  "description": "2U high-performance GPU server supporting up to 4 high-end NVIDIA GPUs, dual Intel Xeon Scalable processors, large DDR4 memory capacity, multiple PCIe expansion slots, and redundant power — ideal for AI training, inference, HPC, simulation, and GPU-accelerated workloads.",
+  "series": "gpu-systems",
+  "application": "AI / Deep Learning / HPC / GPU Compute",
+  "description": "ASUS ESC4000 G4 GPU-optimized 4U rack server with support for multiple GPUs, dual CPUs, and high throughput storage for AI and HPC workloads.",
 
-  "processor": {
-    "socket": "Dual LGA 3647",
-    "supported_cpus": "Intel Xeon Scalable (1st & 2nd Gen)",
-    "max_cores": "Up to 56 cores per CPU (112 cores total)",
-    "tdp_support": "Up to 205W per CPU"
-  },
+  "status": "New",
+  "processor": "Dual Intel Xeon Scalable Processors (Cascade/Cooper Lake) supporting up to 28+ cores per socket",
 
-  "memory": {
-    "slots": 16,
-    "type": "DDR4 ECC RDIMM / LRDIMM",
-    "max_capacity": "Up to 2 TB",
-    "max_speed": "Up to 2933 MT/s"
-  },
+  "memory": "32 DDR4 ECC RDIMM slots | Up to 8 TB memory support",
 
-  "chipset": "Intel C621",
+  "gpu_support": "Up to 8 × single-width GPUs (NVIDIA A100 / H100 class support depending on configuration)",
 
-  "storage": {
-    "sata": "8 × 3.5\" / 2.5\" SATA hot-swap bays",
-    "nvme": "4 × NVMe supported (model dependent)"
-  },
+  "storage": "8 × 2.5\" hot-swap + 4 × rear NVMe mezzanine",
 
-  "network": {
-    "lan": [
-      "2 × 10/100/1000 Mbps LAN ports",
-      "1 × Dedicated IPMI remote management port"
-    ]
-  },
+  "network": "OCP 3.0 / Dual 10GbE integrated with optional 25/40/100GbE",
 
-  "ports": {
-    "usb": "USB 3.0, USB 2.0 (rear + internal)",
-    "display": "VGA (via ASPEED AST2500 BMC)",
-  },
+  "cooling": "Optimized GPU airflow with high-capacity redundant fans",
 
-  "expansion": {
-    "pcie": [
-      "7 × PCIe 3.0 slots",
-      "Supports up to 4 × double-slot GPUs (NVIDIA Tesla / A-series / Quadro)"
-    ]
-  },
+  "power": "2 × Redundant 2000W Titanium PSUs",
 
-  "form_factor": "2U Rackmount Server",
-  "image": "/static/images/asus_gpu.jpg",
-  "price": 650000
+  "form_factor": "4U Rackmount",
+  "image": "/static/images/asus_esc4000_g4.jpg",
+  "price": 679990
 },
+
+
+
 
 
 
 #  LENOVO SERVER
 
 {
-  "id": "server-lenovo-thinksystem-sr650",
+  "id": "srv-lenovo-thinksystem-sr650",
   "name": "Lenovo ThinkSystem SR650",
-  "brand": "Lenovo",
-  "series": "enterprise-storage",
-  "category_key": "server",
-  "sub_category": "lenovo",
-  "category": "Enterprise Rack Server",
+  "brand": "lenovo",
+  "category_key": "server-storage",
+  "category": "2U Rack Server",
   "sub_category": "lenovo",
   "series": "thinksystem",
-  "application": "Virtualization / Storage / Database / Cloud / Enterprise Workloads",
-  "description": "A high-performance 2U enterprise server supporting dual Intel Xeon Scalable processors, large DDR4 memory capacity, flexible storage configurations, and multiple PCIe expansion options. Designed for virtualization, software-defined storage, cloud workloads, and enterprise data center environments.",
+  "application": "Enterprise / Virtualization / Database / AI Inference",
+  "description": "Lenovo ThinkSystem SR650 is a versatile 2U rack server designed for enterprise workloads, virtualization, and database environments with up to dual processors and scalable memory.",
+  
+  "status": "New",
+  "processor": "Up to Dual Intel Xeon Scalable 3rd/4th Gen processors (up to 40+ cores per socket)",
 
-  "processor": {
-    "socket": "Dual LGA 3647",
-    "supported_cpus": "Intel Xeon Scalable (Silver, Gold, Platinum – 1st & 2nd Gen)",
-    "max_cores": "Up to 28 cores per CPU (56 cores total)",
-    "tdp_support": "Up to ~205W per CPU"
-  },
+  "memory": "Up to 32 DDR5 ECC DIMM slots | Up to 4 TB capacity",
 
-  "memory": {
-    "slots": 24,
-    "type": "DDR4 ECC RDIMM / LRDIMM",
-    "max_capacity": "Up to 3 TB (with LRDIMMs)",
-    "max_speed": "Up to 2933 MT/s"
-  },
+  "storage": "Support for up to 10 × 2.5\" hot-swap NVMe/SATA/SAS drives | Optional rear drive cage",
 
-  "chipset": "Intel C622",
+  "network": "Integrated 1GbE / 10GbE options | Optional 25GbE / 100GbE adapters",
 
-  "storage": {
-    "bays": "8, 16, or 24 × 2.5\" SAS/SATA/NVMe OR 4/8/12 × 3.5\" bays",
-    "m2": "Optional dual M.2 boot module"
-  },
+  "raid": "Hardware RAID support (0/1/5/10/50/60)",
 
-  "network": {
-    "lan": [
-      "2 × 1 GbE standard (model dependent)",
-      "Optional 10/25/40/100GbE via PCIe or LOM adapters"
-    ]
-  },
+  "expansion": "Up to 7 PCIe 4.0 x16 slots (GPU/accelerator ready)",
 
-  "ports": {
-    "usb": "Front & rear USB 3.0 / 2.0",
-    "display": "VGA (via XClarity management controller)",
-  },
+  "power": "Redundant hot-swap PSUs (up to 1600W Platinum)",
 
-  "expansion": {
-    "pcie": [
-      "Up to 6 × PCIe 3.0 slots",
-      "Optional 2 × GPUs (NVIDIA T4-class) depending on configuration"
-    ]
-  },
-
-  "form_factor": "2U Rackmount Server",
-  "image": "/static/images/lenovo_enterprise.jpg",
-  "price": 350000
+  "form_factor": "2U Rackmount",
+  "image": "/static/images/lenovo_thinksystem_sr650.jpg",
+  "price": 329990
 },
 
-{
-  "id": "server-lenovo-thinksystem-st550",
-  "name": "Lenovo ThinkSystem ST550",
-  "category_key": "server",
-  "sub_category": "lenovo",
-  "brand": "Lenovo",
-  "series": "enterprise-storage",
-  "category": "Enterprise Tower Server",
 
+{
+  "id": "srv-lenovo-thinksystem-st550",
+  "name": "Lenovo ThinkSystem ST550",
+  "brand": "lenovo",
+  "category_key": "server-storage",
+  "category": "Tower Server",
   "sub_category": "lenovo",
   "series": "thinksystem",
-  "brand": "Lenovo",
-  "application": "Virtualization / Storage / Database / Branch Office / Enterprise Workloads",
-  "description": "A powerful, scalable 4U tower server supporting dual Intel Xeon Scalable processors, high memory capacity, multiple PCIe expansion slots, and flexible storage options. Ideal for branch offices, enterprise workloads, virtualization, and scalable storage deployments.",
+  "application": "Small Business / Edge / Enterprise Applications",
+  "description": "Lenovo ThinkSystem ST550 is a powerful tower server ideal for small and medium enterprises, edge deployments, and business critical workloads with flexible expansion and high reliability.",
+  
+  "status": "New",
+  "processor": "Up to Dual Intel Xeon Scalable 3rd/4th Gen processors (up to 40+ cores per socket)",
 
-  "processor": {
-    "socket": "Dual LGA 3647",
-    "supported_cpus": "Intel Xeon Scalable (Silver, Gold, Platinum – 1st & 2nd Gen)",
-    "max_cores": "Up to 28 cores per CPU (56 cores total)",
-    "tdp_support": "Up to ~165W per CPU"
-  },
+  "memory": "Up to 16 DDR5 ECC DIMM slots | Up to 2 TB capacity",
 
-  "memory": {
-    "slots": 12,
-    "type": "DDR4 ECC RDIMM / LRDIMM",
-    "max_capacity": "Up to 768 GB (RDIMM) / 1.5 TB (LRDIMM)",
-    "max_speed": "Up to 2666 MT/s"
-  },
+  "storage": "Up to 8 × 3.5\" hot-swap SATA/SAS or 16 × 2.5\" drives (mixed configs supported)",
 
-  "chipset": "Intel C622",
+  "network": "Integrated 2 × 10GbE ports | Optional 25GbE / 100GbE adapters",
 
-  "storage": {
-    "drive_bays": "Up to 16 × 2.5\" SAS/SATA/NVMe or up to 8 × 3.5\" bays",
-    "m2": "Optional dual-M.2 boot module"
-  },
+  "raid": "Hardware RAID support (0/1/5/10/50/60)",
 
-  "network": {
-    "lan": [
-      "2 × 1 GbE onboard LAN ports",
-      "Optional 10/25 GbE via PCIe adapter"
-    ]
-  },
+  "expansion": "PCIe 4.0 slots for GPU/NIC/RAID adapters",
 
-  "ports": {
-    "usb": "USB 3.0 / 2.0 front + rear",
-    "display": "VGA (via XClarity controller)",
-  },
+  "power": "Redundant optional power supplies",
 
-  "expansion": {
-    "pcie": [
-      "Up to 6 × PCIe 3.0 slots",
-      "Support for 1 × low-profile GPU (e.g., NVIDIA T4)"
-    ]
-  },
-
-  "form_factor": "Tower Server (convertible to 4U rackmount)",
-  "image": "/static/images/lenovo_enterprise.jpg",
-  "price": 250000
+  "form_factor": "Tower / Rack convertible",
+  "image": "/static/images/lenovo_thinksystem_st550.jpg",
+  "price": 199990
 }
+
 
 
 ]

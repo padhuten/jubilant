@@ -75,10 +75,13 @@ CATEGORIES = {
     },
 
     "desktop": {
-        "asus": ["expertcenter", "mini-pc"],
-        "lenovo": ["thinkcentre", "tiny-pc"],
-        "dell": ["optiplex", "vostro", "precision"]
+    "asus": ["expertcenter","mini-pc"],
+    "lenovo": ["thinkcentre",  "tiny-pc"],
+    "dell": ["optiplex","vostro","precision"],
+    "hp": ["prodesk","elitedesk","z-workstation"]
+    
     },
+
 
     "networking": {
         "aruba": ["switches", "poe-switches"],

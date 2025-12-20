@@ -3512,10 +3512,10 @@ cpu_products = [
   "brand": "Intel",
   "category": "Intel Desktop Processor",
   "application": "Desktop",
-       "category_key": "cpu",
+  "category_key": "cpu",
   "sub_category": "intel-desktop",
   "description": "Intel Core i5-14600K is a 14th Gen Raptor Lake Refresh desktop CPU featuring 14 cores (6 Performance + 8 Efficient) and 20 threads. With up to 5.3 GHz turbo boost and 44 MB total cache, it delivers excellent gaming and productivity performance. Supports DDR5 and DDR4 memory with up to 192GB capacity, making it a strong choice for mid-high range gaming builds and creative workloads on the LGA1700 platform.",
-  "series": "Core i5",
+  "series": "i5",
   "socket": "LGA1700",
   "cores": 14,
   "threads": 20,
@@ -3839,7 +3839,8 @@ cpu_products = [
   "max_memory_size": 128,
   "packaging": "Boxed",
   "description": "Intel Core i3-12100 is a 12th Gen Alder Lake desktop processor with 4 performance cores and 8 threads, delivering excellent entry-level performance for office workloads, light gaming, productivity, and home PCs. With boost clock up to 4.3 GHz and 12MB cache, it offers great value for budget systems. Supports DDR4 and DDR5 memory up to 128GB on LGA1700 motherboards, making it ideal for everyday use with high efficiency.",
-  "image": "/static/images/Intel-i3.jpg"
+  "image": "/static/images/Intel-i3.jpg",
+  "price": 667.00
 }
 
 
