@@ -5,18 +5,25 @@
 // 🚫 Do NOT run product list logic on product detail page
 (function () {
 
-const pathParts = window.location.pathname.split("/").filter(Boolean);
-
-// product detail pages always have 4+ segments
-// /products/<cat>/<sub>/<product-id>
-if (pathParts[0] === "products" && pathParts.length >=8) {
-    console.log("⛔ product_list.js skipped on product detail page");
-    // silently stop execution
-    return;
+// 🚫 Do NOT run on product detail page
+if (document.querySelector('script[src*="product_detail.js"]')) {
+  console.log("⛔ product_list.js skipped on product detail page");
+  return;
 }
 
 
+
+
+
+
 console.log("🚀 ProductsManager loaded");
+
+const NO_SERIES_CATEGORIES = [
+    "memory",
+    "networking",
+    "docking-station"
+];
+
 
 class ProductsManager {
     constructor() {
@@ -52,35 +59,44 @@ class ProductsManager {
     }
 
     parseCleanURL() {
-        const pathParts = window.location.pathname.split("/").filter(Boolean);
-        
-        if (pathParts[0] === "products") {
-            this.selectedCategory = pathParts[1]?.toLowerCase() || null;
-            this.selectedSubCategory = pathParts[2]?.toLowerCase() || null;
+    const pathParts = window.location.pathname.split("/").filter(Boolean);
+    
+    if (pathParts[0] === "products") {
+        this.selectedCategory = pathParts[1]?.toLowerCase() || null;
+        this.selectedSubCategory = pathParts[2]?.toLowerCase() || null;
+
+        if (
+            pathParts.length >= 4 &&
+            !NO_SERIES_CATEGORIES.includes(this.selectedCategory)
+        ) {
             this.selectedSeries = pathParts[3]?.toLowerCase() || null;
+        } else {
+            this.selectedSeries = null;
         }
-        
-        console.log("📍 Category:", this.selectedCategory);
-        console.log("📍 SubCategory:", this.selectedSubCategory);
-        console.log("📍 Series:", this.selectedSeries);
     }
+    
+    console.log("📍 Category:", this.selectedCategory);
+    console.log("📍 SubCategory:", this.selectedSubCategory);
+    console.log("📍 Series:", this.selectedSeries);
+}
 
     cacheElements() {
-        this.productsGrid = document.getElementById('products-grid');
-        this.noResults = document.getElementById('no-results');
-        this.resultCount = document.getElementById('result-count');
-        this.sortSelect = document.getElementById('sort-select');
-        this.filterCheckboxes = document.querySelectorAll('.filter-checkbox');
-        this.priceRange = document.getElementById('price-range');
-        this.priceValue = document.getElementById('price-value');
-        this.resetBtn = document.getElementById('reset-filters-btn');
-        this.filterToggleBtn = document.getElementById('filter-toggle-btn');
-        this.closeFiltersBtn = document.getElementById('close-filters-btn');
-        this.filtersSidebar = document.getElementById('filters-sidebar');
-        this.filterTitles = document.querySelectorAll('.filter-title');
-        this.paginationContainer = document.getElementById('pagination');
-        this.sidebarBackdrop = document.getElementById('sidebar-backdrop');
-    }
+    this.productsGrid = document.getElementById('products-grid');
+    this.noResults = document.getElementById('no-results');
+    this.resultCount = document.getElementById('result-count');
+    this.sortSelect = document.getElementById('sort-select');
+    this.filterCheckboxes = document.querySelectorAll('.filter-checkbox');
+    this.priceRange = document.getElementById('price-range');
+    this.priceValue = document.getElementById('price-value');
+    this.resetBtn = document.getElementById('reset-filters-btn');
+    this.filterToggleBtn = document.getElementById('filter-toggle-btn');
+    this.closeFiltersBtn = document.getElementById('close-filters-btn');
+    this.filtersSidebar = document.getElementById('filters-sidebar');
+    this.filterTitles = document.querySelectorAll('.filter-title');
+    this.paginationContainer = document.getElementById('pagination');
+    this.sidebarBackdrop = document.getElementById('sidebar-backdrop');
+    this.seriesFilterContainer = document.getElementById('series-filter-options'); // ✅ ADD THIS LINE
+}
 
     attachEventListeners() {
         this.filterCheckboxes.forEach(cb => {
@@ -167,42 +183,38 @@ class ProductsManager {
             });
     }
 
-    applyURLFilters() {
-        const TWO_LEVEL_CATEGORIES = [
-            "memory",
-            "networking",
-            "docking-station",
-            "desktop"
-        ];
+    // ===== IN applyURLFilters() method =====
+applyURLFilters() {
+    this.filteredProducts = this.allProducts.filter(p => {
+        if (this.selectedCategory && p.category !== this.selectedCategory)
+            return false;
 
-        this.filteredProducts = this.allProducts.filter(p => {
-            if (this.selectedCategory && p.category !== this.selectedCategory)
-                return false;
+        if (this.selectedSubCategory && p.sub_category !== this.selectedSubCategory)
+            return false;
 
-            if (this.selectedSubCategory && p.sub_category !== this.selectedSubCategory)
-                return false;
+        if (
+            this.selectedSeries &&
+            !NO_SERIES_CATEGORIES.includes(this.selectedCategory) &&
+            p.series !== this.selectedSeries
+        ) {
+            return false;
+        }
 
-            if (
-                this.selectedSeries &&
-                !TWO_LEVEL_CATEGORIES.includes(this.selectedCategory) &&
-                p.series !== this.selectedSeries
-            ) {
-                return false;
-            }
+        return true;
+    });
 
-            return true;
-        });
+    console.log(
+        "🔍 After URL filters:",
+        this.filteredProducts.length,
+        "products"
+    );
 
-        console.log(
-            "🔍 After URL filters:",
-            this.filteredProducts.length,
-            "products"
-        );
-
-        this.currentPage = 1;
-        this.initializePagination();
-        this.displayProducts();
-    }
+    this.populateSeriesFilter(); // ✅ ADD THIS LINE
+    
+    this.currentPage = 1;
+    this.initializePagination();
+    this.displayProducts();
+}
 
     handleFilterChange() {
         this.currentPage = 1;
@@ -247,43 +259,52 @@ class ProductsManager {
     }
 
     applyFilters() {
-        // FIXED: Start from allProducts, not filteredProducts to avoid double-filtering
-        this.filteredProducts = this.allProducts.filter(product => {
-            // Apply URL category filters first
-            if (this.selectedCategory && product.category !== this.selectedCategory)
+    // FIXED: Start from allProducts, not filteredProducts to avoid double-filtering
+    this.filteredProducts = this.allProducts.filter(product => {
+        // Apply URL category filters first
+        if (this.selectedCategory && product.category !== this.selectedCategory)
+            return false;
+
+        if (this.selectedSubCategory && product.sub_category !== this.selectedSubCategory)
+            return false;
+
+        // Apply series filter only for 4-level categories
+        if (
+            this.selectedSeries &&
+            !NO_SERIES_CATEGORIES.includes(this.selectedCategory) &&
+            product.series !== this.selectedSeries
+        ) {
+            return false;
+        }
+
+        // Apply user-selected filters
+        if (this.activeFilters.category.length && !this.activeFilters.category.includes(product.category)) return false;
+        if (this.activeFilters.brand.length && !this.activeFilters.brand.includes(product.brand)) return false;
+        if (this.activeFilters.application.length && !this.activeFilters.application.includes(product.application)) return false;
+        if (this.activeFilters.tech.length && !this.activeFilters.tech.includes(product.tech)) return false;
+        if (this.activeFilters.socket.length && !this.activeFilters.socket.includes(product.socket)) return false;
+
+        if (this.activeFilters.cores.length) {
+            const c = product.cores;
+            const match = this.activeFilters.cores.some(r => {
+                if (r === '0-8') return c <= 8;
+                if (r === '9-16') return c >= 9 && c <= 16;
+                if (r === '17-32') return c >= 17 && c <= 32;
+                if (r === '33-64') return c >= 33 && c <= 64;
+                if (r === '65+') return c >= 65;
                 return false;
+            });
+            if (!match) return false;
+        }
 
-            if (this.selectedSubCategory && product.sub_category !== this.selectedSubCategory)
-                return false;
+        if (product.price > this.activeFilters.maxPrice) return false;
+        return true;
+    });
 
-            // Apply user-selected filters
-            if (this.activeFilters.category.length && !this.activeFilters.category.includes(product.category)) return false;
-            if (this.activeFilters.brand.length && !this.activeFilters.brand.includes(product.brand)) return false;
-            if (this.activeFilters.application.length && !this.activeFilters.application.includes(product.application)) return false;
-            if (this.activeFilters.tech.length && !this.activeFilters.tech.includes(product.tech)) return false;
-            if (this.activeFilters.socket.length && !this.activeFilters.socket.includes(product.socket)) return false;
-
-            if (this.activeFilters.cores.length) {
-                const c = product.cores;
-                const match = this.activeFilters.cores.some(r => {
-                    if (r === '0-8') return c <= 8;
-                    if (r === '9-16') return c >= 9 && c <= 16;
-                    if (r === '17-32') return c >= 17 && c <= 32;
-                    if (r === '33-64') return c >= 33 && c <= 64;
-                    if (r === '65+') return c >= 65;
-                    return false;
-                });
-                if (!match) return false;
-            }
-
-            if (product.price > this.activeFilters.maxPrice) return false;
-            return true;
-        });
-
-        this.applySorting();
-        this.initializePagination();
-        this.displayProducts();
-    }
+    this.applySorting();
+    this.initializePagination();
+    this.displayProducts();
+}
 
     applySorting() {
         if (this.sortBy === 'price-low-high') {
@@ -357,44 +378,34 @@ class ProductsManager {
     }
 
     createProductCard(product) {
-        const card = document.createElement('div');
-        card.className = 'product-card';
+    const card = document.createElement('div');
+    card.className = 'product-card';
 
-        const priceFormatted = product.price.toLocaleString('en-US');
-        const imageUrl = product.image || '/static/images/placeholder.jpg';
+    const priceFormatted = product.price.toLocaleString('en-US');
 
-        let productUrl;
+    // ✅ IMAGE URL OR SVG FALLBACK
+    const imageUrl = product.image || 
+      "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='200'%3E%3Crect width='100%25' height='100%25' fill='%23e5e7eb'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%236b7280' font-size='16'%3ENo Image%3C/text%3E%3C/svg%3E";
 
-        // ✅ 3-level: sub_category EXISTS
-        if (product.sub_category) {
-    productUrl = `/products/${product.category}/${product.sub_category}/${product.series}/${product.id}`;
-    card.innerHTML = `
-        <a href="${productUrl}" class="product-card-link">
-            <div class="product-image">
-                <img src="${imageUrl}" alt="${product.name}" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22%3E%3Crect fill=%22%23e0e0e0%22 width=%22200%22 height=%22200%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%23999%22 font-size=%2214%22%3E${product.brand}%3C/text%3E%3C/svg%3E'">
-                <span class="product-badge">${(product.category || '').substring(0, 3).toUpperCase()}</span>
-            </div>
-            <div class="product-content">
-                <div class="product-category">${product.category || 'Product'}</div>
-                <div class="product-name">${product.name}</div>
-            </div>
-            <div class="product-footer">
-                <div>
-                    <div class="product-price">$${priceFormatted}</div>
-                </div>
-                <span class="btn-view">View</span>
-            </div>
-        </a>
-    `;
-}
-        // ✅ 2-level: sub_category REMOVED
-       else {
-    productUrl = `/products/${product.category}/${product.series}/${product.id}`;
+    let productUrl;
+
+    // ✅ For 2-level categories (memory, networking, docking-station)
+    if (NO_SERIES_CATEGORIES.includes(product.category)) {
+        productUrl = `/products/${product.category}/${product.sub_category}/${product.id}`;
+    }
+    // ✅ For 4-level categories with series
+    else {
+        productUrl = `/products/${product.category}/${product.sub_category}/${product.series}/${product.id}`;
+    }
+
+    // ✅ HTML TEMPLATE
     card.innerHTML = `
         <a href="${productUrl}" class="product-card-link">
             <div class="product-image">
                 <img src="${imageUrl}" alt="${product.name}">
-                <span class="product-badge">${(product.category || '').substring(0, 3).toUpperCase()}</span>
+                <span class="product-badge">
+                    ${(product.category || '').substring(0, 3).toUpperCase()}
+                </span>
             </div>
             <div class="product-content">
                 <div class="product-category">${product.category}</div>
@@ -406,9 +417,11 @@ class ProductsManager {
             </div>
         </a>
     `;
+
+    return card;
 }
-        return card;
-    }
+
+
 
     showNoResults() {
         if (this.noResults) this.noResults.style.display = 'block';
@@ -477,7 +490,74 @@ class ProductsManager {
         }
         document.body.style.overflow = this.filtersSidebar.classList.contains('open') ? 'hidden' : '';
     }
-}
+
+    // ✅ ADD THESE 3 NEW METHODS HERE ✅
+    
+    detectAvailableSeries() {
+        if (!this.selectedCategory || !this.selectedSubCategory) return [];
+        
+        const seriesSet = new Set();
+        this.allProducts.forEach(p => {
+            if (p.category === this.selectedCategory && 
+                p.sub_category === this.selectedSubCategory && 
+                p.series) {
+                seriesSet.add(p.series);
+            }
+        });
+        
+        return Array.from(seriesSet).sort();
+    }
+
+    populateSeriesFilter() {
+        if (!this.seriesFilterContainer) return;
+        
+        const availableSeries = this.detectAvailableSeries();
+        
+        const seriesFilterGroup = document.getElementById('series-filter-group');
+        if (NO_SERIES_CATEGORIES.includes(this.selectedCategory) || availableSeries.length === 0) {
+            if (seriesFilterGroup) seriesFilterGroup.style.display = 'none';
+            return;
+        }
+        
+        if (seriesFilterGroup) seriesFilterGroup.style.display = 'block';
+        
+        this.seriesFilterContainer.innerHTML = '';
+        
+        availableSeries.forEach(series => {
+            const isActive = this.selectedSeries === series;
+            
+            const label = document.createElement('label');
+            label.className = 'checkbox-label series-chip';
+            if (isActive) label.classList.add('active');
+            
+            const seriesName = series.split('-').map(word => 
+                word.charAt(0).toUpperCase() + word.slice(1)
+            ).join(' ');
+            
+            label.innerHTML = `
+                <input type="checkbox" 
+                       class="filter-checkbox series-filter" 
+                       data-filter="series" 
+                       value="${series}"
+                       ${isActive ? 'checked' : ''}>
+                <span class="checkmark"></span>
+                <span>${seriesName}</span>
+            `;
+            
+            label.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.navigateToSeries(series);
+            });
+            
+            this.seriesFilterContainer.appendChild(label);
+        });
+    }
+
+    navigateToSeries(series) {
+        const newUrl = `/products/${this.selectedCategory}/${this.selectedSubCategory}/${series}`;
+        window.location.href = newUrl;
+    }
+}  // ← Keep this closing brace for ProductsManager class
 
 // ===========================
 // PAGINATION CLASS
@@ -623,7 +703,7 @@ class ProductPagination {
         }
     }
 }
-
+    // Add this to the cacheElements() method
 // ===========================
 // INITIALIZE
 // ===========================

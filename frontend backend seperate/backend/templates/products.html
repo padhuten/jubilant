@@ -2,6 +2,7 @@
 
 {% block styles %}
 <link rel="stylesheet" href="{{ url_for('static', filename='css/products.css') }}">
+<script src="{{ url_for('static', filename='javascript/product_list.js') }}"></script>
 {% endblock %}
 
 {% block content %}
@@ -53,6 +54,16 @@
                     <h2>Filter Options</h2>
                     <button id="close-filters-btn" class="close-filters">×</button>
                 </div>
+                <!-- Series Filter (Dynamic) -->
+<div class="filter-group" id="series-filter-group" style="display: none;">
+    <div class="filter-title">
+        <h3>Series</h3>
+        <span class="toggle-arrow">▼</span>
+    </div>
+    <div class="filter-options" id="series-filter-options">
+        <!-- Dynamically populated by JS -->
+    </div>
+</div>
 
                 <!-- Category Filter -->
                 <div class="filter-group">
@@ -223,7 +234,5 @@
     <p>Showing page <span class="current-page" id="current-page-display">1</span> of
         <span id="total-pages-display">1</span></p>
 </div>
-
-<script src="{{ url_for('static', filename='javascript/product_list.js') }}"></script>
 
 {% endblock %}

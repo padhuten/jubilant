@@ -1554,5 +1554,65 @@ body {
         display: none !important;
     }
 }
+/* ===========================
+   SERIES FILTER CHIPS
+   =========================== */
 
+.series-chip {
+    background: linear-gradient(135deg, var(--bg-lighter) 0%, var(--bg-light) 100%);
+    border: 2px solid var(--border-color);
+    border-radius: 10px;
+    padding: 12px 16px;
+    transition: var(--transition);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
 
+.series-chip::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-primary);
+    transition: left 0.3s ease;
+    z-index: 0;
+}
+
+.series-chip:hover {
+    border-color: var(--primary-color);
+    transform: translateX(6px);
+}
+
+.series-chip:hover::before {
+    left: 0;
+}
+
+.series-chip:hover span {
+    color: white;
+    position: relative;
+    z-index: 1;
+}
+
+.series-chip.active {
+    background: var(--gradient-primary);
+    border-color: var(--primary-dark);
+    transform: scale(1.05);
+    box-shadow: 0 8px 24px rgba(0, 102, 204, 0.3);
+}
+
+.series-chip.active span {
+    color: white;
+    font-weight: 700;
+}
+
+.series-chip.active .checkmark {
+    background: white;
+    border-color: white;
+}
+
+.series-chip.active .checkmark::after {
+    border-color: var(--primary-color);
+}

@@ -28,7 +28,7 @@ def serve_images(filename):
 # ------------------------------------------------------
 CATEGORIES = {
     "cpu": {
-        "amd-server": ["9005", "9004", "7003", "8004", "4004", "4005"],
+        "amd-server": ["turin-9005-series", "9004", "7003", "8004", "4004", "4005"],
         "amd-desktop": ["ryzen", "ryzen-pro"],
         "intel-desktop": ["i9", "i7", "i5", "i3"]
     },
@@ -75,13 +75,11 @@ CATEGORIES = {
     },
 
     "desktop": {
-    "asus": ["expertcenter","mini-pc"],
-    "lenovo": ["thinkcentre",  "tiny-pc"],
-    "dell": ["optiplex","vostro","precision"],
-    "hp": ["prodesk","elitedesk","z-workstation"]
-    
+        "asus": ["expertcenter", "mini-pc"],
+        "lenovo": ["thinkcentre", "tiny-pc"],
+        "dell": ["optiplex", "vostro", "precision"],
+        "hp": ["prodesk", "elitedesk", "z-workstation"]
     },
-
 
     "networking": {
         "aruba": ["switches", "poe-switches"],
@@ -101,11 +99,67 @@ CATEGORIES = {
     }
 }
 
+# Categories that only have 2 levels (no series)
+NO_SERIES_CATEGORIES = ["memory", "networking", "docking-station"]
 
-# ------------------------------------------------------
-# LEVEL 1: CATEGORY
-# /products/server-storage
-# ------------------------------------------------------
+# ✅ LEVEL 3: SERIES WITH PRODUCT ID (4-LEVEL URL)
+# /products/cpu/amd-desktop/ryzen/9700x
+# /products/ssd/samsung/980-pro/ssd-samsung-980-pro-1tb
+@pages_bp.route('/products/<category>/<sub_category>/<series>/<product_id>')
+def product_series_detail(category, sub_category, series, product_id):
+    return render_template(
+        "product.html",
+        product_id=product_id
+    )
+
+# ✅ LEVEL 2: SUB CATEGORY WITH PRODUCT ID (3-LEVEL URL) - FOR 2-LEVEL CATEGORIES
+# /products/memory/crucial/ram-crucial-8gb-ddr4-udimm
+# /products/networking/aruba/sw-aruba-12345
+# /products/docking-station/dell/dock-dell-usb-c-1
+@pages_bp.route('/products/<category>/<sub_category>/<product_id>')
+def product_sub_category_detail(category, sub_category, product_id):
+    category = category.lower()
+    
+    # This should only match 2-level categories
+    if category in NO_SERIES_CATEGORIES:
+        return render_template(
+            "product.html",
+            product_id=product_id
+        )
+    
+    # If it's a 3-level category, treat sub_category as series and product_id as the actual product_id
+    # But first check if this might be a series listing page
+    # by checking if the CATEGORIES structure has this sub_category as a series
+    if category in CATEGORIES and sub_category.lower() in CATEGORIES[category]:
+        # It's a valid sub_category, so this is the series listing page
+        return render_template(
+            "products.html",
+            category=category.lower(),
+            sub_category=sub_category.lower()
+        )
+    
+    # Otherwise, treat it as a product detail page for a 4-level URL
+    return render_template(
+        "product.html",
+        product_id=product_id
+    )
+
+
+# ✅ LEVEL 2: SUB CATEGORY (LIST PAGE)
+# /products/memory/crucial
+# /products/cpu/amd-desktop
+@pages_bp.route('/products/<category>/<sub_category>')
+def product_sub_category(category, sub_category):
+    return render_template(
+        "products.html",
+        category=category.lower(),
+        sub_category=sub_category.lower()
+    )
+
+
+# ✅ LEVEL 1: CATEGORY (LIST PAGE)
+# /products/memory
+# /products/cpu
 @pages_bp.route('/products/<category>')
 def product_category(category):
     category = category.lower()
@@ -116,32 +170,9 @@ def product_category(category):
     return render_template("products.html", category=category)
 
 
-# ------------------------------------------------------
-# LEVEL 2: SUB CATEGORY / BRAND
-# /products/server-storage/lenovo
-# ------------------------------------------------------
-@pages_bp.route('/products/<category>/<sub_category>')
-def product_sub_category(category, sub_category):
-    category = category.lower()
-    sub_category = sub_category.lower()
-
-    if category not in CATEGORIES:
-        return "Category not found", 404
-
-    if sub_category not in CATEGORIES[category]:
-        return "Sub-category not found", 404
-
-    return render_template(
-        "products.html",
-        category=category,
-        sub_category=sub_category
-    )
-
-
-# ------------------------------------------------------
-# LEVEL 3: SERIES
-# /products/server-storage/lenovo/thinksystem
-# ------------------------------------------------------
+# ✅ LEVEL 3: SERIES (LIST PAGE) - For 4-level categories
+# /products/ssd/samsung/980-pro
+# /products/cpu/amd-desktop/ryzen
 @pages_bp.route('/products/<category>/<sub_category>/<series>')
 def product_series(category, sub_category, series):
     return render_template(
@@ -152,24 +183,24 @@ def product_series(category, sub_category, series):
     )
 
 
-# ------------------------------------------------------
-# LEVEL 4: PRODUCT DETAIL
-# /products/server-storage/lenovo/thinksystem/<product_id>
-# ------------------------------------------------------
-@pages_bp.route('/products/<category>/<sub_category>/<series>/<product_id>')
-def product_detail(category, sub_category, series, product_id):
+# ✅ UNIVERSAL PRODUCT DETAIL (MUST BE LAST)
+# /products/**/product-id
+# This is a fallback for any product detail URL
+@pages_bp.route('/products/<path:slug>')
+def universal_product_detail(slug):
+    parts = slug.split('/')
+
+    # product id is ALWAYS last
+    product_id = parts[-1]
+
     return render_template(
         "product.html",
-        category=category,
-        sub_category=sub_category,
-        series=series,
         product_id=product_id
     )
 
 
-# ------------------------------------------------------
-# STATIC PRODUCT PAGES
-# ------------------------------------------------------
+# ✅ STATIC PRODUCT PAGES
+# ✅ STATIC PRODUCT PAGES
 @pages_bp.route('/productslist/<slug>')
 @pages_bp.route('/productslist/<slug>.html')
 def product_page(slug):
@@ -183,9 +214,7 @@ def product_page(slug):
     return f"<h2>Product '{slug}' not found</h2>", 404
 
 
-# ------------------------------------------------------
-# NORMAL PAGES (MUST REMAIN LAST)
-# ------------------------------------------------------
+# ✅ NORMAL PAGES (MUST REMAIN LAST)
 @pages_bp.route('/<page>')
 @pages_bp.route('/<page>.html')
 def load_page(page):

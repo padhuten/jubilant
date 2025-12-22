@@ -11,7 +11,6 @@ const pathParts = window.location.pathname.split("/").filter(Boolean);
 // ✅ ALWAYS TAKE LAST PART AS PRODUCT ID
 const productId = pathParts[pathParts.length - 1];
 
-const API_HOST = "http://127.0.0.1:5000";
 
 if (!productId) {
   document.getElementById("prodName").textContent = "Invalid product URL.";
@@ -23,7 +22,7 @@ if (!productId) {
 // =============================
 async function loadProduct() {
   try {
-    const res = await fetch(`${API_HOST}/api/products/${productId}`);
+    const res = await fetch(`/api/products/${productId}`);
 
     if (!res.ok) throw new Error("API error");
 
@@ -46,7 +45,8 @@ async function loadProduct() {
       product.price !== undefined ? `US $${product.price}` : "Price on request";
 
     document.getElementById("prodImage").src =
-      API_HOST + (product.image || "/static/images/no-image.png");
+  product.image || "/static/images/no-image.png";
+
 
     document.getElementById("prodDescription").textContent =
       product.description || "No description available.";
@@ -144,12 +144,12 @@ Chipset: product.chipset,
       if (!img) return;
 
       const thumb = document.createElement("img");
-      thumb.src = API_HOST + img;
+      thumb.src = img;
 
       if (index === 0) thumb.classList.add("active");
 
       thumb.addEventListener("click", () => {
-        document.getElementById("prodImage").src = API_HOST + img;
+        document.getElementById("prodImage").src = img;
         document
           .querySelectorAll(".thumbnail-row img")
           .forEach(t => t.classList.remove("active"));
@@ -158,7 +158,6 @@ Chipset: product.chipset,
 
       thumbRow.appendChild(thumb);
     });
-
   } catch (err) {
     console.error("PRODUCT LOAD ERROR:", err);
     document.getElementById("prodName").textContent =
