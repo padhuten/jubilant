@@ -15,7 +15,7 @@ hdd_products = [
     "cache": 32,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/barracuda.jpg",
+    "image": "/static/images/seagate barracuda SERIES.jpg",
     "price": 35
   },
 
@@ -34,7 +34,7 @@ hdd_products = [
     "cache": 64,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/barracuda.jpg",
+    "image": "/static/images/seagate barracuda SERIES.jpg",
     "price": 49
   },
 
@@ -53,7 +53,7 @@ hdd_products = [
     "cache": 256,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/barracuda.jpg",
+    "image": "/static/images/seagate barracuda SERIES.jpg",
     "price": 79
   },
 
@@ -72,7 +72,7 @@ hdd_products = [
     "cache": 256,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/barracuda.jpg",
+    "image": "/static/images/seagate barracuda SERIES.jpg",
     "price": 99
   },
 
@@ -91,7 +91,7 @@ hdd_products = [
     "cache": 256,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/barracuda.jpg",
+    "image": "/static/images/seagate barracuda SERIES.jpg",
     "price": 129
   },
 
@@ -110,7 +110,7 @@ hdd_products = [
     "cache": 256,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/barracuda.jpg",
+    "image": "/static/images/seagate barracuda SERIES.jpg",
     "price": 149
   },
 
@@ -129,7 +129,7 @@ hdd_products = [
     "cache": 256,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/barracuda.jpg",
+    "image": "/static/images/seagate barracuda SERIES.jpg",
     "price": 179
   },
 
@@ -148,7 +148,7 @@ hdd_products = [
     "cache": 256,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/barracuda.jpg",
+    "image": "/static/images/seagate barracuda SERIES.jpg",
     "price": 209
   },
   
@@ -168,7 +168,7 @@ hdd_products = [
     "cache": 256,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/ironwolf.jpg",
+    "image": "/static/images/seagate iron wolf series.jpg",
     "price": 159
   },
 
@@ -187,7 +187,7 @@ hdd_products = [
     "cache": 256,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/ironwolf.jpg",
+    "image": "/static/images/seagate iron wolf series.jpg",
     "price": 229.99       # price as listed on SHI retailer listing :contentReference[oaicite:2]{index=2}
   },
 
@@ -206,7 +206,7 @@ hdd_products = [
     "cache": 256,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/ironwolf.jpg",
+    "image": "/static/images/seagate iron wolf series.jpg",
     "price": 269.99       # estimate based on public listing expectation :contentReference[oaicite:3]{index=3}
   },
 
@@ -225,7 +225,7 @@ hdd_products = [
     "cache": 256,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/ironwolf.jpg",
+    "image": "/static/images/seagate iron wolf series.jpg",
     "price": 309.99       # estimate (market + capacity premium)
   },
   
@@ -246,7 +246,7 @@ hdd_products = [
     "cache": 64,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/skyhawk.jpg",
+    "image": "/static/images/seagate skyhawk.jpg",
     "price": 109
   },
 
@@ -265,7 +265,7 @@ hdd_products = [
     "cache": 256,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/skyhawk.jpg",
+    "image": "/static/images/seagate skyhawk.jpg",
     "price": 149
   },
 
@@ -284,7 +284,7 @@ hdd_products = [
     "cache": 256,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/skyhawk.jpg",
+    "image": "/static/images/seagate skyhawk.jpg",
     "price": 209
   },
   
@@ -364,7 +364,7 @@ hdd_products = [
     "cache": 64,
     "interface": "SATA 6Gb/s",
     "form_factor": "2.5 inch",
-    "image": "/static/images/firecuda.jpg",
+    "image": "/static/images/Seagate-FireCuda series.jpg",
     "price": 89
   },
 
@@ -383,7 +383,7 @@ hdd_products = [
     "cache": 64,
     "interface": "SATA 6Gb/s",
     "form_factor": "2.5 inch",
-    "image": "/static/images/firecuda.jpg",
+    "image": "/static/images/Seagate-FireCuda series.jpg",
     "price": 129
   },
 
@@ -400,7 +400,7 @@ hdd_products = [
     "capacity": "1TB",
     "interface": "NVMe PCIe Gen4 x4",
     "form_factor": "M.2 2280",
-    "image": "/static/images/firecuda.jpg",
+    "image": "/static/images/Seagate-FireCuda series.jpg",
     "price": 149
   },
 
@@ -417,10 +417,14 @@ hdd_products = [
     "capacity": "2TB",
     "interface": "NVMe PCIe Gen4 x4",
     "form_factor": "M.2 2280",
-    "image": "/static/images/firecuda.jpg",
+    "image": "/static/images/Seagate-FireCuda series.jpg",
     "price": 249
   },
   
+
+#  WD Blue
+
+
   {
     "id": "hdd-wd-blue-wd10ezex-1tb",
     "name": "WD Blue WD10EZEX 1TB 3.5\" Desktop HDD",
@@ -436,7 +440,7 @@ hdd_products = [
     "cache": 64,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/wd-blue.jpg",
+    "image": "/static/images/wd blu series.jpg",
     "price": 49
   },
 
@@ -455,7 +459,7 @@ hdd_products = [
     "cache": 256,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/wd-blue.jpg",
+    "image": "/static/images/wd blu series.jpg",
     "price": 69
   },
 
@@ -474,7 +478,7 @@ hdd_products = [
     "cache": 256,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/wd-blue.jpg",
+    "image": "/static/images/wd blu series.jpg",
     "price": 89
   },
 
@@ -493,7 +497,7 @@ hdd_products = [
     "cache": 256,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/wd-blue.jpg",
+    "image": "/static/images/wd blu series.jpg",
     "price": 119
   },
 
@@ -512,7 +516,7 @@ hdd_products = [
     "cache": 256,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/wd-blue.jpg",
+    "image": "/static/images/wd blu series.jpg",
     "price": 139
   },
 
@@ -533,7 +537,7 @@ hdd_products = [
     "cache": 64,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/wd-black.jpg",  # (or use wd-black.jpg if you have separate)
+    "image": "/static/images/wd black series.jpg",  # (or use wd-black.jpg if you have separate)
     "price": 69
   },
 
@@ -552,7 +556,7 @@ hdd_products = [
     "cache": 64,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/wd-black.jpg",
+    "image": "/static/images/wd black series.jpg",
     "price": 99
   },
 
@@ -571,7 +575,7 @@ hdd_products = [
     "cache": 256,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/wd-black.jpg",
+    "image": "/static/images/wd black series.jpg",
     "price": 139
   },
 
@@ -590,11 +594,13 @@ hdd_products = [
     "cache": 256,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/wd-black.jpg",
+    "image": "/static/images/wd black series.jpg",
     "price": 189
   },
   
-  #wd-red
+  
+  
+  #  WD Red
   
   {
     "id": "hdd-wd-red-wd10efax-1tb",
@@ -611,7 +617,7 @@ hdd_products = [
     "cache": 64,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/wd-red.jpg",
+    "image": "/static/images/wd red series.jpg",
     "price": 79
   },
 
@@ -630,7 +636,7 @@ hdd_products = [
     "cache": 128,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/wd-red.jpg",
+    "image": "/static/images/wd red series.jpg",
     "price": 109
   },
 
@@ -649,7 +655,7 @@ hdd_products = [
     "cache": 256,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/wd-red.jpg",
+    "image": "/static/images/wd red series.jpg",
     "price": 139
   },
 
@@ -668,7 +674,7 @@ hdd_products = [
     "cache": 256,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/wd-red.jpg",
+    "image": "/static/images/wd red series.jpg",
     "price": 169
   },
 
@@ -687,12 +693,16 @@ hdd_products = [
     "cache": 256,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/wd-red.jpg",
+    "image": "/static/images/wd red series.jpg",
     "price": 199
   },
   
-  #wd-purple
-  
+ 
+
+ 
+ # WD PURPLE
+
+
   {
     "id": "hdd-wd-purple-wd13purz-1tb",
     "name": "WD Purple WD13PURZ 1TB Surveillance HDD",
@@ -708,7 +718,7 @@ hdd_products = [
     "cache": 64,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/wd-purple.jpg",
+    "image": "/static/images/wd-purple-.jpg",
     "price": 69
   },
 
@@ -727,7 +737,7 @@ hdd_products = [
     "cache": 128,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/wd-purple.jpg",
+    "image": "/static/images/wd-purple-.jpg",
     "price": 99
   },
 
@@ -746,7 +756,7 @@ hdd_products = [
     "cache": 256,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/wd-purple.jpg",
+    "image": "/static/images/wd-purple-.jpg",
     "price": 139
   },
 
@@ -765,12 +775,16 @@ hdd_products = [
     "cache": 256,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/wd-purple.jpg",
+    "image": "/static/images/wd-purple-.jpg",
     "price": 169
   },
   
-  #wd-gold
   
+  
+ #  WD GOLD
+  
+
+
   {
     "id": "hdd-wd-gold-wd4002fyyz-4tb",
     "name": "WD Gold WD4002FYYZ 4TB Enterprise HDD",
@@ -786,7 +800,7 @@ hdd_products = [
     "cache": 256,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/wd-gold.jpg",
+    "image": "/static/images/wd_gold.jpg",
     "price": 179
   },
 
@@ -805,7 +819,7 @@ hdd_products = [
     "cache": 256,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/wd-gold.jpg",
+    "image": "/static/images/wd_gold.jpg",
     "price": 259
   },
 
@@ -824,7 +838,7 @@ hdd_products = [
     "cache": 256,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/wd-gold.jpg",
+    "image": "/static/images/wd_gold.jpg",
     "price": 319
   },
 
@@ -843,12 +857,15 @@ hdd_products = [
     "cache": 256,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/wd-gold.jpg",
+    "image": "/static/images/wd_gold.jpg",
     "price": 449
   },
   
-  #hdd-p300
   
+  # HDD P300
+  
+
+
   {
     "id": "hdd-toshiba-p300-hdwd110-1tb",
     "name": "Toshiba P300 HDWD110 1TB Desktop HDD",
@@ -864,7 +881,7 @@ hdd_products = [
     "cache": 64,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/hdd-p300.jpg",
+    "image": "/static/images/toshiba p300 series.png",
     "price": 49
   },
 
@@ -883,7 +900,7 @@ hdd_products = [
     "cache": 64,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/hdd-p300.jpg",
+    "image": "/static/images/toshiba p300 series.png",
     "price": 69
   },
 
@@ -902,7 +919,7 @@ hdd_products = [
     "cache": 64,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/hdd-p300.jpg",
+    "image": "/static/images/toshiba p300 series.png",
     "price": 89
   },
 
@@ -921,11 +938,14 @@ hdd_products = [
     "cache": 128,
     "interface": "SATA 6Gb/s",
     "form_factor": "3.5 inch",
-    "image": "/static/images/hdd-p300.jpg",
+    "image": "/static/images/toshiba p300 series.png",
     "price": 109
   },
   
-  #nas-n300
+ 
+
+# NAS N-300
+
   
   {
     "id": "hdd-toshiba-n300-hdwg21c-14tb",
@@ -1003,7 +1023,11 @@ hdd_products = [
     "price": 89
   },
   
-  #s300
+
+
+  # S 300
+
+
   
   {
     "id": "hdd-toshiba-s300-hdwt720-2tb",
@@ -1062,7 +1086,10 @@ hdd_products = [
     "price": 189
   },
   
-  #mg 
+  
+
+  # MG
+
   
   {
     "id": "hdd-toshiba-mg-mg04aca400a-4tb",
