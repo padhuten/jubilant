@@ -1083,3 +1083,26 @@ body {
         padding: 0 3% 20px 3%;
     }
 }
+
+
+
+/* ===== SPECIALIZE ICON IMAGE FIX ===== */
+.card-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 12px;   /* centers horizontally + keeps spacing */
+    display: flex;
+    align-items: center;   /* vertical center */
+    justify-content: center; /* horizontal center */
+    animation: bounce 2s ease-in-out infinite;
+}
+
+
+.card-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+

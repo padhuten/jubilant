@@ -982,3 +982,37 @@ body {
         font-size: 0.9rem;
     }
 } 
+
+
+/* Emoji → Image icon FIX */
+.card-icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.card-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* Modal icons */
+.sub-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sub-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
