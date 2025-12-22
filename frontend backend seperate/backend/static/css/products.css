@@ -1416,6 +1416,7 @@ body {
         position: sticky;
         margin-left: 0 !important;
         padding: 24px;
+        max-height:300vh !important;
     }
 
     .products-grid {
@@ -1547,6 +1548,7 @@ body {
         z-index: 5;
         padding: 16px 20px;
         border-bottom: 1px solid #e5e7eb;
+          max-height:none;
     }
 
     /* Desktop: hide close button */
@@ -1554,5 +1556,39 @@ body {
         display: none !important;
     }
 }
-
-
+/* ===========================
+   SIDEBAR HEIGHT = PRODUCTS SECTION HEIGHT
+   =========================== */
+@media (min-width: 1024px) {
+    .main-content {
+        grid-template-columns: 360px 1fr !important;
+        align-items: start;  /* Make both columns same height */
+    }
+    
+    .filters-sidebar {
+        position: sticky;
+        top: 20px;
+        height: 100%;  /* Match parent height */
+        max-height: none;  /* But limit to viewport */
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .filters-content {
+        flex: 1;
+        overflow-y: auto;
+    }
+}/* ===========================
+   EQUAL HEIGHT SIDEBAR & PRODUCTS GRID (1024px+)
+   =========================== */
+@media (min-width: 1024px) {
+    /* Make both columns stretch to same height */
+    .main-content {
+        display: grid !important;
+        grid-template-columns: 360px 1fr !important;
+        align-items: start !important;  /* Changed from stretch to start */
+        gap: 36px !important;
+    }
+    
+}
