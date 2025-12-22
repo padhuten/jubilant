@@ -39,9 +39,14 @@ cpu_products = [
         "memory_type": "DDR5",
         "max_memory_size": 128,
         "packaging": "Boxed",
-        "image": "/static/images/amdepyc.jpg",
+        "image": "/static/images/intel i9 13th GEN.jpg",
         "description": "High-performance gaming and content creation processor"
     },
+
+
+#  Ryzen 9
+
+
     {
         "id": "cpu-102",
         "name": "AMD Ryzen 9 7950X",
@@ -61,7 +66,7 @@ cpu_products = [
         "memory_type": "DDR5",
         "max_memory_size": 128,
         "packaging": "Boxed",
-        "image": "/static/images/amdepyc.jpg"
+        "image": "/static/images/amd ryzen 9000 series.jpg"
     },
     {
         "id": "cpu-105",
@@ -85,6 +90,12 @@ cpu_products = [
         "packaging": "Boxed",
         "image": "/static/images/amdepyc.jpg"
     },
+
+
+#  Ryzen 5 series
+
+
+
     {
         "id": "cpu-106",
         "name": "AMD Ryzen 5 7600",
@@ -104,7 +115,7 @@ cpu_products = [
         "memory_type": "DDR5",
         "max_memory_size": 128,
         "packaging": "Boxed",
-        "image": "/static/images/amdepyc.jpg"
+        "image": "/static/images/amd ryzen 5000 series.png"
     },
     {
         "id": "cpu-107",
@@ -114,8 +125,8 @@ cpu_products = [
         "category": "Intel Desktop Processor",
         "application": "Desktop",
         "series": "i7",
-           "category_key": "cpu",
-  "sub_category": "intel-desktop",
+        "category_key": "cpu",
+        "sub_category": "intel-desktop",
         "socket": "LGA1700",
         "cores": 12,
         "threads": 20,
@@ -126,7 +137,7 @@ cpu_products = [
         "memory_type": "DDR5",
         "max_memory_size": 128,
         "packaging": "Boxed",
-        "image": "/static/images/amdepyc.jpg"
+        "image": "/static/images/intel i7 12th GEN.jpg"
     },
     {
         "id": "cpu-109",
@@ -237,7 +248,7 @@ cpu_products = [
   "memory_type": "DDR5",
   "max_memory_size": 6144,
   "packaging": "Tray",
-  "image": "/static/images/amdepyc.jpg",
+  "image": "/static/images/AMD EPYC 9005 and 9004 series.jpg",
   "price": 11999
 },
 
@@ -262,7 +273,7 @@ cpu_products = [
         "memory_type": "DDR5",
         "max_memory_size": 6144,
         "packaging": "Tray",
-        "image": "/static/images/amdepyc.jpg",
+        "image": "/static/images/AMD EPYC 9005 and 9004 series.jpg",
         "price": 9999
     },
     {
@@ -285,7 +296,7 @@ cpu_products = [
         "memory_type": "DDR5",
         "max_memory_size": 6144,
         "packaging": "Tray",
-        "image": "/static/images/amdepyc.jpg",
+        "image": "/static/images/AMD EPYC 9005 and 9004 series.jpg",
         "price": 9499
     },
     {
@@ -308,7 +319,7 @@ cpu_products = [
         "memory_type": "DDR5",
         "max_memory_size": 6144,
         "packaging": "Tray",
-        "image": "/static/images/amdepyc.jpg",
+        "image": "/static/images/AMD EPYC 9005 and 9004 series.jpg",
         "price": 8999
     },
     {
@@ -331,7 +342,7 @@ cpu_products = [
         "memory_type": "DDR5",
         "max_memory_size": 4096,
         "packaging": "Tray",
-        "image": "/static/images/amdepyc.jpg",
+        "image":"/static/images/AMD EPYC 9005 and 9004 series.jpg",
         "price": 8599
     },
     {
@@ -354,7 +365,7 @@ cpu_products = [
         "memory_type": "DDR5",
         "max_memory_size": 4096,
         "packaging": "Tray",
-        "image": "/static/images/amdepyc.jpg",
+        "image":"/static/images/AMD EPYC 9005 and 9004 series.jpg",
         "price": 7999
     },
     {
@@ -377,7 +388,7 @@ cpu_products = [
         "memory_type": "DDR5",
         "max_memory_size": 4096,
         "packaging": "Tray",
-        "image": "/static/images/amdepyc.jpg",
+        "image":"/static/images/AMD EPYC 9005 and 9004 series.jpg",
         "price": 7599
     },
     {
@@ -400,7 +411,7 @@ cpu_products = [
         "memory_type": "DDR5",
         "max_memory_size": 4096,
         "packaging": "Tray",
-        "image": "/static/images/amdepyc.jpg",
+        "image":"/static/images/AMD EPYC 9005 and 9004 series.jpg",
         "price": 7499
     },
 
@@ -424,7 +435,7 @@ cpu_products = [
         "memory_type": "DDR5",
         "max_memory_size": 4096,
         "packaging": "Tray",
-        "image": "/static/images/amdepyc.jpg",
+        "image":"/static/images/AMD EPYC 9005 and 9004 series.jpg",
         "price": 6999
     },
     {
@@ -447,7 +458,7 @@ cpu_products = [
         "memory_type": "DDR5",
         "max_memory_size": 4096,
         "packaging": "Tray",
-        "image": "/static/images/amdepyc.jpg",
+        "image":"/static/images/AMD EPYC 9005 and 9004 series.jpg",
         "price": 6499
     },
     {
@@ -470,7 +481,7 @@ cpu_products = [
         "memory_type": "DDR5",
         "max_memory_size": 4096,
         "packaging": "Tray",
-        "image": "/static/images/amdepyc.jpg",
+        "image":"/static/images/AMD EPYC 9005 and 9004 series.jpg",
         "price": 5999
     },
     {
@@ -493,7 +504,7 @@ cpu_products = [
         "memory_type": "DDR5",
         "max_memory_size": 2048,
         "packaging": "Tray",
-        "image": "/static/images/amdepyc.jpg",
+        "image":"/static/images/AMD EPYC 9005 and 9004 series.jpg",
         "price": 6299
     },
     {
@@ -516,7 +527,7 @@ cpu_products = [
         "memory_type": "DDR5",
         "max_memory_size": 4096,
         "packaging": "Tray",
-        "image": "/static/images/amdepyc.jpg",
+        "image":"/static/images/AMD EPYC 9005 and 9004 series.jpg",
         "price": 5799
     },
     {
@@ -539,7 +550,7 @@ cpu_products = [
         "memory_type": "DDR5",
         "max_memory_size": 3072,
         "packaging": "Tray",
-        "image": "/static/images/amdepyc.jpg",
+        "image": "/static/images/AMD EPYC 9005 and 9004 series.jpg",
         "price": 4999
     },
     {
@@ -562,7 +573,7 @@ cpu_products = [
         "memory_type": "DDR5",
         "max_memory_size": 2048,
         "packaging": "Tray",
-        "image": "/static/images/amdepyc.jpg",
+        "image":"/static/images/AMD EPYC 9005 and 9004 series.jpg",
         "price": 5399
     },
     {
@@ -585,7 +596,7 @@ cpu_products = [
         "memory_type": "DDR5",
         "max_memory_size": 3072,
         "packaging": "Tray",
-        "image": "/static/images/amdepyc.jpg",
+        "image": "/static/images/AMD EPYC 9005 and 9004 series.jpg",
         "price": 4699
     },
     {
@@ -608,7 +619,7 @@ cpu_products = [
         "memory_type": "DDR5",
         "max_memory_size": 2048,
         "packaging": "Tray",
-        "image": "/static/images/amdepyc.jpg",
+        "image":"/static/images/AMD EPYC 9005 and 9004 series.jpg",
         "price": 3999
     },
     {
@@ -631,7 +642,7 @@ cpu_products = [
         "memory_type": "DDR5",
         "max_memory_size": 2048,
         "packaging": "Tray",
-        "image": "/static/images/amdepyc.jpg",
+        "image":"/static/images/AMD EPYC 9005 and 9004 series.jpg",
         "price": 3799
     },
     {
@@ -654,7 +665,7 @@ cpu_products = [
         "memory_type": "DDR5",
         "max_memory_size": 2048,
         "packaging": "Tray",
-        "image": "/static/images/amdepyc.jpg",
+        "image":"/static/images/AMD EPYC 9005 and 9004 series.jpg",
         "price": 3399
     },
     {
@@ -677,7 +688,7 @@ cpu_products = [
         "memory_type": "DDR5",
         "max_memory_size": 1024,
         "packaging": "Tray",
-        "image": "/static/images/amdepyc.jpg",
+        "image":"/static/images/AMD EPYC 9005 and 9004 series.jpg",
         "price": 3499
     },
     {
@@ -700,7 +711,7 @@ cpu_products = [
         "memory_type": "DDR5",
         "max_memory_size": 2048,
         "packaging": "Tray",
-        "image": "/static/images/amdepyc.jpg",
+        "image": "/static/images/AMD EPYC 9005 and 9004 series.jpg",
         "price": 3599
     },
     {
@@ -723,7 +734,7 @@ cpu_products = [
         "memory_type": "DDR5",
         "max_memory_size": 1536,
         "packaging": "Tray",
-        "image": "/static/images/amdepyc.jpg",
+        "image": "/static/images/AMD EPYC 9005 and 9004 series.jpg",
         "price": 2999
     },
     {
@@ -746,7 +757,7 @@ cpu_products = [
         "memory_type": "DDR5",
         "max_memory_size": 1536,
         "packaging": "Tray",
-        "image": "/static/images/amdepyc.jpg",
+        "image":"/static/images/AMD EPYC 9005 and 9004 series.jpg",
         "price": 3299
     },
     {
@@ -769,7 +780,7 @@ cpu_products = [
         "memory_type": "DDR5",
         "max_memory_size": 1024,
         "packaging": "Tray",
-        "image": "/static/images/amdepyc.jpg",
+        "image":"/static/images/AMD EPYC 9005 and 9004 series.jpg",
         "price": 2199
     },
     {
@@ -792,7 +803,7 @@ cpu_products = [
         "memory_type": "DDR5",
         "max_memory_size": 1024,
         "packaging": "Tray",
-        "image": "/static/images/amdepyc.jpg",
+        "image":"/static/images/AMD EPYC 9005 and 9004 series.jpg",
         "price": 1999
     },
     {
@@ -815,7 +826,7 @@ cpu_products = [
         "memory_type": "DDR5",
         "max_memory_size": 1024,
         "packaging": "Tray",
-        "image": "/static/images/amdepyc.jpg",
+        "image":"/static/images/AMD EPYC 9005 and 9004 series.jpg",
         "price": 2599
     },
     {
@@ -838,7 +849,7 @@ cpu_products = [
         "memory_type": "DDR5",
         "max_memory_size": 1024,
         "packaging": "Tray",
-        "image": "/static/images/amdepyc.jpg",
+        "image": "/static/images/AMD EPYC 9005 and 9004 series.jpg",
         "price": 1499
     },
     # {
@@ -903,26 +914,7 @@ cpu_products = [
     #     "packaging": "Tray",
     #     "image": "/static/images/amdepyc.jpg"
     # },
-    # {
-    #     "id": "cpu-105",
-    #     "name": "Intel Core i5-12400",
-    #     "price": 179.00,
-    #     "brand": "Intel",
-    #     "category": "Intel Desktop Processor",
-    #     "application": "Desktop",
-    #     "series": "i7",
-    #     "socket": "LGA1700",
-    #     "cores": 6,
-    #     "threads": 12,
-    #     "base_freq": 2.5,
-    #     "cache": 18,
-    #     "tdp": 65,
-    #     "tech": "10nm",
-    #     "memory_type": "DDR4",
-    #     "max_memory_size": 128,
-    #     "packaging": "Boxed",
-    #     "image": "/static/images/amdepyc.jpg"
-    # },
+    # 
     # {
     #     "id": "cpu-107",
     #     "name": "Intel Core i7-12700K",
@@ -985,7 +977,7 @@ cpu_products = [
     "memory_type": "DDR5",
     "max_memory_size": 6144,
     "packaging": "Tray",
-    "image": "/static/images/amdepyc.jpg",
+    "image": "/static/images/AMD EPYC 9005 and 9004 series.jpg",
     "price": 6500
   },
   {
@@ -1008,7 +1000,7 @@ cpu_products = [
     "memory_type": "DDR5",
     "max_memory_size": 6144,
     "packaging": "Tray",
-    "image": "/static/images/amdepyc.jpg",
+    "image": "/static/images/AMD EPYC 9005 and 9004 series.jpg",
     "price": 4000
   },
   {
@@ -1031,7 +1023,7 @@ cpu_products = [
     "memory_type": "DDR5",
     "max_memory_size": 6144,
     "packaging": "Tray",
-    "image": "/static/images/amdepyc.jpg",
+    "image": "/static/images/AMD EPYC 9005 and 9004 series.jpg",
     "price": 3200
   },
   {
@@ -1054,7 +1046,7 @@ cpu_products = [
     "memory_type": "DDR5",
     "max_memory_size": 6144,
     "packaging": "Tray",
-    "image": "/static/images/amdepyc.jpg",
+    "image": "/static/images/AMD EPYC 9005 and 9004 series.jpg",
     "price": 4500
   },
   {
@@ -1077,7 +1069,7 @@ cpu_products = [
     "memory_type": "DDR5",
     "max_memory_size": 6144,
     "packaging": "Tray",
-    "image": "/static/images/amdepyc.jpg",
+    "image": "/static/images/AMD EPYC 9005 and 9004 series.jpg",
     "price": 2100
   },
   {
@@ -1100,7 +1092,7 @@ cpu_products = [
     "memory_type": "DDR5",
     "max_memory_size": 6144,
     "packaging": "Tray",
-    "image": "/static/images/amdepyc.jpg",
+    "image": "/static/images/AMD EPYC 9005 and 9004 series.jpg",
     "price": 2450
   },
   {
@@ -1123,7 +1115,7 @@ cpu_products = [
     "memory_type": "DDR5",
     "max_memory_size": 6144,
     "packaging": "Tray",
-    "image": "/static/images/amdepyc.jpg",
+    "image": "/static/images/AMD EPYC 9005 and 9004 series.jpg",
     "price": 3500
   },
   {
@@ -1146,7 +1138,7 @@ cpu_products = [
     "memory_type": "DDR5",
     "max_memory_size": 6144,
     "packaging": "Tray",
-    "image": "/static/images/amdepyc.jpg",
+    "image": "/static/images/AMD EPYC 9005 and 9004 series.jpg",
     "price": 2300
   },
   {
@@ -1169,7 +1161,7 @@ cpu_products = [
     "memory_type": "DDR5",
     "max_memory_size": 6144,
     "packaging": "Tray",
-    "image": "/static/images/amdepyc.jpg",
+    "image": "/static/images/AMD EPYC 9005 and 9004 series.jpg",
     "price": 1800
   },
   {
@@ -1192,7 +1184,7 @@ cpu_products = [
     "memory_type": "DDR5",
     "max_memory_size": 6144,
     "packaging": "Tray",
-    "image": "/static/images/amdepyc.jpg",
+    "image": "/static/images/AMD EPYC 9005 and 9004 series.jpg",
     "price": 2950
   },
   {
@@ -1215,7 +1207,7 @@ cpu_products = [
     "memory_type": "DDR5",
     "max_memory_size": 6144,
     "packaging": "Tray",
-    "image": "/static/images/amdepyc.jpg",
+    "image":"/static/images/AMD EPYC 9005 and 9004 series.jpg",
     "price": 1800
   },
   {
@@ -1238,7 +1230,7 @@ cpu_products = [
     "memory_type": "DDR5",
     "max_memory_size": 6144,
     "packaging": "Tray",
-    "image": "/static/images/amdepyc.jpg",
+    "image":"/static/images/AMD EPYC 9005 and 9004 series.jpg",
     "price": 2600
   },
   {
@@ -1261,7 +1253,7 @@ cpu_products = [
     "memory_type": "DDR5",
     "max_memory_size": 6144,
     "packaging": "Tray",
-    "image": "/static/images/amdepyc.jpg",
+    "image":"/static/images/AMD EPYC 9005 and 9004 series.jpg",
     "price": 9000
   },
   {
@@ -1284,7 +1276,7 @@ cpu_products = [
     "memory_type": "DDR5",
     "max_memory_size": 6144,
     "packaging": "Tray",
-    "image": "/static/images/amdepyc.jpg",
+    "image": "/static/images/AMD EPYC 9005 and 9004 series.jpg",
     "price": 6500
   },
   {
@@ -1307,7 +1299,7 @@ cpu_products = [
     "memory_type": "DDR5",
     "max_memory_size": 6144,
     "packaging": "Tray",
-    "image": "/static/images/amdepyc.jpg",
+    "image": "/static/images/AMD EPYC 9005 and 9004 series.jpg",
     "price": 3750
   },
  
@@ -1862,6 +1854,9 @@ cpu_products = [
 "price":9500
 },
 
+
+# 8004 Series
+
   {
     "id": "cpu-epyc-8534p",
     "name": "AMD EPYC 8534P",
@@ -2149,6 +2144,12 @@ cpu_products = [
     "image": "/static/images/amd-epyc-series.jpeg",
     "price": 1150
   },
+
+
+
+# 4004 series
+
+
   {
 "id":"cpu-epyc-4564p",
 "name":"AMD EPYC 4564P",
@@ -2169,7 +2170,7 @@ cpu_products = [
 "memory_type":"DDR5",
 "max_memory_size":256,
 "packaging":"Tray",
-"image":"/static/images/amd-epyc-series.jpeg",
+"image":"/static/images/amd epyc 4004 and 4005.jpg",
 "price":1750
 },
 
@@ -2193,7 +2194,7 @@ cpu_products = [
 "memory_type":"DDR5",
 "max_memory_size":256,
 "packaging":"Tray",
-"image":"/static/images/amd-epyc-series.jpeg",
+"image":"/static/images/amd epyc 4004 and 4005.jpg",
 "price":1350
 },
 
@@ -2217,7 +2218,7 @@ cpu_products = [
 "memory_type":"DDR5",
 "max_memory_size":256,
 "packaging":"Tray",
-"image":"/static/images/amd-epyc-series.jpeg",
+"image":"/static/images/amd epyc 4004 and 4005.jpg",
 "price":980
 },
 
@@ -2241,7 +2242,7 @@ cpu_products = [
 "memory_type":"DDR5",
 "max_memory_size":256,
 "packaging":"Tray",
-"image":"/static/images/amd-epyc-series.jpeg",
+"image":"/static/images/amd epyc 4004 and 4005.jpg",
 "price":890
 },
 
@@ -2265,7 +2266,7 @@ cpu_products = [
 "memory_type":"DDR5",
 "max_memory_size":256,
 "packaging":"Tray",
-"image":"/static/images/amd-epyc-series.jpeg",
+"image":"/static/images/amd epyc 4004 and 4005.jpg",
 "price":720
 },
 
@@ -2289,7 +2290,7 @@ cpu_products = [
 "memory_type":"DDR5",
 "max_memory_size":256,
 "packaging":"Tray",
-"image":"/static/images/amd-epyc-series.jpeg",
+"image":"/static/images/amd epyc 4004 and 4005.jpg",
 "price":540
 },
 
@@ -2313,7 +2314,7 @@ cpu_products = [
 "memory_type":"DDR5",
 "max_memory_size":256,
 "packaging":"Tray",
-"image":"/static/images/amd-epyc-series.jpeg",
+"image":"/static/images/amd epyc 4004 and 4005.jpg",
 "price":2200
 },
 
@@ -2337,7 +2338,7 @@ cpu_products = [
 "memory_type":"DDR5",
 "max_memory_size":256,
 "packaging":"Tray",
-"image":"/static/images/amd-epyc-series.jpeg",
+"image":"/static/images/amd epyc 4004 and 4005.jpg",
 "price":1900
 },
 
@@ -2361,7 +2362,7 @@ cpu_products = [
 "memory_type":"DDR5",
 "max_memory_size":256,
 "packaging":"WOF",
-"image":"/static/images/amd-epyc-series.jpeg",
+"image":"/static/images/amd epyc 4004 and 4005.jpg",
 "price":1680
 },
 
@@ -2385,7 +2386,7 @@ cpu_products = [
 "memory_type":"DDR5",
 "max_memory_size":256,
 "packaging":"WOF",
-"image":"/static/images/amd-epyc-series.jpeg",
+"image":"/static/images/amd epyc 4004 and 4005.jpg",
 "price":1280
 },
 
@@ -2409,7 +2410,7 @@ cpu_products = [
 "memory_type":"DDR5",
 "max_memory_size":256,
 "packaging":"WOF",
-"image":"/static/images/amd-epyc-series.jpeg",
+"image":"/static/images/amd epyc 4004 and 4005.jpg",
 "price":940
 },
 
@@ -2433,7 +2434,7 @@ cpu_products = [
 "memory_type":"DDR5",
 "max_memory_size":256,
 "packaging":"WOF",
-"image":"/static/images/amd-epyc-series.jpeg",
+"image":"/static/images/amd epyc 4004 and 4005.jpg",
 "price":850
 },
 
@@ -2457,7 +2458,7 @@ cpu_products = [
 "memory_type":"DDR5",
 "max_memory_size":256,
 "packaging":"WOF",
-"image":"/static/images/amd-epyc-series.jpeg",
+"image":"/static/images/amd epyc 4004 and 4005.jpg",
 "price":690
 },
 
@@ -2481,7 +2482,7 @@ cpu_products = [
 "memory_type":"DDR5",
 "max_memory_size":256,
 "packaging":"WOF",
-"image":"/static/images/amd-epyc-series.jpeg",
+"image":"/static/images/amd epyc 4004 and 4005.jpg",
 "price":510
 },
 
@@ -2505,7 +2506,7 @@ cpu_products = [
 "memory_type":"DDR5",
 "max_memory_size":256,
 "packaging":"WOF",
-"image":"/static/images/amd-epyc-series.jpeg",
+"image":"/static/images/amd epyc 4004 and 4005.jpg",
 "price":1850
 },
 
@@ -2528,11 +2529,13 @@ cpu_products = [
 "memory_type":"DDR5",
 "max_memory_size":256,
 "packaging":"WOF",
-"image":"/static/images/amd-epyc-series.jpeg",
+"image":"/static/images/amd epyc 4004 and 4005.jpg",
 "price":2150
 },
 
-#4005
+
+
+#  4005 Series
 
 {
     "id": "cpu-epyc-4565p",
@@ -2554,7 +2557,7 @@ cpu_products = [
     "memory_type": "DDR5",
     "max_memory_size": 256,    
     "packaging": "Tray",
-    "image": "/static/images/amd-epyc-series.jpeg",
+    "image": "/static/images/amd epyc 4004 and 4005.jpg",
     "price": 589              
   },
 
@@ -2578,7 +2581,7 @@ cpu_products = [
     "memory_type": "DDR5",
     "max_memory_size": 256,
     "packaging": "Tray",
-    "image": "/static/images/amd-epyc-series.jpeg",
+    "image": "/static/images/amd epyc 4004 and 4005.jpg",
     "price": 550            
   },
 
@@ -2602,7 +2605,7 @@ cpu_products = [
     "memory_type": "DDR5",
     "max_memory_size": 256,
     "packaging": "Tray",
-    "image": "/static/images/amd-epyc-series.jpeg",
+    "image": "/static/images/amd epyc 4004 and 4005.jpg",
     "price": 449              
   },
 
@@ -2626,7 +2629,7 @@ cpu_products = [
     "memory_type": "DDR5",
     "max_memory_size": 256,
     "packaging": "Tray",
-    "image": "/static/images/amd-epyc-series.jpeg",
+    "image": "/static/images/amd epyc 4004 and 4005.jpg",
     "price": 329              
   },
 
@@ -2650,7 +2653,7 @@ cpu_products = [
     "memory_type": "DDR5",
     "max_memory_size": 256,
     "packaging": "Tray",
-    "image": "/static/images/amd-epyc-series.jpeg",
+    "image": "/static/images/amd epyc 4004 and 4005.jpg",
     "price": 279              
   },
 
@@ -2674,7 +2677,7 @@ cpu_products = [
     "memory_type": "DDR5",
     "max_memory_size": 256,
     "packaging": "Tray",
-    "image": "/static/images/amd-epyc-series.jpeg",
+    "image": "/static/images/amd epyc 4004 and 4005.jpg",
     "price": 699              
   },
 
@@ -2699,7 +2702,7 @@ cpu_products = [
     "memory_type": "DDR5",
     "max_memory_size": 256,
     "packaging": "WOF",
-    "image": "/static/images/amd-epyc-series.jpeg",
+    "image": "/static/images/amd epyc 4004 and 4005.jpg",
     "price": 569            
   },
 
@@ -2723,7 +2726,7 @@ cpu_products = [
     "memory_type": "DDR5",
     "max_memory_size": 256,
     "packaging": "WOF",
-    "image": "/static/images/amd-epyc-series.jpeg",
+    "image": "/static/images/amd epyc 4004 and 4005.jpg",
     "price": 530
   },
 
@@ -2747,7 +2750,7 @@ cpu_products = [
     "memory_type": "DDR5",
     "max_memory_size": 256,
     "packaging": "WOF",
-    "image": "/static/images/amd-epyc-series.jpeg",
+    "image":"/static/images/amd epyc 4004 and 4005.jpg",
     "price": 430
   },
 
@@ -2771,7 +2774,7 @@ cpu_products = [
     "memory_type": "DDR5",
     "max_memory_size": 256,
     "packaging": "WOF",
-    "image": "/static/images/amd-epyc-series.jpeg",
+    "image":"/static/images/amd epyc 4004 and 4005.jpg",
     "price": 315
   },
 
@@ -2795,7 +2798,7 @@ cpu_products = [
     "memory_type": "DDR5",
     "max_memory_size": 256,
     "packaging": "WOF",
-    "image": "/static/images/amd-epyc-series.jpeg",
+    "image": "/static/images/amd epyc 4004 and 4005.jpg",
     "price": 265
   },
 
@@ -2819,23 +2822,22 @@ cpu_products = [
     "memory_type": "DDR5",
     "max_memory_size": 256,
     "packaging": "WOF",
-    "image": "/static/images/amd-epyc-series.jpeg",
+    "image":"/static/images/amd epyc 4004 and 4005.jpg",
     "price": 679
   },
+
+
+  #  Ryzen 7 Series
 
   {
   "id": "9700x",
   "name": "AMD Ryzen 7 9700X",
   "brand": "AMD",
-
   "category_key": "cpu",
   "sub_category": "amd-desktop",
-
   "category": "Ryzen Desktop Processor",
   "application": "Desktop",
-
   "description": "AMD Ryzen 7 9700X is an 8-core / 16-thread desktop processor from AMD’s Ryzen 9000 series, built on Zen 5 architecture and manufactured on a 4 nm process. With a base clock of 3.8 GHz and a max boost up to 5.5 GHz, it delivers strong single-threaded and multi-threaded performance — suitable for gaming, content creation, and general productivity. The CPU supports DDR5 memory (up to 192 GB, dual-channel) and PCIe 5.0, and includes integrated AMD Radeon Graphics — useful for systems without a discrete GPU or as backup graphics. With a default TDP of 65 W, it offers a balance of performance and power efficiency.",
-
   "series": "ryzen",
   "socket": "AM5",
   "cores": 8,
@@ -2847,7 +2849,7 @@ cpu_products = [
   "memory_type": "DDR5",
   "max_memory_size": 192,
   "packaging": "Boxed",
-  "image": "/static/images/AMD-Ryzen.jpg",
+  "image": "/static/images/amd ryzen 9000 series.jpg",
   "price": 309
 },
 
@@ -2873,9 +2875,15 @@ cpu_products = [
   "memory_type": "DDR5",  
   "max_memory_size": 192,  
   "packaging": "Retail Boxed",
-  "image": "/static/images/AMD-Ryzen.jpg",
+  "image": "/static/images/amd ryzen 9000 series.jpg",
   "price": 450
   },
+
+
+
+#  Ryzen 9 series
+
+
 
   {
   "id": "cpu-9900x",
@@ -2897,7 +2905,7 @@ cpu_products = [
   "memory_type": "DDR5",
   "memory_max_size": 192,
   "packaging": "Boxed",
-  "image": "/static/images/AMD-Ryzen.jpg",
+  "image": "/static/images/amd ryzen 9000 series.jpg",
   "price": 350  
 },
 
@@ -2921,7 +2929,7 @@ cpu_products = [
   "memory_type": "DDR5",
   "memory_max_size": 192,
   "packaging": "Boxed",
-  "image": "/static/images/AMD-Ryzen.jpg",
+  "image": "/static/images/amd ryzen 9000 series.jpg",
   "price": 58475
 },
 
@@ -2945,7 +2953,7 @@ cpu_products = [
   "memory_type": "DDR5",
   "max_memory_size": 192,
   "packaging": "Boxed",
-  "image": "/static/images/AMD-Ryzen.jpg",
+  "image": "/static/images/amd ryzen 9000 series.jpg",
   "price": 699.00
 },
 
@@ -3089,7 +3097,7 @@ cpu_products = [
   "memory_type": "DDR5",
   "max_memory_size": 128,
   "packaging": "Boxed",
-  "image": "/static/images/AMD-Ryzen.jpg",
+  "image": "/static/images/amd ryzen 5000 series.png",
   "price": 249.00
 },
 
@@ -3113,7 +3121,7 @@ cpu_products = [
   "memory_type": "DDR5",
   "max_memory_size": 128,
   "packaging": "Boxed",
-  "image": "/static/images/AMD-Ryzen.jpg",
+  "image": "/static/images/amd ryzen 5000 series.png",
   "price": 229.00
 },
 
@@ -3189,6 +3197,8 @@ cpu_products = [
   "price": 449.00
 },
 
+
+
 {
   "id": "cpu-5600x",
   "name": "AMD Ryzen 5 5600X",
@@ -3209,7 +3219,7 @@ cpu_products = [
   "memory_type": "DDR4",
   "max_memory_size": 128,
   "packaging": "Boxed",
-  "image": "/static/images/AMD-Ryzen.jpg",
+  "image":"/static/images/amd ryzen 5000 series.png",
   "price": 199.00
 },
 
@@ -3233,7 +3243,7 @@ cpu_products = [
   "memory_type": "DDR4",
   "max_memory_size": 128,
   "packaging": "Boxed",
-  "image": "/static/images/AMD-Ryzen.jpg",
+  "image": "/static/images/amd ryzen 5000 series.png",
   "price": 249.00
 },
 
@@ -3257,7 +3267,7 @@ cpu_products = [
   "memory_type": "DDR4",
   "max_memory_size": 128,
   "packaging": "Boxed",
-  "image": "/static/images/AMD-Ryzen.jpg",
+  "image": "/static/images/amd ryzen 5000 series.png",
   "price": 349.00
 },
 
@@ -3281,7 +3291,7 @@ cpu_products = [
   "memory_type": "DDR4",
   "max_memory_size": 128,
   "packaging": "Boxed",
-  "image": "/static/images/AMD-Ryzen.jpg",
+  "image": "/static/images/amd ryzen 5000 series.png",
   "price": 499.00
 },
 
@@ -3305,7 +3315,7 @@ cpu_products = [
   "memory_type": "DDR4",
   "max_memory_size": 128,
   "packaging": "Boxed",
-  "image": "/static/images/AMD-Ryzen.jpg",
+  "image":"/static/images/amd ryzen 5000 series.png",
   "price": 129.00
 },
 
@@ -3329,7 +3339,7 @@ cpu_products = [
   "memory_type": "DDR4",
   "max_memory_size": 128,
   "packaging": "Boxed",
-  "image": "/static/images/AMD-Ryzen.jpg",
+  "image": "/static/images/amd ryzen 5000 series.png",
   "price": 159.00
 },
 
@@ -3353,7 +3363,7 @@ cpu_products = [
   "memory_type": "DDR4",
   "max_memory_size": 128,
   "packaging": "Boxed",
-  "image": "/static/images/AMD-Ryzen.jpg",
+  "image": "/static/images/amd ryzen 5000 series.png",
   "price": 199.00
 },
 
@@ -3377,7 +3387,7 @@ cpu_products = [
   "memory_type": "DDR4",
   "max_memory_size": 128,
   "packaging": "Boxed",
-  "image": "/static/images/AMD-Ryzen.jpg",
+  "image": "/static/images/amd ryzen pro series.jpg",
   "price": 329.00
 },
 
@@ -3404,7 +3414,7 @@ cpu_products = [
   "memory_type": "DDR4",
   "max_memory_size": 128,
   "packaging": "Boxed",
-  "image": "/static/images/AMD-Ryzen.jpg",
+  "image": "/static/images/amd ryzen pro series.jpg",
   "price": 279.00
 },
 
@@ -3429,7 +3439,7 @@ cpu_products = [
   "memory_type": "DDR4",
   "max_memory_size": 128,
   "packaging": "Boxed",
-  "image": "/static/images/AMD-Ryzen.jpg",
+  "image":"/static/images/amd ryzen pro series.jpg",
   "price": 189.00
 },
 
@@ -3454,7 +3464,7 @@ cpu_products = [
   "memory_type": "DDR5 / DDR4",
   "max_memory_size": 192,
   "packaging": "Boxed",
-  "image": "/static/images/Intel-i9.jpg",
+  "image": "/static/images/intel i9 14th GEN.jpg",
   "price": 589.00
 },
 
@@ -3478,7 +3488,7 @@ cpu_products = [
   "memory_type": "DDR5 / DDR4",
   "max_memory_size": 128,
   "packaging": "Boxed (OEM / Retail)",
-  "image": "/static/images/Intel-i9.jpg",
+  "image": "/static/images/intel i9 14th GEN.jpg",
   "price": 569.00
 },
 
@@ -3502,7 +3512,7 @@ cpu_products = [
   "memory_type": "DDR5 / DDR4",
   "max_memory_size": 192,
   "packaging": "Boxed",
-  "image": "/static/images/Intel-i7.jpg",
+  "image": "/static/images/intel i7 14th GEN.webp",
   "price": 409.00
 },
 
@@ -3512,10 +3522,10 @@ cpu_products = [
   "brand": "Intel",
   "category": "Intel Desktop Processor",
   "application": "Desktop",
-       "category_key": "cpu",
+  "category_key": "cpu",
   "sub_category": "intel-desktop",
   "description": "Intel Core i5-14600K is a 14th Gen Raptor Lake Refresh desktop CPU featuring 14 cores (6 Performance + 8 Efficient) and 20 threads. With up to 5.3 GHz turbo boost and 44 MB total cache, it delivers excellent gaming and productivity performance. Supports DDR5 and DDR4 memory with up to 192GB capacity, making it a strong choice for mid-high range gaming builds and creative workloads on the LGA1700 platform.",
-  "series": "Core i5",
+  "series": "i5",
   "socket": "LGA1700",
   "cores": 14,
   "threads": 20,
@@ -3526,7 +3536,7 @@ cpu_products = [
   "memory_type": "DDR5 / DDR4",
   "max_memory_size": 192,
   "packaging": "Boxed",
-  "image": "/static/images/Intel-i5.jpg",
+  "image": "/static/images/intel i5 14th GEN.jpg",
   "price": 319.00
 },
 
@@ -3550,7 +3560,7 @@ cpu_products = [
   "memory_type": "DDR5 / DDR4",
   "max_memory_size": 192,
   "packaging": "Boxed",
-  "image": "/static/images/Intel-i5.jpg",
+  "image": "/static/images/intel i5 14th GEN.jpg",
   "price": 259.00
 },
 
@@ -3574,7 +3584,7 @@ cpu_products = [
   "memory_type": "DDR5 / DDR4",
   "max_memory_size": 128,
   "packaging": "Boxed",
-  "image": "/static/images/Intel-i9.jpg",
+  "image": "/static/images/intel i9 13th GEN.jpg",
   "price": 589.00
 },
 
@@ -3598,7 +3608,7 @@ cpu_products = [
   "memory_type": "DDR5 / DDR4",
   "max_memory_size": 192,
   "packaging": "Boxed",
-  "image": "/static/images/Intel-i9.jpg",
+  "image": "/static/images/intel i9 13th GEN.jpg",
   "price": 559.00
 },
 
@@ -3622,7 +3632,7 @@ cpu_products = [
   "memory_type": "DDR5 / DDR4",
   "max_memory_size": 192,
   "packaging": "Boxed",
-  "image": "/static/images/Intel-i7.jpg",
+  "image": "/static/images/intel i7 13th GEN.jpg",
   "price": 409.00
 },
 
@@ -3646,7 +3656,7 @@ cpu_products = [
   "memory_type": "DDR5 / DDR4",
   "max_memory_size": 128,
   "packaging": "Boxed",
-  "image": "/static/images/Intel-i5.jpg",
+  "image": "/static/images/intel i5 13th GEN.jpg",
   "price": 319.00
 },
 
@@ -3670,7 +3680,7 @@ cpu_products = [
   "memory_type": "DDR5 / DDR4",
   "max_memory_size": 128,
   "packaging": "Boxed",
-  "image": "/static/images/Intel-i5.jpg",
+  "image": "/static/images/intel i5 13th GEN.jpg",
   "price": 219.00
 },
 
@@ -3694,7 +3704,7 @@ cpu_products = [
   "memory_type": "DDR5 / DDR4",
   "max_memory_size": 128,
   "packaging": "Boxed",
-  "image": "/static/images/Intel-i3.jpg",
+  "image": "/static/images/intel i3 13th GEN.png",
   "price": 139.00
 },
 
@@ -3718,33 +3728,33 @@ cpu_products = [
   "memory_type": "DDR5 / DDR4",
   "max_memory_size": 128,
   "packaging": "Boxed",
-  "image": "/static/images/Intel-i9.jpg",
+  "image": "/static/images/intel i9 12th GEN.jpg",
   "price": 589.00
-},
+},  
 
-{
-  "id": "cpu-12700k",
-  "name": "Intel Core i7-12700K",
-  "brand": "Intel",
-  "category": "Intel Desktop Processor",
-  "application": "Desktop",
-  "description": "Intel Core i7-12700K is a 12th Gen Alder Lake desktop CPU with 12 cores (8 Performance + 4 Efficient) and 20 threads, designed for high-end gaming, streaming, and productivity workloads. With up to 5.0 GHz boost frequency and 37MB total cache, it offers excellent performance for modern desktops. Supports DDR5 and DDR4 memory on LGA1700 motherboards, making it suitable for enthusiast PC builds and workstation environments.",
-  "series": "i7",
-  "socket": "LGA1700",
-       "category_key": "cpu",
-  "sub_category": "intel-desktop",
-  "cores": 12,
-  "threads": 20,
-  "base_freq": 3.6,
-  "cache": 37,
-  "tdp": 125,
-  "tech": "10nm Enhanced SuperFin (Intel 7)",
-  "memory_type": "DDR5 / DDR4",
-  "max_memory_size": 128,
-  "packaging": "Boxed",
-  "image": "/static/images/Intel-i7.jpg",
-  "price": 409.00
-},
+# {
+#   "id": "cpu-12700k",
+#   "name": "Intel Core i7-12700K",
+#   "brand": "Intel",
+#   "category": "Intel Desktop Processor",
+#   "application": "Desktop",
+#   "description": "Intel Core i7-12700K is a 12th Gen Alder Lake desktop CPU with 12 cores (8 Performance + 4 Efficient) and 20 threads, designed for high-end gaming, streaming, and productivity workloads. With up to 5.0 GHz boost frequency and 37MB total cache, it offers excellent performance for modern desktops. Supports DDR5 and DDR4 memory on LGA1700 motherboards, making it suitable for enthusiast PC builds and workstation environments.",
+#   "series": "i7",
+#   "socket": "LGA1700",
+#        "category_key": "cpu",
+#   "sub_category": "intel-desktop",
+#   "cores": 12,
+#   "threads": 20,
+#   "base_freq": 3.6,
+#   "cache": 37,
+#   "tdp": 125,
+#   "tech": "10nm Enhanced SuperFin (Intel 7)",
+#   "memory_type": "DDR5 / DDR4",
+#   "max_memory_size": 128,
+#   "packaging": "Boxed",
+#   "image":"/static/images/intel i7 12th GEN.jpg",
+#   "price": 409.00
+# },
 
 {
   "id": "cpu-12600k",
@@ -3766,7 +3776,7 @@ cpu_products = [
   "memory_type": "DDR5 / DDR4",
   "max_memory_size": 128,
   "packaging": "Boxed",
-  "image": "/static/images/Intel-i5.jpg",
+  "image": "/static/images/intel i5 12th GEN.jpg",
   "price": 289.00
 },
 
@@ -3790,7 +3800,7 @@ cpu_products = [
   "memory_type": "DDR5 / DDR4",
   "max_memory_size": 128,
   "packaging": "Boxed",
-  "image": "/static/images/Intel-i5.jpg",
+  "image": "/static/images/intel i5 12th GEN.jpg",
   "price": 209.00
 },
 
@@ -3800,7 +3810,7 @@ cpu_products = [
   "brand": "Intel",
   "category": "Intel Desktop Processor",
   "application": "Desktop",
-     "category_key": "cpu",
+  "category_key": "cpu",
   "sub_category": "intel-desktop",
   "description": "Intel Core i5-12400 is a 12th Gen Alder Lake desktop processor with 6 performance cores and 12 threads, offering excellent value for gaming and productivity workloads. With boost clock up to 4.4 GHz and 25.5 MB cache, it delivers smooth performance for modern PC builds. Supports DDR5 and DDR4 memory on the LGA1700 platform, ideal for mid-range desktops, office systems, and gaming PCs.",
   "series": "i5",
@@ -3814,7 +3824,7 @@ cpu_products = [
   "memory_type": "DDR5 / DDR4",
   "max_memory_size": 128,
   "packaging": "Boxed",
-  "image": "/static/images/Intel-i5.jpg",
+  "image": "/static/images/intel i5 12th GEN.jpg",
   "price": 189.00
 },
 
@@ -3839,7 +3849,8 @@ cpu_products = [
   "max_memory_size": 128,
   "packaging": "Boxed",
   "description": "Intel Core i3-12100 is a 12th Gen Alder Lake desktop processor with 4 performance cores and 8 threads, delivering excellent entry-level performance for office workloads, light gaming, productivity, and home PCs. With boost clock up to 4.3 GHz and 12MB cache, it offers great value for budget systems. Supports DDR4 and DDR5 memory up to 128GB on LGA1700 motherboards, making it ideal for everyday use with high efficiency.",
-  "image": "/static/images/Intel-i3.jpg"
+  "image": "/static/images/intel i3 12th GEN.png",
+  "price": 667.00
 }
 
 

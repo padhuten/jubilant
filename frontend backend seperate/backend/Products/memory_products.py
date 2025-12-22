@@ -172,6 +172,7 @@ memory_products = [
   "id": "ram-crucial-8gb-ddr4-udimm",
   "name": "Crucial 8GB DDR4 UDIMM",
   "brand": "Crucial",
+  "sub_category": "crucial",
               "category_key": "memory",
   "category": "Desktop Memory Module",
   "application": "Desktop PC",

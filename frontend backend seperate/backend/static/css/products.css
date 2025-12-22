@@ -660,8 +660,8 @@ body {
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 16px;
     margin-bottom: 40px;
     animation: fadeIn 0.5s ease-out;
     align-items: stretch !important;
@@ -726,7 +726,7 @@ body {
 
 .product-image {
     width: 100%;
-    height: 200px;
+    height: 155px;
     background: linear-gradient(135deg, var(--primary-light) 0%, var(--bg-lighter) 100%);
     display: flex;
     align-items: center;
@@ -762,7 +762,7 @@ body {
 }
 
 .product-content {
-    padding: 20px;
+    padding: 12px;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -778,11 +778,11 @@ body {
 }
 
 .product-name {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     font-weight: 700;
     color: var(--text-dark);
-    margin-bottom: 12px;
-    line-height: 1.35;
+    margin-bottom: 6px;
+    line-height: 1.2;
     flex: 1;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -793,12 +793,12 @@ body {
 .product-specs {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    padding: 12px;
+    gap: 6px;
+    padding: 10px;
     background: var(--bg-lighter);
     border-radius: 8px;
     font-size: 0.8rem;
-    margin-bottom: 14px;
+    margin-bottom: 10px;
 }
 
 .spec-item {
@@ -824,9 +824,9 @@ body {
     align-items: center;
     padding-top: 14px;
     border-top: 1px solid var(--border-color);
-    min-height: 48px;
+    min-height: 35px;
     margin-top: auto;
-    padding: 14px 20px;
+    padding: 10px 16px;
 }
 
 .product-price {
@@ -925,8 +925,8 @@ body {
    =========================== */
 
 .pagination-section {
-    margin-top: 50px;
-    padding: 30px 20px;
+    margin-top: -3%;
+    padding: 8px 20px;
     display: flex;
     justify-content: center;
     animation: fadeIn 0.5s ease-out;
@@ -1042,8 +1042,8 @@ body {
 
 .page-info-bottom {
     text-align: center;
-    margin-top: 20px;
-    padding: 20px;
+    margin-top: 8px;
+    padding: 8px;
 }
 
 .page-info-bottom p {
@@ -1075,7 +1075,23 @@ body {
     width: 80px;
     height: 80px;
 }
+/* Product Card Link */
+.product-card-link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+}
 
+.product-card-link:hover {
+    text-decoration: none;
+}
+
+/* Make the View button look like a button but act as part of the link */
+.product-card-link .btn-view {
+    pointer-events: none; /* Prevents double-click handling */
+}
 /* ===========================
    RESPONSIVE DESIGN
    =========================== */
@@ -1124,7 +1140,7 @@ body {
     }
 
     .product-image {
-        height: 160px;
+        height: 135px;
     }
 
     .product-price {
@@ -1223,7 +1239,7 @@ body {
     }
 
     .product-content {
-        padding: 18px;
+        padding: 10px;
     }
 
     .product-name {
@@ -1345,7 +1361,7 @@ body {
         padding: 18px 20px;
         background: #fff;
         border-bottom: 1px solid #e5e7eb;
-        position: sticky;
+        position:relative;
         top: 0;
         z-index: 10;
     }
@@ -1492,7 +1508,7 @@ body {
     }
 
     .product-image {
-        height: 250px;
+        height: 200px;
     }
 
     .product-price {
@@ -1525,7 +1541,7 @@ body {
         display: flex !important;
         align-items: center;
         justify-content: flex-start;
-        position: sticky;
+        position: relative;
         top: 0;
         background: #ffffff;
         z-index: 5;
