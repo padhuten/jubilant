@@ -1416,6 +1416,7 @@ body {
         position: sticky;
         margin-left: 0 !important;
         padding: 24px;
+        max-height:300vh !important;
     }
 
     .products-grid {
@@ -1547,6 +1548,7 @@ body {
         z-index: 5;
         padding: 16px 20px;
         border-bottom: 1px solid #e5e7eb;
+          max-height:none;
     }
 
     /* Desktop: hide close button */
@@ -1616,3 +1618,38 @@ body {
 .series-chip.active .checkmark::after {
     border-color: var(--primary-color);
 }
+   /* ===========================
+   EQUAL HEIGHT SIDEBAR & PRODUCTS GRID (1024px+)
+   =========================== */
+@media (min-width: 1024px) {
+
+    /* Main layout */
+    .main-content {
+        display: grid !important;
+        grid-template-columns: 360px 1fr !important;
+        align-items: start !important;
+        gap: 36px !important;
+    }
+
+    /* Sidebar */
+    .filters-sidebar {
+        position: sticky;
+        top: 20px;
+
+        /* Key fix: let grid define height */
+        align-self: stretch;
+
+        /* Scroll only if content exceeds */
+        overflow-y: auto;
+
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Sidebar inner content */
+    .filters-content {
+        flex: 1;
+        overflow-y: auto;
+    }
+}
+

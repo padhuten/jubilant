@@ -83,7 +83,101 @@ body {
     box-shadow: 0 10px 40px rgba(0, 82, 204, 0.12);
     border-bottom: 2px solid var(--border-light);
 }
+/* Ensure header stays visible */
+header, .header, nav {
+    position: relative;
+    z-index: 100 !important;
+}
 
+/* Modal layers */
+.modal-overlay {
+    z-index: 999;
+}
+
+.modal-container {
+    z-index: 1000;
+}
+/* ========================================
+   ENQUIRY BUTTONS
+   ======================================== */
+
+/* Hero Enquiry Button */
+.hero-enquiry-btn {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+    color: white;
+    text-decoration: none;
+    padding: 1rem 2.5rem;
+    border-radius: var(--radius-lg);
+    font-weight: 700;
+    font-size: 1rem;
+    margin-top: var(--spacing-md);
+    box-shadow: 0 8px 24px rgba(0, 82, 204, 0.3);
+    transition: all var(--transition-fast);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.hero-enquiry-btn:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 36px rgba(0, 82, 204, 0.45);
+    color: white;
+}
+
+.hero-enquiry-btn:active {
+    transform: translateY(-2px);
+}
+
+/* Floating Inquiry Button (Bottom Right) */
+.floating-inquiry-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+    color: white;
+    text-decoration: none;
+    padding: 1rem 1.8rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    box-shadow: 0 8px 24px rgba(0, 82, 204, 0.4);
+    transition: all var(--transition-fast);
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.floating-inquiry-btn:hover {
+    transform: translateY(-6px) scale(1.05);
+    box-shadow: 0 16px 40px rgba(0, 82, 204, 0.6);
+    color: white;
+}
+
+.floating-inquiry-btn:active {
+    transform: translateY(-3px) scale(1.02);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .floating-inquiry-btn {
+        bottom: 20px;
+        right: 20px;
+        padding: 0.8rem 1.5rem;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .floating-inquiry-btn {
+        bottom: 15px;
+        right: 15px;
+        padding: 0.7rem 1.2rem;
+        font-size: 0.8rem;
+    }
+}
 .hero-banner::before {
     content: '';
     position: absolute;
@@ -982,3 +1076,37 @@ body {
         font-size: 0.9rem;
     }
 } 
+
+
+/* Emoji → Image icon FIX */
+.card-icon {
+    width: 56px;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.card-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* Modal icons */
+.sub-icon {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.sub-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
