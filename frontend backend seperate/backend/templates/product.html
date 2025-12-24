@@ -68,7 +68,7 @@
   </div>
   
   <div class="inquiry-modal-body">
-    <form id="inquiryForm" action="/send-inquiry" method="POST">
+    <form id="inquiryForm" novalidate>
       <!-- Hidden fields with product data -->
       <input type="hidden" name="product" id="inquiryProduct">
       <input type="hidden" name="category" id="inquiryCategory">
@@ -281,8 +281,5 @@ document.addEventListener('keydown', (e) => {
     container.style.backgroundPosition = `${x}% ${y}%`;
   });
 </script>
-
-<!-- Inquiry Button -->
-<button class="inquiry-button" onclick="scrollToInquiry()">💬 Inquiry</button>
 
 {% endblock %}

@@ -28,7 +28,7 @@ def serve_images(filename):
 # ------------------------------------------------------
 CATEGORIES = {
     "cpu": {
-        "amd-server": ["turin-9005-series", "9004", "7003", "8004", "4004", "4005"],
+        "amd-server": ["turin-9005-series", "genova-9004-series", "milan-7003-series", "8004-series", "4004-series", "4005-series"],
         "amd-desktop": ["ryzen", "ryzen-pro"],
         "intel-desktop": ["i9", "i7", "i5", "i3"]
     },

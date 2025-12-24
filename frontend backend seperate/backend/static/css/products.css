@@ -381,14 +381,6 @@ body {
     margin-bottom: 12px;
 }
 
-.filter-group:hover {
-    background-color: rgba(0, 102, 204, 0.02);
-    padding: 20px 8px;
-    border-radius: 8px;
-    margin: 0 -8px;
-    padding-left: 8px;
-}
-
 .filter-title {
     display: flex;
     justify-content: space-between;
@@ -399,10 +391,6 @@ body {
     border-radius: 8px;
     transition: var(--transition);
     user-select: none;
-}
-
-.filter-title:hover {
-    background-color: var(--primary-light);
 }
 
 .filter-title h3 {
@@ -462,11 +450,6 @@ body {
     border-radius: 8px;
     transition: var(--transition);
     position: relative;
-}
-
-.checkbox-label:hover {
-    background-color: var(--primary-light);
-    transform: translateX(4px);
 }
 
 .checkbox-label input[type="checkbox"] {
@@ -1583,10 +1566,7 @@ body {
     z-index: 0;
 }
 
-.series-chip:hover {
-    border-color: var(--primary-color);
-    transform: translateX(6px);
-}
+
 
 .series-chip:hover::before {
     left: 0;
@@ -1652,4 +1632,746 @@ body {
         overflow-y: auto;
     }
 }
+/* ========================================
+   PREMIUM FILTER SIDEBAR
+   Professional Filtering Component
+   ======================================== */
 
+:root {
+    /* Reuse existing color variables */
+    --filter-transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========================================
+   FILTER CONTAINER WRAPPER
+   ======================================== */
+
+.filter-wrapper {
+    display: flex;
+    gap: 2rem;
+    position: relative;
+    min-height: 100vh;
+}
+
+/* ========================================
+   FILTER SIDEBAR
+   ======================================== */
+
+.filter-sidebar {
+    width: 320px;
+    background: linear-gradient(135deg, var(--white) 0%, var(--premium-pale-blue) 100%);
+    border: 2px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+    box-shadow: 0 6px 20px var(--shadow-blue);
+    animation: slideUp 0.6s var(--filter-transition) backwards;
+}
+
+/* ========================================
+   FILTER HEADER
+   ======================================== */
+
+.filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--border-light);
+}
+
+.filter-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--primary-blue);
+    letter-spacing: -0.3px;
+}
+
+.filter-reset-btn {
+    background: transparent;
+    border: 2px solid var(--border-blue);
+    color: var(--primary-blue);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--filter-transition);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.filter-reset-btn:hover {
+    background: var(--primary-blue);
+    color: var(--white);
+    border-color: var(--primary-blue);
+}
+
+.filter-reset-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ========================================
+   FILTER GROUP
+   ======================================== */
+
+.filter-group {
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--border-light);
+    animation: fadeIn 0.5s var(--filter-transition);
+}
+
+.filter-group:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.filter-group-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    letter-spacing: -0.2px;
+}
+
+.filter-group-toggle {
+    font-size: 1.2rem;
+    color: var(--primary-blue);
+    transition: transform var(--filter-transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+
+.filter-group.collapsed .filter-group-toggle {
+    transform: rotate(-90deg);
+}
+
+.filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    transition: all var(--filter-transition);
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.filter-group.collapsed .filter-options {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+}
+
+/* ========================================
+   FILTER CHECKBOX & RADIO
+   ======================================== */
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: 0.6rem;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--filter-transition);
+    user-select: none;
+}
+
+.filter-option:hover {
+    background: var(--premium-light-blue);
+}
+
+.filter-option input:checked ~ .filter-label {
+    color: var(--primary-blue);
+    font-weight: 700;
+}
+
+.filter-option input:checked {
+    background: var(--premium-light-blue);
+}
+
+.filter-option:has(input:checked) {
+    background: var(--premium-light-blue);
+    border-radius: var(--radius-md);
+}
+
+.filter-option input[type="checkbox"],
+.filter-option input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--border-blue);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all var(--filter-transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: var(--white);
+    position: relative;
+}
+
+.filter-option input[type="radio"] {
+    border-radius: 50%;
+}
+
+.filter-option input[type="checkbox"]:checked,
+.filter-option input[type="radio"]:checked {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+    border-color: var(--primary-blue);
+    box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3);
+}
+
+.filter-count {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    background: var(--premium-light-blue);
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    flex-shrink: 0;
+}
+
+/* ========================================
+   FILTER RANGE SLIDER
+   ======================================== */
+
+.filter-range {
+    padding: 0.5rem 0;
+}
+
+.range-inputs {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.range-input {
+    flex: 1;
+    padding: 0.6rem;
+    border: 2px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    transition: all var(--filter-transition);
+}
+
+.range-input:focus {
+    outline: none;
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.1);
+}
+
+.range-slider {
+    width: 100%;
+    height: 6px;
+    border-radius: 3px;
+    background: var(--border-light);
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.range-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+    cursor: pointer;
+    transition: all var(--filter-transition);
+    box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3);
+}
+
+.range-slider::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    box-shadow: 0 6px 16px rgba(0, 82, 204, 0.4);
+}
+
+.range-slider::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+    cursor: pointer;
+    border: none;
+    transition: all var(--filter-transition);
+    box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3);
+}
+
+.range-slider::-moz-range-thumb:hover {
+    transform: scale(1.2);
+}
+
+.range-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+}
+
+/* ========================================
+   FILTER BUTTONS
+   ======================================== */
+
+.filter-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-lg);
+    border-top: 2px solid var(--border-light);
+}
+
+.filter-apply-btn,
+.filter-clear-btn {
+    flex: 1;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all var(--filter-transition);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.filter-apply-btn {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+    color: var(--white);
+    box-shadow: 0 4px 14px rgba(0, 82, 204, 0.35);
+}
+
+.filter-apply-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 82, 204, 0.45);
+}
+
+.filter-apply-btn:active {
+    transform: translateY(0);
+}
+
+.filter-clear-btn {
+    background: var(--premium-light-blue);
+    color: var(--primary-blue);
+    border: 2px solid var(--border-blue);
+}
+
+.filter-clear-btn:hover {
+    background: var(--primary-blue);
+    color: var(--white);
+    border-color: var(--primary-blue);
+}
+
+/* ========================================
+   FILTER BADGE/ACTIVE INDICATOR
+   ======================================== */
+
+.filter-active-indicator {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+    color: var(--white);
+    padding: 0.3rem 0.8rem;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+/* ========================================
+   TOGGLE FILTER BUTTON (MOBILE)
+   ======================================== */
+
+.filter-toggle-btn {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-blue) 100%);
+    color: var(--white);
+    border: none;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    cursor: pointer;
+    box-shadow: 0 8px 24px rgba(0, 82, 204, 0.4);
+    transition: all var(--filter-transition);
+    z-index: 998;
+}
+
+.filter-toggle-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 12px 32px rgba(0, 82, 204, 0.5);
+}
+
+.filter-toggle-btn:active {
+    transform: scale(0.95);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN - TABLET & MOBILE
+   ======================================== */
+
+@media (max-width: 1024px) {
+    .filter-sidebar {
+        width: 280px;
+        padding: var(--spacing-md);
+    }
+
+    .filter-title {
+        font-size: 1.2rem;
+    }
+
+    .filter-group-title {
+        font-size: 1rem;
+    }
+
+    .filter-label {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .filter-wrapper {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .filter-sidebar {
+        width: 100%;
+        position: sticky;
+        top: 0;
+        z-index: 99;
+        max-height: 60vh;
+        overflow-y: auto;
+    }
+
+    .filter-sidebar::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .filter-sidebar::-webkit-scrollbar-track {
+        background: var(--premium-light-blue);
+        border-radius: 10px;
+    }
+
+    .filter-sidebar::-webkit-scrollbar-thumb {
+        background: var(--accent-blue);
+        border-radius: 10px;
+    }
+
+    .filter-title {
+        font-size: 1.2rem;
+    }
+
+    .filter-reset-btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.7rem;
+    }
+
+    .filter-group {
+        margin-bottom: var(--spacing-md);
+        padding-bottom: var(--spacing-sm);
+    }
+
+    .filter-group-title {
+        font-size: 0.95rem;
+    }
+
+    .filter-label {
+        font-size: 0.85rem;
+    }
+
+    .filter-actions {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    .filter-apply-btn,
+    .filter-clear-btn {
+        padding: 0.7rem;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .filter-toggle-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .filter-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        max-width: 100%;
+        height: 100vh;
+        border-radius: 0;
+        border: none;
+        z-index: 998;
+        transform: translateX(-100%);
+        transition: transform var(--filter-transition);
+        overflow-y: auto;
+        padding: var(--spacing-lg);
+    }
+
+    .filter-sidebar.active {
+        transform: translateX(0);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .filter-sidebar::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+        opacity: 0;
+        transition: opacity var(--filter-transition);
+    }
+
+    .filter-sidebar.active::before {
+        opacity: 1;
+    }
+
+    .filter-header {
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .filter-title {
+        font-size: 1.1rem;
+    }
+
+    .filter-group {
+        margin-bottom: var(--spacing-md);
+    }
+
+    .filter-group-title {
+        font-size: 0.9rem;
+    }
+
+    .filter-label {
+        font-size: 0.8rem;
+    }
+
+    .filter-count {
+        font-size: 0.7rem;
+        padding: 0.2rem 0.5rem;
+    }
+
+    .filter-apply-btn,
+    .filter-clear-btn {
+        padding: 0.6rem;
+        font-size: 0.75rem;
+    }
+
+    .range-input {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* ========================================
+   SCROLLBAR STYLING
+   ======================================== */
+
+.filter-options::-webkit-scrollbar {
+    width: 6px;
+}
+
+.filter-options::-webkit-scrollbar-track {
+    background: var(--premium-light-blue);
+    border-radius: 10px;
+}
+
+.filter-options::-webkit-scrollbar-thumb {
+    background: var(--accent-light);
+    border-radius: 10px;
+}
+
+.filter-options::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-blue);
+}
+/* ========================================
+   SERIES CHECKBOX LABEL - LIGHT BLUE PREMIUM
+   ======================================== */
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    cursor: pointer;
+    user-select: none;
+    padding: 12px 14px;
+    border-radius: 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    background: var(--primary-light);
+    border: 2px solid transparent;
+}
+
+
+.checkbox-label input[type="checkbox"] {
+    display: none;
+}
+
+.checkmark {
+    width: 22px;
+    height: 22px;
+    border: 2.5px solid #80b3ff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: #f0f5ff;
+    flex-shrink: 0;
+    position: relative;
+    box-shadow: inset 0 2px 6px rgba(0, 102, 204, 0.08);
+}
+
+.checkmark::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 3px solid var(--primary-color);
+    border-top: 3px solid var(--primary-color);
+    transform: rotate(-45deg) translate(2px, -2px);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.checkbox-label span:last-child {
+    font-size: 0.95rem;
+    color: #1a3a5c;
+    font-weight: 600;
+    flex: 1;
+    letter-spacing: 0.2px;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark {
+    background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+    border-color: var(--primary-color);
+    box-shadow: 0 6px 18px rgba(0, 102, 204, 0.35), inset 0 2px 6px rgba(0, 0, 0, 0.1);
+    transform: scale(1.08);
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+    opacity: 1;
+}
+
+.checkbox-label input[type="checkbox"]:checked ~ span:last-child {
+    color: var(--primary-color);
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+.checkbox-label input[type="checkbox"]:checked {
+    background: linear-gradient(135deg, #e6f0ff 0%, #d9e8ff 100%);
+}
+/* ========================================
+   SERIES FILTER CHECKBOX LABEL - LIGHT BLUE PREMIUM
+   Dynamic checkboxes styling (same as Category)
+   ======================================== */
+
+/* Target Series Filter Group */
+#series-filter-group .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    cursor: pointer;
+    user-select: none;
+    padding: 12px 14px;
+    border-radius: 10px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    background: var(--primary-light);
+    border: 2px solid transparent;
+}
+
+
+#series-filter-group .checkbox-label input[type="checkbox"] {
+    display: none;
+}
+
+#series-filter-group .checkmark {
+    width: 22px;
+    height: 22px;
+    border: 2.5px solid #80b3ff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background-color: #f0f5ff;
+    flex-shrink: 0;
+    position: relative;
+    box-shadow: inset 0 2px 6px rgba(0, 102, 204, 0.08);
+}
+
+#series-filter-group .checkmark::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 3px solid var(--primary-color);
+    border-top: 3px solid var(--primary-color);
+    transform: rotate(-45deg) translate(2px, -2px);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+#series-filter-group .checkbox-label span:last-child {
+    font-size: 0.95rem;
+    color: #1a3a5c;
+    font-weight: 600;
+    flex: 1;
+    letter-spacing: 0.2px;
+}
+
+/* CHECKED STATE - Series Filter */
+#series-filter-group .checkbox-label input[type="checkbox"]:checked + .checkmark {
+    background: linear-gradient(135deg, #0066cc 0%, #0052a3 100%);
+    border-color: var(--primary-color);
+    box-shadow: 0 6px 18px rgba(0, 102, 204, 0.35), inset 0 2px 6px rgba(0, 0, 0, 0.1);
+    transform: scale(1.08);
+}
+
+#series-filter-group .checkbox-label input[type="checkbox"]:checked + .checkmark::after {
+    opacity: 1;
+}
+
+#series-filter-group .checkbox-label input[type="checkbox"]:checked ~ span:last-child {
+    color: var(--primary-color);
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+#series-filter-group .checkbox-label input[type="checkbox"]:checked {
+    background: linear-gradient(135deg, #e6f0ff 0%, #d9e8ff 100%);
+}
