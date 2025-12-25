@@ -17,7 +17,8 @@ from routes.fallback import fallback_bp
 app = Flask(
     __name__,
     template_folder=TEMPLATES_DIR,
-    static_folder=STATIC_DIR
+    static_folder=STATIC_DIR,
+    static_url_path='/static'
 )
 
 CORS(app)

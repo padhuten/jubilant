@@ -97,10 +97,17 @@ body {
 #brands-grid{
     display: flex;
     flex-wrap: wrap;
-    width: 85%;
+    /* width: 85%;
     margin-left: 97px;
     margin-top: 20px;
-    padding-left: 105px;
+    padding-left: 105px; */
+    gap: 24px;
+    width: 85%;
+    margin: 20px auto;
+    padding: 0;
+    justify-content: center;
+    position: relative;
+    padding-bottom: 100px;
 }
 
 .brand-item{
@@ -544,3 +551,18 @@ select {
         background-color: white;
     }
 }
+
+.brand-item img {
+    max-width: 80px;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    display: block;
+}
+
+
+/* #loo{
+    height: 80px;
+    width: 80px;
+} */
