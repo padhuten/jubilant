@@ -50,7 +50,9 @@
         
         <!-- Group A -->
         <div class="brand-item" data-brand-initial="A">
-            <img src="https://placehold.co/150x80/2980b9/ffffff/png?text=Acme+Corp" alt="Acme Corp Logo">
+            <!-- <img src="https://placehold.co/150x80/2980b9/ffffff/png?text=Acme+Corp" alt="Acme Corp Logo"> -->
+            <img src="/frontend backend seperate/backend/static/images/amd-logo.png" alt="Amd Logo">
+
         </div>
         <div class="brand-item" data-brand-initial="A">
             <img src="https://placehold.co/150x80/16a085/ffffff/png?text=Alpha+Solutions" alt="Alpha Solutions Logo">
@@ -130,43 +132,40 @@
 </div>
 
 <script>
-    function filterBrands(letter) {
-        const buttons = document.querySelectorAll('.filter-btn');
-        const brandItems = document.querySelectorAll('.brand-item');
-        const flashItems = [];
-        let firstMatch = null;
+function filterBrands(letter) {
+    const buttons = document.querySelectorAll('.filter-btn');
+    const brandItems = document.querySelectorAll('.brand-item');
+    const flashItems = [];
 
-        // update active button
-        buttons.forEach(btn => btn.classList.remove('active'));
-        const clickedButton = Array.from(buttons)
-            .find(btn => btn.textContent.trim().toUpperCase() === letter.toUpperCase());
-        if (clickedButton) clickedButton.classList.add('active');
+    // update active button
+    buttons.forEach(btn => btn.classList.remove('active'));
+    const clickedButton = Array.from(buttons)
+        .find(btn => btn.textContent.trim().toUpperCase() === letter.toUpperCase());
+    if (clickedButton) clickedButton.classList.add('active');
 
-        // show only matching items (or all for 'ALL')
-        brandItems.forEach(item => {
-            const initial = (item.getAttribute('data-brand-initial') || '').trim().toUpperCase();
+    brandItems.forEach(item => {
+        const initial = (item.getAttribute('data-brand-initial') || '')
+            .trim()
+            .toUpperCase();
 
-            if (letter === 'ALL') {
-                item.style.display = 'flex';
-                item.classList.remove('flash');
-            } else if (initial === letter.toUpperCase()) {
-                item.style.display = 'flex';
-                flashItems.push(item);
-                if (!firstMatch) firstMatch = item;
-            } else {
-                item.style.display = 'none';
-                item.classList.remove('flash');
-            }
+        if (letter === 'ALL' || initial === letter.toUpperCase()) {
+            item.style.removeProperty('display'); // ✅ KEY FIX
+            flashItems.push(item);
+        } else {
+            item.style.display = 'none';
+            item.classList.remove('flash');
+        }
+    });
+
+    // flash effect
+    setTimeout(() => {
+        flashItems.forEach(item => {
+            item.classList.add('flash');
+            setTimeout(() => item.classList.remove('flash'), 1000);
         });
-
-        // briefly flash matched items for emphasis
-        setTimeout(() => {
-            flashItems.forEach(item => {
-                item.classList.add('flash');
-                setTimeout(() => item.classList.remove('flash'), 1000);
-            });
-        }, 100);
-    }
+    }, 100);
+}
 </script>
+
 
 {% endblock %}
