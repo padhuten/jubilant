@@ -38,7 +38,7 @@ monitor_products = [
   },
   "dimensions_mm": "approx. 1148 × 419–536 × 417 mm (with stand)",
   "weight_kg": 16.7,
-  "image": "/static/images/samsung_monitors_1.jpg",
+  "image": "/static/images/SAMSUNG Odyssey-G9_2.jpg",
   "price": 139999.00
 },
 
@@ -77,7 +77,7 @@ monitor_products = [
     "audio_out": "3.5 mm headphone jack",
     "usb_hub": "Yes (USB 3.0 upstream/downstream)"
   },
-  "image": "/static/images/samsung_monitors_1.jpg",
+  "image": "/static/images/SAMSUNG Odyssey-G7.jpg",
   "price": 32110.32
 },
 
@@ -120,7 +120,7 @@ monitor_products = [
   },
   "stand_adjustments": ["Height", "Tilt"],
   "model": "LS32BM80… (M8 series, variant may vary)",
-  "image": "/static/images/samsung_monitors_1.jpg",
+  "image": "/static/images/samsung m8 smart monitor.jpg",
   "price": 47599.00
 },
 
@@ -166,7 +166,7 @@ monitor_products = [
   },
   "stand_adjustments": ["Height", "Tilt", "Swivel / Pivot (varies by region)"],
   "model": "LS32B804PXN (S80PB series — variant may vary by region)",
-  "image": "/static/images/samsung_monitors_1.jpg",
+  "image": "/static/images/SAMSUNG business monitor.jpg",
   "price": 67999.00
 },
 
@@ -208,7 +208,7 @@ monitor_products = [
     "vga": "1 × VGA",
     "audio_out": "3.5 mm headphone jack"
   },
-  "image": "/static/images/AOC_monitor_1.jpg",
+  "image": "/static/images/AOC 24G2.png",
   "price": 13999.00
 },
 
@@ -246,7 +246,7 @@ monitor_products = [
     "vga": "1 × VGA (for compatibility)",
     "audio_out": "3.5 mm headphone jack"
   },
-  "image": "/static/images/AOC_monitor_1.jpg",
+  "image": "/static/images/AOC 27G2 monitor v2.jpg",
   "price": 15999.00
 },
 
@@ -257,7 +257,7 @@ monitor_products = [
   "category": "Professional / Productivity Monitor",
   "application": "Desktop / Business / Content Creation",
   "description": "27-inch 4K UHD IPS monitor with wide color gamut, ultra-thin bezels, ergonomic stand, ideal for productivity, office work, and color-focused tasks.",
-  "screen_size": "27 inch",
+  "screen_size": "27 inch",kinb
       "category_key": "monitor",
   "sub_category": "aoc-philips",
   "series": "aoc-philips",
@@ -286,7 +286,7 @@ monitor_products = [
   },
   "dimensions_mm": "Approx. 614 × 405 × 200 mm (with stand)",
   "weight_kg": 5.45,
-  "image": "/static/images/AOC_monitor_1.jpg",
+  "image": "/static/images/AOC U2790PQU Monitor pics.jpg",
   "price": 29999.00
 },
 
@@ -333,7 +333,7 @@ monitor_products = [
   },
   "dimensions_mm": "Approx. 613 × 537 × 225 mm (with stand)",
   "weight_kg": 7.38,
-  "image": "/static/images/philips_monitor_1.jpg",
+  "image": "/static/images/PHILIPS MONITOR 279P1.jpg",
   "price": 101236.00
 },
 
@@ -373,7 +373,7 @@ monitor_products = [
   },
   "dimensions_mm": "Approx. 540 × 415 × 205 mm (with stand)",
   "weight_kg": 2.8,
-  "image": "/static/images/philips_monitor_1.jpg",
+  "image": "/static/images/Philips V Line 243V7Q Monitor.jpg",
   "price": 8999.00
 },
 

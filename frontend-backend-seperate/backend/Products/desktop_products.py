@@ -7,25 +7,18 @@ desktop_products = [
         "id": "desktop-asus-expertcenter-d7",
         "name": "ASUS ExpertCenter D7",
         "brand": "asus",
-
         "category_key": "desktop",
         "category": "Business Desktop PC",
-
         "sub_category": "asus",
         "series": "expertcenter",
-
         "application": ["desktop", "office", "enterprise"],
-
         "price": 54990,
         "image": "/static/images/asus expertcenter d7.webp",
-
         "cores": 8,
         "threads": 16,
         "socket": "LGA1200",
         "tech": "14nm",
-
         "form_factor": "tower",
-
         "description": "A reliable business desktop designed for productivity and enterprise workloads, featuring Intel Core processors, fast SSD storage, enterprise security, and compact tower design."
     },
 
@@ -46,7 +39,7 @@ desktop_products = [
         "application": ["desktop", "office", "enterprise"],
 
         "price": 42990,
-        "image": "/static/images/asus_expertcenter_mini.jpg",
+        "image": "/static/images/asus expertcenter mini pn64.jpg",
 
         "cores": 6,
         "threads": 12,
@@ -316,7 +309,7 @@ desktop_products = [
     "operating_system": "Windows 11 Pro",
     "form_factor": "Tower Desktop",
     "warranty": "3 Year ProSupport",
-    "image": "/static/images/dell_pro_tower_plus_qbt1250.jpg",
+    "image": "/static/images/Dell Pro Tower Plus QBT1250 Desktop.jpg",
     "price": 124990
   },
 
@@ -338,7 +331,7 @@ desktop_products = [
     "operating_system": "Windows 11 Pro",
     "form_factor": "Slim Desktop",
     "warranty": "3 Year ProSupport",
-    "image": "/static/images/dell_pro_slim_qcs1250.jpg",
+    "image": "/static/images/Dell Pro Slim QCS1250 Desktop.jpg",
     "price": 88990
   },
 
@@ -360,14 +353,14 @@ desktop_products = [
     "operating_system": "Windows 11 Home",
     "form_factor": "Tower Desktop",
     "warranty": "1 Year Warranty",
-    "image": "/static/images/dell_tower_ect1250.jpg",
+    "image": "/static/images/Dell Tower ECT1250 Desktop.jpg",
     "price": 44990
   },
 
   {
     "id": "desktop-dell-pro-tower-qct1250",
     "name": "Dell Pro Tower QCT1250",
-    "brand": "dell",
+    "brand": "dell", 
     "series": "pro",
     "category_key": "desktop",
     "sub_category": "dell",
@@ -382,7 +375,7 @@ desktop_products = [
     "operating_system": "Windows 11 Pro",
     "form_factor": "Tower Desktop",
     "warranty": "3 Year ProSupport",
-    "image": "/static/images/dell_pro_tower_qct1250.jpg",
+    "image": "/static/images/Dell Pro Tower QCT1250 Desktop.jpg",
     "price": 109990
   },
 
@@ -404,7 +397,7 @@ desktop_products = [
     "operating_system": "Windows 11 Pro",
     "form_factor": "Slim Desktop",
     "warranty": "3 Year ProSupport",
-    "image": "/static/images/dell_pro_slim_plus_qbs1250.jpg",
+    "image": "/static/images/Dell Pro Slim Plus QBS1250 Desktop.jpg",
     "price": 134990
   },
 
@@ -426,7 +419,7 @@ desktop_products = [
     "operating_system": "Windows 11 Home",
     "form_factor": "Slim Desktop",
     "warranty": "1 Year Warranty",
-    "image": "/static/images/dell_slim_ecs1250.jpg",
+    "image": "/static/images/Dell Slim ECS1250 Desktop.jpg",
     "price": 54990
   },
 
@@ -536,7 +529,7 @@ desktop_products = [
     "operating_system": "Windows 11 Pro",
     "form_factor": "Small Form Factor",
     "warranty": "3 Year On-site Warranty",
-    "image": "/static/images/hp_elite_800_g9.jpg",
+    "image": "/static/images/HP Elite 800 G9 Desktop.jpg",
     "price": 119990
   }
 
