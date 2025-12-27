@@ -257,7 +257,7 @@ monitor_products = [
   "category": "Professional / Productivity Monitor",
   "application": "Desktop / Business / Content Creation",
   "description": "27-inch 4K UHD IPS monitor with wide color gamut, ultra-thin bezels, ergonomic stand, ideal for productivity, office work, and color-focused tasks.",
-  "screen_size": "27 inch",kinb
+  "screen_size": "27 inch",
       "category_key": "monitor",
   "sub_category": "aoc-philips",
   "series": "aoc-philips",
@@ -333,7 +333,7 @@ monitor_products = [
   },
   "dimensions_mm": "Approx. 613 × 537 × 225 mm (with stand)",
   "weight_kg": 7.38,
-  "image": "/static/images/PHILIPS MONITOR 279P1.jpg",
+  "image": "/static/images/PHILIPS MONITOR  279P1.jpg",
   "price": 101236.00
 },
 
