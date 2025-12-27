@@ -235,7 +235,7 @@ laptop_products = [
   "warranty": "1 Year On-site Warranty",
 
   "form_factor": "Convertible Laptop",
-  "image": "/static/images/lenovo Yoga 7i 2-in-1.jpg",
+  "image": "/static/images/Lenovo Yoga 7i 2-in-1.jpg",
   "price": 99990
 },
 
