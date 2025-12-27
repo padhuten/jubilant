@@ -726,7 +726,7 @@ monitor_products = [
   },
   "dimensions_mm": "approx. 641 × 521 × 231 mm (with stand)",
   "weight_kg": 7.6,
-  "image": "/static/images/hp_monitor_1.jpg",
+  "image": "/static/images/HP Z27q G3 QHD Monitor.jpg",
   "price": 78000.00
 },
 
@@ -766,7 +766,7 @@ monitor_products = [
   },
   "dimensions_mm": "approx. 539 × 323 × 174 mm (with stand)",
   "weight_kg": 3.0,
-  "image": "/static/images/hp_monitor_1.jpg",
+  "image": "/static/images/HP P24v G4 Monitor.jpg",
   "price": 10500.00
 }
 
