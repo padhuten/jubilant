@@ -51,7 +51,7 @@ laptop_products = [
   "warranty": "1 Year Standard Warranty",
 
   "form_factor": "Laptop",
-  "image": "/static/images/lenovo IdeaPad 5 2-in-1.jpg",
+  "image": "/static/images/Lenovo IdeaPad 5 2‑in‑1.jpg",
   "price": 62990
 },
 
@@ -441,7 +441,7 @@ laptop_products = [
   "warranty": "1 Year On-site Warranty",
 
   "form_factor": "Laptop",
-  "image": "/static/images/dell_consumer_15-dc15250_1.jpg",
+  "image": "/static/images/dell 15 15250.jpg",
   "price": 56990
 },
 
