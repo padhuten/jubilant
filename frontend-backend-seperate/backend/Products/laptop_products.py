@@ -25,7 +25,7 @@ laptop_products = [
   "warranty": "1 Year On-site + Accidental Damage Protection",
 
   "form_factor": "Laptop",
-  "image": "/static/images/lenovo_consumer_ideapad-3_1.jpg",
+  "image": "/static/images/Lenovo IdeaPad 3.jpg",
   "price": 52990
 },
 
@@ -51,7 +51,7 @@ laptop_products = [
   "warranty": "1 Year Standard Warranty",
 
   "form_factor": "Laptop",
-  "image": "/static/images/lenovo_consumer_ideapad-3_1.jpg",
+  "image": "/static/images/lenovo IdeaPad 5 2-in-1.jpg",
   "price": 62990
 },
 
@@ -79,7 +79,7 @@ laptop_products = [
   "warranty": "1 Year International Warranty",
 
   "form_factor": "Laptop",
-  "image": "/static/images/acer_consumer_aspire-3_1.jpg",
+  "image": "/static/images/Acer Aspire 3.jpg",
   "price": 45990
 },
 
@@ -105,7 +105,7 @@ laptop_products = [
   "warranty": "1 Year International Warranty",
 
   "form_factor": "Laptop",
-  "image": "/static/images/acer_consumer_aspire-5_1.jpg",
+  "image": "/static/images/Acer Aspire 5 Intel Core Laptop.jpg",
   "price": 58990
 },
 
@@ -119,7 +119,6 @@ laptop_products = [
   "category": "Laptop",
   "application": "Business / Enterprise / Professional Work",
   "description": "A reliable enterprise-grade business laptop featuring a 14-inch Full HD IPS display, Intel Core i7 processor, fast SSD storage, and robust security—designed for professionals and corporate environments.",
-
   "processor": "Intel Core i7-1365U (Up to 5.20 GHz)",
   "memory": "16 GB DDR5-5200",
   "storage": "512 GB PCIe Gen4 NVMe SSD",
@@ -131,7 +130,7 @@ laptop_products = [
   "warranty": "3 Year On-site Warranty",
 
   "form_factor": "Laptop",
-  "image": "/static/images/lenovo_business_thinkpad-t14_1.jpg",
+  "image": "/static/images/Lenovo Thinkpad T14 Gen 6.jpg",
   "price": 139990
 },
 
@@ -158,7 +157,7 @@ laptop_products = [
   "warranty": "1 Year International Warranty",
 
   "form_factor": "Laptop",
-  "image": "/static/images/acer_consumer_swift-3_1.jpg",
+  "image": "/static/images/Acer Swift 3.jpg",
   "price": 64990
 },
 
@@ -184,7 +183,7 @@ laptop_products = [
   "warranty": "1 Year International Warranty",
 
   "form_factor": "Laptop",
-  "image": "/static/images/acer_consumer_nitro-5_1.jpg",
+  "image": "/static/images/Acer Nitro V 15.jpg",
   "price": 89990
 },
 
@@ -210,7 +209,7 @@ laptop_products = [
   "warranty": "1 Year International Warranty",
 
   "form_factor": "Laptop",
-  "image": "/static/images/acer_consumer_predator-helios_1.jpg",
+  "image": "/static/images/Acer Predator Helios 300.jpg",
   "price": 189990
 },
 
@@ -236,7 +235,7 @@ laptop_products = [
   "warranty": "1 Year On-site Warranty",
 
   "form_factor": "Convertible Laptop",
-  "image": "/static/images/lenovo_consumer_yoga-7_1.jpg",
+  "image": "/static/images/lenovo Yoga 7i 2-in-1.jpg",
   "price": 99990
 },
 
@@ -250,7 +249,6 @@ laptop_products = [
   "category": "Laptop",
   "application": "Gaming / Content Creation / High Performance Use",
   "description": "A powerful gaming laptop featuring a 15.6-inch high-refresh-rate display, AMD Ryzen processor, dedicated NVIDIA graphics, fast SSD storage, and advanced thermal design—built for serious gaming and multitasking.",
-
   "processor": "AMD Ryzen 7 5800H (Up to 4.40 GHz)",
   "memory": "16 GB DDR4-3200",
   "storage": "1 TB PCIe NVMe SSD",
@@ -260,9 +258,8 @@ laptop_products = [
   "operating_system": "Windows 11 Home",
   "color": "Phantom Blue",
   "warranty": "1 Year On-site Warranty",
-
   "form_factor": "Laptop",
-  "image": "/static/images/lenovo_consumer_legion-5_1.jpg",
+  "image": "/static/images/legion 5.jpg",
   "price": 114990
 },
 
@@ -288,7 +285,7 @@ laptop_products = [
   "warranty": "3 Year On-site Warranty",
 
   "form_factor": "Ultrabook Laptop",
-  "image": "/static/images/lenovo_business_thinkpad-x1-carbon_1.jpg",
+  "image": "/static/images/Lenovo ThinkPad X1 Gen 9 Convertible.jpg",
   "price": 219990
 },
 
@@ -314,7 +311,7 @@ laptop_products = [
   "warranty": "1 Year On-site Warranty",
 
   "form_factor": "Laptop",
-  "image": "/static/images/dell_consumer_inspiron-3511_1.jpg",
+  "image": "/static/images/dell inspiron 3511.jpg",
   "price": 54990
 },
 
@@ -340,7 +337,7 @@ laptop_products = [
   "warranty": "1 Year Premium Support",
 
   "form_factor": "Ultrabook Laptop",
-  "image": "/static/images/dell_consumer_xps-13_1.jpg",
+  "image": "/static/images/dell xps 13.jpg",
   "price": 149990
 },
 
@@ -366,7 +363,7 @@ laptop_products = [
   "warranty": "1 Year On-site Warranty",
 
   "form_factor": "Laptop",
-  "image": "/static/images/dell_consumer_g15_1.jpg",
+  "image": "/static/images/dell g15.jpg",
   "price": 119990
 },
 
@@ -392,7 +389,7 @@ laptop_products = [
   "warranty": "3 Year On-site Warranty",
 
   "form_factor": "Laptop",
-  "image": "/static/images/dell_business_latitude-5430_1.jpg",
+  "image": "/static/images/dell latitude 5430.jpg",
   "price": 129990
 },
 
@@ -418,7 +415,7 @@ laptop_products = [
   "warranty": "3 Year ProSupport On-site Warranty",
 
   "form_factor": "Mobile Workstation Laptop",
-  "image": "/static/images/dell_business_precision-5560_1.jpg",
+  "image": "/static/images/dell precision 5560.jpg",
   "price": 249990
 },
 
@@ -600,7 +597,7 @@ laptop_products = [
   "warranty": "1 Year On-site Warranty",
 
   "form_factor": "Laptop",
-  "image": "/static/images/hp_consumer_pavilion-15_1.jpg",
+  "image": "/static/images/hp pavilion 15.jpg",
   "price": 62990
 },
 
@@ -627,9 +624,11 @@ laptop_products = [
   "warranty": "1 Year On-site Warranty",
 
   "form_factor": "Laptop",
-  "image": "/static/images/hp_consumer_envy-15_1.jpg",
+  "image": "/static/images/hp envy 15.jpg",
   "price": 124990
 },
+
+
 
 {
   "id": "laptop-hp-victus-16",
@@ -653,7 +652,7 @@ laptop_products = [
   "warranty": "1 Year On-site Warranty",
 
   "form_factor": "Laptop",
-  "image": "/static/images/hp_consumer_victus-16_1.jpg",
+  "image": "/static/images/hp victus 16.jpg",
   "price": 139990
 },
 
@@ -679,7 +678,7 @@ laptop_products = [
   "warranty": "3 Year On-site Warranty",
 
   "form_factor": "Laptop",
-  "image": "/static/images/hp_business_elitebook-840_1.jpg",
+  "image": "/static/images/HP Elite 800 G9 Desktop.jpg",
   "price": 149990
 },
 
@@ -705,7 +704,7 @@ laptop_products = [
   "warranty": "3 Year On-site Warranty",
 
   "form_factor": "Laptop",
-  "image": "/static/images/hp_business_probook-450_1.jpg",
+  "image": "/static/images/hp probook 450.jpg",
   "price": 89990
 }
 
