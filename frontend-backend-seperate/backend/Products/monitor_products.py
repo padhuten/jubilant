@@ -421,7 +421,7 @@ monitor_products = [
   },
   "dimensions_mm": "Approx. 538.6 × 364 × 209 mm (with stand)", 
   "weight_kg": 4.6,
-  "image": "/static/images/dell_monitor_1.jpg",
+  "image": "/static/images/dell p2425h 24.jpg",
   "price": 14499.00
 },
 
@@ -466,7 +466,7 @@ monitor_products = [
   },
   "dimensions_mm": "Approx. 538 × 356-486 × 180 mm (with stand)",
   "weight_kg": 5.2,
-  "image": "/static/images/dell_monitor_1.jpg",
+  "image": "/static/images/dell p2425e 24.jpg",
   "price": 26500.00
 },
 
@@ -513,7 +513,7 @@ monitor_products = [
   },
   "dimensions_mm": "Approx. 531 × 181 × 364–511 mm (with stand)",
   "weight_kg": 5.2,
-  "image": "/static/images/dell_monitor_1.jpg",
+  "image": "/static/images/dell p2425he 24.webp",
   "price": 27999.00
 },
 
@@ -554,7 +554,7 @@ monitor_products = [
   },
   "dimensions_mm": "approx. 539 × 415 × 180 mm (with stand)",
   "weight_kg": 3.3,
-  "image": "/static/images/dell_monitor_1.jpg",
+  "image": "/static/images/dell s2425h 24.jpg",
   "price": 15499.00
 },
 
@@ -596,7 +596,7 @@ monitor_products = [
   },
   "dimensions_mm": "approx. 612 × 365–515 × 185 mm (with stand)",
   "weight_kg": 5.7,
-  "image": "/static/images/dell_monitor_1.jpg",
+  "image": "/static/images/dell p2725h 27.avif",
   "price": 22999.00
 },
 
@@ -638,7 +638,7 @@ monitor_products = [
   },
   "dimensions_mm": "approx. 538.6 × 181 × 364–511 mm (with stand)",
   "weight_kg": 5.3,
-  "image": "/static/images/dell_monitor_1.jpg",
+  "image": "/static/images/dell pro 24 plus qhd.avif",
   "price": 26999.00
 },
 
@@ -680,7 +680,7 @@ monitor_products = [
   },
   "dimensions_mm": "approx. 614 × 185 × 365–515 mm (with stand)",
   "weight_kg": 6.1,
-  "image": "/static/images/dell_monitor_1.jpg",
+  "image": "/static/images/dell pro 27 plus qhd.avif",
   "price": 30999.00
 },
 
