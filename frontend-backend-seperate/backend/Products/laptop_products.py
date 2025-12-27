@@ -223,7 +223,6 @@ laptop_products = [
   "category": "Laptop",
   "application": "Home / Office / Creative / Hybrid Use",
   "description": "A premium 2-in-1 convertible laptop featuring a 14-inch Full HD touch display, Intel Core i7 processor, fast SSD storage, and a flexible 360-degree hinge—perfect for productivity, creativity, and on-the-go use.",
-
   "processor": "Intel Core i7-1355U (Up to 5.00 GHz)",
   "memory": "16 GB LPDDR5-5200",
   "storage": "512 GB PCIe Gen4 NVMe SSD",
@@ -233,9 +232,8 @@ laptop_products = [
   "operating_system": "Windows 11 Home",
   "color": "Storm Grey",
   "warranty": "1 Year On-site Warranty",
-
   "form_factor": "Convertible Laptop",
-  "image": "/static/images/Lenovo Yoga 7i 2-in-1.jpg",
+  "image":"/static/images/Lenovo Yoga 7i 2‑in‑1.jpg",
   "price": 99990
 },
 

@@ -75,7 +75,7 @@ desktop_products = [
     "operating_system": "Windows 11 Pro",
     "form_factor": "Tower Desktop",
     "warranty": "3 Year On-site Warranty",
-    "image": "/static/images/asus_expertcenter_d5.jpg",
+    "image": "/static/images/asus expertcenter d5.webp",
     "price": 58990
   },
 
@@ -97,7 +97,7 @@ desktop_products = [
     "operating_system": "Windows 11 Home",
     "form_factor": "Gaming Tower",
     "warranty": "1 Year Warranty",
-    "image": "/static/images/asus_rog_ga35.jpg",
+    "image": "/static/images/asus rog strix ga35.jpg",
     "price": 219990
   },
 
@@ -119,7 +119,7 @@ desktop_products = [
     "operating_system": "Windows 11 Home",
     "form_factor": "Compact Tower",
     "warranty": "1 Year Warranty",
-    "image": "/static/images/asus_rog_g15.jpg",
+    "image": "/static/images/asus rog strix g15.jpg",
     "price": 139990
   },
 
@@ -141,7 +141,7 @@ desktop_products = [
     "operating_system": "Windows 10 Pro",
     "form_factor": "Small Form Factor",
     "warranty": "3 Year On-site Warranty",
-    "image": "/static/images/lenovo_thinkcentre_m70s.jpg",
+    "image": "/static/images/lenovo thinkcenter m70s.jpg",
     "price": 74990
   },
 
@@ -163,7 +163,7 @@ desktop_products = [
     "operating_system": "Windows 11 Home",
     "form_factor": "Gaming Tower",
     "warranty": "1 Year Warranty",
-    "image": "/static/images/lenovo_legion_tower_5.jpg",
+    "image": "/static/images/lenovo legion tower 5.jpg",
     "price": 119990
   },
 
@@ -185,7 +185,7 @@ desktop_products = [
     "operating_system": "Windows 11 Pro",
     "form_factor": "Tower Workstation",
     "warranty": "3 Year On-site Warranty",
-    "image": "/static/images/lenovo_thinkstation_p350.jpg",
+    "image": "/static/images/lenovo thinkstation p350.jpg",
     "price": 189990
   },
 
@@ -207,7 +207,7 @@ desktop_products = [
     "operating_system": "Windows 11 Pro",
     "form_factor": "Small Form Factor",
     "warranty": "3 Year ProSupport",
-    "image": "/static/images/dell_optiplex_7090.jpg",
+    "image": "/static/images/dell optiplex 7090.jpg",
     "price": 82990
   },
 
@@ -229,7 +229,7 @@ desktop_products = [
     "operating_system": "Windows 11 Pro",
     "form_factor": "Tower Workstation",
     "warranty": "3 Year ProSupport",
-    "image": "/static/images/dell_precision_3660.jpg",
+    "image": "/static/images/dell precision 3660.jpg",
     "price": 249990
   },
 
@@ -251,7 +251,7 @@ desktop_products = [
     "operating_system": "Windows 10 Pro",
     "form_factor": "Microtower",
     "warranty": "3 Year On-site Warranty",
-    "image": "/static/images/hp_prodesk_400_g7.jpg",
+    "image": "/static/images/HP proDesk 400 G7 Desktop.png",
     "price": 56990
   },
 
@@ -273,7 +273,7 @@ desktop_products = [
     "operating_system": "Windows 11 Pro",
     "form_factor": "Tower Workstation",
     "warranty": "3 Year On-site Warranty",
-    "image": "/static/images/hp_z4_g4.jpg",
+    "image": "/static/images/hp z4g4.jpg",
     "price": 329990
   },
   {
@@ -294,7 +294,7 @@ desktop_products = [
     "operating_system": "Windows 11 Pro",
     "form_factor": "Tower Desktop",
     "warranty": "1 Year Warranty",
-    "image": "/static/images/dell_vostro_5000.jpg",
+    "image": "/static/images/dell vostro 5000.jpg",
     "price": 60990
   },
 
@@ -514,7 +514,7 @@ desktop_products = [
     "operating_system": "Windows 11 Pro",
     "form_factor": "Mini Workstation",
     "warranty": "3 Year On-site Warranty",
-    "image": "/static/images/hp_z2_mini_g5.jpg",
+    "image": "/static/images/HP-z2-mini-g5-side.jpg",
     "price": 179990
   },
 
