@@ -17,7 +17,7 @@ desktop_products = [
         "application": ["desktop", "office", "enterprise"],
 
         "price": 54990,
-        "image": "/static/images/asus_expertcenter_d7.jpg",
+        "image": "/static/images/asus expertcenter d7.webp",
 
         "cores": 8,
         "threads": 16,
@@ -119,7 +119,7 @@ desktop_products = [
     "operating_system": "Windows 11 Home",
     "form_factor": "Compact Tower",
     "warranty": "1 Year Warranty",
-    "image": "/static/images/asus rog strix g15.jpg",
+    "image": "/static/images/rog strix g15.jpg",
     "price": 139990
   },
 
